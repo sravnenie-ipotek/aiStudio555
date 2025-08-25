@@ -14,37 +14,23 @@
     
     <title data-i18n="about.title">О нас – Projectdes AI Academy</title>
     
-    <!-- Critical CSS -->
-    <style>
-        :root{--primary:#ffda17;--secondary:#e2c528;--white:#FFFFFF;--black:#070707;--text-primary:#070707;--text-secondary:#6B7280;--bg-primary:#FFFFFF;--bg-secondary:#f4f5f7}
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Rubik',sans-serif;color:var(--text-primary);line-height:1.6}
-        .page-header{background:linear-gradient(135deg,#f4f5f7 0%,#ffffff 100%);color:var(--black);padding:4rem 2rem 2rem;text-align:center}
-        .page-header h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;color:var(--black)}
-        .about-hero{padding:4rem 2rem;text-align:center;background:var(--bg-primary)}
-        .statistics{background:var(--primary);padding:4rem 2rem}
-        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center}
-        .stat{font-size:3rem;font-weight:900;color:var(--black);margin-bottom:0.5rem}
-    </style>
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/teachmeskills-design.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/quick-fix.css">
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="css/teachmeskills-complete.css">
+    <link rel="stylesheet" href="css/comprehensive-form-fix.css">
     <link rel="stylesheet" href="css/rtl.css">
 </head>
 <body>
     <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn" data-lang="ru" onclick="switchLanguage('ru')">RU</button>
-        <button class="lang-btn" data-lang="he" onclick="switchLanguage('he')">עב</button>
+    <div class="language-switcher" style="position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 8px;">
+        <button class="lang-btn" data-lang="ru" onclick="switchLanguage('ru')" 
+                style="padding: 8px 16px; border: 2px solid #ffda17; background: white; color: #070707; border-radius: 6px; cursor: pointer; font-weight: 500; transition: all 0.2s;">RU</button>
+        <button class="lang-btn" data-lang="he" onclick="switchLanguage('he')"
+                style="padding: 8px 16px; border: 2px solid #ffda17; background: white; color: #070707; border-radius: 6px; cursor: pointer; font-weight: 500; transition: all 0.2s;">עב</button>
     </div>
 
     <!-- Navigation -->
@@ -391,11 +377,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/ui-enhancements.js"></script>
     <script src="js/language-switcher.js"></script>
+    <script src="js/interactive-enhancements.js"></script>
+    <script src="js/enhanced-form-interactions.js"></script>
     <script src="js/forms.js"></script>
-    <script src="js/integrations.js"></script>
 </body>
 </html>

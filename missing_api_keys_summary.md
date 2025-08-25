@@ -4,7 +4,7 @@
 
 ### ✅ Configured:
 1. **Firecrawl MCP** 
-   - Key: `***REMOVED***` 
+   - Key: `[REDACTED]` (configured securely)
    - Status: ✅ Configured in Claude Desktop
 
 ### ⚠️ Need Configuration:
@@ -42,7 +42,7 @@
 
 ### Update Firecrawl config in design-scraper:
 ```bash
-sed -i '' 's/YOUR_FIRECRAWL_API_KEY/***REMOVED***/' \
+sed -i '' 's/YOUR_FIRECRAWL_API_KEY/[YOUR_FIRECRAWL_API_KEY]/' \
   ~/.config/Claude/mcp/design-scraper/configs/firecrawl_config.json
 ```
 

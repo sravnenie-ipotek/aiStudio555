@@ -14,7 +14,7 @@ NC='\033[0m'
 echo -e "${BLUE}Configuration Details:${NC}"
 echo "• MCP Server Name: firecrawl"
 echo "• Command: npx -y firecrawl-mcp"
-echo "• API Key: ***REMOVED*** (configured)"
+echo "• API Key: [REDACTED] (configured securely)"
 echo ""
 
 echo -e "${GREEN}✅ Firecrawl MCP has been successfully added to Claude Desktop${NC}"

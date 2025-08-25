@@ -11,80 +11,155 @@ html[dir="rtl"] body {
   direction: rtl;
 }
 
-/* Navigation RTL */
-html[dir="rtl"] .navbar {
+/* Enhanced Navigation RTL */
+html[dir="rtl"] .header {
   direction: rtl;
 }
 
-html[dir="rtl"] .nav-menu {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .nav-link {
-  margin-left: 0;
-  margin-right: 2rem;
-}
-
-html[dir="rtl"] .nav-link:last-child {
-  margin-right: 0;
-}
-
-html[dir="rtl"] .nav-toggle {
-  left: 20px;
-  right: auto;
+html[dir="rtl"] .nav {
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 html[dir="rtl"] .nav-brand {
-  margin-right: 0;
+  order: 2;
   margin-left: auto;
+  margin-right: 0;
 }
 
-/* Language Switcher RTL */
+html[dir="rtl"] .nav-menu {
+  order: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 2rem;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .nav-link {
+  margin: 0;
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .mobile-menu-toggle {
+  order: 3;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Enhanced Language Switcher RTL */
 html[dir="rtl"] .language-switcher {
   right: auto;
   left: 20px;
   flex-direction: row-reverse;
+  direction: rtl;
 }
 
-/* Hero Section RTL */
+html[dir="rtl"] .lang-btn {
+  font-family: inherit;
+  direction: rtl;
+  text-align: center;
+}
+
+/* Enhanced Hero Section RTL */
 html[dir="rtl"] .hero {
   text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero-content {
+  direction: rtl;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 2rem;
+}
+
+html[dir="rtl"] .hero-text {
+  text-align: right;
+  direction: rtl;
 }
 
 html[dir="rtl"] .hero h1,
 html[dir="rtl"] .hero h2 {
   text-align: right;
+  direction: rtl;
+  line-height: 1.2;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
-html[dir="rtl"] .cta-buttons {
-  justify-content: flex-end;
+html[dir="rtl"] .btn-group {
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+  gap: 1rem;
 }
 
 @media (max-width: 768px) {
-  html[dir="rtl"] .cta-buttons {
+  html[dir="rtl"] .hero-content {
+    flex-direction: column;
+  }
+  
+  html[dir="rtl"] .btn-group {
     justify-content: center;
   }
 }
 
-/* Grid Layouts RTL */
-html[dir="rtl"] .advantages-grid,
-html[dir="rtl"] .course-grid,
-html[dir="rtl"] .stats-grid {
+/* Enhanced Grid Layouts RTL */
+html[dir="rtl"] .grid,
+html[dir="rtl"] .grid-2,
+html[dir="rtl"] .grid-3 {
   direction: rtl;
 }
 
-html[dir="rtl"] .advantage-card,
-html[dir="rtl"] .course-card,
-html[dir="rtl"] .value-card {
+html[dir="rtl"] .card,
+html[dir="rtl"] .card-enhanced {
   text-align: right;
   direction: rtl;
 }
 
-html[dir="rtl"] .advantage-icon,
-html[dir="rtl"] .course-icon {
+html[dir="rtl"] .card-content {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .card-title {
+  text-align: right;
+  direction: rtl;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+}
+
+html[dir="rtl"] .card-description {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .feature-list {
+  text-align: right;
+  direction: rtl;
+  padding-right: 1rem;
+  padding-left: 0;
+}
+
+html[dir="rtl"] .feature-list li {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .card-price {
+  text-align: right;
+  margin-left: auto;
   margin-right: 0;
-  margin-left: 1rem;
-  float: right;
 }
 
 /* Forms RTL */
@@ -155,18 +230,26 @@ html[dir="rtl"] .social-contact {
   flex-direction: row-reverse;
 }
 
-/* Statistics Section RTL */
-html[dir="rtl"] .statistics {
+/* Enhanced Statistics Section RTL */
+html[dir="rtl"] .stats,
+html[dir="rtl"] .stats-grid {
   direction: rtl;
 }
 
 html[dir="rtl"] .stat-item {
-  text-align: right;
+  text-align: center;
+  direction: rtl;
 }
 
-html[dir="rtl"] .stat-number,
+html[dir="rtl"] .stat-number {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
 html[dir="rtl"] .stat-label {
-  text-align: right;
+  text-align: center;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 /* About Page RTL */
@@ -212,7 +295,7 @@ html[dir="rtl"] .course-features li {
   list-style-position: inside;
 }
 
-/* Specific RTL Typography */
+/* Enhanced RTL Typography */
 html[dir="rtl"] h1,
 html[dir="rtl"] h2,
 html[dir="rtl"] h3,
@@ -220,10 +303,35 @@ html[dir="rtl"] h4,
 html[dir="rtl"] h5,
 html[dir="rtl"] h6 {
   text-align: right;
+  direction: rtl;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.3;
+}
+
+html[dir="rtl"] .heading-xxl {
+  font-size: clamp(2rem, 4vw, 2.8rem) !important;
+  line-height: 1.2 !important;
+}
+
+html[dir="rtl"] .heading-xl {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem) !important;
+  line-height: 1.25 !important;
+}
+
+html[dir="rtl"] .heading-lg {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem) !important;
+  line-height: 1.3 !important;
 }
 
 html[dir="rtl"] p {
   text-align: right;
+  direction: rtl;
+  line-height: 1.6;
+}
+
+html[dir="rtl"] .body-text {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.6;
 }
 
 html[dir="rtl"] ul,
@@ -231,10 +339,12 @@ html[dir="rtl"] ol {
   text-align: right;
   padding-right: 1.5rem;
   padding-left: 0;
+  direction: rtl;
 }
 
 html[dir="rtl"] li {
   text-align: right;
+  direction: rtl;
 }
 
 /* Icons and Images RTL */
@@ -252,31 +362,53 @@ html[dir="rtl"] .course-icon img {
   transform: none; /* Don't flip icons */
 }
 
-/* Mobile RTL Adjustments */
+/* Enhanced Mobile RTL Adjustments */
 @media (max-width: 768px) {
-  html[dir="rtl"] .nav-menu {
-    right: auto;
-    left: 0;
-    text-align: right;
+  html[dir="rtl"] .nav {
+    padding: 1rem;
   }
   
-  html[dir="rtl"] .nav-toggle {
-    left: 1rem;
+  html[dir="rtl"] .nav-menu {
+    position: absolute;
+    top: 100%;
     right: auto;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    text-align: right;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+  }
+  
+  html[dir="rtl"] .nav-menu.active {
+    display: flex;
+  }
+  
+  html[dir="rtl"] .mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 0;
+    margin-right: auto;
   }
   
   html[dir="rtl"] .language-switcher {
     left: 1rem;
     right: auto;
+    top: 15px;
   }
   
-  html[dir="rtl"] .hero {
-    text-align: right;
+  html[dir="rtl"] .hero h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
   }
   
-  html[dir="rtl"] .hero h1,
-  html[dir="rtl"] .hero h2 {
-    text-align: right;
+  html[dir="rtl"] .container {
+    padding: 0 1rem;
   }
 }
 

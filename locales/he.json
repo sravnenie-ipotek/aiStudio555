@@ -37,6 +37,71 @@
       "countries": "מדינות נוכחות",
       "employment": "תעסוקה",
       "rating": "דירוג סטודנטים"
+    },
+    "courses": {
+      "title": "קורסים פופולריים",
+      "subtitle": "בחר כיוון והפוך למומחה תוך 2-3 חודשים",
+      "view_all": "צפה בכל הקורסים",
+      "nocode": {
+        "title": "יצירת אתרים עם לוגיקה (ללא מתכנתים)",
+        "description": "למד ליצור אתרי אינטרנט מקצועיים עם AI ללא כתיבת קוד.",
+        "duration": "3 חודשים",
+        "format": "מקוון",
+        "feature1": "פלטפורמות No-Code (Webflow, Bubble)",
+        "feature2": "כלי AI לעיצוב",
+        "feature3": "אוטומציה של זרימות עבודה",
+        "feature4": "אופטימיזציה לקידום באינטרנט",
+        "price": "$1,200 / קורס",
+        "cta": "בחר קורס"
+      },
+      "video": {
+        "title": "יצירת וידאו ואווטארי AI",
+        "description": "צור תוכן וידיאו ואווטארים דיגיטליים באמצעות טכנולוגיות AI.",
+        "duration": "2 חודשים",
+        "format": "מקוון",
+        "feature1": "יצירת וידאו AI (Runway, Pika)",
+        "feature2": "יצירת אווטארי AI",
+        "feature3": "עריכה ופוסט-פרודקשן",
+        "feature4": "מונטיזציה של תוכן",
+        "price": "$1,000 / קורס",
+        "cta": "בחר קורס"
+      },
+      "automation": {
+        "title": "אוטומציה של תהליכים עסקיים דרך AI",
+        "description": "הטמע פתרונות AI לאופטימיזציה של עסק ושיפור היעילות.",
+        "duration": "3 חודשים",
+        "format": "מקוון",
+        "feature1": "צ'אט-בוטים ועוזרי AI",
+        "feature2": "אוטומציה דרך Zapier, Make",
+        "feature3": "אינטגרציות CRM",
+        "feature4": "אנליטיקה ודיווח",
+        "price": "$1,500 / קורס",
+        "cta": "בחר קורס"
+      }
+    },
+    "contact_form": {
+      "title": "קבל ייעוץ",
+      "subtitle": "מלא את הטופס והמומחה שלנו ייצור איתך קשר תוך שעה",
+      "contact_methods_title": "צור איתנו קשר בדרך הנוחה לך",
+      "whatsapp": "ייעוץ WhatsApp",
+      "email": "כתוב למייל",
+      "zoom": "פגישת Zoom",
+      "working_hours": "שעות עבודה:",
+      "weekdays": "א'-ה': 9:00-21:00 (GMT+3)",
+      "weekends": "ו'-ש': 10:00-18:00 (GMT+3)",
+      "form_title": "בקשה לייעוץ",
+      "name_label": "השם שלך",
+      "phone_label": "טלפון",
+      "email_label": "Email",
+      "course_label": "קורס מעניין",
+      "course_placeholder": "בחר קורס (לא חובה)",
+      "course_nocode": "יצירת אתרים ללא תכנות",
+      "course_video": "יצירת וידאו ואווטארי AI",
+      "course_automation": "אוטומציה של תהליכים עסקיים",
+      "course_smm": "ניהול רשתות חברתיות ופרסום",
+      "message_label": "הודעה",
+      "submit_btn": "שלח בקשה",
+      "privacy_text": "בלחיצה על הכפתור אתה מסכים לעיבוד נתונים אישיים"
     }
   },
   "programs": {
