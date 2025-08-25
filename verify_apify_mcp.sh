@@ -15,7 +15,7 @@ echo -e "${BLUE}Apify MCP Configuration:${NC}"
 echo "• Package: @apify/actors-mcp-server"
 echo "• Version: 0.3.9"
 echo "• Command: npx -y @apify/actors-mcp-server"
-echo "• API Token: apify_api_ZTZca...eGGLu (configured)"
+echo "• API Token: [REDACTED] (removed for security)"
 echo ""
 
 echo -e "${GREEN}✅ Apify MCP Installation Complete${NC}"
@@ -53,7 +53,7 @@ echo ""
 
 echo -e "${BLUE}Testing Apify MCP:${NC}"
 echo -n "Testing @apify/actors-mcp-server command... "
-if APIFY_TOKEN="***REMOVED***" npx @apify/actors-mcp-server --help > /dev/null 2>&1; then
+if APIFY_TOKEN="[REDACTED]" npx @apify/actors-mcp-server --help > /dev/null 2>&1; then
     echo -e "${GREEN}✅ Working${NC}"
 else
     echo -e "${YELLOW}⚠️  May need configuration${NC}"

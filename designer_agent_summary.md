@@ -22,7 +22,7 @@
 
 ### ✅ Image Generation - Replicate
 - **Package**: `replicate-mcp`
-- **API Key**: `***REMOVED***` ✅ Configured
+- **API Key**: `[REDACTED]` (removed for security)
 - **Models**: Flux Schnell, Flux Dev, SDXL
 - **Capabilities**: Photorealistic images, illustrations, concept art, UI mockups
 
@@ -40,12 +40,12 @@
 
 ### ✅ Web Scraping - Apify
 - **Package**: `@apify/actors-mcp-server`
-- **API Key**: `apify_api_ZTZca...eGGLu` ✅ Configured
+- **API Key**: `[REDACTED]` (removed for security)
 - **Capabilities**: Design trend analysis, competitor research, pattern mining
 
 ### ✅ Content Extraction - Firecrawl
 - **Package**: `firecrawl-mcp`
-- **API Key**: `***REMOVED***` ✅ Configured
+- **API Key**: `[REDACTED]` (removed for security)
 - **Capabilities**: Design pattern extraction, color analysis, component identification
 
 ## 📁 Installation Structure
