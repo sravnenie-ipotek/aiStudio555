@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="О Projectdes AI Academy - международная школа практического AI-обучения. 500+ выпускников, 85% трудоустройство в 15+ странах мира.">
+    <meta name="keywords" content="AI Academy, обучение, Израиль, международная школа, AI Transformation Manager">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="О нас – Projectdes AI Academy">
+    <meta property="og:description" content="Международная школа практического AI-обучения с трудоустройством в 15+ странах">
+    <meta property="og:image" content="/assets/images/about-og.jpg">
+    <meta property="og:url" content="https://projectdes.ai/about">
+    
+    <title data-i18n="about.title">О нас – Projectdes AI Academy</title>
+    
+    <!-- Critical CSS -->
+    <style>
+        :root{--primary:#ffda17;--secondary:#e2c528;--white:#FFFFFF;--black:#070707;--text-primary:#070707;--text-secondary:#6B7280;--bg-primary:#FFFFFF;--bg-secondary:#f4f5f7}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Rubik',sans-serif;color:var(--text-primary);line-height:1.6}
+        .page-header{background:linear-gradient(135deg,#f4f5f7 0%,#ffffff 100%);color:var(--black);padding:4rem 2rem 2rem;text-align:center}
+        .page-header h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;color:var(--black)}
+        .about-hero{padding:4rem 2rem;text-align:center;background:var(--bg-primary)}
+        .statistics{background:var(--primary);padding:4rem 2rem}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center}
+        .stat{font-size:3rem;font-weight:900;color:var(--black);margin-bottom:0.5rem}
+    </style>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/teachmeskills-design.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/quick-fix.css">
+    <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn" data-lang="ru" onclick="switchLanguage('ru')">RU</button>
+        <button class="lang-btn" data-lang="he" onclick="switchLanguage('he')">עב</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/icons/logo.svg" alt="Projectdes AI Academy" class="logo">
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link" data-i18n="nav.home">Главная</a>
+                <a href="programs.html" class="nav-link" data-i18n="nav.programs">Программы</a>
+                <a href="about.html" class="nav-link active" data-i18n="nav.about">О нас</a>
+                <a href="contacts.html" class="nav-link" data-i18n="nav.contacts">Контакты</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 data-i18n="about.header.title">О Projectdes AI Academy</h1>
+            <p data-i18n="about.header.subtitle">Международная школа практического AI-обучения</p>
+        </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 data-i18n="about.hero.title">Наша миссия</h2>
+                <p class="lead-text" data-i18n="about.hero.mission">
+                    Projectdes AI Academy – это международная школа практического AI-обучения. 
+                    Мы готовим специалистов новой профессии будущего: AI Transformation Manager. 
+                    Наши студенты работают над реальными задачами и получают опыт, 
+                    востребованный работодателями по всему миру.
+                </p>
+                
+                <div class="mission-points">
+                    <div class="mission-point">
+                        <div class="point-icon">🎯</div>
+                        <h3 data-i18n="about.mission.practical.title">Практическое обучение</h3>
+                        <p data-i18n="about.mission.practical.description">
+                            100% времени посвящено работе над реальными проектами
+                        </p>
+                    </div>
+                    <div class="mission-point">
+                        <div class="point-icon">🌍</div>
+                        <h3 data-i18n="about.mission.global.title">Международная карьера</h3>
+                        <p data-i18n="about.mission.global.description">
+                            Подготовка к работе в ведущих IT-компаниях мира
+                        </p>
+                    </div>
+                    <div class="mission-point">
+                        <div class="point-icon">🚀</div>
+                        <h3 data-i18n="about.mission.innovation.title">Инновации и AI</h3>
+                        <p data-i18n="about.mission.innovation.description">
+                            Использование самых современных AI-технологий
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <h2 data-i18n="about.values.title">Наши ценности</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <img src="assets/icons/practice.svg" alt="Практика" data-src="assets/icons/practice.svg">
+                    </div>
+                    <h3 data-i18n="about.values.practice.title">Практика превыше теории</h3>
+                    <p data-i18n="about.values.practice.description">
+                        Мы верим, что навыки развиваются только через применение. 
+                        Каждый урок включает практические задания и работу над проектами.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <img src="assets/icons/real-projects.svg" alt="Реальные проекты" data-src="assets/icons/real-projects.svg">
+                    </div>
+                    <h3 data-i18n="about.values.projects.title">Реальные проекты от первого дня</h3>
+                    <p data-i18n="about.values.projects.description">
+                        Студенты работают над задачами действующих компаний и создают 
+                        проекты для своего портфолио с первого дня обучения.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <img src="assets/icons/individual.svg" alt="Индивидуальный подход" data-src="assets/icons/individual.svg">
+                    </div>
+                    <h3 data-i18n="about.values.individual.title">Индивидуальный подход к каждому студенту</h3>
+                    <p data-i18n="about.values.individual.description">
+                        Персональное наставничество, адаптация программы под цели 
+                        и уровень каждого участника.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <img src="assets/icons/employment-support.svg" alt="Поддержка трудоустройства" data-src="assets/icons/employment-support.svg">
+                    </div>
+                    <h3 data-i18n="about.values.employment.title">Поддержка в трудоустройстве</h3>
+                    <p data-i18n="about.values.employment.description">
+                        Помогаем составить резюме, подготовиться к собеседованиям 
+                        и найти работу в международных компаниях.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <h2 data-i18n="about.stats.title">Наши достижения в цифрах</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat" data-counter="500">500</div>
+                    <div class="stat-plus">+</div>
+                    <div class="stat-label" data-i18n="about.stats.graduates">выпускников</div>
+                    <p class="stat-description" data-i18n="about.stats.graduates_desc">
+                        Успешно завершили программы обучения и получили работу
+                    </p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat" data-counter="15">15</div>
+                    <div class="stat-plus">+</div>
+                    <div class="stat-label" data-i18n="about.stats.countries">стран присутствия</div>
+                    <p class="stat-description" data-i18n="about.stats.countries_desc">
+                        Наши выпускники работают по всему миру
+                    </p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat" data-counter="85">85</div>
+                    <div class="stat-plus">%</div>
+                    <div class="stat-label" data-i18n="about.stats.employment">трудоустройство</div>
+                    <p class="stat-description" data-i18n="about.stats.employment_desc">
+                        Выпускников находят работу в течение 3 месяцев
+                    </p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat" data-counter="4.9">4.9</div>
+                    <div class="stat-plus"></div>
+                    <div class="stat-label" data-i18n="about.stats.rating">рейтинг студентов</div>
+                    <p class="stat-description" data-i18n="about.stats.rating_desc">
+                        Средняя оценка качества обучения от студентов
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2 data-i18n="about.team.title">Наша команда</h2>
+            <p class="team-intro" data-i18n="about.team.intro">
+                Мы собрали команду экспертов с международным опытом работы в ведущих IT-компаниях
+            </p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="assets/images/team/ceo.jpg" alt="CEO" data-src="assets/images/team/ceo.jpg">
+                    </div>
+                    <h3 data-i18n="about.team.ceo.name">Алексей Проектович</h3>
+                    <p class="member-role" data-i18n="about.team.ceo.role">Основатель и CEO</p>
+                    <p class="member-description" data-i18n="about.team.ceo.description">
+                        15+ лет опыта в IT, бывший директор по продукту в международной IT-компании. 
+                        Эксперт по AI-трансформации бизнеса.
+                    </p>
+                    <div class="member-social">
+                        <a href="#" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="assets/images/team/cto.jpg" alt="CTO" data-src="assets/images/team/cto.jpg">
+                    </div>
+                    <h3 data-i18n="about.team.cto.name">Мария Техническая</h3>
+                    <p class="member-role" data-i18n="about.team.cto.role">Технический директор</p>
+                    <p class="member-description" data-i18n="about.team.cto.description">
+                        10+ лет в разработке AI-систем, магистр компьютерных наук MIT. 
+                        Специалист по машинному обучению и автоматизации.
+                    </p>
+                    <div class="member-social">
+                        <a href="#" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="assets/images/team/head-of-education.jpg" alt="Head of Education" data-src="assets/images/team/head-of-education.jpg">
+                    </div>
+                    <h3 data-i18n="about.team.education.name">Дмитрий Образовательный</h3>
+                    <p class="member-role" data-i18n="about.team.education.role">Руководитель образовательных программ</p>
+                    <p class="member-description" data-i18n="about.team.education.description">
+                        Эксперт по EdTech с опытом разработки онлайн-курсов для 50,000+ студентов. 
+                        Специалист по методологии практического обучения.
+                    </p>
+                    <div class="member-social">
+                        <a href="#" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 data-i18n="about.why_choose.title">Почему выбирают именно нас</h2>
+            
+            <div class="reasons-grid">
+                <div class="reason-item">
+                    <div class="reason-number">01</div>
+                    <h3 data-i18n="about.why_choose.proven.title">Доказанная эффективность</h3>
+                    <p data-i18n="about.why_choose.proven.description">
+                        85% наших выпускников получают работу в течение 3 месяцев после окончания курса
+                    </p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-number">02</div>
+                    <h3 data-i18n="about.why_choose.practical.title">Практическое обучение</h3>
+                    <p data-i18n="about.why_choose.practical.description">
+                        Никакой теории ради теории - только навыки, которые сразу применяются в работе
+                    </p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-number">03</div>
+                    <h3 data-i18n="about.why_choose.international.title">Международный фокус</h3>
+                    <p data-i18n="about.why_choose.international.description">
+                        Готовим к работе в международных компаниях с учетом глобальных стандартов
+                    </p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-number">04</div>
+                    <h3 data-i18n="about.why_choose.support.title">Постоянная поддержка</h3>
+                    <p data-i18n="about.why_choose.support.description">
+                        Менторы и карьерные консультанты помогают даже после завершения обучения
+                    </p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-number">05</div>
+                    <h3 data-i18n="about.why_choose.community.title">Сильное сообщество</h3>
+                    <p data-i18n="about.why_choose.community.description">
+                        Нетворкинг с единомышленниками и профессионалами из разных стран
+                    </p>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-number">06</div>
+                    <h3 data-i18n="about.why_choose.cutting_edge.title">Передовые технологии</h3>
+                    <p data-i18n="about.why_choose.cutting_edge.description">
+                        Изучаем самые новые AI-инструменты и технологии на рынке
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-i18n="about.cta.title">Готовы начать свою карьеру в AI?</h2>
+                <p data-i18n="about.cta.description">
+                    Присоединяйтесь к 500+ успешным выпускникам Projectdes AI Academy
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="openEnrollmentModal()" data-i18n="about.cta.enroll">
+                        Записаться на курс
+                    </button>
+                    <a href="programs.html" class="btn-secondary" data-i18n="about.cta.programs">
+                        Выбрать программу
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="footer.contact.title">Контакты</h3>
+                    <p data-i18n="footer.contact.email">info@projectdes.ai</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" aria-label="WhatsApp">
+                            <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
+                        </a>
+                        <a href="https://linkedin.com/company/projectdes" target="_blank" aria-label="LinkedIn">
+                            <img src="assets/icons/linkedin.svg" alt="LinkedIn">
+                        </a>
+                        <a href="https://instagram.com/projectdes" target="_blank" aria-label="Instagram">
+                            <img src="assets/icons/instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="https://tiktok.com/@projectdes" target="_blank" aria-label="TikTok">
+                            <img src="assets/icons/tiktok.svg" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.quick_links.title">Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="programs.html" data-i18n="footer.quick_links.programs">Программы</a></li>
+                        <li><a href="about.html" data-i18n="footer.quick_links.about">О нас</a></li>
+                        <li><a href="contacts.html" data-i18n="footer.quick_links.contacts">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.legal.title">Правовая информация</h3>
+                    <ul>
+                        <li><a href="#" data-i18n="footer.legal.privacy">Политика конфиденциальности</a></li>
+                        <li><a href="#" data-i18n="footer.legal.terms">Условия использования</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">© 2024 Projectdes AI Academy. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ui-enhancements.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/integrations.js"></script>
+</body>
+</html>

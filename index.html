@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Международная школа практического AI-обучения. Создание сайтов, видео, автоматизация бизнеса. Трудоустройство в 5 странах.">
+    <meta name="keywords" content="AI обучение, курсы AI, Израиль, программирование, No-Code, видео, автоматизация">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Projectdes AI Academy – Практическая школа AI-обучения">
+    <meta property="og:description" content="Станьте AI Transformation Manager за 2-3 месяца">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://projectdes.ai">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projectdes AI Academy">
+    <meta name="twitter:description" content="Станьте AI Transformation Manager за 2-3 месяца">
+    <meta name="twitter:image" content="/assets/images/og-image.jpg">
+    
+    <title data-i18n="homepage.title">Projectdes AI Academy – Практическая школа AI-обучения</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/teachmeskills-complete.css">
+    <link rel="stylesheet" href="css/comprehensive-form-fix.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Projectdes AI Academy",
+      "description": "International AI training school offering practical courses in website creation, AI video generation, business automation, and social media management",
+      "url": "https://projectdes.ai",
+      "sameAs": [
+        "https://linkedin.com/company/projectdes",
+        "https://instagram.com/projectdes",
+        "https://tiktok.com/@projectdes"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IL"
+      },
+      "offers": [
+        {
+          "@type": "Course",
+          "name": "Создание сайтов с логикой (без программистов)",
+          "duration": "P3M"
+        },
+        {
+          "@type": "Course", 
+          "name": "Генерация видео и AI-аватаров",
+          "duration": "P2M"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher" style="position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 8px;">
+        <button class="lang-btn" data-lang="ru" onclick="switchLanguage('ru')" 
+                style="padding: 8px 16px; border: 2px solid #ffda17; background: white; color: #070707; border-radius: 6px; cursor: pointer; font-weight: 500; transition: all 0.2s;">RU</button>
+        <button class="lang-btn" data-lang="he" onclick="switchLanguage('he')"
+                style="padding: 8px 16px; border: 2px solid #ffda17; background: white; color: #070707; border-radius: 6px; cursor: pointer; font-weight: 500; transition: all 0.2s;">עב</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="assets/icons/logo.svg" alt="Projectdes AI Academy" class="nav-logo">
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="programs.html" class="nav-link" data-i18n="nav.programs">Программы</a></li>
+                    <li><a href="about.html" class="nav-link" data-i18n="nav.about">О нас</a></li>
+                    <li><a href="contacts.html" class="nav-link" data-i18n="nav.contacts">Контакты</a></li>
+                </ul>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    ☰
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text animate-on-scroll">
+                    <h1 class="heading-xxl" data-i18n="homepage.hero.title">
+                        Projectdes AI Academy – Школа практического AI-обучения
+                    </h1>
+                    <p class="body-text" data-i18n="homepage.hero.subtitle">
+                        Станьте AI Transformation Manager за 2-3 месяца. Практические курсы с трудоустройством в 15+ странах мира.
+                    </p>
+                    <div class="btn-group">
+                        <a href="programs.html" class="btn btn-primary" data-i18n="homepage.hero.cta_primary">
+                            Выбрать курс
+                        </a>
+                        <a href="about.html" class="btn btn-secondary" data-i18n="homepage.hero.cta_secondary">
+                            Узнать больше
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image animate-on-scroll">
+                    <div class="hero-image-placeholder">
+                        <span>AI Education Hero Image</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="heading-xl section-title animate-on-scroll" data-i18n="homepage.advantages.title">
+                    Почему выбирают нас
+                </h2>
+                <p class="body-text section-subtitle animate-on-scroll">
+                    Практический подход и реальные результаты в AI-индустрии
+                </p>
+            </div>
+            
+            <div class="grid grid-2 animate-on-scroll">
+                <div class="card hover-lift">
+                    <div class="card-image-placeholder">
+                        <img src="assets/icons/practice.svg" alt="Практическое обучение" style="width: 60px; height: 60px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="heading-lg card-title" data-i18n="homepage.advantages.practice.title">
+                            Обучение через практику, а не теорию
+                        </h3>
+                        <p class="body-text card-description" data-i18n="homepage.advantages.practice.description">
+                            100% практических занятий с первого дня. Никакой воды – только реальные навыки и проекты.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card hover-lift">
+                    <div class="card-image-placeholder">
+                        <img src="assets/icons/real-projects.svg" alt="Реальные проекты" style="width: 60px; height: 60px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="heading-lg card-title" data-i18n="homepage.advantages.projects.title">
+                            Реальные проекты – сайты, видео, реклама, AI-аватары
+                        </h3>
+                        <p class="body-text card-description" data-i18n="homepage.advantages.projects.description">
+                            Работаете над задачами реального бизнеса и создаете портфолио для трудоустройства.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card hover-lift">
+                    <div class="card-image-placeholder">
+                        <img src="assets/icons/portfolio-icon.svg" alt="Портфолио" style="width: 60px; height: 60px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="heading-lg card-title" data-i18n="homepage.advantages.portfolio.title">
+                            Портфолио и резюме готовы к работодателям
+                        </h3>
+                        <p class="body-text card-description" data-i18n="homepage.advantages.portfolio.description">
+                            Готовые кейсы и проекты в портфолио для успешного собеседования.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card hover-lift">
+                    <div class="card-image-placeholder">
+                        <img src="assets/icons/employment-icon.svg" alt="Трудоустройство" style="width: 60px; height: 60px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="heading-lg card-title" data-i18n="homepage.advantages.employment.title">
+                            Возможность трудоустройства в Израиле, США, Канаде, Германии, ОАЭ
+                        </h3>
+                        <p class="body-text card-description" data-i18n="homepage.advantages.employment.description">
+                            Международная карьера в IT с поддержкой наших HR-специалистов.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="heading-xl section-title animate-on-scroll">
+                    Популярные курсы
+                </h2>
+                <p class="body-text section-subtitle animate-on-scroll">
+                    Выберите направление и станьте экспертом за 2-3 месяца
+                </p>
+            </div>
+            
+            <div class="grid grid-3 animate-on-scroll">
+                <div class="card hover-lift">
+                    <div class="card-image-placeholder">
+                        No-Code Development Course
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>⏱ 3 месяца</span>
+                            <span>📱 Онлайн</span>
+                        </div>
+                        <h3 class="heading-lg card-title">
+                            Создание сайтов с логикой (без программистов)
+                        </h3>
+                        <p class="body-text card-description">
+                            Научитесь создавать профессиональные сайты с AI без написания кода.
+                        </p>
+                        <ul class="feature-list">
+                            <li>No-Code платформы (Webflow, Bubble)</li>
+                            <li>AI-инструменты для дизайна</li>
+                            <li>Автоматизация рабочих процессов</li>
+                            <li>SEO-оптимизация</li>
+                        </ul>
+                        <div class="card-footer">
+                            <div class="card-price">$1,200 / курс</div>
+                            <a href="programs.html" class="btn btn-primary">Выбрать курс</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card hover-lift">
+                    <div class="card-image-placeholder">
+                        AI Video Creation Course
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>⏱ 2 месяца</span>
+                            <span>📱 Онлайн</span>
+                        </div>
+                        <h3 class="heading-lg card-title">
+                            Генерация видео и AI-аватаров
+                        </h3>
+                        <p class="body-text card-description">
+                            Создавайте видеоконтент и цифровых аватаров с помощью AI-технологий.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Генерация видео AI (Runway, Pika)</li>
+                            <li>Создание AI-аватаров</li>
+                            <li>Монтаж и пост-продакшн</li>
+                            <li>Монетизация контента</li>
+                        </ul>
+                        <div class="card-footer">
+                            <div class="card-price">$1,000 / курс</div>
+                            <a href="programs.html" class="btn btn-primary">Выбрать курс</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card hover-lift">
+                    <div class="card-image-placeholder">
+                        Business Automation Course
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>⏱ 3 месяца</span>
+                            <span>📱 Онлайн</span>
+                        </div>
+                        <h3 class="heading-lg card-title">
+                            Автоматизация бизнес-процессов через AI
+                        </h3>
+                        <p class="body-text card-description">
+                            Внедряйте AI-решения для оптимизации бизнеса и повышения эффективности.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Чат-боты и AI-ассистенты</li>
+                            <li>Автоматизация через Zapier, Make</li>
+                            <li>CRM-интеграции</li>
+                            <li>Аналитика и отчетность</li>
+                        </ul>
+                        <div class="card-footer">
+                            <div class="card-price">$1,500 / курс</div>
+                            <a href="programs.html" class="btn btn-primary">Выбрать курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="programs.html" class="btn btn-outline">
+                    Смотреть все курсы
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid animate-on-scroll">
+                <div class="stat-item">
+                    <div class="stat-number" data-i18n="homepage.stats.graduates">500+</div>
+                    <div class="stat-label" data-i18n="homepage.stats.graduates">выпускников</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-i18n="homepage.stats.countries">15+</div>
+                    <div class="stat-label" data-i18n="homepage.stats.countries">стран присутствия</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-i18n="homepage.stats.employment">85%</div>
+                    <div class="stat-label" data-i18n="homepage.stats.employment">трудоустройство</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-i18n="homepage.stats.rating">4.9</div>
+                    <div class="stat-label" data-i18n="homepage.stats.rating">рейтинг студентов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="heading-xl section-title animate-on-scroll">
+                    Получите консультацию
+                </h2>
+                <p class="body-text section-subtitle animate-on-scroll">
+                    Заполните форму и наш специалист свяжется с вами в течение часа
+                </p>
+            </div>
+            
+            <div class="grid grid-2 animate-on-scroll">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="heading-lg card-title mb-3">
+                            Свяжитесь с нами удобным способом
+                        </h3>
+                        
+                        <div class="contact-methods" style="display: flex; flex-direction: column; gap: 16px;">
+                            <a href="https://wa.me/972501234567" class="btn btn-outline" style="display: flex; align-items: center; gap: 12px; justify-content: flex-start; text-decoration: none;">
+                                <img src="assets/icons/whatsapp.svg" alt="WhatsApp" style="width: 24px; height: 24px;">
+                                WhatsApp консультация
+                            </a>
+                            
+                            <a href="mailto:info@projectdes.ai" class="btn btn-outline" style="display: flex; align-items: center; gap: 12px; justify-content: flex-start; text-decoration: none;">
+                                <img src="assets/icons/email.svg" alt="Email" style="width: 24px; height: 24px;">
+                                Написать на почту
+                            </a>
+                            
+                            <a href="https://zoom.us/j/123456789" class="btn btn-outline" style="display: flex; align-items: center; gap: 12px; justify-content: flex-start; text-decoration: none;">
+                                <img src="assets/icons/zoom.svg" alt="Zoom" style="width: 24px; height: 24px;">
+                                Zoom встреча
+                            </a>
+                        </div>
+                        
+                        <div class="contact-info mt-4">
+                            <h4 class="heading-md mb-2">Часы работы:</h4>
+                            <p class="body-text">Пн-Пт: 9:00-21:00 (GMT+3)</p>
+                            <p class="body-text">Сб-Вс: 10:00-18:00 (GMT+3)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-enhanced">
+                    <div class="form-container">
+                        <form id="consultation-form" class="enhanced-form">
+                            <h3 class="heading-lg mb-4">
+                                Заявка на консультацию
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group form-floating">
+                                    <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
+                                    <label for="name" class="form-label required">Ваше имя</label>
+                                </div>
+                                
+                                <div class="form-group form-floating">
+                                    <input type="tel" id="phone" name="phone" class="form-input" placeholder=" " required>
+                                    <label for="phone" class="form-label required">Телефон</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group form-floating">
+                                <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
+                                <label for="email" class="form-label required">Email</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="course" class="form-label">Интересующий курс</label>
+                                <select id="course" name="course" class="form-select">
+                                    <option value="">Выберите курс (необязательно)</option>
+                                    <option value="nocode">Создание сайтов без программирования</option>
+                                    <option value="video">Генерация видео и AI-аватаров</option>
+                                    <option value="automation">Автоматизация бизнес-процессов</option>
+                                    <option value="smm">Управление соцсетями и реклама</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group form-floating">
+                                <textarea id="message" name="message" class="form-textarea" placeholder=" " maxlength="500"></textarea>
+                                <label for="message" class="form-label">Сообщение</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Отправить заявку
+                            </button>
+                            
+                            <p class="body-text-small mt-3" style="opacity: 0.7; text-align: center;">
+                                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@projectdes.ai" class="footer-link">info@projectdes.ai</a></li>
+                        <li><a href="https://wa.me/972501234567" class="footer-link">WhatsApp: +972 50 123 4567</a></li>
+                        <li><span class="footer-link">Израиль, Тель-Авив</span></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <ul class="footer-links">
+                        <li><a href="programs.html" class="footer-link">Программы обучения</a></li>
+                        <li><a href="about.html" class="footer-link">О нас</a></li>
+                        <li><a href="contacts.html" class="footer-link">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Социальные сети</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://linkedin.com/company/projectdes" class="footer-link">LinkedIn</a></li>
+                        <li><a href="https://instagram.com/projectdes" class="footer-link">Instagram</a></li>
+                        <li><a href="https://tiktok.com/@projectdes" class="footer-link">TikTok</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Правовая информация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Политика конфиденциальности</a></li>
+                        <li><a href="#" class="footer-link">Условия использования</a></li>
+                        <li><a href="#" class="footer-link">Публичная оферта</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Projectdes AI Academy. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/language-switcher.js"></script>
+    <script src="js/interactive-enhancements.js"></script>
+    <script src="js/enhanced-form-interactions.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+# Projectdes AI Academy - Robots.txt
+# Website: https://projectdes.ai
+# Updated: 2024
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /locales/
+Disallow: /js/
+Disallow: /css/
+
+# Allow important assets
+Allow: /assets/images/
+Allow: /assets/icons/
+Allow: /css/styles.css
+Allow: /css/responsive.css
+
+# Sitemap location
+Sitemap: https://projectdes.ai/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /

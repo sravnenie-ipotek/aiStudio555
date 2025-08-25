@@ -1,0 +1,240 @@
+/* Quick Fix for TeachMeSkills Yellow Theme */
+
+/* Override any conflicting styles */
+body {
+  font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Fix Navigation */
+.navbar {
+  background: #ffffff !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.07) !important;
+}
+
+.nav-link {
+  color: #070707 !important;
+  font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffda17 !important;
+}
+
+/* Fix Hero Section */
+.hero {
+  background: linear-gradient(135deg, #f4f5f7 0%, #ffffff 100%) !important;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, #ffda17 0%, transparent 70%);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  color: #070707 !important;
+  font-weight: 900 !important;
+}
+
+.hero h2 {
+  color: #4b4f54 !important;
+  font-weight: 400 !important;
+}
+
+/* Fix Buttons */
+.btn-primary {
+  background: #ffda17 !important;
+  color: #070707 !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 15px !important;
+  padding: 12px 24px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.btn-primary:hover {
+  background: #e2c528 !important;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 20px rgba(255, 218, 23, 0.3) !important;
+}
+
+.btn-secondary {
+  background: transparent !important;
+  color: #070707 !important;
+  border: 2px solid #070707 !important;
+  font-weight: 700 !important;
+  border-radius: 15px !important;
+  padding: 12px 24px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.btn-secondary:hover {
+  background: #070707 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* Fix Language Switcher */
+.language-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  background: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px 0px rgba(89, 88, 88, 0.1);
+  padding: 4px;
+}
+
+.lang-btn {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #6b7075;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.lang-btn:hover {
+  color: #070707;
+  background: #f4f5f7;
+}
+
+.lang-btn.active {
+  background: #ffda17;
+  color: #070707;
+}
+
+/* Fix Cards */
+.course-card,
+.advantage-card,
+.value-card {
+  background: #ffffff !important;
+  border-radius: 24px !important;
+  padding: 24px !important;
+  box-shadow: 0px 0px 10px 0px rgba(89, 88, 88, 0.1) !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid #f4f5f7 !important;
+}
+
+.course-card:hover,
+.advantage-card:hover,
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 5px 20px 0px rgba(89, 88, 88, 0.15) !important;
+  border-color: #ffda17 !important;
+}
+
+/* Fix Enrollment Button */
+.btn-enroll {
+  background: #ffda17 !important;
+  color: #070707 !important;
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px 24px;
+  font-weight: 700 !important;
+  border-radius: 15px !important;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-enroll:hover {
+  background: #e2c528 !important;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 20px rgba(255, 218, 23, 0.3);
+}
+
+/* Statistics Section */
+.statistics {
+  background: #ffda17 !important;
+  padding: 60px 0;
+}
+
+.stat-number {
+  font-size: 40px;
+  font-weight: 900;
+  color: #070707;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #34383d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Fix Section Backgrounds */
+section:nth-child(even) {
+  background: #f4f5f7;
+}
+
+section h2 {
+  color: #070707 !important;
+  font-weight: 700 !important;
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #ffda17;
+  border-radius: 50px;
+}
+
+/* Fix Forms */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #ffda17 !important;
+  box-shadow: 0 0 0 3px rgba(255, 218, 23, 0.1) !important;
+}
+
+/* Fix Footer */
+.footer {
+  background: #070707 !important;
+  color: #e4e5e7;
+}
+
+.footer h3 {
+  color: #ffffff !important;
+}
+
+.footer a {
+  color: #9ca0a5;
+}
+
+.footer a:hover {
+  color: #ffda17 !important;
+}
+
+.social-links a:hover {
+  background: #ffda17 !important;
+  transform: translateY(-3px);
+}

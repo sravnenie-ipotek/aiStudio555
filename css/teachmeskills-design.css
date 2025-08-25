@@ -1,0 +1,939 @@
+/**
+ * TEACHMESKILLS-INSPIRED DESIGN SYSTEM
+ * Modern, clean design with yellow accents
+ * Version: 3.0.0
+ */
+
+/* =============================================================================
+   DESIGN TOKENS - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+:root {
+  /* Brand Colors */
+  --primary-yellow: #ffda17;
+  --hover-yellow: #e2c528;
+  --dark-yellow: #d4b515;
+  --primary-black: #070707;
+  --pure-white: #ffffff;
+  
+  /* Gray Scale */
+  --gray-50: #fafafa;
+  --gray-100: #f4f5f7;
+  --gray-200: #e4e5e7;
+  --gray-300: #d1d2d4;
+  --gray-400: #9ca0a5;
+  --gray-500: #6b7075;
+  --gray-600: #4b4f54;
+  --gray-700: #34383d;
+  --gray-800: #1a1d21;
+  --gray-900: #070707;
+  
+  /* Typography - Rubik Font */
+  --font-primary: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  
+  /* Font Sizes */
+  --text-xs: 11px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  --text-4xl: 40px;
+  --text-5xl: 48px;
+  --text-hero: clamp(32px, 5vw, 48px);
+  
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.45;
+  --line-height-relaxed: 1.6;
+  
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+  --space-4xl: 48px;
+  --space-5xl: 60px;
+  --space-6xl: 80px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 15px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-xs: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0px 4px 8px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0px 0px 10px 0px rgba(89, 88, 88, 0.1);
+  --shadow-lg: 0px 5px 20px 0px rgba(89, 88, 88, 0.15);
+  --shadow-xl: 0px 10px 30px 0px rgba(0, 0, 0, 0.2);
+  --shadow-yellow: 0px 5px 20px rgba(255, 218, 23, 0.3);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-Index */
+  --z-base: 1;
+  --z-card: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-tooltip: 500;
+}
+
+/* =============================================================================
+   GLOBAL STYLES
+   ============================================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--primary-black);
+  background-color: var(--pure-white);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--primary-black);
+  margin-bottom: var(--space-md);
+}
+
+h1 {
+  font-size: var(--text-hero);
+  font-weight: var(--font-weight-black);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--gray-700);
+}
+
+a {
+  color: var(--primary-black);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-yellow);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* =============================================================================
+   NAVIGATION - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--pure-white);
+  box-shadow: var(--shadow-sm);
+  z-index: var(--z-sticky);
+  transition: var(--transition-base);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.nav-brand .logo {
+  height: 40px;
+  width: auto;
+}
+
+.nav-menu {
+  display: flex;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.nav-link {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary-black);
+  padding: var(--space-xs) 0;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-yellow);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-yellow);
+}
+
+/* =============================================================================
+   HERO SECTION - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--pure-white) 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--primary-yellow) 0%, transparent 70%);
+  opacity: 0.1;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.hero h1 {
+  color: var(--primary-black);
+  margin-bottom: var(--space-xl);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-regular);
+  color: var(--gray-600);
+  margin-bottom: var(--space-3xl);
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   BUTTONS - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.btn-primary,
+.btn-secondary,
+.btn-enroll {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-xl);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-transform: none;
+  min-height: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--hover-yellow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-yellow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-black);
+  border: 2px solid var(--primary-black);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-black);
+  color: var(--pure-white);
+  transform: translateY(-2px);
+}
+
+.btn-enroll {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+  width: 100%;
+  margin-top: var(--space-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.btn-enroll:hover {
+  background: var(--hover-yellow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-yellow);
+}
+
+/* Button Ripple Effect */
+.btn-primary::before,
+.btn-secondary::before,
+.btn-enroll::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before,
+.btn-enroll:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* =============================================================================
+   CARDS - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.course-card,
+.advantage-card,
+.value-card {
+  background: var(--pure-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+  border: 1px solid var(--gray-100);
+  position: relative;
+  overflow: hidden;
+}
+
+.course-card:hover,
+.advantage-card:hover,
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-yellow);
+}
+
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.course-card:hover::before {
+  transform: scaleX(1);
+}
+
+.course-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.course-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-base);
+}
+
+.course-card:hover .course-icon {
+  background: var(--primary-yellow);
+  transform: rotate(5deg);
+}
+
+.course-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+}
+
+.price-amount {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary-black);
+}
+
+.price-period {
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+}
+
+/* Course Features */
+.course-features {
+  margin: var(--space-lg) 0;
+}
+
+.course-features h4 {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-600);
+  margin-bottom: var(--space-md);
+}
+
+.course-features ul {
+  list-style: none;
+}
+
+.course-features li {
+  padding: var(--space-xs) 0;
+  padding-left: var(--space-xl);
+  position: relative;
+  color: var(--gray-700);
+  font-size: var(--text-sm);
+}
+
+.course-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary-yellow);
+  font-weight: var(--font-weight-bold);
+}
+
+/* =============================================================================
+   SECTIONS - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+section {
+  padding: var(--space-5xl) 0;
+  position: relative;
+}
+
+section:nth-child(even) {
+  background: var(--gray-100);
+}
+
+/* Section Headers */
+section h2 {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--primary-yellow);
+  border-radius: var(--radius-full);
+}
+
+/* Grid Layouts */
+.course-grid,
+.advantages-grid,
+.values-grid,
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-3xl);
+}
+
+/* Statistics Section */
+.statistics {
+  background: var(--primary-yellow);
+  padding: var(--space-4xl) 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-2xl);
+  text-align: center;
+}
+
+.stat-item {
+  padding: var(--space-lg);
+}
+
+.stat-number {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary-black);
+  margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-700);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =============================================================================
+   FORMS - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-700);
+  margin-bottom: var(--space-xs);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: var(--pure-white);
+  transition: var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 218, 23, 0.1);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--gray-300);
+}
+
+/* Form Validation */
+.form-group.error input,
+.form-group.error textarea {
+  border-color: #ef4444;
+}
+
+.form-group.success input,
+.form-group.success textarea {
+  border-color: #10b981;
+}
+
+.error-message {
+  font-size: var(--text-xs);
+  color: #ef4444;
+  margin-top: var(--space-xs);
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* =============================================================================
+   FOOTER - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.footer {
+  background: var(--gray-900);
+  color: var(--gray-200);
+  padding: var(--space-4xl) 0 var(--space-2xl);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-3xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.footer h3 {
+  color: var(--pure-white);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: var(--space-sm);
+}
+
+.footer-section a {
+  color: var(--gray-400);
+  font-size: var(--text-sm);
+  transition: var(--transition-fast);
+}
+
+.footer-section a:hover {
+  color: var(--primary-yellow);
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  background: var(--gray-800);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.social-links a:hover {
+  background: var(--primary-yellow);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--gray-800);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+}
+
+/* =============================================================================
+   LANGUAGE SWITCHER - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.language-switcher {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  z-index: var(--z-dropdown);
+  display: flex;
+  background: var(--pure-white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  padding: 4px;
+}
+
+.lang-btn {
+  padding: var(--space-xs) var(--space-md);
+  border: none;
+  background: transparent;
+  color: var(--gray-600);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-btn:hover {
+  color: var(--primary-black);
+  background: var(--gray-100);
+}
+
+.lang-btn.active {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+}
+
+/* =============================================================================
+   MODAL - TEACHMESKILLS STYLE
+   ============================================================================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-base);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--pure-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.9);
+  transition: transform var(--transition-base);
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--gray-600);
+  transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--primary-yellow);
+  color: var(--primary-black);
+  transform: rotate(90deg);
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stagger-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
+}
+
+.stagger-item:nth-child(1) { transition-delay: 0.1s; }
+.stagger-item:nth-child(2) { transition-delay: 0.2s; }
+.stagger-item:nth-child(3) { transition-delay: 0.3s; }
+.stagger-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --text-hero: 28px;
+    --text-3xl: 24px;
+    --text-2xl: 20px;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 60px;
+    flex-direction: column;
+    background: var(--pure-white);
+    width: 100%;
+    text-align: center;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-xl) 0;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .nav-toggle {
+    display: block;
+    cursor: pointer;
+  }
+  
+  .nav-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: var(--transition-fast);
+    background: var(--primary-black);
+  }
+  
+  .course-grid,
+  .advantages-grid,
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero {
+    padding: var(--space-3xl) var(--space-lg);
+    text-align: center;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-3 { margin-top: var(--space-md); }
+.mt-4 { margin-top: var(--space-lg); }
+.mt-5 { margin-top: var(--space-xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-xs); }
+.mb-2 { margin-bottom: var(--space-sm); }
+.mb-3 { margin-bottom: var(--space-md); }
+.mb-4 { margin-bottom: var(--space-lg); }
+.mb-5 { margin-bottom: var(--space-xl); }
+
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }

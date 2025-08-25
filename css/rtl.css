@@ -1,0 +1,334 @@
+/* RTL Support for Hebrew Language */
+
+/* RTL Global Styles */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Navigation RTL */
+html[dir="rtl"] .navbar {
+  direction: rtl;
+}
+
+html[dir="rtl"] .nav-menu {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-link {
+  margin-left: 0;
+  margin-right: 2rem;
+}
+
+html[dir="rtl"] .nav-link:last-child {
+  margin-right: 0;
+}
+
+html[dir="rtl"] .nav-toggle {
+  left: 20px;
+  right: auto;
+}
+
+html[dir="rtl"] .nav-brand {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Language Switcher RTL */
+html[dir="rtl"] .language-switcher {
+  right: auto;
+  left: 20px;
+  flex-direction: row-reverse;
+}
+
+/* Hero Section RTL */
+html[dir="rtl"] .hero {
+  text-align: right;
+}
+
+html[dir="rtl"] .hero h1,
+html[dir="rtl"] .hero h2 {
+  text-align: right;
+}
+
+html[dir="rtl"] .cta-buttons {
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  html[dir="rtl"] .cta-buttons {
+    justify-content: center;
+  }
+}
+
+/* Grid Layouts RTL */
+html[dir="rtl"] .advantages-grid,
+html[dir="rtl"] .course-grid,
+html[dir="rtl"] .stats-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .advantage-card,
+html[dir="rtl"] .course-card,
+html[dir="rtl"] .value-card {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .advantage-icon,
+html[dir="rtl"] .course-icon {
+  margin-right: 0;
+  margin-left: 1rem;
+  float: right;
+}
+
+/* Forms RTL */
+html[dir="rtl"] .contact-form {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] label {
+  text-align: right;
+}
+
+html[dir="rtl"] .form-row {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .form-group {
+  text-align: right;
+}
+
+/* Buttons RTL */
+html[dir="rtl"] .btn-primary,
+html[dir="rtl"] .btn-secondary,
+html[dir="rtl"] .btn-enroll {
+  text-align: center;
+}
+
+/* Footer RTL */
+html[dir="rtl"] .footer {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .footer-content {
+  direction: rtl;
+}
+
+html[dir="rtl"] .footer-section {
+  text-align: right;
+}
+
+html[dir="rtl"] .footer-section h3 {
+  text-align: right;
+}
+
+html[dir="rtl"] .footer-section ul {
+  text-align: right;
+  list-style-position: inside;
+}
+
+html[dir="rtl"] .footer-section li {
+  text-align: right;
+}
+
+html[dir="rtl"] .social-links {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .social-contact {
+  flex-direction: row-reverse;
+}
+
+/* Statistics Section RTL */
+html[dir="rtl"] .statistics {
+  direction: rtl;
+}
+
+html[dir="rtl"] .stat-item {
+  text-align: right;
+}
+
+html[dir="rtl"] .stat-number,
+html[dir="rtl"] .stat-label {
+  text-align: right;
+}
+
+/* About Page RTL */
+html[dir="rtl"] .about-hero {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .about-content {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .team-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .team-member {
+  text-align: right;
+}
+
+/* Programs Page RTL */
+html[dir="rtl"] .page-header {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .page-header h1 {
+  text-align: right;
+}
+
+/* Course Cards RTL */
+html[dir="rtl"] .course-details {
+  text-align: right;
+}
+
+html[dir="rtl"] .course-features {
+  text-align: right;
+}
+
+html[dir="rtl"] .course-features li {
+  text-align: right;
+  list-style-position: inside;
+}
+
+/* Specific RTL Typography */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6 {
+  text-align: right;
+}
+
+html[dir="rtl"] p {
+  text-align: right;
+}
+
+html[dir="rtl"] ul,
+html[dir="rtl"] ol {
+  text-align: right;
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+html[dir="rtl"] li {
+  text-align: right;
+}
+
+/* Icons and Images RTL */
+html[dir="rtl"] img {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .logo {
+  transform: none; /* Don't flip logos */
+}
+
+html[dir="rtl"] .social-links img,
+html[dir="rtl"] .advantage-icon img,
+html[dir="rtl"] .course-icon img {
+  transform: none; /* Don't flip icons */
+}
+
+/* Mobile RTL Adjustments */
+@media (max-width: 768px) {
+  html[dir="rtl"] .nav-menu {
+    right: auto;
+    left: 0;
+    text-align: right;
+  }
+  
+  html[dir="rtl"] .nav-toggle {
+    left: 1rem;
+    right: auto;
+  }
+  
+  html[dir="rtl"] .language-switcher {
+    left: 1rem;
+    right: auto;
+  }
+  
+  html[dir="rtl"] .hero {
+    text-align: right;
+  }
+  
+  html[dir="rtl"] .hero h1,
+  html[dir="rtl"] .hero h2 {
+    text-align: right;
+  }
+}
+
+/* Animation Adjustments for RTL */
+html[dir="rtl"] .fade-in-left {
+  animation-name: fadeInRight;
+}
+
+html[dir="rtl"] .fade-in-right {
+  animation-name: fadeInLeft;
+}
+
+html[dir="rtl"] .slide-in-left {
+  animation-name: slideInRight;
+}
+
+html[dir="rtl"] .slide-in-right {
+  animation-name: slideInLeft;
+}
+
+/* Section Headings RTL */
+html[dir="rtl"] section h2::after {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* Contact Social Buttons RTL */
+html[dir="rtl"] .social-btn {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .social-btn svg,
+html[dir="rtl"] .social-btn img {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Fix for specific Hebrew typography */
+html[dir="rtl"] {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure proper Hebrew text direction */
+html[dir="rtl"] * {
+  unicode-bidi: inherit;
+}
+
+html[dir="rtl"] .hebrew-text {
+  unicode-bidi: embed;
+  direction: rtl;
+}
