@@ -1,0 +1,21 @@
+{
+  "name": "@projectdes/qa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "cypress run --headless",
+    "test:e2e:watch": "cypress open",
+    "playwright:install": "playwright install",
+    "playwright:test": "playwright test",
+    "spa:analyze": "node spa-analysis.js"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.3",
+    "@testing-library/cypress": "^10.0.1",
+    "typescript": "^5.3.3",
+    "playwright": "^1.40.0",
+    "@playwright/test": "^1.40.0"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local", ".env"],
+  "globalEnv": [
+    "NODE_ENV",
+    "DATABASE_URL",
+    "REDIS_URL",
+    "JWT_SECRET",
+    "STRIPE_SECRET_KEY",
+    "PAYPAL_CLIENT_ID"
+  ],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "build/**", "public/build/**"],
+      "env": ["NODE_ENV", "NEXT_PUBLIC_*"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": ["coverage/**"],
+      "env": ["NODE_ENV", "CI"]
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:e2e": {
+      "dependsOn": ["build"],
+      "env": ["NODE_ENV", "BASE_URL", "CI"]
+    },
+    "lint": {
+      "outputs": [],
+      "cache": true
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "cache": true
+    },
+    "clean": {
+      "cache": false
+    },
+    "generate": {
+      "cache": false,
+      "outputs": ["src/generated/**"]
+    },
+    "db:push": {
+      "cache": false,
+      "env": ["DATABASE_URL"]
+    },
+    "migrate": {
+      "cache": false,
+      "env": ["DATABASE_URL"]
+    },
+    "migrate:dev": {
+      "cache": false,
+      "env": ["DATABASE_URL"]
+    },
+    "seed": {
+      "cache": false,
+      "env": ["DATABASE_URL"],
+      "dependsOn": ["build"]
+    },
+    "studio": {
+      "cache": false,
+      "persistent": true,
+      "env": ["DATABASE_URL"]
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "testUsers": {
+    "student": {
+      "email": "student@projectdes.ai",
+      "password": "Student123!@#",
+      "firstName": "Test",
+      "lastName": "Student",
+      "role": "STUDENT",
+      "emailVerified": true,
+      "locale": "en"
+    },
+    "instructor": {
+      "email": "instructor@projectdes.ai", 
+      "password": "Instructor123!@#",
+      "firstName": "Test",
+      "lastName": "Instructor",
+      "role": "INSTRUCTOR",
+      "emailVerified": true,
+      "locale": "en"
+    },
+    "admin": {
+      "email": "admin@projectdes.ai",
+      "password": "Admin123!@#", 
+      "firstName": "Test",
+      "lastName": "Admin",
+      "role": "ADMIN",
+      "emailVerified": true,
+      "locale": "en"
+    },
+    "newUser": {
+      "email": "newuser@example.com",
+      "password": "NewUser123!@#",
+      "firstName": "New",
+      "lastName": "User",
+      "role": "STUDENT",
+      "locale": "en"
+    }
+  },
+  "invalidUsers": {
+    "weakPassword": {
+      "email": "weak@example.com",
+      "password": "weak",
+      "firstName": "Weak",
+      "lastName": "Password"
+    },
+    "invalidEmail": {
+      "email": "invalid-email",
+      "password": "ValidPassword123!",
+      "firstName": "Invalid",
+      "lastName": "Email"
+    },
+    "existingEmail": {
+      "email": "student@projectdes.ai",
+      "password": "Password123!",
+      "firstName": "Existing",
+      "lastName": "Email"
+    }
+  }
+}

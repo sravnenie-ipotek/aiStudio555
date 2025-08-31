@@ -1,0 +1,226 @@
+{
+  "dashboardData": {
+    "stats": {
+      "totalCourses": 2,
+      "completedCourses": 0,
+      "totalHoursStudied": 45.5,
+      "currentStreak": 7,
+      "certificates": 0,
+      "averageScore": 87.5
+    },
+    "recentActivity": [
+      {
+        "id": "activity-1",
+        "type": "lesson_completed",
+        "courseId": "course-ai-transformation",
+        "courseTitle": "AI Transformation Manager",
+        "lessonTitle": "Understanding AI Frameworks",
+        "completedAt": "2024-01-15T14:30:00Z",
+        "icon": "check-circle"
+      },
+      {
+        "id": "activity-2",
+        "type": "module_started", 
+        "courseId": "course-nocode-web",
+        "courseTitle": "No-Code Website Development",
+        "moduleTitle": "Module 2: Getting Started",
+        "startedAt": "2024-01-12T11:20:00Z",
+        "icon": "play-circle"
+      },
+      {
+        "id": "activity-3",
+        "type": "assignment_submitted",
+        "courseId": "course-ai-transformation", 
+        "courseTitle": "AI Transformation Manager",
+        "assignmentTitle": "Strategic Planning Exercise",
+        "submittedAt": "2024-01-10T16:45:00Z",
+        "score": 92,
+        "icon": "document-text"
+      },
+      {
+        "id": "activity-4",
+        "type": "quiz_completed",
+        "courseId": "course-nocode-web",
+        "courseTitle": "No-Code Website Development",
+        "quizTitle": "Platform Basics Quiz",
+        "completedAt": "2024-01-08T13:15:00Z",
+        "score": 85,
+        "icon": "academic-cap"
+      }
+    ],
+    "upcomingDeadlines": [
+      {
+        "id": "deadline-1",
+        "type": "assignment",
+        "courseId": "course-ai-transformation",
+        "courseTitle": "AI Transformation Manager",
+        "title": "AI Strategy Project",
+        "description": "Develop a comprehensive AI implementation strategy for a fictional company",
+        "dueDate": "2024-01-20T23:59:59Z",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "id": "deadline-2", 
+        "type": "quiz",
+        "courseId": "course-nocode-web", 
+        "courseTitle": "No-Code Website Development",
+        "title": "Advanced Features Quiz",
+        "description": "Test your knowledge of advanced no-code platform features",
+        "dueDate": "2024-01-25T23:59:59Z",
+        "status": "pending",
+        "priority": "medium"
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-course-1",
+        "title": "Advanced AI Analytics",
+        "description": "Take your AI skills to the next level with advanced analytics techniques",
+        "reason": "Based on your progress in AI Transformation Manager",
+        "level": "ADVANCED",
+        "price": 1800,
+        "rating": 4.8,
+        "thumbnail": "https://example.com/thumbnails/advanced-ai-analytics.jpg"
+      },
+      {
+        "id": "rec-course-2",
+        "title": "UX Design for No-Code Platforms", 
+        "description": "Learn professional UX design principles for no-code development",
+        "reason": "Complement your no-code development skills",
+        "level": "INTERMEDIATE",
+        "price": 1400,
+        "rating": 4.6,
+        "thumbnail": "https://example.com/thumbnails/ux-design-nocode.jpg"
+      }
+    ],
+    "achievements": [
+      {
+        "id": "achievement-1",
+        "title": "First Module Complete",
+        "description": "Completed your first course module",
+        "earnedAt": "2024-01-05T10:00:00Z",
+        "icon": "module-complete",
+        "category": "progress",
+        "rarity": "common"
+      },
+      {
+        "id": "achievement-2",
+        "title": "One Week Streak", 
+        "description": "Studied for 7 consecutive days",
+        "earnedAt": "2024-01-14T23:59:59Z",
+        "icon": "streak-7",
+        "category": "engagement",
+        "rarity": "uncommon"
+      },
+      {
+        "id": "achievement-3",
+        "title": "Quiz Master",
+        "description": "Scored 90+ on 3 consecutive quizzes", 
+        "earnedAt": "2024-01-12T15:30:00Z",
+        "icon": "quiz-master",
+        "category": "performance",
+        "rarity": "rare"
+      }
+    ]
+  },
+  "analytics": {
+    "weeklyStudyTime": [
+      { "date": "2024-01-08", "hours": 2.5, "sessions": 3 },
+      { "date": "2024-01-09", "hours": 3.0, "sessions": 2 },
+      { "date": "2024-01-10", "hours": 1.5, "sessions": 1 },
+      { "date": "2024-01-11", "hours": 4.0, "sessions": 4 },
+      { "date": "2024-01-12", "hours": 2.0, "sessions": 2 },
+      { "date": "2024-01-13", "hours": 3.5, "sessions": 3 },
+      { "date": "2024-01-14", "hours": 2.8, "sessions": 2 }
+    ],
+    "monthlyProgress": {
+      "lessonsCompleted": 25,
+      "modulesCompleted": 4,
+      "assignmentsSubmitted": 3,
+      "quizzesCompleted": 8,
+      "averageScore": 87.5,
+      "timeSpent": 45.5,
+      "targetHours": 60
+    },
+    "learningStreak": {
+      "current": 7,
+      "longest": 12,
+      "thisMonth": 18,
+      "thisWeek": 7
+    },
+    "performanceMetrics": {
+      "completionRate": 95.5,
+      "averageSessionLength": 35,
+      "retentionRate": 88.2,
+      "engagementScore": 92.1
+    }
+  },
+  "notifications": [
+    {
+      "id": "notif-1", 
+      "type": "course_update",
+      "title": "New lesson available",
+      "message": "A new lesson 'Advanced Implementation Patterns' has been added to AI Transformation Manager",
+      "courseId": "course-ai-transformation",
+      "createdAt": "2024-01-15T10:00:00Z",
+      "read": false,
+      "priority": "medium"
+    },
+    {
+      "id": "notif-2",
+      "type": "assignment_due",
+      "title": "Assignment due soon",
+      "message": "AI Strategy Project is due in 2 days. Don't forget to submit!",
+      "courseId": "course-ai-transformation", 
+      "dueDate": "2024-01-18T23:59:59Z",
+      "createdAt": "2024-01-16T09:00:00Z",
+      "read": false,
+      "priority": "high"
+    },
+    {
+      "id": "notif-3",
+      "type": "achievement",
+      "title": "Achievement unlocked!",
+      "message": "Congratulations! You earned the 'One Week Streak' badge",
+      "achievementId": "achievement-2",
+      "createdAt": "2024-01-14T23:59:59Z",
+      "read": true,
+      "priority": "low"
+    },
+    {
+      "id": "notif-4",
+      "type": "course_recommendation",
+      "title": "New course recommendation", 
+      "message": "Based on your progress, you might like 'Advanced AI Analytics'",
+      "courseId": "rec-course-1",
+      "createdAt": "2024-01-13T12:00:00Z",
+      "read": false,
+      "priority": "low"
+    }
+  ],
+  "preferences": {
+    "dashboardLayout": "default",
+    "widgetsVisible": {
+      "recentActivity": true,
+      "upcomingDeadlines": true,
+      "recommendations": true,
+      "achievements": true,
+      "quickActions": true
+    },
+    "notifications": {
+      "email": true,
+      "push": true,
+      "sms": false,
+      "courseUpdates": true,
+      "assignments": true,
+      "achievements": true,
+      "recommendations": false
+    },
+    "privacy": {
+      "profileVisibility": "private",
+      "progressVisibility": "private", 
+      "achievementsVisibility": "public"
+    }
+  }
+}

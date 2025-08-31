@@ -1,0 +1,35 @@
+{
+  "name": "@projectdes/e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Projectdes Academy - End-to-End Tests",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:critical": "playwright test --grep @critical",
+    "test:auth": "playwright test tests/auth",
+    "test:dashboard": "playwright test tests/dashboard",
+    "test:courses": "playwright test tests/courses",
+    "test:payments": "playwright test tests/payments",
+    "test:api": "playwright test tests/api",
+    "test:performance": "playwright test tests/performance",
+    "test:accessibility": "playwright test tests/accessibility",
+    "test:mobile": "playwright test --project='Mobile Chrome' --project='Mobile Safari'",
+    "test:desktop": "playwright test --project='chromium' --project='firefox' --project='webkit'",
+    "test:browsers": "playwright test --project='Google Chrome' --project='Microsoft Edge'",
+    "report": "playwright show-report qa/e2e/reports/html",
+    "codegen": "playwright codegen",
+    "install": "playwright install",
+    "install-deps": "playwright install-deps",
+    "clean": "rm -rf node_modules .turbo test-results playwright-report reports"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.11.0",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.3.3"
+  }
+}

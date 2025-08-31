@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Comparison: Custom CSS vs Tailwind</title>
+    
+    <!-- Google Fonts - Rubik -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS (Self-Constructed from baseDesign.md) -->
+    <style>
+        /* ============================================
+           CUSTOM CSS - SELF-CONSTRUCTED DESIGN SYSTEM
+           From baseDesign.md specifications
+           ============================================ */
+        
+        :root {
+            /* Color System from baseDesign.md */
+            --primary-yellow: #FFDA17;
+            --yellow-hover: #E2C528;
+            --nav-underline: #FBDC0C;
+            --text-primary: #070707;
+            --bg-header: #111111;
+            --bg-footer: #212426;
+            --bg-light-gray: #F4F5F7;
+            --bg-white: #FFFFFF;
+            --border-light: #DFE3E5;
+            --text-gray: #7A7A7A;
+            --shadow-color: rgba(89, 88, 88, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .custom-section {
+            font-family: 'Rubik', Arial, sans-serif;
+        }
+        
+        /* Custom Button Styles */
+        .btn-primary-custom {
+            padding: 14px 32px;
+            min-height: 48px;
+            background: var(--primary-yellow);
+            color: var(--text-primary);
+            font-family: 'Rubik', Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary-custom:hover {
+            background: var(--yellow-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 218, 23, 0.4);
+        }
+        
+        .btn-secondary-custom {
+            padding: 14px 32px;
+            min-height: 48px;
+            background: #303030;
+            color: #FFFFFF;
+            font-family: 'Rubik', Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .btn-secondary-custom:hover {
+            background: #191919;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Custom Card Component */
+        .course-card-custom {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid transparent;
+            box-shadow: 0px 0px 10px 0px rgba(89, 88, 88, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .course-card-custom:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 5px 20px 0px rgba(89, 88, 88, 0.15);
+            border-color: var(--primary-yellow);
+        }
+        
+        .course-card-custom .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary-yellow);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .course-card-custom .title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .course-card-custom .description {
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--text-gray);
+            margin-bottom: 16important;
+        }
+        
+        .course-card-custom .price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-yellow);
+        }
+        
+        /* Custom Form Input */
+        .form-input-custom {
+            width: 100%;
+            padding: 12px 16px;
+            min-height: 48px;
+            font-family: 'Rubik', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+            background: var(--bg-white);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .form-input-custom:hover {
+            border-color: #BFC2C5;
+        }
+        
+        .form-input-custom:focus {
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 0 3px rgba(255, 218, 23, 0.1);
+            outline: none;
+        }
+        
+        /* Custom Navigation */
+        .nav-custom {
+            background: var(--bg-header);
+            padding: 16px 0;
+        }
+        
+        .nav-link-custom {
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 16px;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.2s ease-in-out;
+            display: inline-block;
+        }
+        
+        .nav-link-custom:hover {
+            color: var(--primary-yellow);
+        }
+        
+        .nav-link-custom:hover::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 16px;
+            right: 16px;
+            height: 3px;
+            background: var(--primary-yellow);
+            border-radius: 2px;
+            animation: slideIn 0.2s ease-in-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        /* Custom Hero Section */
+        .hero-custom {
+            background: linear-gradient(160deg, #FFDA17 0%, #FFBD00 100%);
+            padding: 80px 0;
+        }
+        
+        .hero-title-custom {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 639px) {
+            .hero-title-custom {
+                font-size: 26px;
+            }
+        }
+    </style>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'yellow-primary': '#FFDA17',
+                        'yellow-hover': '#E2C528',
+                        'text-primary': '#070707',
+                        'bg-header': '#111111',
+                        'bg-footer': '#212426',
+                        'bg-light': '#F4F5F7',
+                        'border-light': '#DFE3E5',
+                        'text-gray': '#7A7A7A',
+                    },
+                    fontFamily: {
+                        'rubik': ['Rubik', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Split Screen Container -->
+    <div style="display: flex; height: 100vh; overflow: hidden;">
+        
+        <!-- LEFT SIDE: CUSTOM CSS -->
+        <div style="width: 50%; overflow-y: auto; border-right: 3px solid #000;">
+            <div class="custom-section">
+                <!-- Header -->
+                <div style="background: #FFD700; padding: 10px; text-align: center; position: sticky; top: 0; z-index: 100;">
+                    <h2 style="margin: 0; font-family: 'Rubik', sans-serif; font-weight: 700;">CUSTOM CSS (Self-Constructed)</h2>
+                    <p style="margin: 0; font-size: 12px;">From baseDesign.md specifications</p>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="nav-custom">
+                    <div style="max-width: 1160px; margin: 0 auto; padding: 0 20px;">
+                        <a href="#" class="nav-link-custom">Home</a>
+                        <a href="#" class="nav-link-custom">Courses</a>
+                        <a href="#" class="nav-link-custom">About</a>
+                        <a href="#" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+                
+                <!-- Hero Section -->
+                <div class="hero-custom">
+                    <div style="max-width: 1160px; margin: 0 auto; padding: 0 20px;">
+                        <h1 class="hero-title-custom">Learn Professional IT Skills</h1>
+                        <p style="font-size: 18px; color: #070707; margin-bottom: 24px;">Transform your career with our comprehensive courses</p>
+                        <button class="btn-primary-custom">Get Started</button>
+                        <button class="btn-secondary-custom" style="margin-left: 16px;">Learn More</button>
+                    </div>
+                </div>
+                
+                <!-- Components Section -->
+                <div style="padding: 48px 20px; background: #F4F5F7;">
+                    <div style="max-width: 1160px; margin: 0 auto;">
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 32px; color: #070707;">Components</h3>
+                        
+                        <!-- Buttons -->
+                        <div style="margin-bottom: 40px;">
+                            <h4 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">Buttons</h4>
+                            <button class="btn-primary-custom">Primary Button</button>
+                            <button class="btn-secondary-custom" style="margin-left: 16px;">Secondary Button</button>
+                        </div>
+                        
+                        <!-- Form Inputs -->
+                        <div style="margin-bottom: 40px;">
+                            <h4 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">Form Elements</h4>
+                            <input type="text" class="form-input-custom" placeholder="Enter your email" style="max-width: 400px;">
+                            <div style="margin-top: 16px;">
+                                <input type="password" class="form-input-custom" placeholder="Enter your password" style="max-width: 400px;">
+                            </div>
+                        </div>
+                        
+                        <!-- Cards -->
+                        <div style="margin-bottom: 40px;">
+                            <h4 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">Course Cards</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                                <div class="course-card-custom">
+                                    <span class="badge">Popular</span>
+                                    <h3 class="title">Frontend Development</h3>
+                                    <p class="description">Master React, TypeScript, and modern web development technologies</p>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid #DFE3E5;">
+                                        <span class="price">$299</span>
+                                        <button class="btn-primary-custom" style="padding: 8px 20px; min-height: 36px; font-size: 14px;">Enroll Now</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="course-card-custom">
+                                    <span class="badge">New</span>
+                                    <h3 class="title">Python Backend</h3>
+                                    <p class="description">Build scalable APIs with Django, FastAPI, and PostgreSQL</p>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid #DFE3E5;">
+                                        <span class="price">$399</span>
+                                        <button class="btn-primary-custom" style="padding: 8px 20px; min-height: 36px; font-size: 14px;">Enroll Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RIGHT SIDE: TAILWIND CSS -->
+        <div style="width: 50%; overflow-y: auto;">
+            <!-- Header -->
+            <div class="bg-yellow-400 p-2.5 text-center sticky top-0 z-50">
+                <h2 class="m-0 font-rubik font-bold text-xl">TAILWIND CSS</h2>
+                <p class="m-0 text-xs">Using utility classes</p>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="bg-[#111111] py-4">
+                <div class="max-w-[1160px] mx-auto px-5">
+                    <a href="#" class="text-white text-base font-medium px-4 py-2 no-underline relative hover:text-yellow-primary transition-colors inline-block hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-4 hover:after:right-4 hover:after:h-[3px] hover:after:bg-yellow-primary hover:after:rounded">Home</a>
+                    <a href="#" class="text-white text-base font-medium px-4 py-2 no-underline relative hover:text-yellow-primary transition-colors inline-block hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-4 hover:after:right-4 hover:after:h-[3px] hover:after:bg-yellow-primary hover:after:rounded">Courses</a>
+                    <a href="#" class="text-white text-base font-medium px-4 py-2 no-underline relative hover:text-yellow-primary transition-colors inline-block hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-4 hover:after:right-4 hover:after:h-[3px] hover:after:bg-yellow-primary hover:after:rounded">About</a>
+                    <a href="#" class="text-white text-base font-medium px-4 py-2 no-underline relative hover:text-yellow-primary transition-colors inline-block hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-4 hover:after:right-4 hover:after:h-[3px] hover:after:bg-yellow-primary hover:after:rounded">Contact</a>
+                </div>
+            </nav>
+            
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-br from-yellow-primary to-[#FFBD00] py-20">
+                <div class="max-w-[1160px] mx-auto px-5">
+                    <h1 class="text-[40px] md:text-[40px] sm:text-[26px] font-bold leading-tight text-text-primary mb-4 font-rubik">Learn Professional IT Skills</h1>
+                    <p class="text-lg text-text-primary mb-6 font-rubik">Transform your career with our comprehensive courses</p>
+                    <button class="px-8 py-3.5 min-h-[48px] bg-yellow-primary text-text-primary font-rubik text-base font-bold border-0 rounded-xl cursor-pointer transition-all duration-200 hover:bg-yellow-hover hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(255,218,23,0.4)] inline-flex items-center justify-center">Get Started</button>
+                    <button class="px-8 py-3.5 min-h-[48px] bg-[#303030] text-white font-rubik text-base font-bold border-0 rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#191919] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.2)] ml-4">Learn More</button>
+                </div>
+            </div>
+            
+            <!-- Components Section -->
+            <div class="py-12 px-5 bg-bg-light">
+                <div class="max-w-[1160px] mx-auto">
+                    <h3 class="text-[28px] font-bold mb-8 text-text-primary font-rubik">Components</h3>
+                    
+                    <!-- Buttons -->
+                    <div class="mb-10">
+                        <h4 class="text-xl font-semibold mb-4 font-rubik">Buttons</h4>
+                        <button class="px-8 py-3.5 min-h-[48px] bg-yellow-primary text-text-primary font-rubik text-base font-bold border-0 rounded-xl cursor-pointer transition-all duration-200 hover:bg-yellow-hover hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(255,218,23,0.4)]">Primary Button</button>
+                        <button class="px-8 py-3.5 min-h-[48px] bg-[#303030] text-white font-rubik text-base font-bold border-0 rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#191919] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.2)] ml-4">Secondary Button</button>
+                    </div>
+                    
+                    <!-- Form Inputs -->
+                    <div class="mb-10">
+                        <h4 class="text-xl font-semibold mb-4 font-rubik">Form Elements</h4>
+                        <input type="text" placeholder="Enter your email" class="w-full max-w-[400px] px-4 py-3 min-h-[48px] font-rubik text-base bg-white border-2 border-border-light rounded-lg transition-all duration-200 hover:border-[#BFC2C5] focus:border-yellow-primary focus:shadow-[0_0_0_3px_rgba(255,218,23,0.1)] focus:outline-none">
+                        <div class="mt-4">
+                            <input type="password" placeholder="Enter your password" class="w-full max-w-[400px] px-4 py-3 min-h-[48px] font-rubik text-base bg-white border-2 border-border-light rounded-lg transition-all duration-200 hover:border-[#BFC2C5] focus:border-yellow-primary focus:shadow-[0_0_0_3px_rgba(255,218,23,0.1)] focus:outline-none">
+                        </div>
+                    </div>
+                    
+                    <!-- Cards -->
+                    <div class="mb-10">
+                        <h4 class="text-xl font-semibold mb-4 font-rubik">Course Cards</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-2xl p-6 border border-transparent shadow-[0px_0px_10px_0px_rgba(89,88,88,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0px_5px_20px_0px_rgba(89,88,88,0.15)] hover:border-yellow-primary">
+                                <span class="inline-block px-3 py-1 bg-yellow-primary text-text-primary text-xs font-semibold rounded-full mb-3">Popular</span>
+                                <h3 class="text-xl font-bold leading-tight text-text-primary mb-2 font-rubik">Frontend Development</h3>
+                                <p class="text-sm leading-relaxed text-text-gray mb-4 font-rubik">Master React, TypeScript, and modern web development technologies</p>
+                                <div class="flex justify-between items-center mt-4 pt-4 border-t border-border-light">
+                                    <span class="text-2xl font-bold text-yellow-primary font-rubik">$299</span>
+                                    <button class="px-5 py-2 min-h-[36px] bg-yellow-primary text-text-primary font-rubik text-sm font-bold border-0 rounded-xl cursor-pointer transition-all duration-200 hover:bg-yellow-hover hover:-translate-y-0.5">Enroll Now</button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-2xl p-6 border border-transparent shadow-[0px_0px_10px_0px_rgba(89,88,88,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0px_5px_20px_0px_rgba(89,88,88,0.15)] hover:border-yellow-primary">
+                                <span class="inline-block px-3 py-1 bg-yellow-primary text-text-primary text-xs font-semibold rounded-full mb-3">New</span>
+                                <h3 class="text-xl font-bold leading-tight text-text-primary mb-2 font-rubik">Python Backend</h3>
+                                <p class="text-sm leading-relaxed text-text-gray mb-4 font-rubik">Build scalable APIs with Django, FastAPI, and PostgreSQL</p>
+                                <div class="flex justify-between items-center mt-4 pt-4 border-t border-border-light">
+                                    <span class="text-2xl font-bold text-yellow-primary font-rubik">$399</span>
+                                    <button class="px-5 py-2 min-h-[36px] bg-yellow-primary text-text-primary font-rubik text-sm font-bold border-0 rounded-xl cursor-pointer transition-all duration-200 hover:bg-yellow-hover hover:-translate-y-0.5">Enroll Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Comparison Notes -->
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: #000; color: white; padding: 10px; text-align: center; font-family: 'Rubik', sans-serif; z-index: 1000;">
+        <strong>LEFT:</strong> Custom CSS (391 lines) | <strong>RIGHT:</strong> Tailwind CSS (utility classes) | 
+        <span style="color: #FFDA17;">Both achieve the same visual result</span>
+    </div>
+</body>
+</html>

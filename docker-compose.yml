@@ -1,0 +1,168 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: projectdes-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: projectdes
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-localpassword}
+      POSTGRES_DB: projectdes_dev
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=en_US.UTF-8"
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./infra/db/init:/docker-entrypoint-initdb.d:ro
+      - ./infra/db/backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U projectdes -d projectdes_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - projectdes-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Redis Cache & Session Store
+  redis:
+    image: redis:7-alpine
+    container_name: projectdes-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+      --tcp-keepalive 60
+      --timeout 300
+      --databases 2
+    volumes:
+      - redis-data:/data
+      - ./infra/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - projectdes-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # pgAdmin (Optional - for database management)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: projectdes-pgadmin
+    restart: unless-stopped
+    profiles:
+      - tools  # Only starts when explicitly requested: docker-compose --profile tools up
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@projectdes.ai}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - projectdes-network
+    depends_on:
+      - postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Adminer (Alternative lightweight DB management)
+  adminer:
+    image: adminer:latest
+    container_name: projectdes-adminer
+    restart: unless-stopped
+    profiles:
+      - tools
+    ports:
+      - "8080:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DESIGN: pepa-linha
+    networks:
+      - projectdes-network
+    depends_on:
+      - postgres
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Redis Commander (Redis GUI)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: projectdes-redis-commander
+    restart: unless-stopped
+    profiles:
+      - tools
+    ports:
+      - "8081:8081"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ""
+      HTTP_USER: ${REDIS_COMMANDER_USER:-admin}
+      HTTP_PASSWORD: ${REDIS_COMMANDER_PASSWORD:-admin}
+    networks:
+      - projectdes-network
+    depends_on:
+      - redis
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Docker Networks
+networks:
+  projectdes-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# Docker Volumes
+volumes:
+  postgres-data:
+    name: projectdes-postgres-data
+    driver: local
+  redis-data:
+    name: projectdes-redis-data
+    driver: local
+  pgadmin-data:
+    name: projectdes-pgadmin-data
+    driver: local
+
+# Notes:
+# - Basic usage: docker-compose up -d
+# - With tools: docker-compose --profile tools up -d
+# - View logs: docker-compose logs -f [service-name]
+# - Stop all: docker-compose down
+# - Stop and remove volumes: docker-compose down -v
+# - Backup database: docker exec projectdes-db pg_dump -U projectdes projectdes_dev > backup.sql
+# - Restore database: docker exec -i projectdes-db psql -U projectdes projectdes_dev < backup.sql

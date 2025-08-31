@@ -1,0 +1,851 @@
+// ============================================
+// Projectdes AI Academy - Complete Database Schema
+// ============================================
+// Comprehensive schema combining main education platform + infrastructure
+// Generated: 2025-08-29
+// Total Models: 28+ models covering all business requirements
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// AUTHENTICATION & USER MANAGEMENT
+// ============================================
+
+// Core user entity with authentication and role management
+// Supports multi-role system (STUDENT, INSTRUCTOR, ADMIN, SUPPORT)
+model User {
+  id              String    @id @default(uuid())
+  email           String    @unique
+  passwordHash    String
+  emailVerified   Boolean   @default(false)
+  role            UserRole  @default(STUDENT)
+
+  // Relations
+  profile         UserProfile?
+  enrollments     Enrollment[]
+  payments        Payment[]
+  progress        Progress[]
+  notifications   Notification[]
+  sessions        Session[]
+  submissions     Submission[]
+  reviews         Review[]
+
+  // Timestamps
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  lastLoginAt     DateTime?
+
+  @@index([email])
+  @@index([role])
+  @@index([createdAt])
+}
+
+// Extended user profile with personal and professional information
+// Supports multi-language locales and timezone management
+model UserProfile {
+  id              String    @id @default(uuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  firstName       String
+  lastName        String
+  phone           String?
+  avatar          String?
+  bio             Json?     // Rich text from TipTap
+  locale          Locale    @default(EN)
+  timezone        String    @default("UTC")
+
+  // Professional Info
+  company         String?
+  position        String?
+  linkedin        String?
+  github          String?
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([locale])
+}
+
+// User session management with security tracking
+// Tracks IP addresses and user agents for security monitoring
+model Session {
+  id              String    @id @default(uuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  token           String    @unique
+  expiresAt       DateTime
+  ipAddress       String?
+  userAgent       String?
+
+  createdAt       DateTime  @default(now())
+
+  @@index([token])
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// ============================================
+// COURSE STRUCTURE & CONTENT
+// ============================================
+
+// Main course entity with multi-language support
+// Pricing, metadata, and comprehensive course information
+model Course {
+  id              String    @id @default(uuid())
+  slug            String    @unique
+
+  // Multi-language content
+  title           Json      // {"en": "...", "ru": "...", "he": "..."}
+  description     Json      // TipTap JSON with translations
+  thumbnail       String?
+
+  // Pricing
+  price           Decimal   @db.Decimal(10, 2)
+  currency        String    @default("USD")
+  discountPrice   Decimal?  @db.Decimal(10, 2)
+
+  // Metadata
+  level           CourseLevel @default(BEGINNER)
+  duration        Int       // in hours
+  language        Locale    @default(EN)
+
+  // Relations
+  categoryId      String
+  category        Category  @relation(fields: [categoryId], references: [id])
+  instructorId    String
+  instructor      Instructor @relation(fields: [instructorId], references: [id])
+
+  modules         Module[]
+  enrollments     Enrollment[]
+  reviews         Review[]
+  testimonials    Testimonial[]
+  prerequisites   Course[]  @relation("Prerequisites")
+  dependents      Course[]  @relation("Prerequisites")
+
+  // Publishing
+  status          CourseStatus @default(DRAFT)
+  publishedAt     DateTime?
+
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  keywords        String[]
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([status])
+  @@index([categoryId])
+  @@index([instructorId])
+  @@index([publishedAt])
+  @@index([level])
+}
+
+// Course module organization structure
+// Hierarchical content organization within courses
+model Module {
+  id              String    @id @default(uuid())
+  courseId        String
+  course          Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  title           Json      // Multi-language
+  description     Json?
+  order           Int
+
+  lessons         Lesson[]
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([courseId, order])
+  @@index([courseId])
+}
+
+// Individual lesson content with rich media support
+// Supports video, text content, and resource attachments
+model Lesson {
+  id              String    @id @default(uuid())
+  moduleId        String
+  module          Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  title           Json      // Multi-language
+  content         Json      // TipTap JSON content
+  videoUrl        String?
+  duration        Int?      // in minutes
+  order           Int
+
+  // Resources
+  resources       Resource[]
+  assignments     Assignment[]
+  progress        Progress[]
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([moduleId, order])
+  @@index([moduleId])
+}
+
+// Hierarchical category system for course organization
+// Supports nested categories with multi-language names
+model Category {
+  id              String    @id @default(uuid())
+  slug            String    @unique
+
+  name            Json      // Multi-language
+  description     Json?
+  icon            String?
+
+  parentId        String?
+  parent          Category? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children        Category[] @relation("CategoryHierarchy")
+
+  courses         Course[]
+
+  order           Int       @default(0)
+  isActive        Boolean   @default(true)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([parentId])
+  @@index([isActive])
+}
+
+// ============================================
+// LEARNING & PROGRESS TRACKING
+// ============================================
+
+// Student course enrollment with comprehensive tracking
+// Manages enrollment lifecycle and progress metrics
+model Enrollment {
+  id              String    @id @default(uuid())
+
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId        String
+  course          Course    @relation(fields: [courseId], references: [id])
+
+  status          EnrollmentStatus @default(ACTIVE)
+  enrolledAt      DateTime  @default(now())
+  startedAt       DateTime?
+  completedAt     DateTime?
+  expiresAt       DateTime?
+
+  // Progress tracking
+  progressPercent Int       @default(0)
+  lastAccessedAt  DateTime?
+
+  progress        Progress[]
+  certificate     Certificate?
+
+  @@unique([userId, courseId])
+  @@index([userId])
+  @@index([courseId])
+  @@index([status])
+  @@index([enrolledAt])
+}
+
+// Granular lesson progress tracking
+// Tracks video completion, attempts, and scoring
+model Progress {
+  id              String    @id @default(uuid())
+
+  enrollmentId    String
+  enrollment      Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  lessonId        String
+  lesson          Lesson    @relation(fields: [lessonId], references: [id])
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+
+  status          ProgressStatus @default(NOT_STARTED)
+  startedAt       DateTime?
+  completedAt     DateTime?
+
+  // Tracking
+  videoProgress   Int       @default(0) // percentage watched
+  attempts        Int       @default(0)
+  score           Float?
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([enrollmentId, lessonId])
+  @@index([enrollmentId])
+  @@index([lessonId])
+  @@index([userId])
+  @@index([status])
+}
+
+// Course completion certificates
+// Generated upon successful course completion
+model Certificate {
+  id              String    @id @default(uuid())
+  enrollmentId    String    @unique
+  enrollment      Enrollment @relation(fields: [enrollmentId], references: [id])
+
+  certificateUrl  String
+  issuedAt        DateTime  @default(now())
+  expiresAt       DateTime?
+
+  createdAt       DateTime  @default(now())
+
+  @@index([issuedAt])
+}
+
+// ============================================
+// PAYMENTS & TRANSACTIONS
+// ============================================
+
+// Comprehensive payment tracking
+// Supports multiple payment providers (Stripe, PayPal)
+model Payment {
+  id              String    @id @default(uuid())
+
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  courseId        String?
+
+  amount          Decimal   @db.Decimal(10, 2)
+  currency        String
+
+  status          PaymentStatus @default(PENDING)
+  provider        PaymentProvider
+  providerId      String?   // Stripe/PayPal transaction ID
+
+  // Details
+  description     String?
+  metadata        Json?
+
+  // Timestamps
+  createdAt       DateTime  @default(now())
+  paidAt          DateTime?
+  refundedAt      DateTime?
+
+  @@index([userId])
+  @@index([status])
+  @@index([provider])
+  @@index([createdAt])
+  @@index([providerId])
+}
+
+// Discount coupon system
+// Supports percentage and fixed amount discounts
+model Coupon {
+  id              String    @id @default(uuid())
+  code            String    @unique
+
+  discountType    DiscountType // PERCENTAGE, FIXED
+  discountValue   Decimal   @db.Decimal(10, 2)
+
+  validFrom       DateTime
+  validUntil      DateTime
+  usageLimit      Int?
+  usageCount      Int       @default(0)
+
+  // Restrictions
+  courseIds       String[]  // Empty = all courses
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([code])
+  @@index([validFrom, validUntil])
+  @@index([validUntil])
+}
+
+// ============================================
+// CONTENT & RESOURCES
+// ============================================
+
+// Lesson resource attachments
+// Supports multiple file types and external links
+model Resource {
+  id              String    @id @default(uuid())
+  lessonId        String
+  lesson          Lesson    @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  title           String
+  type            ResourceType // PDF, VIDEO, LINK, CODE
+  url             String
+  size            Int?      // in bytes
+
+  createdAt       DateTime  @default(now())
+
+  @@index([lessonId])
+  @@index([type])
+}
+
+// Lesson assignments and assessments
+// Supports quizzes, projects, and exercises
+model Assignment {
+  id              String    @id @default(uuid())
+  lessonId        String
+  lesson          Lesson    @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  title           Json
+  description     Json      // TipTap JSON
+  type            AssignmentType // QUIZ, PROJECT, EXERCISE
+
+  questions       Json?     // For quizzes
+  maxScore        Float?
+  passingScore    Float?
+
+  submissions     Submission[]
+
+  dueDate         DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([lessonId])
+  @@index([type])
+  @@index([dueDate])
+}
+
+// Student assignment submissions
+// Tracks submission status and grading
+model Submission {
+  id              String    @id @default(uuid())
+  assignmentId    String
+  assignment      Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+
+  content         Json      // Submission data
+  score           Float?
+  feedback        Json?
+
+  status          SubmissionStatus @default(PENDING)
+  submittedAt     DateTime  @default(now())
+  gradedAt        DateTime?
+
+  @@index([assignmentId])
+  @@index([userId])
+  @@index([status])
+  @@index([submittedAt])
+}
+
+// ============================================
+// REVIEWS & RATINGS
+// ============================================
+
+// Course reviews and ratings system
+// Supports verified purchases and moderation
+model Review {
+  id              String    @id @default(uuid())
+  courseId        String
+  course          Course    @relation(fields: [courseId], references: [id])
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+
+  rating          Int       // 1-5
+  title           String?
+  content         String?
+
+  isVerified      Boolean   @default(false)
+  isPublished     Boolean   @default(true)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([courseId, userId])
+  @@index([courseId])
+  @@index([userId])
+  @@index([rating])
+  @@index([isPublished])
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+// User notification system
+// Supports multiple notification types and read tracking
+model Notification {
+  id              String    @id @default(uuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type            NotificationType
+  title           String
+  message         String
+  data            Json?
+
+  isRead          Boolean   @default(false)
+  readAt          DateTime?
+
+  createdAt       DateTime  @default(now())
+
+  @@index([userId, isRead])
+  @@index([createdAt])
+  @@index([type])
+}
+
+// ============================================
+// ANALYTICS & TRACKING
+// ============================================
+
+// Page view tracking for analytics
+// Captures user behavior and traffic patterns
+model PageView {
+  id              String    @id @default(uuid())
+  userId          String?
+  sessionId       String
+
+  path            String
+  referrer        String?
+
+  // Device info
+  userAgent       String?
+  ipAddress       String?
+  country         String?
+
+  timestamp       DateTime  @default(now())
+
+  @@index([userId])
+  @@index([sessionId])
+  @@index([path])
+  @@index([timestamp])
+}
+
+// Course performance analytics
+// Daily aggregated metrics for course performance
+model CourseAnalytics {
+  id              String    @id @default(uuid())
+  courseId        String
+
+  views           Int       @default(0)
+  enrollments     Int       @default(0)
+  completions     Int       @default(0)
+  avgRating       Float?
+  avgProgress     Float?
+
+  date            DateTime  @db.Date
+
+  @@unique([courseId, date])
+  @@index([courseId])
+  @@index([date])
+}
+
+// ============================================
+// INFRASTRUCTURE & CONTENT MANAGEMENT
+// ============================================
+
+// Media asset management system
+// Central repository for all media files
+model MediaAsset {
+  id              String    @id @default(uuid())
+  filename        String
+  originalName    String
+  mimeType        String
+  size            Int       // in bytes
+  url             String
+  
+  // Relations
+  instructorAvatars Instructor[] @relation("InstructorAvatar")
+  partnerLogos    Partner[] @relation("PartnerLogo")
+  testimonialAvatars Testimonial[] @relation("TestimonialAvatar") 
+  eventCovers     Event[] @relation("EventCover")
+  campaignBanners Campaign[] @relation("CampaignBanner")
+  
+  createdAt       DateTime  @default(now())
+
+  @@index([mimeType])
+  @@index([filename])
+}
+
+// Course instructor profiles
+// Multi-language instructor information
+model Instructor {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  name            String
+  company         String?
+  bio             Json?     // TipTap JSON
+  
+  avatarId        String?
+  avatar          MediaAsset? @relation("InstructorAvatar", fields: [avatarId], references: [id])
+  
+  linkedin        String?
+  website         String?
+  
+  courses         Course[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([locale, name])
+  @@index([name])
+}
+
+// Business partner showcase
+// Partner logos and information for marketing
+model Partner {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  name            String
+  
+  logoId          String?
+  logo            MediaAsset? @relation("PartnerLogo", fields: [logoId], references: [id])
+  
+  url             String?
+  blurb           String?
+  order           Int       @default(0)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([locale, order])
+  @@index([order])
+}
+
+// Student testimonials and success stories
+// Social proof with course linkage
+model Testimonial {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  studentName     String
+  
+  avatarId        String?
+  avatar          MediaAsset? @relation("TestimonialAvatar", fields: [avatarId], references: [id])
+  
+  quote           String
+  
+  courseId        String?
+  course          Course?   @relation(fields: [courseId], references: [id])
+  
+  order           Int       @default(0)
+  isPublished     Boolean   @default(true)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([locale, isPublished, order])
+  @@index([isPublished, order])
+}
+
+// Events and webinar management
+// Live and recorded event organization
+model Event {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  slug            String
+  title           String
+  description     Json      // TipTap JSON
+  
+  startAt         DateTime
+  endAt           DateTime?
+  location        String?
+  streamingUrl    String?
+  registerUrl     String?
+  
+  coverId         String?
+  cover           MediaAsset? @relation("EventCover", fields: [coverId], references: [id])
+  
+  isPublished     Boolean   @default(false)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, startAt, isPublished])
+  @@index([startAt])
+  @@index([isPublished])
+}
+
+// Legal document management
+// Terms, privacy policy, and legal content
+model LegalDocument {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  slug            String
+  title           String
+  body            Json      // TipTap JSON
+  
+  isPublished     Boolean   @default(true)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([slug])
+  @@index([locale])
+}
+
+// Marketing campaign management
+// Promotional campaigns with discounts
+model Campaign {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  slug            String
+  title           String
+  body            Json      // block content (TipTap/blocks)
+  
+  bannerId        String?
+  banner          MediaAsset? @relation("CampaignBanner", fields: [bannerId], references: [id])
+  
+  discountPct     Int?
+  startsAt        DateTime?
+  endsAt          DateTime?
+  active          Boolean   @default(false)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([active, startsAt, endsAt])
+  @@index([active])
+}
+
+// System announcements
+// Site-wide announcements with priority levels
+model Announcement {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  kind            AnnouncementType @default(GENERAL)
+  title           String
+  message         String?
+  
+  startsAt        DateTime?
+  endsAt          DateTime?
+  priority        Int       @default(0)
+  isPublished     Boolean   @default(true)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([locale, isPublished, startsAt, endsAt])
+  @@index([isPublished, priority])
+}
+
+// Career resource library
+// Job placement and career development resources
+model CareerResource {
+  id              String    @id @default(uuid())
+  locale          Locale    @default(EN)
+  kind            String    // "article" | "link" | "template" | ...
+  title           String
+  description     String?
+  url             String?
+  
+  isPublished     Boolean   @default(true)
+  order           Int       @default(0)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([locale, kind, isPublished, order])
+  @@index([kind, isPublished])
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum UserRole {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
+  SUPPORT
+}
+
+enum Locale {
+  EN
+  RU
+  HE
+}
+
+enum CourseStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  PAUSED
+  COMPLETED
+  EXPIRED
+  CANCELLED
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentProvider {
+  STRIPE
+  PAYPAL
+  BEPAID
+}
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED
+}
+
+enum ResourceType {
+  PDF
+  VIDEO
+  LINK
+  CODE
+  DOWNLOAD
+}
+
+enum AssignmentType {
+  QUIZ
+  PROJECT
+  EXERCISE
+  EXAM
+}
+
+enum SubmissionStatus {
+  PENDING
+  GRADED
+  RETURNED
+}
+
+enum NotificationType {
+  SYSTEM
+  COURSE
+  PAYMENT
+  ACHIEVEMENT
+  REMINDER
+}
+
+enum AnnouncementType {
+  GENERAL
+  MAINTENANCE
+  PROMOTION
+  URGENT
+}

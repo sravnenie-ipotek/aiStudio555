@@ -1,0 +1,43 @@
+{
+  "name": "@projectdes/ai",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Projectdes Academy - AI Services & Integrations",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "clean": "rm -rf node_modules .turbo dist",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@projectdes/db": "workspace:*",
+    "@projectdes/types": "workspace:*",
+    "@projectdes/utils": "workspace:*",
+    "@langchain/community": "^0.0.16",
+    "@langchain/core": "^0.1.16",
+    "@langchain/openai": "^0.0.12",
+    "langchain": "^0.1.8",
+    "openai": "^4.24.1",
+    "pdf-parse": "^1.1.1",
+    "tiktoken": "^1.0.12",
+    "youtube-transcript": "^1.0.6",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/pdf-parse": "^1.1.4",
+    "eslint": "^8.56.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  },
+  "files": [
+    "src",
+    "dist"
+  ]
+}

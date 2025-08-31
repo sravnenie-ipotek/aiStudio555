@@ -1,0 +1,77 @@
+{
+  "name": "projectdes-academy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Projectdes AI Academy - Monorepo for Online Education Platform",
+  "author": "Projectdes Team",
+  "license": "PROPRIETARY",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "ai",
+    "qa/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,json}\"",
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "turbo run build --filter=@projectdes/db",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:reset": "docker-compose down -v && docker-compose up -d",
+    "db:generate": "pnpm --filter @projectdes/db generate",
+    "db:push": "pnpm --filter @projectdes/db db:push",
+    "db:migrate": "pnpm --filter @projectdes/db migrate",
+    "db:migrate:dev": "pnpm --filter @projectdes/db migrate:dev",
+    "db:migrate:prod": "pnpm --filter @projectdes/db migrate:prod",
+    "db:seed": "pnpm --filter @projectdes/db seed",
+    "db:reset": "pnpm --filter @projectdes/db reset",
+    "db:studio": "pnpm --filter @projectdes/db studio",
+    "api:dev": "pnpm --filter @projectdes/api dev",
+    "web:dev": "pnpm --filter @projectdes/web dev",
+    "setup": "./setup.sh",
+    "verify": "node scripts/verify-environment.js",
+    "fresh": "pnpm clean && pnpm install && pnpm db:reset && pnpm dev",
+    "ci": "turbo run build lint test typecheck",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "turbo": "^1.11.3",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}

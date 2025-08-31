@@ -1,0 +1,326 @@
+{
+  "site": "TeachMeSkills",
+  "timezone": "Asia/Jerusalem",
+  "analysis_date": "2025-08-26",
+  "root_url": "https://month.teachmeskills.by",
+  "pages": [
+    {
+      "url": "https://month.teachmeskills.by",
+      "title": "15% discount landing page",
+      "description": "Promotional landing page offering 15% discount on August courses with countdown timer and forms.",
+      "sections": [
+        {
+          "name": "Hero / Lead capture",
+          "features": [
+            "Large banner announcing 15% discount on courses for the month with deadline.",
+            "Countdown timer showing days, hours, minutes and seconds remaining for the promotion.",
+            "Lead capture form with fields for name, email and phone number including country code; button labelled 'Забронировать место' (Reserve a seat).",
+            "Display of support phone number at top right."
+          ]
+        },
+        {
+          "name": "Course catalog",
+          "features": [
+            "Grid of course cards; each card shows category (e.g., programming, testing, gamedev, analytics, design, management), course name, discounted price, original price with strike‑through, and discount amount.",
+            "Cards link to detailed course pages on the main site.",
+            "Section heading labelled 'Курсы' and option to view all courses."
+          ]
+        },
+        {
+          "name": "Chat bot",
+          "features": [
+            "Floating chat widget with automated greeting and prompts; offers quick action buttons such as contacting a specialist, viewing courses or monthly starts.",
+            "Bot can ask the user to choose a learning direction and opens the relevant course page in a new tab."
+          ]
+        },
+        {
+          "name": "TeachMeSkills advantages",
+          "features": [
+            "List of bullet advantages: live classes in groups up to 20 people (no recorded lectures, only live communication via Zoom), 15% theory and 85% practice, instructors working at top international companies (Kaspersky, iTechArt, Exness etc.), programs aligned with job‑market standards for 2024–2025, portfolio development during the course, and a career centre that helps compile CV, fill LinkedIn profile and prepare for interviews【482907167435863†screenshot】.",
+            "Icons emphasise each advantage."
+          ]
+        },
+        {
+          "name": "Help & consultation",
+          "features": [
+            "Section encouraging visitors to get help with course selection; includes a short paragraph and a form (name, email, phone) with button labelled 'Оставить заявку' (Leave an application).",
+            "Promised callback within the working day."
+          ]
+        },
+        {
+          "name": "Payment & career assistance",
+          "features": [
+            "Highlights that payments are accepted worldwide and partial payments or payments from legal entities are possible.",
+            "Claims that the school helps prepare for interviews and employs over 65% of graduates【514935005251356†screenshot】."
+          ]
+        },
+        {
+          "name": "Footer",
+          "features": [
+            "Contact information: phone number (+375 29 169‑59‑59) and email (info@teachmeskills.by).",
+            "Links to social media platforms (Facebook, VK, Instagram, YouTube, Telegram, TikTok).",
+            "Navigation links to categories of courses (Programming, Testing, Design, Analytics, GameDev, Management, Security), teachers, blog, promotions, career centre, payment options, etc.",
+            "Payment logos showing supported payment systems (Visa, MasterCard, etc.)."
+          ]
+        }
+      ],
+      "offers": [
+        {
+          "name": "+3 introductory mini‑courses",
+          "description": "Offer of three introductory mini‑courses covering IT basics, design introduction and programming fundamentals as a gift when registering during the promotion."
+        },
+        {
+          "name": "Global payment and instalments",
+          "description": "Payments accepted from any part of the world with instalments up to 18 months and programs for corporate clients."
+        }
+      ],
+      "courses_offers": [
+        {
+          "name": "Java разработчик",
+          "category": "Программирование",
+          "price_BYN": 3060,
+          "old_price_BYN": 3600,
+          "discount_BYN": 540
+        },
+        {
+          "name": "Автоматизированное тестирование на Python",
+          "category": "Тестирование",
+          "price_BYN": 2600,
+          "old_price_BYN": 3100,
+          "discount_BYN": 500
+        },
+        {
+          "name": "Разработчик игр на Unreal Engine 5",
+          "category": "GameDev",
+          "price_BYN": 3400,
+          "old_price_BYN": 4000,
+          "discount_BYN": 600
+        },
+        {
+          "name": "Project Manager в IT",
+          "category": "Менеджмент",
+          "price_BYN": 2600,
+          "old_price_BYN": 3100,
+          "discount_BYN": 500
+        },
+        {
+          "name": "Android разработчик",
+          "category": "Программирование",
+          "price_BYN": 2650,
+          "old_price_BYN": 3150,
+          "discount_BYN": 500
+        },
+        {
+          "name": "DevOps инженер",
+          "category": "Программирование",
+          "price_BYN": 3480,
+          "old_price_BYN": 4100,
+          "discount_BYN": 620
+        },
+        {
+          "name": "Автоматизированное тестирование на Java",
+          "category": "Тестирование",
+          "price_BYN": 2600,
+          "old_price_BYN": 3100,
+          "discount_BYN": 500
+        },
+        {
+          "name": "Тестирование веб и мобильных приложений",
+          "category": "Тестирование",
+          "price_BYN": 2100,
+          "old_price_BYN": 2600,
+          "discount_BYN": 500
+        },
+        {
+          "name": "UX/UI дизайнер",
+          "category": "Дизайн",
+          "price_BYN": 2970,
+          "old_price_BYN": 3500,
+          "discount_BYN": 530
+        },
+        {
+          "name": "Бизнес‑аналитик в IT",
+          "category": "Аналитика",
+          "price_BYN": 2700,
+          "old_price_BYN": 3200,
+          "discount_BYN": 500
+        },
+        {
+          "name": "Python разработчик",
+          "category": "Программирование",
+          "price_BYN": 3400,
+          "old_price_BYN": 4000,
+          "discount_BYN": 600
+        },
+        {
+          "name": "Системный аналитик",
+          "category": "Аналитика",
+          "price_BYN": 1400,
+          "old_price_BYN": 1700,
+          "discount_BYN": 300
+        },
+        {
+          "name": "Front End разработчик",
+          "category": "Программирование",
+          "price_BYN": 3570,
+          "old_price_BYN": 4200,
+          "discount_BYN": 630
+        }
+      ]
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/<course>",
+      "title": "Individual course pages",
+      "description": "Each course page provides detailed information about a specific program.",
+      "template_overview": {
+        "sections": [
+          {
+            "name": "Course overview",
+            "features": [
+              "Course title and tagline explaining what students will learn.",
+              "Duration of the program and start date with schedule (days and times).",
+              "Call‑to‑action button to sign up for the course."
+            ]
+          },
+          {
+            "name": "Modules and learning approach",
+            "features": [
+              "Description of additional modules such as AI tools.",
+              "Explanation that learning is live with practice and mentorship rather than recorded lectures【568451567494918†screenshot】."
+            ]
+          },
+          {
+            "name": "Career outcomes",
+            "features": [
+              "Section 'Кем ты станешь' describing future professional roles after completing the course and the value of learning particular technologies.",
+              "Outline of career track opportunities and projects implemented during the course【443638987174168†screenshot】."
+            ]
+          },
+          {
+            "name": "Projects",
+            "features": [
+              "List of projects implemented during the course: ToDo‑list, Amazon‑like web application, Social network like Instagram or VKontakte, Diploma project such as a product catalogue or food delivery service【443638987174168†screenshot】."
+            ]
+          },
+          {
+            "name": "Career support",
+            "features": [
+              "Statements that TeachMeSkills helps students get their first job in IT and provides assistance with portfolio preparation, CV writing, LinkedIn profile, and interview preparation."
+            ]
+          },
+          {
+            "name": "Partner companies",
+            "features": [
+              "List of partner IT companies whose logos are displayed (iTechArt, Andersen, ARATEG, Netcracker, PandaDoc, Sam Solutions, LeverX, Softeco, Oxagile, Elinext etc.)【338693376155527†screenshot】."
+            ]
+          },
+          {
+            "name": "Instructors",
+            "features": [
+              "Section 'Преподаватели курса' with portraits and names of instructors involved in the course."
+            ]
+          },
+          {
+            "name": "Video content",
+            "features": [
+              "Embedded YouTube videos with interviews of developers or comparisons between technologies, and video testimonials from graduates【285253577185700†screenshot】."
+            ]
+          },
+          {
+            "name": "Program curriculum",
+            "features": [
+              "Detailed outline of modules and topics, such as Introduction to Java (IDE, compiling, data types, casting, operators), Control structures (branching, loops), Version control with Git (installation, repository creation on GitHub, branching, main commands) and more sections accessible via 'Показать больше' button【486038051638663†screenshot】."
+            ]
+          },
+          {
+            "name": "Pricing and discounts",
+            "features": [
+              "Information on monthly payment and total price for the course (e.g., 3 240 BYN or 1160 USD when paying upfront).",
+              "Special offers such as 'Bring a friend – both get 100 BYN discount', and information about instalment plans lasting up to 18 months【515982468786985†screenshot】.",
+              "Form fields for name, phone and promo code with a button to submit an application."
+            ]
+          },
+          {
+            "name": "FAQ",
+            "features": [
+              "Accordion with frequently asked questions covering age restrictions, choosing a direction, what the specific technology is, where it is used, course structure, skills gained after the course, course duration, assistance with employment, and certificate issuance【534226615275003†screenshot】."
+            ]
+          },
+          {
+            "name": "Testimonials",
+            "features": [
+              "Section 'Отзывы выпускников' with reviews from graduates, star ratings, reviewer names and the ability to read more; ratings aggregated from Yandex and Google【4282048005676†screenshot】."
+            ]
+          },
+          {
+            "name": "Footer",
+            "features": [
+              "Footer listing online courses categories, links to blog, promotions, career centre, contact information and payment logos【413160446022624†screenshot】."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://teachmeskills.by/kursy",
+      "title": "Courses catalog page",
+      "description": "Page listing categories of online courses and linking to the monthly promotional page and course details.",
+      "sections": [
+        {
+          "name": "Catalog introduction",
+          "features": [
+            "Heading 'Каталог онлайн курсов' with description that the school has graduated over 12 000 IT specialists in 8 years."
+          ]
+        },
+        {
+          "name": "Categories",
+          "features": [
+            "Two main category tiles: 'IT‑курсы Online' (with button 'В каталог' linking to the monthly landing page) and 'Старты месяца' (linking to the same landing page)."
+          ]
+        },
+        {
+          "name": "About studying",
+          "features": [
+            "Section explaining who you can become after completing courses and emphasising that TeachMeSkills meets various needs of the market for online education in Belarus."
+          ]
+        },
+        {
+          "name": "Reviews",
+          "features": [
+            "Carousel of graduate reviews with star ratings and tags (e.g., 'преподаватель', 'курс', 'обучение', 'материал', 'программа')."
+          ]
+        },
+        {
+          "name": "Help choosing",
+          "features": [
+            "Call to action encouraging visitors to request assistance in choosing a course."
+          ]
+        },
+        {
+          "name": "Footer",
+          "features": [
+            "List of online course categories, contact info and social media links."
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://teachmeskills.by/prepodavateli",
+      "title": "Teachers page",
+      "description": "The intended teachers page currently returns a 404 error with a message that the page may have been removed or typed incorrectly. The page suggests navigating to the main page, reading the blog or viewing courses instead.",
+      "status": 404
+    },
+    {
+      "url": "https://teachmeskills.by/o-shkole",
+      "title": "About school page",
+      "description": "The intended 'About the school' page returns a 404 error similar to the teachers page, indicating it may have been removed.",
+      "status": 404
+    },
+    {
+      "url": "https://teachmeskills.by/blog (akcii)",
+      "title": "Blog / Promotions page",
+      "description": "Page labelled 'Блог' with sub‑categories such as 'Полезный контент', 'Интервью с менторами' and 'Истории успеха'. Contains articles and resources but may redirect to promotions or may not always be available.",
+      "status": "intermittent"
+    }
+  ]
+}

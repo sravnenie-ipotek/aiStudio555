@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run lint-staged on staged files
+npx lint-staged
+
+# Run type checking on changed TypeScript files
+npx turbo run typecheck --filter=[HEAD^1]

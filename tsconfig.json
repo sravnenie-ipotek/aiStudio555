@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+
+    /* Emit */
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+
+    /* Type Checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+
+    /* Skip Lib Check */
+    "skipLibCheck": true,
+
+    /* Advanced */
+    "allowJs": true,
+    "checkJs": false,
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@projectdes/ui": ["packages/ui/src/index"],
+      "@projectdes/ui/*": ["packages/ui/src/*"],
+      "@projectdes/types": ["packages/types/src/index"],
+      "@projectdes/types/*": ["packages/types/src/*"],
+      "@projectdes/db": ["packages/db/src/index"],
+      "@projectdes/db/*": ["packages/db/src/*"],
+      "@projectdes/utils": ["packages/utils/src/index"],
+      "@projectdes/utils/*": ["packages/utils/src/*"],
+      "@projectdes/ai": ["ai/index"],
+      "@projectdes/ai/*": ["ai/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    ".next",
+    "coverage",
+    "*.config.js",
+    "*.config.ts",
+    ".turbo",
+    "cypress",
+    "playwright"
+  ]
+}

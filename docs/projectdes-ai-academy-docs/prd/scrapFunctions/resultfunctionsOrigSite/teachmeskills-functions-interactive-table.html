@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlDoc">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeachMeSkills - Interactive Functions Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(45deg, #4c6ef5, #5f39f1);
+            box-shadow: 0 4px 15px rgba(76, 110, 245, 0.4);
+        }
+
+        .lang-label {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .controls {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .controls-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box, .filter-select {
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .search-box:focus, .filter-select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .table th:hover {
+            background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+        }
+
+        .table th.sortable::after {
+            content: ' ⇅';
+            opacity: 0.5;
+            margin-left: 8px;
+        }
+
+        .table th.sort-asc::after {
+            content: ' ↑';
+            opacity: 1;
+        }
+
+        .table th.sort-desc::after {
+            content: ' ↓';
+            opacity: 1;
+        }
+
+        .table td {
+            padding: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+
+        .table tr:hover {
+            background: #f8fafc;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-hero { background: #fed7d7; color: #c53030; }
+        .category-course { background: #bee3f8; color: #2b6cb0; }
+        .category-chat { background: #c6f6d5; color: #276749; }
+        .category-advantages { background: #fefcbf; color: #975a16; }
+        .category-help { background: #e9d8fd; color: #553c9a; }
+        .category-payment { background: #fed7e2; color: #b83280; }
+        .category-footer { background: #e2e8f0; color: #4a5568; }
+        .category-template { background: #fbb6ce; color: #97266d; }
+        .category-catalog { background: #9ae6b4; color: #22543d; }
+        .category-error { background: #feb2b2; color: #9b2c2c; }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f7fafc;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li:before {
+            content: "▶";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .price-info {
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .discount {
+            color: #38a169;
+            font-weight: bold;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #a0aec0;
+            margin-right: 8px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+            font-size: 1.2rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: #667eea;
+        }
+
+        .export-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .export-section h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box, .filter-select {
+                min-width: unset;
+                width: 100%;
+            }
+            
+            .table-container {
+                overflow-x: auto;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .language-toggle {
+                position: relative;
+                top: unset;
+                right: unset;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="language-toggle">
+                <span class="lang-label" data-en="Language:" data-ru="Язык:">Language:</span>
+                <button class="lang-btn active" onclick="switchLanguage('en')" id="btn-en">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+            
+            <h1 data-en="🎓 TeachMeSkills Functions Analysis" data-ru="🎓 Анализ Функций TeachMeSkills">🎓 TeachMeSkills Functions Analysis</h1>
+            <p data-en="Comprehensive interactive analysis of all website functions, features, and capabilities from the scraped data" data-ru="Всесторонний интерактивный анализ всех функций, возможностей и характеристик веб-сайта из извлеченных данных">Comprehensive interactive analysis of all website functions, features, and capabilities from the scraped data</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="total-functions">0</span>
+                    <div class="stat-label" data-en="Total Functions" data-ru="Всего Функций">Total Functions</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="total-pages">5</span>
+                    <div class="stat-label" data-en="Pages Analyzed" data-ru="Проанализировано Страниц">Pages Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="total-courses">13</span>
+                    <div class="stat-label" data-en="Courses Available" data-ru="Доступно Курсов">Courses Available</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="price-range">1,400-4,200</span>
+                    <div class="stat-label" data-en="Price Range (BYN)" data-ru="Диапазон Цен (BYN)">Price Range (BYN)</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="controls-row">
+                <input type="text" class="search-box" id="searchInput" data-en-placeholder="🔍 Search functions, features, or content..." data-ru-placeholder="🔍 Поиск функций, возможностей или контента..." placeholder="🔍 Search functions, features, or content...">
+                <select class="filter-select" id="categoryFilter">
+                    <option value="" data-en="All Categories" data-ru="Все Категории">All Categories</option>
+                    <option value="hero" data-en="Hero/Landing" data-ru="Главная/Лендинг">Hero/Landing</option>
+                    <option value="course" data-en="Courses" data-ru="Курсы">Courses</option>
+                    <option value="chat" data-en="Chat/Support" data-ru="Чат/Поддержка">Chat/Support</option>
+                    <option value="advantages" data-en="Advantages" data-ru="Преимущества">Advantages</option>
+                    <option value="help" data-en="Help/Consultation" data-ru="Помощь/Консультации">Help/Consultation</option>
+                    <option value="payment" data-en="Payment" data-ru="Оплата">Payment</option>
+                    <option value="footer" data-en="Footer" data-ru="Подвал">Footer</option>
+                    <option value="template" data-en="Course Templates" data-ru="Шаблоны Курсов">Course Templates</option>
+                    <option value="catalog" data-en="Catalog" data-ru="Каталог">Catalog</option>
+                    <option value="error" data-en="Errors/404" data-ru="Ошибки/404">Errors/404</option>
+                </select>
+                <select class="filter-select" id="typeFilter">
+                    <option value="" data-en="All Types" data-ru="Все Типы">All Types</option>
+                    <option value="section" data-en="Sections" data-ru="Разделы">Sections</option>
+                    <option value="feature" data-en="Features" data-ru="Возможности">Features</option>
+                    <option value="offer" data-en="Offers" data-ru="Предложения">Offers</option>
+                    <option value="course" data-en="Courses" data-ru="Курсы">Courses</option>
+                    <option value="page" data-en="Pages" data-ru="Страницы">Pages</option>
+                </select>
+                <button class="btn" onclick="clearFilters()" data-en="Clear Filters" data-ru="Очистить Фильтры">Clear Filters</button>
+                <button class="btn" onclick="showExportModal()" data-en="Export Data" data-ru="Экспорт Данных">Export Data</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="table" id="functionsTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" onclick="sortTable(0)" data-en="Page" data-ru="Страница">Page</th>
+                        <th class="sortable" onclick="sortTable(1)" data-en="Category" data-ru="Категория">Category</th>
+                        <th class="sortable" onclick="sortTable(2)" data-en="Type" data-ru="Тип">Type</th>
+                        <th class="sortable" onclick="sortTable(3)" data-en="Name/Title" data-ru="Название/Заголовок">Name/Title</th>
+                        <th class="sortable" onclick="sortTable(4)" data-en="Description" data-ru="Описание">Description</th>
+                        <th data-en="Features/Details" data-ru="Возможности/Детали">Features/Details</th>
+                        <th class="sortable" onclick="sortTable(6)" data-en="Location" data-ru="Расположение">Location</th>
+                        <th class="sortable" onclick="sortTable(7)" data-en="Price (BYN)" data-ru="Цена (BYN)">Price (BYN)</th>
+                        <th class="sortable" onclick="sortTable(8)" data-en="Status" data-ru="Статус">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="functionsTableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+            <div id="noResults" class="no-results" style="display: none;" data-en="No functions found matching your criteria. Try adjusting your filters." data-ru="Функции, соответствующие вашим критериям, не найдены. Попробуйте изменить фильтры.">
+                No functions found matching your criteria. Try adjusting your filters.
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h3 data-en="📊 Export & Analysis Tools" data-ru="📊 Инструменты Экспорта и Анализа">📊 Export & Analysis Tools</h3>
+            <div class="export-buttons">
+                <button class="btn" onclick="exportToCSV()" data-en="📄 Export to CSV" data-ru="📄 Экспорт в CSV">📄 Export to CSV</button>
+                <button class="btn" onclick="exportToJSON()" data-en="📋 Export to JSON" data-ru="📋 Экспорт в JSON">📋 Export to JSON</button>
+                <button class="btn" onclick="printReport()" data-en="🖨️ Print Report" data-ru="🖨️ Печать Отчета">🖨️ Print Report</button>
+                <button class="btn" onclick="showStatistics()" data-en="📈 Show Statistics" data-ru="📈 Показать Статистику">📈 Show Statistics</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Language system
+        let currentLanguage = 'en';
+        
+        const translations = {
+            en: {
+                // Table headers and UI elements are handled by data attributes
+                // Category translations
+                'hero': 'Hero/Landing',
+                'course': 'Courses', 
+                'chat': 'Chat/Support',
+                'advantages': 'Advantages',
+                'help': 'Help/Consultation',
+                'payment': 'Payment',
+                'footer': 'Footer',
+                'template': 'Course Templates',
+                'catalog': 'Catalog',
+                'error': 'Errors/404',
+                // Type translations
+                'section': 'Section',
+                'feature': 'Feature',
+                'offer': 'Offer',
+                'page': 'Page',
+                // Status translations
+                'Active': 'Active',
+                'Available': 'Available',
+                'Template': 'Template',
+                '404 Error': '404 Error',
+                'Intermittent': 'Intermittent',
+                'Free': 'Free',
+                // Modal content
+                'Category:': 'Category:',
+                'Type:': 'Type:',
+                'Description:': 'Description:',
+                'Price:': 'Price:',
+                'Status:': 'Status:',
+                'URL:': 'URL:',
+                'Features & Details:': 'Features & Details:',
+                'Statistics Overview': 'Statistics Overview',
+                'Total Functions': 'Total Functions',
+                'Available Courses': 'Available Courses',
+                'Total Savings (BYN)': 'Total Savings (BYN)',
+                'By Category:': 'By Category:',
+                'By Type:': 'By Type:',
+                'functions': 'functions',
+                'items': 'items',
+                'Export Options': 'Export Options',
+                'Choose how you\'d like to export the current filtered data:': 'Choose how you\'d like to export the current filtered data:',
+                'Download CSV': 'Download CSV',
+                'Download JSON': 'Download JSON',
+                'Print Report': 'Print Report',
+                'Current filter results:': 'Current filter results:',
+                'of': 'of',
+                'more features...': 'more features...'
+            },
+            ru: {
+                // Category translations
+                'hero': 'Главная/Лендинг',
+                'course': 'Курсы',
+                'chat': 'Чат/Поддержка', 
+                'advantages': 'Преимущества',
+                'help': 'Помощь/Консультации',
+                'payment': 'Оплата',
+                'footer': 'Подвал',
+                'template': 'Шаблоны Курсов',
+                'catalog': 'Каталог',
+                'error': 'Ошибки/404',
+                // Type translations
+                'section': 'Раздел',
+                'feature': 'Возможность',
+                'offer': 'Предложение',
+                'page': 'Страница',
+                // Status translations
+                'Active': 'Активный',
+                'Available': 'Доступен',
+                'Template': 'Шаблон',
+                '404 Error': '404 Ошибка',
+                'Intermittent': 'Периодически',
+                'Free': 'Бесплатно',
+                // Modal content
+                'Category:': 'Категория:',
+                'Type:': 'Тип:',
+                'Description:': 'Описание:',
+                'Price:': 'Цена:',
+                'Status:': 'Статус:',
+                'URL:': 'URL:',
+                'Features & Details:': 'Возможности и Детали:',
+                'Statistics Overview': 'Обзор Статистики',
+                'Total Functions': 'Всего Функций',
+                'Available Courses': 'Доступно Курсов',
+                'Total Savings (BYN)': 'Общая Экономия (BYN)',
+                'By Category:': 'По Категориям:',
+                'By Type:': 'По Типам:',
+                'functions': 'функций',
+                'items': 'элементов',
+                'Export Options': 'Опции Экспорта',
+                'Choose how you\'d like to export the current filtered data:': 'Выберите, как вы хотите экспортировать текущие отфильтрованные данные:',
+                'Download CSV': 'Скачать CSV',
+                'Download JSON': 'Скачать JSON',
+                'Print Report': 'Печать Отчета',
+                'Current filter results:': 'Результаты текущего фильтра:',
+                'of': 'из',
+                'more features...': 'больше возможностей...'
+            }
+        };
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`btn-${lang}`).classList.add('active');
+            
+            // Update HTML lang attribute
+            document.getElementById('htmlDoc').lang = lang;
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en]').forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    if (element.getAttribute(`data-${lang}-placeholder`)) {
+                        element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                    }
+                } else {
+                    const text = element.getAttribute(`data-${lang}`);
+                    if (text) {
+                        element.textContent = text;
+                    }
+                }
+            });
+
+            // Update select options
+            document.querySelectorAll('option[data-en]').forEach(option => {
+                const text = option.getAttribute(`data-${lang}`);
+                if (text) {
+                    option.textContent = text;
+                }
+            });
+            
+            // Repopulate table to update content
+            populateTable(filteredData);
+        }
+
+        function translate(key) {
+            return translations[currentLanguage][key] || key;
+        }
+
+        // Data extracted from the scrapFunctions analysis
+        const functionsData = [
+            // Main landing page functions
+            {
+                category: 'hero',
+                type: 'section',
+                name: {
+                    en: 'Hero / Lead Capture',
+                    ru: 'Главный баннер / Захват лидов'
+                },
+                description: {
+                    en: '15% discount landing page with countdown timer',
+                    ru: 'Лендинг со скидкой 15% и таймером обратного отсчета'
+                },
+                features: {
+                    en: [
+                        'Large banner announcing 15% discount on courses for the month with deadline',
+                        'Countdown timer showing days, hours, minutes and seconds remaining',
+                        'Lead capture form with name, email, phone fields',
+                        'Support phone number display at top right'
+                    ],
+                    ru: [
+                        'Большой баннер, объявляющий о 15% скидке на курсы месяца с крайним сроком',
+                        'Таймер обратного отсчета, показывающий дни, часы, минуты и секунды',
+                        'Форма захвата лидов с полями имени, электронной почты и телефона',
+                        'Отображение номера телефона поддержки в правом верхнем углу'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Hero Section - Main promotional area',
+                    ru: 'Главный раздел - Основная промо-зона'
+                }
+            },
+            {
+                category: 'course',
+                type: 'section',
+                name: {
+                    en: 'Course Catalog',
+                    ru: 'Каталог Курсов'
+                },
+                description: {
+                    en: 'Grid of course cards with pricing and categories',
+                    ru: 'Сетка карточек курсов с ценами и категориями'
+                },
+                features: {
+                    en: [
+                        'Grid layout with course cards',
+                        'Category display (programming, testing, gamedev, analytics, design, management)',
+                        'Discounted price with original price strike-through',
+                        'Links to detailed course pages',
+                        'Section heading with view all courses option'
+                    ],
+                    ru: [
+                        'Сетка с карточками курсов',
+                        'Отображение категорий (программирование, тестирование, разработка игр, аналитика, дизайн, управление)',
+                        'Цена со скидкой с зачеркнутой первоначальной ценой',
+                        'Ссылки на подробные страницы курсов',
+                        'Заголовок раздела с опцией просмотра всех курсов'
+                    ]
+                },
+                price: '1,400-4,200',
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Course Catalog Section - Middle area',
+                    ru: 'Раздел каталога курсов - Средняя область'
+                }
+            },
+            {
+                category: 'chat',
+                type: 'feature',
+                name: {
+                    en: 'Chat Bot',
+                    ru: 'Чат-Бот'
+                },
+                description: {
+                    en: 'Floating chat widget with automated responses',
+                    ru: 'Плавающий виджет чата с автоматическими ответами'
+                },
+                features: {
+                    en: [
+                        'Floating chat widget with automated greeting',
+                        'Quick action buttons (contact specialist, view courses, monthly starts)',
+                        'Learning direction selection',
+                        'Opens relevant course pages in new tabs'
+                    ],
+                    ru: [
+                        'Плавающий виджет чата с автоматическим приветствием',
+                        'Кнопки быстрых действий (связаться со специалистом, просмотр курсов, месячные старты)',
+                        'Выбор направления обучения',
+                        'Открывает соответствующие страницы курсов в новых вкладках'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Chat Widget - Bottom right',
+                    ru: 'Виджет чата - Внизу справа'
+                }
+            },
+            {
+                category: 'advantages',
+                type: 'section',
+                name: {
+                    en: 'TeachMeSkills Advantages',
+                    ru: 'Преимущества TeachMeSkills'
+                },
+                description: {
+                    en: 'List of school benefits and differentiators',
+                    ru: 'Список преимуществ и отличий школы'
+                },
+                features: {
+                    en: [
+                        'Live classes in groups up to 20 people (no recorded lectures)',
+                        '15% theory and 85% practice approach',
+                        'Instructors from top international companies (Kaspersky, iTechArt, Exness)',
+                        'Programs aligned with job-market standards for 2024–2025',
+                        'Portfolio development during course',
+                        'Career centre assistance (CV, LinkedIn, interview prep)',
+                        'Icons emphasizing each advantage'
+                    ],
+                    ru: [
+                        'Живые занятия в группах до 20 человек (без записанных лекций)',
+                        'Подход 15% теории и 85% практики',
+                        'Инструкторы из ведущих международных компаний (Kaspersky, iTechArt, Exness)',
+                        'Программы, соответствующие стандартам рынка труда на 2024–2025 годы',
+                        'Развитие портфолио во время курса',
+                        'Помощь центра карьеры (резюме, LinkedIn, подготовка к собеседованиям)',
+                        'Иконки, подчеркивающие каждое преимущество'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Advantages Section',
+                    ru: 'Раздел преимуществ'
+                }
+            },
+            {
+                category: 'help',
+                type: 'section',
+                name: {
+                    en: 'Help & Consultation',
+                    ru: 'Помощь и Консультации'
+                },
+                description: {
+                    en: 'Course selection assistance section',
+                    ru: 'Раздел помощи в выборе курса'
+                },
+                features: {
+                    en: [
+                        'Course selection help encouragement',
+                        'Contact form (name, email, phone)',
+                        'Leave application button',
+                        'Promised callback within working day'
+                    ],
+                    ru: [
+                        'Поощрение помощи в выборе курса',
+                        'Форма обратной связи (имя, электронная почта, телефон)',
+                        'Кнопка оставить заявку',
+                        'Обещание обратного звонка в течение рабочего дня'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Consultation Section',
+                    ru: 'Раздел консультаций'
+                }
+            },
+            {
+                category: 'payment',
+                type: 'section',
+                name: {
+                    en: 'Payment & Career Assistance',
+                    ru: 'Оплата и Карьерная Помощь'
+                },
+                description: {
+                    en: 'Payment options and employment statistics',
+                    ru: 'Варианты оплаты и статистика трудоустройства'
+                },
+                features: {
+                    en: [
+                        'Worldwide payment acceptance',
+                        'Partial payments and legal entity payments available',
+                        'Interview preparation assistance',
+                        'Over 65% graduate employment rate claim'
+                    ],
+                    ru: [
+                        'Прием платежей по всему миру',
+                        'Доступны частичные платежи и платежи от юридических лиц',
+                        'Помощь в подготовке к собеседованиям',
+                        'Заявление о трудоустройстве более 65% выпускников'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Payment Section',
+                    ru: 'Раздел оплаты'
+                }
+            },
+            {
+                category: 'footer',
+                type: 'section',
+                name: {
+                    en: 'Footer',
+                    ru: 'Подвал'
+                },
+                description: {
+                    en: 'Complete site navigation and contact information',
+                    ru: 'Полная навигация по сайту и контактная информация'
+                },
+                features: {
+                    en: [
+                        'Contact information: +375 29 169‑59‑59, info@teachmeskills.by',
+                        'Social media links (Facebook, VK, Instagram, YouTube, Telegram, TikTok)',
+                        'Course category navigation (Programming, Testing, Design, Analytics, GameDev, Management, Security)',
+                        'Links to teachers, blog, promotions, career centre, payment options',
+                        'Payment system logos (Visa, MasterCard, etc.)'
+                    ],
+                    ru: [
+                        'Контактная информация: +375 29 169‑59‑59, info@teachmeskills.by',
+                        'Ссылки на социальные сети (Facebook, VK, Instagram, YouTube, Telegram, TikTok)',
+                        'Навигация по категориям курсов (Программирование, Тестирование, Дизайн, Аналитика, GameDev, Управление, Безопасность)',
+                        'Ссылки на преподавателей, блог, акции, центр карьеры, варианты оплаты',
+                        'Логотипы платежных систем (Visa, MasterCard и т.д.)'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Footer Section',
+                    ru: 'Нижний колонтитул'
+                }
+            },
+
+            // Course-specific data
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Java Developer',
+                    ru: 'Java разработчик'
+                },
+                description: {
+                    en: 'Java Developer course with enterprise focus',
+                    ru: 'Курс разработчика Java с корпоративным фокусом'
+                },
+                features: {
+                    en: ['Programming category', 'Full-stack development', 'Enterprise Java'],
+                    ru: ['Категория программирование', 'Full-stack разработка', 'Корпоративная Java']
+                },
+                price: '3,060',
+                originalPrice: '3,600',
+                discount: '540',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Python Test Automation',
+                    ru: 'Автоматизированное тестирование на Python'
+                },
+                description: {
+                    en: 'Python Test Automation course',
+                    ru: 'Курс автоматизированного тестирования на Python'
+                },
+                features: {
+                    en: ['Testing category', 'Python automation', 'QA skills'],
+                    ru: ['Категория тестирование', 'Автоматизация Python', 'Навыки QA']
+                },
+                price: '2,600',
+                originalPrice: '3,100',
+                discount: '500',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/qa-manual-testirovanie-web-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Unreal Engine 5 Game Developer',
+                    ru: 'Разработчик игр на Unreal Engine 5'
+                },
+                description: {
+                    en: 'Unreal Engine 5 Game Development',
+                    ru: 'Разработка игр на Unreal Engine 5'
+                },
+                features: {
+                    en: ['GameDev category', 'Unreal Engine 5', '3D game development'],
+                    ru: ['Категория GameDev', 'Unreal Engine 5', '3D разработка игр']
+                },
+                price: '3,400',
+                originalPrice: '4,000',
+                discount: '600',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/unreal-engine-developer-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'IT Project Manager',
+                    ru: 'Project Manager в IT'
+                },
+                description: {
+                    en: 'IT Project Management course',
+                    ru: 'Курс IT проект-менеджмента'
+                },
+                features: {
+                    en: ['Management category', 'Agile/Scrum methodologies', 'IT project leadership'],
+                    ru: ['Категория управление', 'Методологии Agile/Scrum', 'Руководство IT проектами']
+                },
+                price: '2,600',
+                originalPrice: '3,100',
+                discount: '500',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/product-manager-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Android Developer',
+                    ru: 'Android разработчик'
+                },
+                description: {
+                    en: 'Android Development course',
+                    ru: 'Курс разработки на Android'
+                },
+                features: {
+                    en: ['Programming category', 'Mobile development', 'Android platform'],
+                    ru: ['Категория программирование', 'Мобильная разработка', 'Платформа Android']
+                },
+                price: '2,650',
+                originalPrice: '3,150',
+                discount: '500',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/android-razrabotka-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'DevOps Engineer',
+                    ru: 'DevOps инженер'
+                },
+                description: {
+                    en: 'DevOps Engineering course',
+                    ru: 'Курс DevOps инженерии'
+                },
+                features: {
+                    en: ['Programming category', 'Infrastructure automation', 'CI/CD pipelines'],
+                    ru: ['Категория программирование', 'Автоматизация инфраструктуры', 'CI/CD конвейеры']
+                },
+                price: '3,480',
+                originalPrice: '4,100',
+                discount: '620',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/kursy-dev-ops-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Java Test Automation',
+                    ru: 'Автоматизированное тестирование на Java'
+                },
+                description: {
+                    en: 'Java Test Automation course',
+                    ru: 'Курс автоматизированного тестирования на Java'
+                },
+                features: {
+                    en: ['Testing category', 'Java automation', 'Enterprise testing'],
+                    ru: ['Категория тестирование', 'Автоматизация Java', 'Корпоративное тестирование']
+                },
+                price: '2,600',
+                originalPrice: '3,100',
+                discount: '500',
+                status: 'Part of Java Course',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Web and Mobile App Testing',
+                    ru: 'Тестирование веб и мобильных приложений'
+                },
+                description: {
+                    en: 'Web and Mobile App Testing',
+                    ru: 'Тестирование веб и мобильных приложений'
+                },
+                features: {
+                    en: ['Testing category', 'Manual testing', 'Web and mobile platforms'],
+                    ru: ['Категория тестирование', 'Ручное тестирование', 'Веб и мобильные платформы']
+                },
+                price: '2,100',
+                originalPrice: '2,600',
+                discount: '500',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/qa-manual-testirovanie-web-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'UX/UI Designer',
+                    ru: 'UX/UI дизайнер'
+                },
+                description: {
+                    en: 'UX/UI Design course',
+                    ru: 'Курс UX/UI дизайна'
+                },
+                features: {
+                    en: ['Design category', 'User experience', 'Interface design'],
+                    ru: ['Категория дизайн', 'Пользовательский опыт', 'Дизайн интерфейса']
+                },
+                price: '2,970',
+                originalPrice: '3,500',
+                discount: '530',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/ux_ui_online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'IT Business Analyst',
+                    ru: 'Бизнес‑аналитик в IT'
+                },
+                description: {
+                    en: 'IT Business Analyst course',
+                    ru: 'Курс IT бизнес-аналитика'
+                },
+                features: {
+                    en: ['Analytics category', 'Business analysis', 'Requirements management'],
+                    ru: ['Категория аналитика', 'Бизнес-анализ', 'Управление требованиями']
+                },
+                price: '2,700',
+                originalPrice: '3,200',
+                discount: '500',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/business-analyst-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Python Developer',
+                    ru: 'Python разработчик'
+                },
+                description: {
+                    en: 'Python Developer course',
+                    ru: 'Курс разработчика Python'
+                },
+                features: {
+                    en: ['Programming category', 'Backend development', 'Python frameworks'],
+                    ru: ['Категория программирование', 'Backend разработка', 'Python фреймворки']
+                },
+                price: '3,400',
+                originalPrice: '4,000',
+                discount: '600',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-python-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Systems Analyst',
+                    ru: 'Системный аналитик'
+                },
+                description: {
+                    en: 'Systems Analyst course',
+                    ru: 'Курс системного аналитика'
+                },
+                features: {
+                    en: ['Analytics category', 'System design', 'Technical analysis'],
+                    ru: ['Категория аналитика', 'Системный дизайн', 'Технический анализ']
+                },
+                price: '1,400',
+                originalPrice: '1,700',
+                discount: '300',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/systems-analyst-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'course',
+                type: 'course',
+                name: {
+                    en: 'Frontend Developer',
+                    ru: 'Front End разработчик'
+                },
+                description: {
+                    en: 'Frontend Developer course',
+                    ru: 'Курс Frontend разработчика'
+                },
+                features: {
+                    en: ['Programming category', 'Frontend development', 'Modern frameworks'],
+                    ru: ['Категория программирование', 'Frontend разработка', 'Современные фреймворки']
+                },
+                price: '3,570',
+                originalPrice: '4,200',
+                discount: '630',
+                status: 'Available',
+                url: 'https://teachmeskills.by/kursy/frontend-html-css-javascript-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+
+            // Course template functions
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Course Overview Template',
+                    ru: 'Шаблон Обзора Курса'
+                },
+                description: {
+                    en: 'Standard course page introduction section',
+                    ru: 'Стандартный раздел введения страницы курса'
+                },
+                features: {
+                    en: [
+                        'Course title and learning tagline',
+                        'Program duration and start dates',
+                        'Schedule information (days and times)',
+                        'Sign up call-to-action button'
+                    ],
+                    ru: [
+                        'Название курса и слоган обучения',
+                        'Продолжительность программы и даты начала',
+                        'Информация о расписании (дни и время)',
+                        'Кнопка призыва к действию для регистрации'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Course Header Section',
+                    ru: 'Заголовочная секция курса'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Modules and Learning Approach',
+                    ru: 'Модули и Подход к Обучению'
+                },
+                description: {
+                    en: 'Course methodology and additional modules',
+                    ru: 'Методология курса и дополнительные модули'
+                },
+                features: {
+                    en: [
+                        'AI tools module descriptions',
+                        'Live learning emphasis (no recorded lectures)',
+                        'Practice and mentorship approach explanation'
+                    ],
+                    ru: [
+                        'Описания модулей инструментов ИИ',
+                        'Акцент на живое обучение (без записанных лекций)',
+                        'Объяснение подхода практики и наставничества'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Learning Modules Section',
+                    ru: 'Раздел модулей обучения'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Career Outcomes',
+                    ru: 'Карьерные Результаты'
+                },
+                description: {
+                    en: 'Professional roles and career opportunities',
+                    ru: 'Профессиональные роли и карьерные возможности'
+                },
+                features: {
+                    en: [
+                        'Future professional roles description',
+                        'Technology value explanation',
+                        'Career track opportunities outline',
+                        'Course projects implementation details'
+                    ],
+                    ru: [
+                        'Описание будущих профессиональных ролей',
+                        'Объяснение ценности технологии',
+                        'Схема возможностей карьерного трека',
+                        'Детали реализации проектов курса'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Career Section',
+                    ru: 'Раздел карьеры'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Course Projects',
+                    ru: 'Проекты Курса'
+                },
+                description: {
+                    en: 'Hands-on project implementations during course',
+                    ru: 'Практическая реализация проектов во время курса'
+                },
+                features: {
+                    en: [
+                        'ToDo-list application project',
+                        'Amazon-like web application',
+                        'Social network (Instagram/VKontakte style)',
+                        'Diploma project (product catalogue/food delivery service)'
+                    ],
+                    ru: [
+                        'Проект приложения ToDo-список',
+                        'Веб-приложение в стиле Amazon',
+                        'Социальная сеть (в стиле Instagram/VKontakte)',
+                        'Дипломный проект (каталог товаров/служба доставки еды)'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Projects Section',
+                    ru: 'Раздел проектов'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Career Support Services',
+                    ru: 'Услуги Карьерной Поддержки'
+                },
+                description: {
+                    en: 'Job placement and career assistance',
+                    ru: 'Трудоустройство и карьерная помощь'
+                },
+                features: {
+                    en: [
+                        'First IT job placement assistance',
+                        'Portfolio preparation help',
+                        'CV writing assistance',
+                        'LinkedIn profile optimization',
+                        'Interview preparation support'
+                    ],
+                    ru: [
+                        'Помощь в трудоустройстве на первую IT работу',
+                        'Помощь в подготовке портфолио',
+                        'Помощь в написании резюме',
+                        'Оптимизация профиля LinkedIn',
+                        'Поддержка подготовки к собеседованию'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Career Section',
+                    ru: 'Раздел карьеры'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Partner Companies',
+                    ru: 'Компании-Партнеры'
+                },
+                description: {
+                    en: 'IT industry partnerships display',
+                    ru: 'Отображение партнерств в IT индустрии'
+                },
+                features: {
+                    en: [
+                        'Partner company logos display',
+                        'iTechArt, Andersen, ARATEG partnerships',
+                        'Netcracker, PandaDoc, Sam Solutions',
+                        'LeverX, Softeco, Oxagile, Elinext connections'
+                    ],
+                    ru: [
+                        'Отображение логотипов компаний-партнеров',
+                        'Партнерства с iTechArt, Andersen, ARATEG',
+                        'Netcracker, PandaDoc, Sam Solutions',
+                        'Связи с LeverX, Softeco, Oxagile, Elinext'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Career Section',
+                    ru: 'Раздел карьеры'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Course Instructors',
+                    ru: 'Преподаватели Курса'
+                },
+                description: {
+                    en: 'Teaching staff presentation',
+                    ru: 'Презентация преподавательского состава'
+                },
+                features: {
+                    en: [
+                        'Instructor portraits and names',
+                        'Professional backgrounds display',
+                        'Industry experience highlights'
+                    ],
+                    ru: [
+                        'Портреты и имена инструкторов',
+                        'Отображение профессионального опыта',
+                        'Основные моменты отраслевого опыта'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Instructors Section',
+                    ru: 'Раздел преподавателей'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Video Content',
+                    ru: 'Видео Контент'
+                },
+                description: {
+                    en: 'Embedded educational and testimonial videos',
+                    ru: 'Встроенные образовательные видео и отзывы'
+                },
+                features: {
+                    en: [
+                        'Embedded YouTube developer interviews',
+                        'Technology comparison videos',
+                        'Graduate testimonial videos',
+                        'Success story presentations'
+                    ],
+                    ru: [
+                        'Встроенные интервью с разработчиками YouTube',
+                        'Видео сравнения технологий',
+                        'Видео отзывы выпускников',
+                        'Презентации историй успеха'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Reviews Section',
+                    ru: 'Раздел отзывов'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Program Curriculum',
+                    ru: 'Программа Курса'
+                },
+                description: {
+                    en: 'Detailed course syllabus and modules',
+                    ru: 'Подробная программа курса и модули'
+                },
+                features: {
+                    en: [
+                        'Module and topic detailed outlines',
+                        'Java introduction (IDE, compiling, data types)',
+                        'Control structures (branching, loops)',
+                        'Version control with Git (GitHub, branching, commands)',
+                        'Expandable content with Show More button'
+                    ],
+                    ru: [
+                        'Подробные схемы модулей и тем',
+                        'Введение в Java (IDE, компиляция, типы данных)',
+                        'Структуры управления (ветвление, циклы)',
+                        'Контроль версий с Git (GitHub, ветвление, команды)',
+                        'Расширяемый контент с кнопкой Показать больше'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Learning Modules Section',
+                    ru: 'Раздел модулей обучения'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Pricing and Discounts',
+                    ru: 'Цены и Скидки'
+                },
+                description: {
+                    en: 'Course pricing and payment options',
+                    ru: 'Цены на курсы и варианты оплаты'
+                },
+                features: {
+                    en: [
+                        'Monthly payment and total price display',
+                        'Bring a friend discount (100 BYN each)',
+                        'Installment plans up to 18 months',
+                        'Application form with name, phone, promo code'
+                    ],
+                    ru: [
+                        'Отображение ежемесячного платежа и общей цены',
+                        'Скидка приведи друга (100 BYN каждому)',
+                        'Планы рассрочки до 18 месяцев',
+                        'Форма заявки с именем, телефоном, промо-кодом'
+                    ]
+                },
+                price: 'Variable',
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Payment Section',
+                    ru: 'Раздел оплаты'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'FAQ Section',
+                    ru: 'Раздел FAQ'
+                },
+                description: {
+                    en: 'Frequently asked questions accordion',
+                    ru: 'Аккордеон часто задаваемых вопросов'
+                },
+                features: {
+                    en: [
+                        'Age restriction information',
+                        'Direction choosing guidance',
+                        'Technology explanation and usage',
+                        'Course structure details',
+                        'Skills gained after completion',
+                        'Duration and employment assistance',
+                        'Certificate issuance information'
+                    ],
+                    ru: [
+                        'Информация о возрастных ограничениях',
+                        'Руководство по выбору направления',
+                        'Объяснение технологии и использования',
+                        'Детали структуры курса',
+                        'Навыки, полученные после завершения',
+                        'Продолжительность и помощь в трудоустройстве',
+                        'Информация о выдаче сертификата'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'FAQ Section',
+                    ru: 'Раздел FAQ'
+                }
+            },
+            {
+                category: 'template',
+                type: 'section',
+                name: {
+                    en: 'Graduate Testimonials',
+                    ru: 'Отзывы Выпускников'
+                },
+                description: {
+                    en: 'Student reviews and success stories',
+                    ru: 'Отзывы студентов и истории успеха'
+                },
+                features: {
+                    en: [
+                        'Graduate reviews with star ratings',
+                        'Reviewer names and course completion',
+                        'Read more functionality',
+                        'Aggregated ratings from Yandex and Google'
+                    ],
+                    ru: [
+                        'Отзывы выпускников со звездными рейтингами',
+                        'Имена рецензентов и завершение курса',
+                        'Функциональность читать далее',
+                        'Агрегированные рейтинги от Яндекс и Google'
+                    ]
+                },
+                price: null,
+                status: 'Template',
+                url: 'https://teachmeskills.by/kursy-programmirovaniya/obuchenie-java-online',
+                page: {
+                    en: 'Individual Course Pages',
+                    ru: 'Индивидуальные страницы курсов'
+                },
+                location: {
+                    en: 'Reviews Section',
+                    ru: 'Раздел отзывов'
+                }
+            },
+
+            // Catalog page functions
+            {
+                category: 'catalog',
+                type: 'section',
+                name: {
+                    en: 'Catalog Introduction',
+                    ru: 'Введение в Каталог'
+                },
+                description: {
+                    en: 'Course catalog page header',
+                    ru: 'Заголовок страницы каталога курсов'
+                },
+                features: {
+                    en: [
+                        'Online courses catalog heading',
+                        '12,000 IT specialists graduated in 8 years statistic'
+                    ],
+                    ru: [
+                        'Заголовок каталога онлайн курсов',
+                        'Статистика: 12,000 IT специалистов выпущено за 8 лет'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Hero Section',
+                    ru: 'Главный раздел'
+                }
+            },
+            {
+                category: 'catalog',
+                type: 'section',
+                name: {
+                    en: 'Category Navigation',
+                    ru: 'Навигация по Категориям'
+                },
+                description: {
+                    en: 'Main course category tiles',
+                    ru: 'Основные плитки категорий курсов'
+                },
+                features: {
+                    en: [
+                        'IT courses Online category tile',
+                        'Monthly starts category tile',
+                        'Both linking to monthly landing page'
+                    ],
+                    ru: [
+                        'Плитка категории IT курсы Онлайн',
+                        'Плитка категории месячные старты',
+                        'Обе ссылаются на месячную целевую страницу'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Course Catalog Section',
+                    ru: 'Раздел каталога курсов'
+                }
+            },
+            {
+                category: 'catalog',
+                type: 'section',
+                name: {
+                    en: 'About Studying',
+                    ru: 'Об Обучении'
+                },
+                description: {
+                    en: 'Course completion outcomes explanation',
+                    ru: 'Объяснение результатов завершения курса'
+                },
+                features: {
+                    en: [
+                        'Career possibilities after course completion',
+                        'Market needs alignment emphasis',
+                        'Belarus online education focus'
+                    ],
+                    ru: [
+                        'Карьерные возможности после завершения курса',
+                        'Акцент на соответствии потребностям рынка',
+                        'Фокус на онлайн образовании в Беларуси'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Course Catalog Section',
+                    ru: 'Раздел каталога курсов'
+                }
+            },
+            {
+                category: 'catalog',
+                type: 'section',
+                name: {
+                    en: 'Reviews Carousel',
+                    ru: 'Карусель Отзывов'
+                },
+                description: {
+                    en: 'Graduate testimonials display',
+                    ru: 'Отображение отзывов выпускников'
+                },
+                features: {
+                    en: [
+                        'Carousel of graduate reviews',
+                        'Star ratings display',
+                        'Tags (teacher, course, training, material, program)'
+                    ],
+                    ru: [
+                        'Карусель отзывов выпускников',
+                        'Отображение звездных рейтингов',
+                        'Теги (преподаватель, курс, обучение, материал, программа)'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                url: 'https://teachmeskills.by/kursy',
+                page: {
+                    en: 'Main Course Catalog',
+                    ru: 'Главный каталог курсов'
+                },
+                location: {
+                    en: 'Reviews Section',
+                    ru: 'Раздел отзывов'
+                }
+            },
+
+            // Error pages and missing functions
+            {
+                category: 'error',
+                type: 'page',
+                name: {
+                    en: 'Teachers Page (404)',
+                    ru: 'Страница Преподавателей (404)'
+                },
+                description: {
+                    en: 'Intended teachers page returning 404 error',
+                    ru: 'Предполагаемая страница преподавателей возвращает ошибку 404'
+                },
+                features: {
+                    en: [
+                        '404 error message',
+                        'Page may have been removed notification',
+                        'Navigation suggestions to main page, blog, courses'
+                    ],
+                    ru: [
+                        'Сообщение об ошибке 404',
+                        'Уведомление о возможном удалении страницы',
+                        'Предложения навигации на главную страницу, блог, курсы'
+                    ]
+                },
+                price: null,
+                status: '404 Error',
+                url: 'https://teachmeskills.by/teachers',
+                page: {
+                    en: 'Teachers Page',
+                    ru: 'Страница преподавателей'
+                },
+                location: {
+                    en: 'Error Page',
+                    ru: 'Страница ошибки'
+                }
+            },
+            {
+                category: 'error',
+                type: 'page',
+                name: {
+                    en: 'About School Page (404)',
+                    ru: 'Страница О Школе (404)'
+                },
+                description: {
+                    en: 'Intended about school page returning 404 error',
+                    ru: 'Предполагаемая страница о школе возвращает ошибку 404'
+                },
+                features: {
+                    en: [
+                        '404 error message',
+                        'Similar error handling as teachers page',
+                        'Alternative navigation suggestions'
+                    ],
+                    ru: [
+                        'Сообщение об ошибке 404',
+                        'Аналогичная обработка ошибок как на странице преподавателей',
+                        'Альтернативные предложения навигации'
+                    ]
+                },
+                price: null,
+                status: '404 Error',
+                url: 'https://teachmeskills.by/career-center',
+                page: {
+                    en: 'About School Page',
+                    ru: 'Страница О школе'
+                },
+                location: {
+                    en: 'Error Page',
+                    ru: 'Страница ошибки'
+                }
+            },
+            {
+                category: 'error',
+                type: 'page',
+                name: {
+                    en: 'Blog/Promotions Page (Intermittent)',
+                    ru: 'Страница Блог/Акции (Периодически)'
+                },
+                description: {
+                    en: 'Blog page with inconsistent availability',
+                    ru: 'Страница блога с непоследовательной доступностью'
+                },
+                features: {
+                    en: [
+                        'Blog content when available',
+                        'Useful content subcategory',
+                        'Mentor interviews subcategory',
+                        'Success stories subcategory',
+                        'May redirect to promotions'
+                    ],
+                    ru: [
+                        'Содержимое блога когда доступно',
+                        'Подкategория полезного контента',
+                        'Подкategория интервью менторов',
+                        'Подкategория историй успеха',
+                        'Может перенаправлять на акции'
+                    ]
+                },
+                price: null,
+                status: 'Intermittent',
+                url: 'https://teachmeskills.by/blog',
+                page: {
+                    en: 'Blog Page',
+                    ru: 'Страница блога'
+                },
+                location: {
+                    en: 'Blog Section',
+                    ru: 'Раздел блога'
+                }
+            },
+
+            // Special offers
+            {
+                category: 'course',
+                type: 'offer',
+                name: {
+                    en: '+3 Introductory Mini-Courses',
+                    ru: '+3 Вводных Мини-Курса'
+                },
+                description: {
+                    en: 'Bonus mini-courses with registration',
+                    ru: 'Бонусные мини-курсы с регистрацией'
+                },
+                features: {
+                    en: [
+                        'IT basics introductory course',
+                        'Design introduction course',
+                        'Programming fundamentals course',
+                        'Free with promotional registration'
+                    ],
+                    ru: [
+                        'Вводный курс основ IT',
+                        'Вводный курс дизайна',
+                        'Курс основ программирования',
+                        'Бесплатно при промо регистрации'
+                    ]
+                },
+                price: 'Free',
+                status: 'Active',
+                page: {
+                    en: 'Monthly Promotional Landing Page',
+                    ru: 'Промо-страница месячных скидок'
+                },
+                location: {
+                    en: 'Hero Section',
+                    ru: 'Главный раздел'
+                }
+            },
+            {
+                category: 'payment',
+                type: 'offer',
+                name: {
+                    en: 'Global Payment and Installments',
+                    ru: 'Глобальная Оплата и Рассрочка'
+                },
+                description: {
+                    en: 'Worldwide payment acceptance and flexible terms',
+                    ru: 'Принятие платежей по всему миру и гибкие условия'
+                },
+                features: {
+                    en: [
+                        'Payments accepted from any country',
+                        'Installments up to 18 months',
+                        'Corporate client programs',
+                        'Multiple payment method support'
+                    ],
+                    ru: [
+                        'Платежи принимаются из любой страны',
+                        'Рассрочка до 18 месяцев',
+                        'Программы для корпоративных клиентов',
+                        'Поддержка множественных методов оплаты'
+                    ]
+                },
+                price: null,
+                status: 'Active',
+                page: {
+                    en: 'Monthly Promotional Landing Page',
+                    ru: 'Промо-страница месячных скидок'
+                },
+                location: {
+                    en: 'Payment Section',
+                    ru: 'Раздел оплаты'
+                }
+            }
+        ];
+
+        // Initialize the table and functionality
+        let currentSort = { column: -1, direction: 'asc' };
+        let filteredData = [...functionsData];
+
+        function initializePage() {
+            updateStatistics();
+            populateTable(functionsData);
+            setupEventListeners();
+        }
+
+        function updateStatistics() {
+            document.getElementById('total-functions').textContent = functionsData.length;
+            
+            const courses = functionsData.filter(item => item.type === 'course');
+            document.getElementById('total-courses').textContent = courses.length;
+            
+            const prices = courses.map(c => c.price).filter(p => p && p !== 'Free' && p !== 'Variable').map(p => parseInt(p.replace(',', '')));
+            if (prices.length > 0) {
+                const minPrice = Math.min(...prices);
+                const maxPrice = Math.max(...prices);
+                document.getElementById('price-range').textContent = `${minPrice.toLocaleString()}-${maxPrice.toLocaleString()}`;
+            }
+        }
+
+        function populateTable(data) {
+            const tbody = document.getElementById('functionsTableBody');
+            const noResults = document.getElementById('noResults');
+            
+            if (data.length === 0) {
+                tbody.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            tbody.innerHTML = data.map(item => `
+                <tr onclick="showDetails('${escapeHtml(JSON.stringify(item.name))}')" style="cursor: pointer;">
+                    <td>${typeof item.page === 'object' ? item.page[currentLanguage] : (item.page || 'N/A')}</td>
+                    <td><span class="category-tag category-${item.category}">${translate(item.category)}</span></td>
+                    <td>${translate(item.type)}</td>
+                    <td><strong>${typeof item.name === 'object' ? item.name[currentLanguage] : item.name}</strong></td>
+                    <td>${typeof item.description === 'object' ? item.description[currentLanguage] : item.description}</td>
+                    <td>
+                        <ul class="feature-list">
+                            ${(typeof item.features === 'object' ? item.features[currentLanguage] : item.features).slice(0, 3).map(feature => `<li>${feature}</li>`).join('')}
+                            ${(typeof item.features === 'object' ? item.features[currentLanguage] : item.features).length > 3 ? `<li><em>+${(typeof item.features === 'object' ? item.features[currentLanguage] : item.features).length - 3} ${translate('more features...')}</em></li>` : ''}
+                        </ul>
+                    </td>
+                    <td>${typeof item.location === 'object' ? item.location[currentLanguage] : (item.location || 'N/A')}</td>
+                    <td class="price-info">
+                        ${item.price ? 
+                            (item.originalPrice ? 
+                                `<span class="original-price">${item.originalPrice}</span>${item.price} <span class="discount">(-${item.discount})</span>` 
+                                : item.price === 'Free' ? translate('Free') : item.price) 
+                            : '-'}
+                    </td>
+                    <td>${translate(item.status)}</td>
+                </tr>
+            `).join('');
+        }
+
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', filterTable);
+            document.getElementById('categoryFilter').addEventListener('change', filterTable);
+            document.getElementById('typeFilter').addEventListener('change', filterTable);
+        }
+
+        function filterTable() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            
+            filteredData = functionsData.filter(item => {
+                const name = typeof item.name === 'object' ? item.name[currentLanguage] : item.name;
+                const description = typeof item.description === 'object' ? item.description[currentLanguage] : item.description;
+                const features = typeof item.features === 'object' ? item.features[currentLanguage] : item.features;
+                
+                const matchesSearch = !searchTerm || 
+                    name.toLowerCase().includes(searchTerm) ||
+                    description.toLowerCase().includes(searchTerm) ||
+                    features.some(feature => feature.toLowerCase().includes(searchTerm));
+                    
+                const matchesCategory = !categoryFilter || item.category === categoryFilter;
+                const matchesType = !typeFilter || item.type === typeFilter;
+                
+                return matchesSearch && matchesCategory && matchesType;
+            });
+            
+            populateTable(filteredData);
+        }
+
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            filteredData = [...functionsData];
+            populateTable(filteredData);
+        }
+
+        function sortTable(columnIndex) {
+            const headers = document.querySelectorAll('.table th');
+            
+            // Remove previous sort classes
+            headers.forEach(header => {
+                header.classList.remove('sort-asc', 'sort-desc');
+            });
+            
+            // Determine sort direction
+            if (currentSort.column === columnIndex) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.direction = 'asc';
+            }
+            currentSort.column = columnIndex;
+            
+            // Add sort class to current header
+            headers[columnIndex].classList.add(currentSort.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+            
+            // Sort the data
+            const sortKey = ['category', 'type', 'name', 'description', 'features', 'price', 'status'][columnIndex];
+            
+            filteredData.sort((a, b) => {
+                let aVal = a[sortKey];
+                let bVal = b[sortKey];
+                
+                if (sortKey === 'features') {
+                    aVal = (typeof a.features === 'object' ? a.features[currentLanguage] : a.features).length;
+                    bVal = (typeof b.features === 'object' ? b.features[currentLanguage] : b.features).length;
+                } else if (sortKey === 'price') {
+                    aVal = a.price ? (a.price === 'Free' ? 0 : parseInt(a.price.replace(',', '') || 0)) : 0;
+                    bVal = b.price ? (b.price === 'Free' ? 0 : parseInt(b.price.replace(',', '') || 0)) : 0;
+                } else if (sortKey === 'name') {
+                    aVal = typeof a.name === 'object' ? a.name[currentLanguage].toLowerCase() : String(a.name).toLowerCase();
+                    bVal = typeof b.name === 'object' ? b.name[currentLanguage].toLowerCase() : String(b.name).toLowerCase();
+                } else if (sortKey === 'description') {
+                    aVal = typeof a.description === 'object' ? a.description[currentLanguage].toLowerCase() : String(a.description).toLowerCase();
+                    bVal = typeof b.description === 'object' ? b.description[currentLanguage].toLowerCase() : String(b.description).toLowerCase();
+                } else {
+                    aVal = String(aVal).toLowerCase();
+                    bVal = String(bVal).toLowerCase();
+                }
+                
+                if (currentSort.direction === 'asc') {
+                    return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+                } else {
+                    return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
+                }
+            });
+            
+            populateTable(filteredData);
+        }
+
+        function showDetails(itemNameJson) {
+            const itemName = JSON.parse(itemNameJson);
+            const item = functionsData.find(f => {
+                if (typeof f.name === 'object') {
+                    return JSON.stringify(f.name) === JSON.stringify(itemName);
+                } else {
+                    return f.name === itemName;
+                }
+            });
+            if (!item) return;
+            
+            const name = typeof item.name === 'object' ? item.name[currentLanguage] : item.name;
+            const description = typeof item.description === 'object' ? item.description[currentLanguage] : item.description;
+            const features = typeof item.features === 'object' ? item.features[currentLanguage] : item.features;
+            
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <h2>${name}</h2>
+                <p><strong>${translate('Category:')} </strong> <span class="category-tag category-${item.category}">${translate(item.category)}</span></p>
+                <p><strong>${translate('Type:')} </strong> ${translate(item.type)}</p>
+                <p><strong>${translate('Description:')} </strong> ${description}</p>
+                ${item.price ? `<p><strong>${translate('Price:')} </strong> ${item.originalPrice ? `<span class="original-price">${item.originalPrice}</span>${item.price} <span class="discount">(-${item.discount} BYN)</span>` : item.price === 'Free' ? translate('Free') : item.price} ${item.price !== 'Free' && item.price !== 'Variable' ? 'BYN' : ''}</p>` : ''}
+                <p><strong>${translate('Status:')} </strong> ${translate(item.status)}</p>
+                ${item.url ? `<p><strong>${translate('URL:')} </strong> <a href="${item.url}" target="_blank">${item.url}</a></p>` : ''}
+                <h3>${translate('Features & Details:')}</h3>
+                <ul class="feature-list">
+                    ${features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+            `;
+            
+            document.getElementById('detailModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        function exportToCSV() {
+            const csvContent = [
+                [translate('Category'), translate('Type'), translate('Name/Title'), translate('Description'), translate('Features/Details'), translate('Price (BYN)'), translate('Original Price (BYN)'), translate('Discount (BYN)'), translate('Status'), translate('URL')],
+                ...filteredData.map(item => [
+                    translate(item.category),
+                    translate(item.type),
+                    typeof item.name === 'object' ? item.name[currentLanguage] : item.name,
+                    typeof item.description === 'object' ? item.description[currentLanguage] : item.description,
+                    (typeof item.features === 'object' ? item.features[currentLanguage] : item.features).join('; '),
+                    item.price || '',
+                    item.originalPrice || '',
+                    item.discount || '',
+                    translate(item.status),
+                    item.url || ''
+                ])
+            ].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'teachmeskills-functions-analysis.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function exportToJSON() {
+            const jsonData = filteredData.map(item => ({
+                ...item,
+                name: typeof item.name === 'object' ? item.name[currentLanguage] : item.name,
+                description: typeof item.description === 'object' ? item.description[currentLanguage] : item.description,
+                features: typeof item.features === 'object' ? item.features[currentLanguage] : item.features,
+                category: translate(item.category),
+                type: translate(item.type),
+                status: translate(item.status)
+            }));
+            
+            const jsonContent = JSON.stringify(jsonData, null, 2);
+            const blob = new Blob([jsonContent], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'teachmeskills-functions-analysis.json';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        function showStatistics() {
+            const stats = {
+                totalFunctions: functionsData.length,
+                byCategory: {},
+                byType: {},
+                courseCount: 0,
+                totalSavings: 0,
+                averagePrice: 0
+            };
+            
+            functionsData.forEach(item => {
+                stats.byCategory[item.category] = (stats.byCategory[item.category] || 0) + 1;
+                stats.byType[item.type] = (stats.byType[item.type] || 0) + 1;
+                
+                if (item.type === 'course') {
+                    stats.courseCount++;
+                    if (item.discount) {
+                        stats.totalSavings += parseInt(item.discount);
+                    }
+                }
+            });
+            
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <h2>📈 ${translate('Statistics Overview')}</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">${stats.totalFunctions}</span>
+                        <div class="stat-label">${translate('Total Functions')}</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">${stats.courseCount}</span>
+                        <div class="stat-label">${translate('Available Courses')}</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">${stats.totalSavings.toLocaleString()}</span>
+                        <div class="stat-label">${translate('Total Savings (BYN)')}</div>
+                    </div>
+                </div>
+                
+                <h3>${translate('By Category:')}</h3>
+                <ul>
+                    ${Object.entries(stats.byCategory).map(([cat, count]) => 
+                        `<li><span class="category-tag category-${cat}">${translate(cat)}</span>: ${count} ${translate('functions')}</li>`
+                    ).join('')}
+                </ul>
+                
+                <h3>${translate('By Type:')}</h3>
+                <ul>
+                    ${Object.entries(stats.byType).map(([type, count]) => 
+                        `<li><strong>${translate(type)}</strong>: ${count} ${translate('items')}</li>`
+                    ).join('')}
+                </ul>
+            `;
+            
+            document.getElementById('detailModal').style.display = 'block';
+        }
+
+        function showExportModal() {
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <h2>📊 ${translate('Export Options')}</h2>
+                <p>${translate('Choose how you\'d like to export the current filtered data:')}</p>
+                <div class="export-buttons">
+                    <button class="btn" onclick="exportToCSV(); closeModal();">📄 ${translate('Download CSV')}</button>
+                    <button class="btn" onclick="exportToJSON(); closeModal();">📋 ${translate('Download JSON')}</button>
+                    <button class="btn" onclick="printReport(); closeModal();">🖨️ ${translate('Print Report')}</button>
+                </div>
+                <p style="margin-top: 20px; color: #718096; font-size: 0.9rem;">
+                    ${translate('Current filter results:')} ${filteredData.length} ${translate('of')} ${functionsData.length} ${translate('functions')}
+                </p>
+            `;
+            
+            document.getElementById('detailModal').style.display = 'block';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Initialize page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+</body>
+</html>

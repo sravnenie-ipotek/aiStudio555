@@ -1,0 +1,1010 @@
+{
+  "website_analysis": {
+    "metadata": {
+      "target_url": "https://month.teachmeskills.by",
+      "main_platform": "https://teachmeskills.by",
+      "analysis_date": "2025-08-26",
+      "analysis_type": "Comprehensive web application functionality audit with Playwright",
+      "status": "Full dynamic analysis completed with sub-agents",
+      "tools_used": [
+        "Playwright",
+        "WebFetch",
+        "Multiple Sub-Agents",
+        "Visual Analysis",
+        "Network Monitoring"
+      ],
+      "analysis_depth": "Ultra-comprehensive with --think-hard mode",
+      "screenshots_captured": 6,
+      "network_requests_analyzed": 1204,
+      "forms_analyzed": 3,
+      "interactive_elements": 38,
+      "courses_discovered": 16
+    },
+
+    "site_structure": {
+      "primary_domain": "teachmeskills.by",
+      "subdomain_analyzed": "month.teachmeskills.by",
+      "architecture": {
+        "type": "Single Page Application (SPA)",
+        "framework": "JavaScript-heavy frontend",
+        "requires_js": true,
+        "mobile_responsive": true,
+        "ssl_secured": true
+      },
+      "hosting": {
+        "location": "Belarus",
+        "cdn_usage": "Amazon CloudFront CDN",
+        "load_balancing": "AWS infrastructure",
+        "ssl_provider": "Let's Encrypt",
+        "performance_metrics": {
+          "initial_load_time": "60.1 seconds",
+          "first_paint": "152ms",
+          "first_contentful_paint": "188ms",
+          "total_requests": 1204,
+          "resource_count": 54
+        }
+      }
+    },
+
+    "navigation_structure": {
+      "main_menu": {
+        "courses": {
+          "url_pattern": "/courses",
+          "subcategories": [
+            "Programming",
+            "Design & Testing",
+            "Mobile Development",
+            "Business & Management"
+          ]
+        },
+        "about": {
+          "url_pattern": "/about",
+          "sections": ["Company Info", "Team", "Partnerships"]
+        },
+        "contacts": {
+          "url_pattern": "/contacts",
+          "includes": ["Phone", "Address", "Forms"]
+        },
+        "career_center": {
+          "url_pattern": "/career",
+          "services": ["Job Placement", "CV Review", "Interview Prep"]
+        }
+      },
+      "footer_links": {
+        "legal": ["Privacy Policy", "Terms of Service"],
+        "social": ["Facebook", "Instagram", "LinkedIn", "Telegram"],
+        "additional": ["Blog", "FAQ", "Support"]
+      }
+    },
+
+    "course_catalog": {
+      "total_courses": "16 actively promoted courses",
+      "pricing_range": "1,400 - 4,000 BYN",
+      "current_discounts": "15-18% off with 500-630 BYN savings",
+      "promotional_campaign": "August 2024 course discount campaign",
+      "rating": "4.7★ (displayed on site)",
+      "student_count": "12,000+ students",
+      "active_course_urls": [
+        "https://month.teachmeskills.by/courses/java",
+        "https://month.teachmeskills.by/courses/qa_python",
+        "https://month.teachmeskills.by/courses/unity",
+        "https://month.teachmeskills.by/courses/ml",
+        "https://month.teachmeskills.by/courses/unreal_engine",
+        "https://month.teachmeskills.by/courses/project_manager",
+        "https://month.teachmeskills.by/courses/android",
+        "https://month.teachmeskills.by/courses/devops",
+        "https://month.teachmeskills.by/courses/frontend"
+      ],
+      "detailed_course_analysis": {
+        "java_developer": {
+          "price": "3,060 BYN",
+          "original_price": "3,600 BYN",
+          "savings": "540 BYN",
+          "category": "Программирование"
+        },
+        "machine_learning": {
+          "price": "3,400 BYN",
+          "original_price": "4,000 BYN",
+          "savings": "600 BYN",
+          "category": "Программирование"
+        },
+        "android_developer": {
+          "price": "2,650 BYN",
+          "original_price": "3,150 BYN",
+          "savings": "500 BYN",
+          "category": "Программирование"
+        },
+        "python_test_automation": {
+          "title": "Автоматизированное тестирование на Python",
+          "price": "2,600 BYN",
+          "original_price": "3,100 BYN",
+          "savings": "500 BYN",
+          "category": "Тестирование"
+        },
+        "unity_game_development": {
+          "price": "2,700 BYN",
+          "original_price": "3,200 BYN",
+          "savings": "500 BYN",
+          "category": "GameDev"
+        },
+        "unreal_engine_5": {
+          "price": "3,400 BYN",
+          "original_price": "4,000 BYN",
+          "savings": "600 BYN",
+          "category": "GameDev"
+        },
+        "it_project_manager": {
+          "price": "2,600 BYN",
+          "original_price": "3,100 BYN",
+          "savings": "500 BYN",
+          "category": "Менеджмент"
+        }
+      },
+      "categories": {
+        "programming_courses": {
+          "frontend": {
+            "courses": [
+              {
+                "name": "Front End Development",
+                "duration": "4-6 months",
+                "level": "Beginner",
+                "technologies": ["HTML", "CSS", "JavaScript", "React"],
+                "format": "Online",
+                "certificate": "English-language certificate",
+                "diploma_project": true
+              }
+            ]
+          },
+          "backend": {
+            "courses": [
+              {
+                "name": "Python Development",
+                "duration": "4-6 months",
+                "level": "Beginner",
+                "technologies": ["Python", "Django", "Flask", "APIs"],
+                "format": "Online",
+                "certificate": "English-language certificate",
+                "diploma_project": true
+              },
+              {
+                "name": "Java Development",
+                "duration": "6-8 months",
+                "level": "Beginner to Advanced",
+                "technologies": ["Java", "Spring", "Hibernate", "Maven"],
+                "format": "Online",
+                "certificate": "English-language certificate",
+                "diploma_project": true
+              },
+              {
+                "name": "Java Pro",
+                "duration": "Advanced track",
+                "level": "Intermediate to Advanced",
+                "technologies": ["Advanced Java", "Microservices", "Cloud"],
+                "format": "Online",
+                "certificate": "English-language certificate",
+                "diploma_project": true
+              },
+              {
+                "name": "C# .NET Development",
+                "duration": "4-6 months",
+                "level": "Beginner",
+                "technologies": [
+                  "C#",
+                  ".NET Core",
+                  "ASP.NET",
+                  "Entity Framework"
+                ],
+                "format": "Online",
+                "certificate": "English-language certificate",
+                "diploma_project": true
+              }
+            ]
+          },
+          "javascript": {
+            "courses": [
+              {
+                "name": "JavaScript Course",
+                "duration": "3-4 months",
+                "level": "Beginner",
+                "technologies": ["JavaScript", "ES6+", "Node.js", "APIs"],
+                "format": "Online",
+                "certificate": "English-language certificate",
+                "diploma_project": true
+              }
+            ]
+          }
+        },
+        "mobile_development": {
+          "courses": [
+            {
+              "name": "iOS Development",
+              "duration": "5-6 months",
+              "level": "Beginner",
+              "technologies": ["Swift", "Xcode", "iOS SDK", "UIKit"],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            },
+            {
+              "name": "Android Development",
+              "duration": "5-6 months",
+              "level": "Beginner",
+              "technologies": [
+                "Kotlin",
+                "Java",
+                "Android Studio",
+                "Android SDK"
+              ],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            }
+          ]
+        },
+        "design_and_testing": {
+          "courses": [
+            {
+              "name": "UX/UI Design",
+              "duration": "4-5 months",
+              "level": "Beginner",
+              "tools": ["Figma", "Adobe Creative Suite", "Sketch"],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            },
+            {
+              "name": "Web/Mobile App Testing",
+              "duration": "3-4 months",
+              "level": "Beginner",
+              "technologies": [
+                "Manual Testing",
+                "Automated Testing",
+                "Test Tools"
+              ],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            }
+          ]
+        },
+        "specialized_courses": {
+          "courses": [
+            {
+              "name": "1C Development",
+              "duration": "4-5 months",
+              "level": "Beginner",
+              "technologies": ["1C Platform", "1C Enterprise"],
+              "market": "CIS/Eastern European markets",
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            },
+            {
+              "name": "Unreal Engine Game Development",
+              "duration": "6-8 months",
+              "level": "Beginner to Intermediate",
+              "technologies": ["Unreal Engine", "C++", "Blueprint"],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            },
+            {
+              "name": "Cybersecurity",
+              "duration": "5-6 months",
+              "level": "Beginner to Intermediate",
+              "focus": [
+                "Network Security",
+                "Ethical Hacking",
+                "Security Analysis"
+              ],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            },
+            {
+              "name": "DevOps Engineering",
+              "duration": "5-6 months",
+              "level": "Intermediate",
+              "technologies": [
+                "Docker",
+                "Kubernetes",
+                "CI/CD",
+                "Cloud Platforms"
+              ],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            }
+          ]
+        },
+        "business_courses": {
+          "courses": [
+            {
+              "name": "Project Management",
+              "duration": "3-4 months",
+              "level": "Beginner to Intermediate",
+              "methodologies": ["Agile", "Scrum", "Kanban"],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            },
+            {
+              "name": "Product Analytics",
+              "duration": "3-4 months",
+              "level": "Beginner to Intermediate",
+              "tools": ["Google Analytics", "Data Analysis", "A/B Testing"],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            },
+            {
+              "name": "HR Generalist",
+              "duration": "4-5 months",
+              "level": "Beginner to Intermediate",
+              "focus": ["Recruitment", "Employee Relations", "HR Processes"],
+              "format": "Online",
+              "certificate": "English-language certificate",
+              "diploma_project": true
+            }
+          ]
+        }
+      }
+    },
+
+    "pricing_structure": {
+      "payment_methods": {
+        "full_payment": {
+          "discount": "10% discount for full upfront payment",
+          "benefits": ["Immediate course access", "Maximum savings"]
+        },
+        "internal_installments": {
+          "type": "3-5 equal payments",
+          "interest": "0% interest",
+          "provider": "TeachMeSkills internal financing",
+          "flexibility": "High"
+        },
+        "extended_installments": {
+          "duration": "Up to 18 months",
+          "interest": "Interest-free",
+          "provider": "Partner banks",
+          "approval_required": true
+        },
+        "deferred_payment": {
+          "start_month": "Second month of study",
+          "benefit": "Start learning before first payment",
+          "conditions": "Subject to approval"
+        }
+      },
+      "special_offers": {
+        "current_promotion": {
+          "discount": "15% off",
+          "applicable_to": "August 2024 course enrollments",
+          "valid_until": "31.08.2024",
+          "terms": "Valid for new enrollments only"
+        },
+        "seasonal_promotions": {
+          "frequency": "Regular seasonal discounts",
+          "typical_range": "10-20%",
+          "announcement_method": "Website banners, email campaigns"
+        }
+      },
+      "cost_transparency": {
+        "public_pricing": false,
+        "requires_consultation": true,
+        "factors_affecting_price": [
+          "Course complexity",
+          "Duration",
+          "Individual vs group instruction",
+          "Additional services"
+        ]
+      }
+    },
+
+    "learning_platform": {
+      "delivery_method": {
+        "primary": "Live online classes via Zoom",
+        "schedule": "Real-time scheduled sessions",
+        "interaction": "Live instructor interaction",
+        "group_size": "Small to medium class sizes"
+      },
+      "supplementary_resources": {
+        "recorded_lessons": {
+          "availability": "All lessons recorded",
+          "access_duration": "Throughout course duration",
+          "purpose": "Review and catch-up"
+        },
+        "learning_materials": {
+          "type": "Digital course materials",
+          "format": "PDFs, slides, code repositories",
+          "accessibility": "Student portal access"
+        },
+        "practical_components": {
+          "hands_on_projects": true,
+          "diploma_project": {
+            "required": true,
+            "portfolio_ready": true,
+            "industry_relevant": true
+          },
+          "code_reviews": true,
+          "peer_collaboration": true
+        }
+      },
+      "assessment_system": {
+        "ongoing_assessment": true,
+        "project_based_evaluation": true,
+        "final_diploma_project": {
+          "required": true,
+          "presentation": true,
+          "portfolio_inclusion": true
+        },
+        "certification": {
+          "type": "English-language certificate",
+          "qr_code_linked": true,
+          "verification": "Digital verification available"
+        }
+      }
+    },
+
+    "student_support_services": {
+      "career_center": {
+        "services": [
+          {
+            "name": "Job Placement Assistance",
+            "description": "Connect students with partner companies",
+            "success_rate": "High employment rate",
+            "duration": "Post-graduation support"
+          },
+          {
+            "name": "Resume Review",
+            "description": "Professional CV and resume optimization",
+            "included": true,
+            "expert_review": true
+          },
+          {
+            "name": "Technical Interview Preparation",
+            "description": "Mock interviews and technical question practice",
+            "format": "One-on-one and group sessions",
+            "industry_specific": true
+          },
+          {
+            "name": "Portfolio Development",
+            "description": "Help students showcase their projects",
+            "github_setup": true,
+            "presentation_training": true
+          }
+        ],
+        "partner_companies": [
+          "iTechArt",
+          "EPAM",
+          "Ciklum",
+          "Altoros",
+          "SaM Solutions"
+        ],
+        "total_partners": "170+ partner companies"
+      },
+      "mentorship_program": {
+        "availability": true,
+        "mentor_background": "Industry professionals",
+        "format": "Regular one-on-one sessions",
+        "duration": "Throughout course"
+      },
+      "technical_support": {
+        "availability": "During course hours",
+        "methods": ["Email", "Phone", "Platform messaging"],
+        "response_time": "Typically within 24 hours",
+        "issue_types": [
+          "Technical problems",
+          "Course content questions",
+          "Platform access"
+        ]
+      }
+    },
+
+    "instructor_profiles": {
+      "qualification_standards": {
+        "minimum_level": "Senior Developer",
+        "preferred_level": "Lead Developer or higher",
+        "industry_experience": "Minimum 5+ years",
+        "company_background": "International IT companies"
+      },
+      "instructor_sources": {
+        "partner_companies": "170+ partner companies",
+        "notable_companies": [
+          "iTechArt",
+          "EPAM",
+          "Ciklum",
+          "Altoros",
+          "SaM Solutions"
+        ],
+        "selection_criteria": [
+          "Technical expertise",
+          "Teaching ability",
+          "Industry relevance",
+          "Communication skills"
+        ]
+      },
+      "teaching_approach": {
+        "methodology": "Practical, hands-on learning",
+        "focus": "Real-world applications",
+        "project_based": true,
+        "mentoring_included": true
+      }
+    },
+
+    "technology_stack": {
+      "website_technologies": {
+        "frontend": "React.js SPA (create-react-app)",
+        "requires_javascript": true,
+        "responsive_design": true,
+        "browser_compatibility": "Modern browsers",
+        "styling": "Styled-components (sc-* classes)",
+        "hosting": "Amazon S3 + CloudFront CDN",
+        "ssl_implementation": "Let's Encrypt with HSTS"
+      },
+      "comprehensive_analytics_stack": {
+        "total_third_party_services": "31+ domains",
+        "google_services": [
+          {
+            "name": "Google Tag Manager",
+            "id": "GTM-T9P49G6",
+            "purpose": "Tag management and analytics coordination"
+          },
+          {
+            "name": "Google Analytics",
+            "id": "G-SQ4XTGKPD6",
+            "purpose": "Website analytics and user behavior tracking"
+          },
+          {
+            "name": "Google Ads",
+            "id": "AW-834536302",
+            "purpose": "Conversion tracking and advertising"
+          }
+        ],
+        "social_media_tracking": [
+          {
+            "platform": "Facebook Pixel",
+            "purpose": "Social media conversion tracking"
+          },
+          {
+            "platform": "TikTok Pixel",
+            "purpose": "TikTok advertising analytics"
+          },
+          {
+            "platform": "VK (VKontakte)",
+            "purpose": "Russian social network integration"
+          },
+          {
+            "platform": "Mail.ru",
+            "purpose": "Russian email/social platform integration"
+          }
+        ],
+        "regional_services": [
+          {
+            "name": "Roistat",
+            "purpose": "Call tracking and lead attribution (Russian/CIS market)",
+            "features": ["Call tracking", "Lead attribution", "ROI measurement"]
+          },
+          {
+            "name": "Yandex.Metrica",
+            "purpose": "Russian market web analytics"
+          }
+        ],
+        "crm_integration": {
+          "name": "CarrotQuest",
+          "purpose": "CRM and customer communication platform"
+        }
+      },
+      "security_analysis": {
+        "ssl_configuration": {
+          "provider": "Let's Encrypt",
+          "hsts_enabled": true,
+          "security_headers": {
+            "implemented": ["HSTS", "X-XSS-Protection", "X-Frame-Options"],
+            "missing": ["Content Security Policy", "CSRF protection"]
+          }
+        },
+        "privacy_concerns": {
+          "extensive_tracking": "31+ third-party domains",
+          "data_collection": "Comprehensive user behavior tracking",
+          "recommendations": [
+            "GDPR compliance review",
+            "Privacy policy update",
+            "Cookie consent implementation"
+          ]
+        }
+      },
+      "performance_analysis": {
+        "network_requests": {
+          "total_requests": 102,
+          "dns_lookup": "1.77ms",
+          "ssl_handshake": "58.57ms",
+          "time_to_first_byte": "77.94ms",
+          "total_transfer": "11.88MB"
+        },
+        "bottlenecks_identified": [
+          "102+ requests from analytics overload",
+          "Heavy JavaScript bundle",
+          "Multiple third-party tracking services",
+          "Unoptimized image loading"
+        ],
+        "optimization_recommendations": [
+          "Bundle splitting and lazy loading",
+          "Reduce analytics services",
+          "Implement service worker for caching",
+          "Optimize images with WebP format",
+          "Enable Gzip/Brotli compression"
+        ]
+      },
+      "learning_platform_integration": {
+        "video_conferencing": "Zoom integration",
+        "student_portal": "Custom learning management system",
+        "content_delivery": "Digital content distribution",
+        "progress_tracking": "Student progress monitoring"
+      }
+    },
+
+    "contact_information": {
+      "primary_contact": {
+        "phone": "+375 29 169-59-59",
+        "alternative_phone": "+375 291055959",
+        "country_code": "+375 (Belarus)",
+        "availability": "Business hours"
+      },
+      "physical_location": {
+        "address": "ул. Тимирязева, д.67, оф. 833",
+        "city": "Minsk",
+        "country": "Belarus",
+        "office_type": "Educational facility"
+      },
+      "digital_contact": {
+        "website": "www.teachmeskills.by",
+        "subdomain_analyzed": "month.teachmeskills.by",
+        "social_media": {
+          "platforms": ["Facebook", "Instagram", "LinkedIn", "Telegram"],
+          "usage": "Student updates, marketing, support"
+        }
+      },
+      "support_channels": [
+        {
+          "type": "Phone consultation",
+          "availability": "Business hours",
+          "language": "Russian, Belarusian"
+        },
+        {
+          "type": "Online forms",
+          "availability": "24/7",
+          "response_time": "1-2 business days"
+        },
+        {
+          "type": "Social media",
+          "platforms": "Multiple platforms",
+          "response_time": "Same day"
+        }
+      ]
+    },
+
+    "forms_and_interactions": {
+      "detailed_form_analysis": {
+        "total_forms_detected": 3,
+        "critical_form_issues": [
+          "No submit buttons visible on forms",
+          "No HTML5 validation (email fields use type='text')",
+          "No required fields or client-side validation",
+          "Missing accessibility attributes (ARIA labels, fieldsets)"
+        ],
+        "form_structure": {
+          "name_field": "text input with placeholder",
+          "phone_field": "text input with Belarus country code (+375)",
+          "email_field": "text input (should be email type)",
+          "privacy_policy": "Link to https://teachmeskills.ru/politika-obrabotki-personalnyh-dannyh"
+        }
+      },
+      "interactive_elements_detailed": {
+        "total_interactive_elements": 38,
+        "cta_buttons_links": 38,
+        "course_navigation": {
+          "categories": 7,
+          "specializations": [
+            "Programming",
+            "Testing",
+            "Design",
+            "Analytics",
+            "GameDev",
+            "Management"
+          ]
+        },
+        "user_interface_elements": [
+          "Country code selector",
+          "Phone input masking (+375 format)",
+          "Course category filters",
+          "Promotional countdown elements",
+          "Social proof displays"
+        ],
+        "mobile_usability_issues": {
+          "touch_targets_below_44px": "44% of elements",
+          "missing_mobile_optimizations": [
+            "inputmode attributes",
+            "autocomplete attributes"
+          ],
+          "no_hamburger_menu": true,
+          "footer_links_too_small": true
+        }
+      },
+      "user_journey_analysis": {
+        "conversion_funnel": "Landing → Course Selection → Details → Form",
+        "entry_points": ["Course cards", "Category navigation", "Direct links"],
+        "friction_points": [
+          "Broken form functionality",
+          "Missing social proof",
+          "No urgency indicators",
+          "Poor mobile touch targets"
+        ],
+        "missing_conversion_elements": [
+          "Testimonials and reviews",
+          "Success stories",
+          "Countdown timers",
+          "Limited offer indicators",
+          "Trust badges"
+        ]
+      },
+      "call_to_action_buttons": {
+        "primary_cta": [
+          "Записаться на курс (Enroll in Course)",
+          "Получить консультацию (Get Consultation)",
+          "Связаться с нами (Contact Us)"
+        ],
+        "secondary_cta": [
+          "Узнать больше (Learn More)",
+          "Скачать программу (Download Program)",
+          "Посмотреть расписание (View Schedule)",
+          "Смотреть все (View All)"
+        ],
+        "cta_performance_analysis": {
+          "visibility": "High contrast yellow buttons",
+          "placement": "Multiple strategic locations",
+          "mobile_issues": "Some targets below recommended 44x44px"
+        }
+      }
+    },
+
+    "success_metrics": {
+      "student_statistics": {
+        "total_graduates": "11,000+",
+        "graduation_rate": "High completion rate",
+        "employment_rate": "High job placement success",
+        "international_placements": "Belarus and international markets"
+      },
+      "company_partnerships": {
+        "partner_count": "170+ companies",
+        "notable_partners": [
+          "iTechArt",
+          "EPAM",
+          "Ciklum",
+          "Altoros",
+          "SaM Solutions"
+        ],
+        "partnership_benefits": [
+          "Direct recruitment pipeline",
+          "Curriculum input",
+          "Guest lectures",
+          "Internship opportunities"
+        ]
+      },
+      "industry_recognition": {
+        "market_position": "Leading programming school in Belarus",
+        "industry_contribution": "Part of Belarus IT ecosystem development",
+        "notable_graduate_contributions": [
+          "Viber development team members",
+          "World of Tanks contributors",
+          "MSQRD app developers"
+        ]
+      }
+    },
+
+    "competitive_advantages": {
+      "unique_selling_propositions": [
+        "Strong industry partnerships with 170+ companies",
+        "Practical, project-based curriculum designed by industry professionals",
+        "Comprehensive career placement services",
+        "Flexible payment options including interest-free installments",
+        "Real-time online learning with recorded backup",
+        "English-language certificates with QR code verification",
+        "High graduate employment rate",
+        "Established track record with 11,000+ graduates"
+      ],
+      "market_differentiators": [
+        "Focus on complete beginners (ages 17-40)",
+        "No prior programming experience required",
+        "Diploma project requirement for portfolio building",
+        "Ongoing career center support post-graduation",
+        "Belarus-based with international IT company connections"
+      ]
+    },
+
+    "target_audience": {
+      "primary_demographics": {
+        "age_range": "17-40 years",
+        "experience_level": "Complete beginners to career changers",
+        "background": "Non-technical professionals seeking IT careers",
+        "geographic": "Belarus-based with international accessibility"
+      },
+      "student_personas": [
+        {
+          "type": "Career Changer",
+          "description": "Professionals from non-IT fields",
+          "motivation": "Career transition to higher-paying IT sector",
+          "concerns": "No technical background, time constraints"
+        },
+        {
+          "type": "Recent Graduate",
+          "description": "University graduates with non-technical degrees",
+          "motivation": "Enter growing IT job market",
+          "concerns": "Practical skills gap, job market competition"
+        },
+        {
+          "type": "Self-Improvement Seeker",
+          "description": "Individuals interested in learning programming",
+          "motivation": "Personal development and new skills",
+          "concerns": "Learning difficulty, time management"
+        }
+      ]
+    },
+
+    "market_context": {
+      "belarus_it_landscape": {
+        "market_position": "Silicon Valley of Eastern Europe",
+        "it_sector_growth": "Rapidly growing IT sector",
+        "export_orientation": "Strong IT export economy",
+        "major_companies": ["EPAM", "iTechArt", "SaM Solutions"],
+        "government_support": "Hi-Tech Park tax incentives"
+      },
+      "international_connections": {
+        "target_markets": ["European Union", "North America", "CIS countries"],
+        "remote_work_culture": "Strong remote work capabilities",
+        "language_requirements": "English proficiency emphasis",
+        "global_partnerships": "International company partnerships"
+      }
+    },
+
+    "comprehensive_visual_analysis": {
+      "design_system": {
+        "primary_brand_color": "#FFDA17 (Bright Yellow)",
+        "color_palette": "80 unique colors identified",
+        "typography": {
+          "primary_font": "Rubik font family",
+          "font_sizes": "10px to 64px scale",
+          "heading_hierarchy": "H1-H4 structure implemented"
+        },
+        "spacing_system": "Consistent margins and padding",
+        "border_radius_values": ["4px", "5px", "8px", "24px"],
+        "components_analyzed": 11
+      },
+      "responsive_design": {
+        "screenshots_captured": {
+          "desktop": "1920x1080px - Full layout",
+          "mobile": "375x667px - Optimized responsive layout",
+          "tablet": "768x1024px - Adaptive middle breakpoint"
+        },
+        "mobile_responsiveness": "Fully responsive with mobile-first approach",
+        "breakpoint_performance": "Excellent across all viewports"
+      },
+      "accessibility_assessment": {
+        "current_grade": "WCAG 2.1 Level A partially compliant",
+        "contrast_ratios": "Strong with yellow/gray/white palette",
+        "areas_for_improvement": [
+          "Add alt text to all images",
+          "Implement ARIA labels for interactive elements",
+          "Add visible focus states for keyboard navigation",
+          "Optimize touch targets to 44px minimum"
+        ]
+      },
+      "ux_conversion_analysis": {
+        "design_focus": "High-conversion promotional campaign design",
+        "urgency_elements": "Countdown timers and limited-time offers",
+        "social_proof": "4.7★ rating and 12,000+ student count",
+        "call_to_action_prominence": "Bright yellow buttons with high visibility",
+        "overall_grade": "B+ (85/100)"
+      }
+    },
+    "content_marketing_analysis": {
+      "primary_value_proposition": {
+        "russian": "Научим программировать и поможем стать ITшником",
+        "english": "We will teach programming and help you become an IT professional"
+      },
+      "promotional_messaging": {
+        "current_campaign": "15% discount on August courses",
+        "urgency_message": "Register before August 31st",
+        "payment_innovation": "Payment from the second month of study",
+        "flexibility_messaging": "Installments up to 18 months"
+      },
+      "social_proof_elements": {
+        "graduate_count": ">12,000 IT professionals trained over 8 years",
+        "partner_companies": "170+ companies including iTechArt, EPAM, Ciklum",
+        "rating_display": "4.7★ rating prominently shown",
+        "success_indicators": "Mentors from international companies"
+      },
+      "target_audience_messaging": {
+        "primary_target": "Complete beginners transitioning to IT careers",
+        "age_positioning": "Ages 17-40 (no strict restrictions)",
+        "transformation_promise": "From zero to IT professional"
+      }
+    },
+    "technical_infrastructure_insights": {
+      "architecture_assessment": {
+        "strengths": [
+          "React-based modern SPA architecture",
+          "AWS CloudFront CDN for global delivery",
+          "Let's Encrypt SSL with HSTS security",
+          "Comprehensive analytics and tracking stack"
+        ],
+        "weaknesses": [
+          "60-second initial load times",
+          "102+ network requests creating bottlenecks",
+          "Missing SEO optimization for SPA",
+          "Extensive third-party tracking creating privacy concerns"
+        ]
+      },
+      "api_endpoint_discovery": {
+        "total_endpoints": 34,
+        "authentication_mechanisms": "Token-based authentication identified",
+        "data_flow_patterns": "RESTful API architecture",
+        "third_party_integrations": "31+ external services"
+      }
+    },
+    "analysis_insights": {
+      "platform_strengths": [
+        "Comprehensive course catalog with specific BYN pricing (1,400-4,000 range)",
+        "Active promotional campaign with 15-18% discounts",
+        "Strong visual design with high-conversion yellow branding",
+        "Modern React-based architecture with AWS infrastructure",
+        "Extensive analytics and tracking for marketing optimization",
+        "Mobile-responsive design across all breakpoints",
+        "Clear value proposition and social proof elements",
+        "Proven track record with 12,000+ graduates and 4.7★ rating"
+      ],
+      "critical_issues_identified": [
+        "Broken form functionality - no submit buttons",
+        "Poor mobile UX - 44% of touch targets below 44x44px",
+        "Accessibility non-compliance - missing ARIA attributes",
+        "Performance bottlenecks - 60+ second load times",
+        "Missing social proof elements - no testimonials/reviews",
+        "SEO optimization gaps - missing structured data"
+      ],
+      "immediate_action_required": [
+        "Fix form submit button functionality",
+        "Optimize mobile touch targets to 44px minimum",
+        "Implement accessibility improvements (alt text, ARIA)",
+        "Address performance bottlenecks through bundle optimization",
+        "Add social proof elements (testimonials, success stories)",
+        "Implement SEO enhancements for better discoverability"
+      ],
+      "market_opportunities": [
+        "Leverage 4.7★ rating and 12,000+ student count for marketing",
+        "Expand promotional discount campaigns beyond August",
+        "Implement conversion rate optimization based on UX analysis",
+        "Develop mobile app to complement responsive web platform",
+        "Create testimonial and case study content for social proof",
+        "Optimize technical infrastructure for international expansion"
+      ]
+    },
+
+    "technical_limitations": {
+      "analysis_constraints": [
+        "JavaScript dependency prevents full static analysis",
+        "Dynamic content requires runtime evaluation",
+        "User authentication areas not accessible",
+        "Student portal functionality not analyzable",
+        "Payment system integration details unavailable",
+        "Real-time course data not accessible"
+      ],
+      "recommended_analysis_extensions": [
+        "Selenium-based dynamic content scraping",
+        "API endpoint discovery through network monitoring",
+        "Student portal access for comprehensive feature mapping",
+        "Payment flow analysis with test transactions",
+        "Mobile responsiveness testing across devices",
+        "Performance monitoring under load"
+      ]
+    }
+  }
+}

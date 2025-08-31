@@ -1,0 +1,613 @@
+{
+  "totalPages": 58,
+  "analysisDate": "2025-08-29T14:57:17.689Z",
+  "siteType": "Multi-page website (NOT React SPA)",
+  "domains": [
+    "month.teachmeskills.by",
+    "teachmeskills.by"
+  ],
+  "pagesByType": {
+    "Landing Page": [
+      {
+        "url": "https://month.teachmeskills.by/",
+        "title": "Скидка от 15% на курсы августа",
+        "type": "Landing Page"
+      }
+    ],
+    "Course Catalog": [
+      {
+        "url": "https://month.teachmeskills.by/courses",
+        "title": "Course catalog",
+        "type": "Course Catalog"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/programmirovaniya-online",
+        "title": "Online programming courses",
+        "type": "Course Catalog"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy",
+        "title": "All courses",
+        "type": "Course Catalog"
+      }
+    ],
+    "Course Page": [
+      {
+        "url": "https://month.teachmeskills.by/courses/java",
+        "title": "Java course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/qa_python",
+        "title": "QA Python course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/unity",
+        "title": "Unity course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/ml",
+        "title": "Machine Learning course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/unreal_engine",
+        "title": "Unreal Engine course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/project_manager",
+        "title": "Project Manager course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/android",
+        "title": "Android course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/devops",
+        "title": "DevOps course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/qa_java",
+        "title": "QA Java course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/manual_qa",
+        "title": "Manual QA course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/uxui",
+        "title": "UX/UI course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/business_analyst",
+        "title": "Business Analyst course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/python",
+        "title": "Python course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/system_analyst",
+        "title": "System Analyst course",
+        "type": "Course Page"
+      },
+      {
+        "url": "https://month.teachmeskills.by/courses/frontend",
+        "title": "Frontend course",
+        "type": "Course Page"
+      }
+    ],
+    "Detailed Course Page": [
+      {
+        "url": "https://teachmeskills.by/kursy/frontend-html-css-javascript-online",
+        "title": "Frontend HTML/CSS/JS",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/obuchenie-python-online",
+        "title": "Python Backend",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/obuchenie-java-online",
+        "title": "Java",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/obuchenie-1c-online",
+        "title": "1C Programming",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/node-js-frontend-developer",
+        "title": "Node.js Frontend",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/go-developer-online",
+        "title": "Go Developer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/flutter-developer-online",
+        "title": "Flutter Developer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/kursy-asp-net-online",
+        "title": "C# ASP.NET",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/unity-game-developer-online",
+        "title": "Unity Game Dev",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/unreal-engine-developer-online",
+        "title": "Unreal Engine",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/3d-designer-personajei",
+        "title": "3D Character Design",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/web-developer-online",
+        "title": "Web Developer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/qa-manual-testirovanie-web-online",
+        "title": "Manual QA Testing",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-online",
+        "title": "Automated Testing Java",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-na-python-online",
+        "title": "Automated Testing Python",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-javascript-online",
+        "title": "Automated Testing JavaScript",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-na-c-sharp-online",
+        "title": "Automated Testing C#",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/qa-lead",
+        "title": "QA Lead",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/project-manager-online",
+        "title": "Project Manager",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/business-analyst-online",
+        "title": "Business Analyst",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/product-analyst-online",
+        "title": "Product Analyst",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/systems-analyst-online",
+        "title": "Systems Analyst",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/business-intelligence-online",
+        "title": "Business Intelligence",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/ux_ui_online",
+        "title": "UX UI Designer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/web_design_online",
+        "title": "Web Design",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/graphic_designer_online",
+        "title": "Graphic Designer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/3d-modeling-gamedev-online",
+        "title": "3D Modeling GameDev",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/game-designer-online",
+        "title": "Game Designer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/motion-designer-online",
+        "title": "Motion Designer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/cybersecurity-online",
+        "title": "Cybersecurity",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/dev-sec-ops-online",
+        "title": "DevSecOps",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/kursy-dev-ops-online",
+        "title": "DevOps Engineer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/kubernetes-online",
+        "title": "Kubernetes",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/data-scientist-online",
+        "title": "Data Scientist",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/data-engineer-online",
+        "title": "Data Engineer",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/hr-generalist-online",
+        "title": "HR Generalist",
+        "type": "Detailed Course Page"
+      },
+      {
+        "url": "https://teachmeskills.by/kursy/vibe_coding_online",
+        "title": "Vibe Coding",
+        "type": "Detailed Course Page"
+      }
+    ],
+    "Info Page": [
+      {
+        "url": "https://teachmeskills.by/teachers",
+        "title": "Teachers",
+        "type": "Info Page"
+      }
+    ],
+    "Blog": [
+      {
+        "url": "https://teachmeskills.by/blog",
+        "title": "Blog",
+        "type": "Blog"
+      }
+    ]
+  },
+  "allPages": [
+    {
+      "url": "https://month.teachmeskills.by/",
+      "title": "Скидка от 15% на курсы августа",
+      "type": "Landing Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses",
+      "title": "Course catalog",
+      "type": "Course Catalog"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/java",
+      "title": "Java course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/qa_python",
+      "title": "QA Python course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/unity",
+      "title": "Unity course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/ml",
+      "title": "Machine Learning course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/unreal_engine",
+      "title": "Unreal Engine course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/project_manager",
+      "title": "Project Manager course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/android",
+      "title": "Android course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/devops",
+      "title": "DevOps course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/qa_java",
+      "title": "QA Java course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/manual_qa",
+      "title": "Manual QA course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/uxui",
+      "title": "UX/UI course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/business_analyst",
+      "title": "Business Analyst course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/python",
+      "title": "Python course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/system_analyst",
+      "title": "System Analyst course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://month.teachmeskills.by/courses/frontend",
+      "title": "Frontend course",
+      "type": "Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/programmirovaniya-online",
+      "title": "Online programming courses",
+      "type": "Course Catalog"
+    },
+    {
+      "url": "https://teachmeskills.by/teachers",
+      "title": "Teachers",
+      "type": "Info Page"
+    },
+    {
+      "url": "https://teachmeskills.by/blog",
+      "title": "Blog",
+      "type": "Blog"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy",
+      "title": "All courses",
+      "type": "Course Catalog"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/frontend-html-css-javascript-online",
+      "title": "Frontend HTML/CSS/JS",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/obuchenie-python-online",
+      "title": "Python Backend",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/obuchenie-java-online",
+      "title": "Java",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/obuchenie-1c-online",
+      "title": "1C Programming",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/node-js-frontend-developer",
+      "title": "Node.js Frontend",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/go-developer-online",
+      "title": "Go Developer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/flutter-developer-online",
+      "title": "Flutter Developer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/kursy-asp-net-online",
+      "title": "C# ASP.NET",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/unity-game-developer-online",
+      "title": "Unity Game Dev",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/unreal-engine-developer-online",
+      "title": "Unreal Engine",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/3d-designer-personajei",
+      "title": "3D Character Design",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/web-developer-online",
+      "title": "Web Developer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/qa-manual-testirovanie-web-online",
+      "title": "Manual QA Testing",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-online",
+      "title": "Automated Testing Java",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-na-python-online",
+      "title": "Automated Testing Python",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-javascript-online",
+      "title": "Automated Testing JavaScript",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/qa-avtomatizirovannoe-testirovanie-na-c-sharp-online",
+      "title": "Automated Testing C#",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/qa-lead",
+      "title": "QA Lead",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/project-manager-online",
+      "title": "Project Manager",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/business-analyst-online",
+      "title": "Business Analyst",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/product-analyst-online",
+      "title": "Product Analyst",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/systems-analyst-online",
+      "title": "Systems Analyst",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/business-intelligence-online",
+      "title": "Business Intelligence",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/ux_ui_online",
+      "title": "UX UI Designer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/web_design_online",
+      "title": "Web Design",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/graphic_designer_online",
+      "title": "Graphic Designer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/3d-modeling-gamedev-online",
+      "title": "3D Modeling GameDev",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/game-designer-online",
+      "title": "Game Designer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/motion-designer-online",
+      "title": "Motion Designer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/cybersecurity-online",
+      "title": "Cybersecurity",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/dev-sec-ops-online",
+      "title": "DevSecOps",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/kursy-dev-ops-online",
+      "title": "DevOps Engineer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/kubernetes-online",
+      "title": "Kubernetes",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/data-scientist-online",
+      "title": "Data Scientist",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/data-engineer-online",
+      "title": "Data Engineer",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/hr-generalist-online",
+      "title": "HR Generalist",
+      "type": "Detailed Course Page"
+    },
+    {
+      "url": "https://teachmeskills.by/kursy/vibe_coding_online",
+      "title": "Vibe Coding",
+      "type": "Detailed Course Page"
+    }
+  ],
+  "screenshotsCaptured": 71,
+  "methodology": [
+    "Browser automation with Playwright",
+    "Systematic link crawling",
+    "JavaScript rendering verification",
+    "Full-page screenshot documentation",
+    "DOM analysis and content extraction"
+  ]
+}

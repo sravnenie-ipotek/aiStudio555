@@ -1,0 +1,6 @@
+  Connection details for pgAdmin added:
+  - Host: localhost
+  - Port: 5432
+  - Database: projectdes_dev
+  - Username: postgres
+  - Password: admin

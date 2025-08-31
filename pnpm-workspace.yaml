@@ -1,0 +1,18 @@
+# pnpm workspace configuration
+# Defines which directories contain packages in the monorepo
+
+packages:
+  # Applications
+  - 'apps/*'
+  
+  # Shared packages
+  - 'packages/*'
+  
+  # AI subsystem (treated as single package)
+  - 'ai'
+  
+  # QA packages
+  - 'qa/*'
+  
+# Exclude patterns (if needed)
+# - '!**/test/**'

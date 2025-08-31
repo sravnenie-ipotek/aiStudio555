@@ -1,0 +1,143 @@
+{
+  "paymentMethods": {
+    "stripe": {
+      "validCard": {
+        "number": "4242424242424242",
+        "expMonth": 12,
+        "expYear": 2028,
+        "cvc": "123",
+        "zip": "12345"
+      },
+      "declinedCard": {
+        "number": "4000000000000002", 
+        "expMonth": 12,
+        "expYear": 2028,
+        "cvc": "123",
+        "zip": "12345"
+      },
+      "requiresAuthenticationCard": {
+        "number": "4000002500003155",
+        "expMonth": 12, 
+        "expYear": 2028,
+        "cvc": "123",
+        "zip": "12345"
+      }
+    },
+    "paypal": {
+      "validAccount": {
+        "email": "test@paypal.com",
+        "password": "testpassword"
+      }
+    }
+  },
+  "billingAddresses": {
+    "us": {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "address": "123 Main Street",
+      "city": "New York",
+      "state": "NY",
+      "postalCode": "10001",
+      "country": "US"
+    },
+    "uk": {
+      "name": "Jane Smith", 
+      "email": "jane@example.co.uk",
+      "address": "456 High Street",
+      "city": "London",
+      "postalCode": "SW1A 1AA",
+      "country": "GB"
+    },
+    "germany": {
+      "name": "Hans Mueller",
+      "email": "hans@example.de", 
+      "address": "Musterstraße 789",
+      "city": "Berlin",
+      "postalCode": "10115",
+      "country": "DE"
+    }
+  },
+  "paymentIntents": {
+    "successful": {
+      "id": "pi_test_success_123",
+      "clientSecret": "pi_test_success_123_secret_456", 
+      "status": "succeeded",
+      "amount": 100000,
+      "currency": "usd"
+    },
+    "requiresAction": {
+      "id": "pi_test_action_123",
+      "clientSecret": "pi_test_action_123_secret_456",
+      "status": "requires_action",
+      "amount": 100000,
+      "currency": "usd"
+    },
+    "failed": {
+      "id": "pi_test_failed_123",
+      "status": "payment_failed",
+      "last_payment_error": {
+        "code": "card_declined",
+        "message": "Your card was declined."
+      }
+    }
+  },
+  "promoCodes": {
+    "valid": {
+      "code": "SAVE20",
+      "discountType": "percentage", 
+      "discountValue": 20,
+      "validUntil": "2024-12-31T23:59:59Z",
+      "usageCount": 0,
+      "maxUsage": 1000
+    },
+    "expired": {
+      "code": "EXPIRED",
+      "discountType": "fixed",
+      "discountValue": 100,
+      "validUntil": "2024-01-01T00:00:00Z",
+      "usageCount": 50,
+      "maxUsage": 100
+    },
+    "exhausted": {
+      "code": "EXHAUSTED",
+      "discountType": "percentage",
+      "discountValue": 15,
+      "validUntil": "2024-12-31T23:59:59Z", 
+      "usageCount": 500,
+      "maxUsage": 500
+    }
+  },
+  "transactions": {
+    "completed": {
+      "id": "txn_completed_123",
+      "status": "COMPLETED",
+      "amount": 1000,
+      "currency": "USD",
+      "method": "STRIPE",
+      "courseId": "course-ai-transformation",
+      "userId": "user-student",
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    "pending": {
+      "id": "txn_pending_456", 
+      "status": "PENDING",
+      "amount": 800,
+      "currency": "USD",
+      "method": "PAYPAL",
+      "courseId": "course-nocode-web",
+      "userId": "user-student",
+      "createdAt": "2024-01-16T14:20:00Z"
+    },
+    "failed": {
+      "id": "txn_failed_789",
+      "status": "FAILED", 
+      "amount": 950,
+      "currency": "USD",
+      "method": "STRIPE",
+      "courseId": "course-ai-video",
+      "userId": "user-student",
+      "error": "Payment method declined",
+      "createdAt": "2024-01-17T16:45:00Z"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "courses": [
+    {
+      "id": "course-ai-transformation",
+      "title": "AI Transformation Manager",
+      "description": "Comprehensive training program for professionals looking to lead AI transformation initiatives in their organizations. Learn strategic planning, implementation methodologies, and change management.",
+      "price": 1500,
+      "discountedPrice": 1000,
+      "currency": "USD",
+      "duration": "8 weeks",
+      "level": "INTERMEDIATE",
+      "language": "en",
+      "status": "PUBLISHED",
+      "instructorId": "instructor-1",
+      "categoryId": "cat-ai",
+      "tags": ["ai", "management", "transformation", "strategy"],
+      "thumbnail": "https://example.com/thumbnails/ai-transformation.jpg",
+      "stripePriceId": "price_ai_transformation_123",
+      "paypalItemId": "paypal_ai_transformation_456", 
+      "maxStudents": 100,
+      "currentStudents": 45,
+      "prerequisites": ["Basic computer skills", "Management experience"],
+      "featured": true
+    },
+    {
+      "id": "course-nocode-web",
+      "title": "No-Code Website Development",
+      "description": "Learn to build professional websites without writing a single line of code. Master popular no-code platforms and design principles.",
+      "price": 1200,
+      "discountedPrice": 800,
+      "currency": "USD", 
+      "duration": "6 weeks",
+      "level": "BEGINNER",
+      "language": "en",
+      "status": "PUBLISHED",
+      "instructorId": "instructor-2",
+      "categoryId": "cat-web",
+      "tags": ["no-code", "web-development", "design", "beginner"],
+      "thumbnail": "https://example.com/thumbnails/nocode-web.jpg",
+      "stripePriceId": "price_nocode_web_123",
+      "paypalItemId": "paypal_nocode_web_456",
+      "maxStudents": 150,
+      "currentStudents": 78,
+      "prerequisites": [],
+      "featured": false
+    },
+    {
+      "id": "course-ai-video",
+      "title": "AI Video & Avatar Generation",
+      "description": "Master the art of creating AI-powered videos and realistic avatars. Learn cutting-edge tools and techniques for content creation.",
+      "price": 1300,
+      "discountedPrice": 950,
+      "currency": "USD",
+      "duration": "7 weeks", 
+      "level": "ADVANCED",
+      "language": "en",
+      "status": "PUBLISHED",
+      "instructorId": "instructor-3",
+      "categoryId": "cat-ai",
+      "tags": ["ai", "video", "avatars", "content-creation"],
+      "thumbnail": "https://example.com/thumbnails/ai-video.jpg",
+      "stripePriceId": "price_ai_video_123",
+      "paypalItemId": "paypal_ai_video_456",
+      "maxStudents": 80,
+      "currentStudents": 23,
+      "prerequisites": ["Basic AI knowledge", "Video editing experience"],
+      "featured": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-ai",
+      "name": "AI & Machine Learning",
+      "courseCount": 15,
+      "description": "Artificial Intelligence and Machine Learning courses"
+    },
+    {
+      "id": "cat-web",
+      "name": "Web Development", 
+      "courseCount": 8,
+      "description": "Web development and design courses"
+    },
+    {
+      "id": "cat-data",
+      "name": "Data Science",
+      "courseCount": 12,
+      "description": "Data science and analytics courses"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "enrollment-1",
+      "userId": "user-student",
+      "courseId": "course-ai-transformation", 
+      "status": "ACTIVE",
+      "progress": 65,
+      "enrolledAt": "2024-01-01T10:00:00Z",
+      "lastAccessedAt": "2024-01-15T14:30:00Z"
+    },
+    {
+      "id": "enrollment-2",
+      "userId": "user-student",
+      "courseId": "course-nocode-web",
+      "status": "ACTIVE", 
+      "progress": 25,
+      "enrolledAt": "2024-01-10T09:00:00Z",
+      "lastAccessedAt": "2024-01-12T11:20:00Z"
+    }
+  ],
+  "curriculum": {
+    "course-ai-transformation": {
+      "modules": [
+        {
+          "id": "module-1",
+          "title": "Introduction to AI Transformation",
+          "description": "Understanding the fundamentals of AI transformation",
+          "lessons": [
+            {
+              "id": "lesson-1-1",
+              "title": "What is AI Transformation?",
+              "duration": "45 min",
+              "type": "video"
+            },
+            {
+              "id": "lesson-1-2", 
+              "title": "Business Impact of AI",
+              "duration": "60 min",
+              "type": "video"
+            },
+            {
+              "id": "lesson-1-3",
+              "title": "AI Strategy Framework",
+              "duration": "30 min",
+              "type": "reading"
+            }
+          ]
+        },
+        {
+          "id": "module-2",
+          "title": "Implementation Planning",
+          "description": "Strategic planning for AI implementation",
+          "lessons": [
+            {
+              "id": "lesson-2-1",
+              "title": "Assessment and Readiness",
+              "duration": "55 min",
+              "type": "video"
+            },
+            {
+              "id": "lesson-2-2",
+              "title": "Technology Stack Selection", 
+              "duration": "40 min",
+              "type": "video"
+            },
+            {
+              "id": "lesson-2-3",
+              "title": "Implementation Roadmap",
+              "duration": "45 min",
+              "type": "interactive"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

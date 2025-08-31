@@ -1,0 +1,21 @@
+{
+  "name": "@projectdes/performance",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Projectdes Academy - Performance Testing",
+  "scripts": {
+    "test": "k6 run src/load-test.js",
+    "test:smoke": "k6 run --vus 1 --duration 30s src/smoke-test.js",
+    "test:load": "k6 run --vus 10 --duration 5m src/load-test.js",
+    "test:stress": "k6 run --vus 50 --duration 10m src/stress-test.js",
+    "test:spike": "k6 run src/spike-test.js",
+    "lighthouse": "lighthouse --output json --output-path ./reports/lighthouse.json",
+    "clean": "rm -rf node_modules .turbo reports"
+  },
+  "devDependencies": {
+    "@types/k6": "^0.48.0",
+    "@types/node": "^20.11.0",
+    "lighthouse": "^11.4.0",
+    "typescript": "^5.3.3"
+  }
+}

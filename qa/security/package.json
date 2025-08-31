@@ -1,0 +1,21 @@
+{
+  "name": "@projectdes/security",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Projectdes Academy - Security Testing & Auditing",
+  "scripts": {
+    "audit": "npm audit && pnpm audit",
+    "audit:fix": "npm audit fix && pnpm audit --fix",
+    "scan:deps": "snyk test",
+    "scan:code": "semgrep --config=auto .",
+    "scan:secrets": "trufflehog filesystem . --json",
+    "owasp:check": "dependency-check --scan . --format JSON --out ./reports/dependency-check.json",
+    "test": "npm run audit && npm run scan:deps",
+    "clean": "rm -rf node_modules .turbo reports"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "snyk": "^1.1266.0",
+    "typescript": "^5.3.3"
+  }
+}
