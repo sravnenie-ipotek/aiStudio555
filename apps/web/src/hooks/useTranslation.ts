@@ -39,8 +39,26 @@ const translations: Record<Language, TranslationData> = {
       month: 'month',
     },
     nav: {
-      dashboard: 'Dashboard',
+      // Header Navigation
       courses: 'Courses',
+      monthlyStarts: 'Monthly Starts',
+      instructors: 'Teachers',
+      blog: 'Blog',
+      aboutSchool: 'About School',
+      // Course Submenu
+      aiManager: 'AI Transformation Manager',
+      noCode: 'No-Code Development',
+      aiVideo: 'AI Video Generation',
+      allCourses: 'All Courses',
+      // About Submenu
+      aboutUs: 'About Us',
+      contacts: 'Contacts',
+      careerCenter: 'Career Center',
+      profOrientation: 'Career Guidance',
+      // Call to Action
+      enrollNow: 'Enroll Now',
+      // User Dashboard Navigation
+      dashboard: 'Dashboard',
       certificates: 'Certificates',
       messages: 'Messages',
       profile: 'Profile',
@@ -110,7 +128,7 @@ const translations: Record<Language, TranslationData> = {
         securePayment: 'Secure Payment',
         securePaymentDescription: 'Your payment information is encrypted and secure',
         moneyBackGuarantee: '30-Day Money Back Guarantee',
-        moneyBackDescription: 'Full refund if you\'re not satisfied within 30 days',
+        moneyBackDescription: "Full refund if you're not satisfied within 30 days",
         agreeToTerms: 'I agree to the Terms of Service and Privacy Policy',
         completePurchase: 'Complete Purchase',
       },
@@ -126,7 +144,7 @@ const translations: Record<Language, TranslationData> = {
       },
       summary: {
         title: 'Order Summary',
-        whatYouGet: 'What You\'ll Get',
+        whatYouGet: "What You'll Get",
         lifetimeAccess: 'Lifetime access to course materials',
         expertSupport: 'Direct support from expert instructors',
         jobPlacement: 'Job placement assistance',
@@ -261,7 +279,7 @@ const translations: Record<Language, TranslationData> = {
       helpfulResources: 'Helpful Resources',
       viewResource: 'View Resource',
       getInTouch: 'Get In Touch',
-      contactDescription: 'Send us a message and we\'ll respond within 24 hours',
+      contactDescription: "Send us a message and we'll respond within 24 hours",
       yourName: 'Your Name',
       yourEmail: 'Your Email',
       subject: 'Subject',
@@ -328,16 +346,68 @@ const translations: Record<Language, TranslationData> = {
     },
   },
   ru: {
-    // Russian translations (simplified for brevity)
     common: {
       next: 'Далее',
       back: 'Назад',
       close: 'Закрыть',
       cancel: 'Отмена',
       save: 'Сохранить',
-      // ... add all Russian translations
+      delete: 'Удалить',
+      edit: 'Редактировать',
+      submit: 'Отправить',
+      search: 'Поиск',
+      filter: 'Фильтр',
+      sort: 'Сортировка',
+      loading: 'Загрузка...',
+      processing: 'Обработка...',
+      error: 'Ошибка',
+      success: 'Успешно',
+      warning: 'Предупреждение',
+      info: 'Информация',
+      confirm: 'Подтвердить',
+      yes: 'Да',
+      no: 'Нет',
+      done: 'Готово',
+      month: 'месяц',
     },
-    // ... add all sections in Russian
+    nav: {
+      // Header Navigation
+      courses: 'Курсы',
+      monthlyStarts: 'Старты месяца',
+      instructors: 'Преподаватели',
+      blog: 'Блог',
+      aboutSchool: 'О школе',
+      // Course Submenu
+      aiManager: 'AI Transformation Manager',
+      noCode: 'No-Code разработка',
+      aiVideo: 'AI видео генерация',
+      allCourses: 'Все курсы',
+      // About Submenu
+      aboutUs: 'О нас',
+      contacts: 'Контакты',
+      careerCenter: 'Карьерный центр',
+      profOrientation: 'Профориентация',
+      // Call to Action
+      enrollNow: 'Записаться сейчас',
+      // User Dashboard Navigation
+      dashboard: 'Панель управления',
+      certificates: 'Сертификаты',
+      messages: 'Сообщения',
+      profile: 'Профиль',
+      settings: 'Настройки',
+      logout: 'Выйти',
+      menu: 'Меню',
+      learning: 'Обучение',
+      community: 'Сообщество',
+      account: 'Аккаунт',
+      myCourses: 'Мои курсы',
+      progress: 'Прогресс',
+      schedule: 'Расписание',
+      groups: 'Группы',
+      forums: 'Форумы',
+      payments: 'Платежи',
+      support: 'Поддержка',
+    },
   },
   he: {
     // Hebrew translations (simplified for brevity)
@@ -357,7 +427,7 @@ const translations: Record<Language, TranslationData> = {
 function getNestedTranslation(obj: any, path: string, params?: Record<string, any>): string {
   const keys = path.split('.');
   let result = obj;
-  
+
   for (const key of keys) {
     if (result && typeof result === 'object' && key in result) {
       result = result[key];
@@ -365,18 +435,18 @@ function getNestedTranslation(obj: any, path: string, params?: Record<string, an
       return path; // Return the key if translation not found
     }
   }
-  
+
   if (typeof result !== 'string') {
     return path;
   }
-  
+
   // Replace parameters in the translation
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
       result = result.replace(`{${key}}`, String(value));
     });
   }
-  
+
   return result;
 }
 
@@ -402,9 +472,12 @@ export function useTranslation() {
     }
   }, [language]);
 
-  const t = useCallback((key: string, params?: Record<string, any>): string => {
-    return getNestedTranslation(translations[language], key, params);
-  }, [language]);
+  const t = useCallback(
+    (key: string, params?: Record<string, any>): string => {
+      return getNestedTranslation(translations[language], key, params);
+    },
+    [language]
+  );
 
   const changeLanguage = useCallback((newLanguage: Language) => {
     setLanguage(newLanguage);
