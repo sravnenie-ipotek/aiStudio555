@@ -5,17 +5,17 @@ import { motion } from 'framer-motion';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  BookOpen, 
-  PlayCircle, 
-  CheckCircle, 
-  Clock, 
-  Award, 
+import {
+  BookOpen,
+  PlayCircle,
+  CheckCircle,
+  Clock,
+  Award,
   TrendingUp,
   Calendar,
   Target,
   Zap,
-  Trophy
+  Trophy,
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -54,7 +54,7 @@ export function CourseProgress({
   lastAccessed,
   estimatedCompletion,
   achievements,
-  streak
+  streak,
 }: CourseProgressProps) {
   const { t } = useTranslation();
   const progressPercentage = (completedLessons / totalLessons) * 100;
@@ -170,8 +170,8 @@ export function CourseProgress({
                 transition={{ delay: index * 0.1 }}
                 className={`
                   flex flex-col items-center p-4 rounded-lg border text-center
-                  ${achievement.earned 
-                    ? 'bg-primary/5 border-primary' 
+                  ${achievement.earned
+                    ? 'bg-primary/5 border-primary'
                     : 'bg-muted border-muted-foreground/20 opacity-50'}
                 `}
               >

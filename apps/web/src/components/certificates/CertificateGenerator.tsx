@@ -5,18 +5,18 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Award, 
-  Download, 
-  Share2, 
-  Printer, 
-  CheckCircle, 
+import {
+  Award,
+  Download,
+  Share2,
+  Printer,
+  CheckCircle,
   Calendar,
   User,
   Shield,
   ExternalLink,
   Copy,
-  Mail
+  Mail,
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import html2canvas from 'html2canvas';
@@ -40,10 +40,10 @@ interface CertificateGeneratorProps {
   onShare?: () => void;
 }
 
-export function CertificateGenerator({ 
-  certificateData, 
-  onDownload, 
-  onShare 
+export function CertificateGenerator({
+  certificateData,
+  onDownload,
+  onShare,
 }: CertificateGeneratorProps) {
   const { t } = useTranslation();
   const certificateRef = useRef<HTMLDivElement>(null);
@@ -52,12 +52,12 @@ export function CertificateGenerator({
 
   const downloadCertificate = async (format: 'pdf' | 'png') => {
     if (!certificateRef.current) return;
-    
+
     setIsGenerating(true);
     try {
       const canvas = await html2canvas(certificateRef.current, {
         scale: 2,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
       });
 
       if (format === 'png') {
@@ -70,19 +70,20 @@ export function CertificateGenerator({
         const pdf = new jsPDF({
           orientation: 'landscape',
           unit: 'mm',
-          format: 'a4'
+          format: 'a4',
         });
-        
+
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = pdf.internal.pageSize.getHeight();
-        
+
         pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
         pdf.save(`certificate-${certificateData.certificateNumber}.pdf`);
       }
-      
+
       onDownload?.();
     } catch (error) {
-      console.error('Error generating certificate:', error);
+      // TODO: Implement proper error logging
+      // Error generating certificate
     } finally {
       setIsGenerating(false);
     }
@@ -90,7 +91,7 @@ export function CertificateGenerator({
 
   const shareCertificate = (platform: 'linkedin' | 'twitter' | 'email' | 'copy') => {
     const shareText = t('certificates.shareText', {
-      courseName: certificateData.courseName
+      courseName: certificateData.courseName,
     });
     const shareUrl = certificateData.validationUrl;
 
@@ -98,13 +99,13 @@ export function CertificateGenerator({
       case 'linkedin':
         window.open(
           `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-          '_blank'
+          '_blank',
         );
         break;
       case 'twitter':
         window.open(
           `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
-          '_blank'
+          '_blank',
         );
         break;
       case 'email':
@@ -114,7 +115,7 @@ export function CertificateGenerator({
         navigator.clipboard.writeText(shareUrl);
         break;
     }
-    
+
     onShare?.();
     setShareMenuOpen(false);
   };
@@ -137,8 +138,8 @@ export function CertificateGenerator({
             ref={certificateRef}
             className="relative bg-white p-12 rounded-lg border-4 border-primary/20"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23635bff' stroke-width='0.2' opacity='0.1'%3E%3Cpath d='M50 30 L70 50 L50 70 L30 50 Z'/%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '100px 100px'
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%23635bff\' stroke-width=\'0.2\' opacity=\'0.1\'%3E%3Cpath d=\'M50 30 L70 50 L50 70 L30 50 Z\'/%3E%3C/g%3E%3C/svg%3E")',
+              backgroundSize: '100px 100px',
             }}
           >
             {/* Certificate Header */}
@@ -288,12 +289,13 @@ export function CertificateGenerator({
                 <Share2 className="w-4 h-4 mr-2" />
                 {t('certificates.share')}
               </Button>
-              
+
               {shareMenuOpen && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="absolute top-full mt-2 right-0 bg-background border rounded-lg shadow-lg p-2 min-w-[200px] z-10"
+                  className="absolute top-full mt-2 right-0 bg-background border
+                    rounded-lg shadow-lg p-2 min-w-[200px] z-10"
                 >
                   <button
                     onClick={() => shareCertificate('linkedin')}

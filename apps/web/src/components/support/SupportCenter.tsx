@@ -10,11 +10,11 @@ import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { 
-  HelpCircle, 
-  MessageSquare, 
-  Book, 
-  Video, 
+import {
+  HelpCircle,
+  MessageSquare,
+  Book,
+  Video,
   FileText,
   Search,
   ChevronRight,
@@ -33,7 +33,7 @@ import {
   ThumbsUp,
   ThumbsDown,
   Filter,
-  SortAsc
+  SortAsc,
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -89,7 +89,7 @@ export function SupportCenter({
   resources,
   onCreateTicket,
   onReplyToTicket,
-  onRateFAQ
+  onRateFAQ,
 }: SupportCenterProps) {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
@@ -102,12 +102,12 @@ export function SupportCenter({
     description: '',
     category: 'general',
     priority: 'medium' as const,
-    attachments: [] as File[]
+    attachments: [] as File[],
   });
   const [replyMessage, setReplyMessage] = useState('');
 
   const categories = ['all', 'general', 'technical', 'billing', 'courses', 'certificates'];
-  
+
   const getStatusIcon = (status: SupportTicket['status']) => {
     switch (status) {
       case 'open':
@@ -166,14 +166,14 @@ export function SupportCenter({
       status: 'open',
       createdAt: new Date(),
       updatedAt: new Date(),
-      responses: []
+      responses: [],
     });
     setNewTicket({
       subject: '',
       description: '',
       category: 'general',
       priority: 'medium',
-      attachments: []
+      attachments: [],
     });
     setShowNewTicket(false);
   };
@@ -185,25 +185,25 @@ export function SupportCenter({
   };
 
   const filteredFAQs = faqs.filter(faq => {
-    const matchesSearch = 
+    const matchesSearch =
       searchQuery === '' ||
       faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
       faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesCategory = 
+
+    const matchesCategory =
       selectedCategory === 'all' || faq.category === selectedCategory;
-    
+
     return matchesSearch && matchesCategory;
   });
 
   const filteredResources = resources.filter(resource => {
-    const matchesSearch = 
+    const matchesSearch =
       searchQuery === '' ||
       resource.title.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesCategory = 
+
+    const matchesCategory =
       selectedCategory === 'all' || resource.category === selectedCategory;
-    
+
     return matchesSearch && matchesCategory;
   });
 
@@ -230,7 +230,7 @@ export function SupportCenter({
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="border-primary/20 hover:border-primary/40 transition-colors cursor-pointer">
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
@@ -244,7 +244,7 @@ export function SupportCenter({
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card className="border-primary/20 hover:border-primary/40 transition-colors cursor-pointer">
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
@@ -327,7 +327,7 @@ export function SupportCenter({
                         )}
                       </div>
                     </button>
-                    
+
                     <AnimatePresence>
                       {expandedFAQs.has(faq.id) && (
                         <motion.div
@@ -506,8 +506,8 @@ export function SupportCenter({
                 </div>
                 <div>
                   <Label htmlFor="contact-message">{t('support.message')}</Label>
-                  <Textarea 
-                    id="contact-message" 
+                  <Textarea
+                    id="contact-message"
                     rows={5}
                     placeholder={t('support.messagePlaceholder')}
                   />
@@ -537,7 +537,7 @@ export function SupportCenter({
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-lg font-semibold mb-4">{t('support.createNewTicket')}</h3>
-            
+
             <div className="space-y-4">
               <div>
                 <Label>{t('support.subject')}</Label>
@@ -547,7 +547,7 @@ export function SupportCenter({
                   placeholder={t('support.subjectPlaceholder')}
                 />
               </div>
-              
+
               <div>
                 <Label>{t('support.category')}</Label>
                 <select
@@ -562,7 +562,7 @@ export function SupportCenter({
                   <option value="certificates">{t('support.categories.certificates')}</option>
                 </select>
               </div>
-              
+
               <div>
                 <Label>{t('support.priority')}</Label>
                 <select
@@ -576,7 +576,7 @@ export function SupportCenter({
                   <option value="urgent">{t('support.priority.urgent')}</option>
                 </select>
               </div>
-              
+
               <div>
                 <Label>{t('support.description')}</Label>
                 <Textarea
@@ -586,7 +586,7 @@ export function SupportCenter({
                   rows={5}
                 />
               </div>
-              
+
               <div className="flex gap-2">
                 <Button
                   onClick={handleCreateTicket}
@@ -641,7 +641,7 @@ export function SupportCenter({
                 <XCircle className="w-4 h-4" />
               </Button>
             </div>
-            
+
             <ScrollArea className="h-[400px] border rounded-lg p-4 mb-4">
               <div className="space-y-4">
                 {/* Initial Message */}
@@ -654,7 +654,7 @@ export function SupportCenter({
                   </div>
                   <p className="text-sm">{selectedTicket.description}</p>
                 </div>
-                
+
                 {/* Responses */}
                 {selectedTicket.responses.map(response => (
                   <div
@@ -676,7 +676,7 @@ export function SupportCenter({
                 ))}
               </div>
             </ScrollArea>
-            
+
             {selectedTicket.status !== 'closed' && (
               <div className="space-y-4">
                 <Textarea

@@ -57,6 +57,24 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Build Artifacts
+.next/
+.turbo/
+.tsbuildinfo
+dist/
+out/
+build/
+.cache/
+target/
+
+# Package Manager Locks (keep pnpm-lock.yaml)
+package-lock.json
+yarn.lock
+
+# Development Tools
+.eslintcache
+.stylelintcache
+
 # Python
 __pycache__/
 *.py[cod]

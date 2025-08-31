@@ -40,7 +40,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptor to handle token refresh
@@ -111,7 +111,7 @@ apiClient.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 // API methods
@@ -122,7 +122,7 @@ export const api = {
     login: (data: any) => apiClient.post('/auth/login', data),
     logout: () => apiClient.post('/auth/logout'),
     forgotPassword: (email: string) => apiClient.post('/auth/forgot-password', { email }),
-    resetPassword: (token: string, password: string) => 
+    resetPassword: (token: string, password: string) =>
       apiClient.post('/auth/reset-password', { token, password }),
     verifyEmail: (token: string) => apiClient.get(`/auth/verify-email?token=${token}`),
     me: () => apiClient.get('/auth/me'),
@@ -149,7 +149,7 @@ export const api = {
   payments: {
     createStripeCheckout: (data: any) => apiClient.post('/payments/stripe/checkout', data),
     createPayPalOrder: (data: any) => apiClient.post('/payments/paypal/create-order', data),
-    capturePayPalOrder: (orderId: string) => 
+    capturePayPalOrder: (orderId: string) =>
       apiClient.post('/payments/paypal/capture-order', { orderId }),
     getMyPayments: () => apiClient.get('/payments/my'),
     applyCoupon: (code: string) => apiClient.post('/payments/apply-coupon', { code }),

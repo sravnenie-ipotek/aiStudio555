@@ -9,25 +9,20 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Send, 
-  Paperclip, 
-  Search, 
-  MoreVertical, 
-  Phone, 
+import {
+  Send,
+  Paperclip,
+  Search,
+  MoreVertical,
+  Phone,
   Video,
   Info,
   Check,
   CheckCheck,
-  Clock,
   Users,
   MessageSquare,
   Star,
-  Archive,
-  Trash2,
   Edit,
-  Reply,
-  Forward
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -80,11 +75,11 @@ export function MessagingSystem({
   userId,
   conversations,
   onSendMessage,
-  onMarkAsRead
+  onMarkAsRead: _onMarkAsRead,
 }: MessagingSystemProps) {
   const { t } = useTranslation();
   const [selectedConversation, setSelectedConversation] = useState<string | null>(
-    conversations[0]?.id || null
+    conversations[0]?.id || null,
   );
   const [messageInput, setMessageInput] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -216,9 +211,9 @@ export function MessagingSystem({
               <ScrollArea className="h-[450px]">
                 {conversations
                   .filter(c => !c.archived)
-                  .filter(c => 
-                    searchQuery === '' || 
-                    getConversationName(c).toLowerCase().includes(searchQuery.toLowerCase())
+                  .filter(c =>
+                    searchQuery === '' ||
+                    getConversationName(c).toLowerCase().includes(searchQuery.toLowerCase()),
                   )
                   .map(conversation => (
                     <button
@@ -249,7 +244,7 @@ export function MessagingSystem({
                               <span className="text-xs text-muted-foreground">
                                 {new Date(conversation.lastMessage.timestamp).toLocaleTimeString([], {
                                   hour: '2-digit',
-                                  minute: '2-digit'
+                                  minute: '2-digit',
                                 })}
                               </span>
                             )}
@@ -305,7 +300,7 @@ export function MessagingSystem({
                   <div>
                     <h3 className="font-semibold">{getConversationName(currentConversation)}</h3>
                     <p className="text-sm text-muted-foreground">
-                      {currentConversation.type === 'group' 
+                      {currentConversation.type === 'group'
                         ? `${currentConversation.participants.length} ${t('messaging.members')}`
                         : currentConversation.participants.find(p => p.id !== userId)?.online
                           ? t('messaging.online')
@@ -321,8 +316,8 @@ export function MessagingSystem({
                   <Button size="icon" variant="ghost">
                     <Video className="w-4 h-4" />
                   </Button>
-                  <Button 
-                    size="icon" 
+                  <Button
+                    size="icon"
                     variant="ghost"
                     onClick={() => setShowInfo(!showInfo)}
                   >
@@ -358,8 +353,8 @@ export function MessagingSystem({
                           <div
                             className={`
                               rounded-lg px-4 py-2
-                              ${isOwn 
-                                ? 'bg-primary text-primary-foreground' 
+                              ${isOwn
+                                ? 'bg-primary text-primary-foreground'
                                 : 'bg-muted'}
                             `}
                           >
@@ -388,7 +383,7 @@ export function MessagingSystem({
                               <span className="text-xs opacity-70">
                                 {new Date(message.timestamp).toLocaleTimeString([], {
                                   hour: '2-digit',
-                                  minute: '2-digit'
+                                  minute: '2-digit',
                                 })}
                               </span>
                               {message.edited && (

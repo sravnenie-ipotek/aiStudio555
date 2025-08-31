@@ -10,10 +10,10 @@ export interface LayoutWrapperProps {
   showFooter?: boolean;
 }
 
-export function LayoutWrapper({ 
-  children, 
+export function LayoutWrapper({
+  children,
   headerVariant = 'opaque',
-  showFooter = true 
+  showFooter = true,
 }: LayoutWrapperProps) {
   return (
     <>

@@ -1,7 +1,7 @@
 /**
  * Comprehensive Monitoring Setup for Projectdes AI Academy
  * =========================================================
- * 
+ *
  * Error tracking, performance monitoring, and health checks
  */
 
@@ -35,7 +35,9 @@ export const monitoringConfig = {
 // Initialize Sentry
 export function initializeSentry() {
   if (!monitoringConfig.sentry.enabled || !monitoringConfig.sentry.dsn) {
-    console.log('🔍 Sentry disabled (no DSN or not production)');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🔍 Sentry disabled (no DSN or not production)');
+    }
     return;
   }
 
@@ -44,7 +46,7 @@ export function initializeSentry() {
     environment: monitoringConfig.sentry.environment,
     tracesSampleRate: monitoringConfig.sentry.tracesSampleRate,
     debug: monitoringConfig.sentry.debug,
-    
+
     // Performance Monitoring
     integrations: [
       new Sentry.BrowserTracing({
@@ -65,17 +67,17 @@ export function initializeSentry() {
         errorSampleRate: 1.0,
       }),
     ],
-    
+
     // Release tracking
     release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
-    
+
     // User context
     initialScope: {
       tags: {
         component: 'frontend',
       },
     },
-    
+
     // Filtering
     ignoreErrors: [
       // Browser extensions
@@ -92,24 +94,24 @@ export function initializeSentry() {
       'ResizeObserver loop limit exceeded',
       'Non-Error promise rejection captured',
     ],
-    
+
     // Before send hook
     beforeSend(event, hint) {
       // Filter out certain errors
       if (event.exception) {
         const error = hint.originalException;
-        
+
         // Don't send cancelled requests
         if (error?.name === 'AbortError') {
           return null;
         }
-        
+
         // Don't send 404 errors
         if (error?.message?.includes('404')) {
           return null;
         }
       }
-      
+
       // Sanitize sensitive data
       if (event.request) {
         // Remove sensitive headers
@@ -118,43 +120,46 @@ export function initializeSentry() {
           delete event.request.headers['Cookie'];
           delete event.request.headers['X-CSRF-Token'];
         }
-        
+
         // Remove sensitive data from URL
         if (event.request.url) {
           event.request.url = event.request.url.replace(/token=[^&]+/, 'token=REDACTED');
           event.request.url = event.request.url.replace(/api_key=[^&]+/, 'api_key=REDACTED');
         }
       }
-      
+
       return event;
     },
-    
+
     // Session tracking
     autoSessionTracking: true,
-    
+
     // Breadcrumbs
     beforeBreadcrumb(breadcrumb) {
       // Filter out noisy breadcrumbs
       if (breadcrumb.category === 'console' && breadcrumb.level === 'debug') {
         return null;
       }
-      
+
       // Sanitize data in breadcrumbs
-      if (breadcrumb.data && breadcrumb.data.url) {
+      if (breadcrumb.data?.url) {
         breadcrumb.data.url = breadcrumb.data.url.replace(/token=[^&]+/, 'token=REDACTED');
       }
-      
+
       return breadcrumb;
     },
   });
 
-  console.log('✅ Sentry initialized');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('✅ Sentry initialized');
+  }
 }
 
 // Error boundary reporting
 export function reportErrorBoundary(error: Error, errorInfo: any) {
-  console.error('Error boundary triggered:', error, errorInfo);
-  
+  // Error boundary logging is handled by Sentry
+  // console.error('Error boundary triggered:', error, errorInfo);
+
   if (monitoringConfig.sentry.enabled) {
     Sentry.withScope((scope) => {
       scope.setContext('errorBoundary', errorInfo);
@@ -166,14 +171,15 @@ export function reportErrorBoundary(error: Error, errorInfo: any) {
 
 // Manual error reporting
 export function reportError(error: Error | string, context?: Record<string, any>) {
-  console.error('Error reported:', error, context);
-  
+  // Error reporting is handled by Sentry
+  // console.error('Error reported:', error, context);
+
   if (monitoringConfig.sentry.enabled) {
     Sentry.withScope((scope) => {
       if (context) {
         scope.setContext('additional', context);
       }
-      
+
       if (typeof error === 'string') {
         Sentry.captureMessage(error, 'error');
       } else {
@@ -187,20 +193,20 @@ export function reportError(error: Error | string, context?: Record<string, any>
 export function trackPerformance(name: string, duration: number, data?: Record<string, any>) {
   if (monitoringConfig.sentry.enabled) {
     const transaction = Sentry.getCurrentHub().getScope()?.getTransaction();
-    
+
     if (transaction) {
       const span = transaction.startChild({
         op: 'custom',
         description: name,
         data,
       });
-      
+
       setTimeout(() => {
         span.finish();
       }, duration);
     }
   }
-  
+
   // Also log to console in development
   if (process.env.NODE_ENV === 'development') {
     console.log(`⚡ Performance: ${name} took ${duration}ms`, data);
@@ -236,7 +242,7 @@ export function addBreadcrumb(
   message: string,
   category: string,
   level: 'debug' | 'info' | 'warning' | 'error' = 'info',
-  data?: Record<string, any>
+  data?: Record<string, any>,
 ) {
   if (monitoringConfig.sentry.enabled) {
     Sentry.addBreadcrumb({
@@ -339,7 +345,7 @@ export class HealthCheckMonitor {
           status,
           lastCheck: new Date(),
         });
-        
+
         // Report to Sentry if check fails
         if (!status && monitoringConfig.sentry.enabled) {
           addBreadcrumb(`Health check failed: ${name}`, 'health', 'warning');
@@ -350,7 +356,7 @@ export class HealthCheckMonitor {
           lastCheck: new Date(),
           error: error instanceof Error ? error.message : 'Unknown error',
         });
-        
+
         // Report to Sentry
         if (monitoringConfig.sentry.enabled) {
           reportError(error as Error, { healthCheck: name });
@@ -414,15 +420,15 @@ export class UptimeMonitor {
   // Check endpoint
   async checkEndpoint(url: string): Promise<{ status: boolean; responseTime: number }> {
     const startTime = Date.now();
-    
+
     try {
       const response = await fetch(url, {
         method: 'HEAD',
         signal: AbortSignal.timeout(monitoringConfig.healthCheck.timeout),
       });
-      
+
       const responseTime = Date.now() - startTime;
-      
+
       return {
         status: response.ok,
         responseTime,
@@ -439,25 +445,25 @@ export class UptimeMonitor {
   async runChecks() {
     const promises = this.endpoints.map(async (endpoint) => {
       const result = await this.checkEndpoint(endpoint);
-      
+
       this.results.set(endpoint, {
         ...result,
         lastCheck: new Date(),
       });
-      
+
       // Report to monitoring if endpoint is down
       if (!result.status) {
         reportError(`Endpoint down: ${endpoint}`, {
           responseTime: result.responseTime,
         });
       }
-      
+
       // Report slow response times
       if (result.responseTime > 3000) {
         addBreadcrumb(
           `Slow response from ${endpoint}: ${result.responseTime}ms`,
           'performance',
-          'warning'
+          'warning',
         );
       }
     });
@@ -515,7 +521,9 @@ export function initializeMonitoring() {
     uptimeMonitor.start();
   }
 
-  console.log('✅ Monitoring initialized');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('✅ Monitoring initialized');
+  }
 }
 
 // Get monitoring instances

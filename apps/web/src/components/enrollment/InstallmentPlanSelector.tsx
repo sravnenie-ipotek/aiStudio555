@@ -75,14 +75,14 @@ export function InstallmentPlanSelector({ selectedPlan, onPlanChange, basePrice 
                   {t('enrollment.payment.recommended')}
                 </Badge>
               )}
-              
+
               <div className="flex items-start space-x-3">
                 <RadioGroupItem value={plan.id} id={plan.id} className="mt-1" />
                 <div className="flex-1">
                   <Label htmlFor={plan.id} className="cursor-pointer text-base">
                     {plan.label}
                   </Label>
-                  
+
                   <div className="mt-2 space-y-2">
                     <div className="flex items-center gap-2 text-sm">
                       <DollarSign className="w-4 h-4 text-muted-foreground" />
@@ -91,12 +91,12 @@ export function InstallmentPlanSelector({ selectedPlan, onPlanChange, basePrice 
                         {plan.id !== 'full' && <span className="text-muted-foreground">/{t('common.month')}</span>}
                       </span>
                     </div>
-                    
+
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <TrendingUp className="w-4 h-4" />
                       <span>{t('enrollment.payment.total')}: ${plan.totalAmount.toFixed(2)}</span>
                     </div>
-                    
+
                     {plan.id !== 'full' && (
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <Calendar className="w-4 h-4" />

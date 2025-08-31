@@ -83,7 +83,7 @@ export function Header({ className }: HeaderProps) {
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           'bg-dark-header border-b border-dark-secondary/50',
           isScrolled && 'shadow-lg',
-          className
+          className,
         )}
       >
         <div className="w-full">
@@ -105,14 +105,14 @@ export function Header({ className }: HeaderProps) {
                           className={cn(
                             'flex items-center gap-1 text-white text-[15px] font-medium transition-colors whitespace-nowrap',
                             'hover:text-primary-yellow py-2',
-                            openDropdown === item.label && 'text-primary-yellow'
+                            openDropdown === item.label && 'text-primary-yellow',
                           )}
                         >
                           <span className="whitespace-nowrap">{item.label}</span>
                           <ChevronDown
                             className={cn(
                               'w-4 h-4 transition-transform',
-                              openDropdown === item.label && 'rotate-180'
+                              openDropdown === item.label && 'rotate-180',
                             )}
                           />
                         </button>
@@ -125,7 +125,7 @@ export function Header({ className }: HeaderProps) {
                                 className={cn(
                                   'block px-4 py-2.5 text-sm text-white transition-colors',
                                   'hover:bg-dark-gray/50 hover:text-primary-yellow',
-                                  isActive(child.href!) && 'bg-dark-gray/30 text-primary-yellow'
+                                  isActive(child.href!) && 'bg-dark-gray/30 text-primary-yellow',
                                 )}
                                 onClick={() => setOpenDropdown(null)}
                               >
@@ -141,7 +141,7 @@ export function Header({ className }: HeaderProps) {
                         className={cn(
                           'text-white text-[15px] font-medium transition-colors py-2 whitespace-nowrap',
                           'hover:text-primary-yellow',
-                          isActive(item.href!) && 'text-primary-yellow'
+                          isActive(item.href!) && 'text-primary-yellow',
                         )}
                       >
                         <span className="whitespace-nowrap">{item.label}</span>

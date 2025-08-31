@@ -1,1 +1,12 @@
-apps/web/.next/
+# Next.js build output
+.next/
+*.tsbuildinfo
+
+# Development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel

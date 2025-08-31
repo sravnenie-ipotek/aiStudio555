@@ -50,11 +50,11 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
   const applyLanguage = (language: Language) => {
     // Save to localStorage
     localStorage.setItem('language', language.code);
-    
+
     // Update HTML attributes
     document.documentElement.lang = language.code;
     document.documentElement.dir = language.dir;
-    
+
     // Update body classes for RTL styling
     if (language.dir === 'rtl') {
       document.body.classList.add('rtl');
@@ -63,7 +63,7 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
       document.body.classList.add('ltr');
       document.body.classList.remove('rtl');
     }
-    
+
     // Trigger language change event for other components
     window.dispatchEvent(new CustomEvent('languageChange', { detail: language }));
   };
@@ -85,7 +85,7 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
               'px-2 py-1 text-sm font-medium transition-colors rounded',
               currentLanguage.code === lang.code
                 ? 'text-primary-yellow bg-primary-yellow/10'
-                : 'text-text-gray hover:text-text-primary'
+                : 'text-text-gray hover:text-text-primary',
             )}
             aria-label={`Switch to ${lang.name}`}
             aria-current={currentLanguage.code === lang.code ? 'true' : 'false'}
@@ -108,7 +108,7 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
             className={cn(
               'w-full flex items-center justify-between px-3 py-2 text-left transition-colors',
               'hover:bg-surface-light rounded-lg',
-              currentLanguage.code === lang.code && 'bg-primary-yellow/10'
+              currentLanguage.code === lang.code && 'bg-primary-yellow/10',
             )}
             aria-label={`Switch to ${lang.name}`}
             aria-current={currentLanguage.code === lang.code ? 'true' : 'false'}
@@ -158,7 +158,7 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
                 'flex items-center justify-between px-3 py-2 text-sm rounded-md cursor-pointer',
                 'hover:bg-surface-light focus:bg-surface-light outline-none',
                 'transition-colors',
-                currentLanguage.code === lang.code && 'bg-primary-yellow/10'
+                currentLanguage.code === lang.code && 'bg-primary-yellow/10',
               )}
               onSelect={() => handleLanguageChange(lang)}
             >

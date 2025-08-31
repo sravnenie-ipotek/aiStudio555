@@ -83,8 +83,8 @@ export function EnrollmentSummary({ course, enrollmentData, totalPrice }: Enroll
               <p className="text-2xl font-bold text-primary">${totalPrice.toFixed(2)}</p>
               {enrollmentData.installmentPlan !== 'full' && (
                 <p className="text-sm text-muted-foreground">
-                  {t('enrollment.summary.perMonth', { 
-                    amount: (totalPrice / parseInt(enrollmentData.installmentPlan.split('_')[0])).toFixed(2) 
+                  {t('enrollment.summary.perMonth', {
+                    amount: (totalPrice / parseInt(enrollmentData.installmentPlan.split('_')[0])).toFixed(2),
                   })}
                 </p>
               )}

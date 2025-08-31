@@ -72,10 +72,10 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
     try {
       // Simulate payment processing
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       // In production, this would call the actual payment API
       // const response = await processPayment(enrollmentData);
-      
+
       setCurrentStep('confirmation');
     } catch (error) {
       console.error('Payment failed:', error);
@@ -102,15 +102,15 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
         const Icon = step.icon;
         const isActive = step.id === currentStep;
         const isCompleted = steps.findIndex(s => s.id === currentStep) > index;
-        
+
         return (
           <React.Fragment key={step.id}>
             <div className="flex items-center">
               <div
                 className={`
                   flex items-center justify-center w-10 h-10 rounded-full transition-colors
-                  ${isActive ? 'bg-primary text-primary-foreground' : 
-                    isCompleted ? 'bg-primary/20 text-primary' : 
+                  ${isActive ? 'bg-primary text-primary-foreground' :
+                    isCompleted ? 'bg-primary/20 text-primary' :
                     'bg-muted text-muted-foreground'}
                 `}
               >
@@ -144,7 +144,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
               value={enrollmentData.studentInfo.firstName}
               onChange={(e) => setEnrollmentData({
                 ...enrollmentData,
-                studentInfo: { ...enrollmentData.studentInfo, firstName: e.target.value }
+                studentInfo: { ...enrollmentData.studentInfo, firstName: e.target.value },
               })}
               required
             />
@@ -156,7 +156,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
               value={enrollmentData.studentInfo.lastName}
               onChange={(e) => setEnrollmentData({
                 ...enrollmentData,
-                studentInfo: { ...enrollmentData.studentInfo, lastName: e.target.value }
+                studentInfo: { ...enrollmentData.studentInfo, lastName: e.target.value },
               })}
               required
             />
@@ -172,7 +172,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
               value={enrollmentData.studentInfo.email}
               onChange={(e) => setEnrollmentData({
                 ...enrollmentData,
-                studentInfo: { ...enrollmentData.studentInfo, email: e.target.value }
+                studentInfo: { ...enrollmentData.studentInfo, email: e.target.value },
               })}
               required
             />
@@ -185,7 +185,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
               value={enrollmentData.studentInfo.phone}
               onChange={(e) => setEnrollmentData({
                 ...enrollmentData,
-                studentInfo: { ...enrollmentData.studentInfo, phone: e.target.value }
+                studentInfo: { ...enrollmentData.studentInfo, phone: e.target.value },
               })}
               required
             />
@@ -200,7 +200,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
               value={enrollmentData.studentInfo.country}
               onChange={(e) => setEnrollmentData({
                 ...enrollmentData,
-                studentInfo: { ...enrollmentData.studentInfo, country: e.target.value }
+                studentInfo: { ...enrollmentData.studentInfo, country: e.target.value },
               })}
               required
             />
@@ -212,7 +212,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
               value={enrollmentData.studentInfo.timezone}
               onChange={(e) => setEnrollmentData({
                 ...enrollmentData,
-                studentInfo: { ...enrollmentData.studentInfo, timezone: e.target.value }
+                studentInfo: { ...enrollmentData.studentInfo, timezone: e.target.value },
               })}
               placeholder="UTC+0"
             />
@@ -227,7 +227,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
             value={enrollmentData.studentInfo.studyGoals}
             onChange={(e) => setEnrollmentData({
               ...enrollmentData,
-              studentInfo: { ...enrollmentData.studentInfo, studyGoals: e.target.value }
+              studentInfo: { ...enrollmentData.studentInfo, studyGoals: e.target.value },
             })}
             placeholder={t('enrollment.fields.studyGoalsPlaceholder')}
           />
@@ -239,7 +239,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
             value={enrollmentData.studentInfo.preferredLanguage}
             onValueChange={(value) => setEnrollmentData({
               ...enrollmentData,
-              studentInfo: { ...enrollmentData.studentInfo, preferredLanguage: value }
+              studentInfo: { ...enrollmentData.studentInfo, preferredLanguage: value },
             })}
           >
             <div className="flex items-center space-x-2">
@@ -263,7 +263,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
             checked={enrollmentData.subscribedToNewsletter}
             onCheckedChange={(checked) => setEnrollmentData({
               ...enrollmentData,
-              subscribedToNewsletter: checked as boolean
+              subscribedToNewsletter: checked as boolean,
             })}
           />
           <Label htmlFor="newsletter" className="text-sm">
@@ -286,7 +286,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
             selectedMethod={enrollmentData.paymentMethod}
             onMethodChange={(method) => setEnrollmentData({
               ...enrollmentData,
-              paymentMethod: method
+              paymentMethod: method,
             })}
           />
 
@@ -294,7 +294,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
             selectedPlan={enrollmentData.installmentPlan}
             onPlanChange={(plan) => setEnrollmentData({
               ...enrollmentData,
-              installmentPlan: plan
+              installmentPlan: plan,
             })}
             basePrice={course.discountedPrice || course.price}
           />
@@ -339,7 +339,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
               checked={enrollmentData.agreedToTerms}
               onCheckedChange={(checked) => setEnrollmentData({
                 ...enrollmentData,
-                agreedToTerms: checked as boolean
+                agreedToTerms: checked as boolean,
               })}
             />
             <Label htmlFor="terms" className="text-sm">
@@ -368,7 +368,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
         >
           <CheckCircle className="w-20 h-20 text-green-500 mx-auto" />
         </motion.div>
-        
+
         <h2 className="text-2xl font-bold mb-4">{t('enrollment.confirmation.title')}</h2>
         <p className="text-muted-foreground mb-8">
           {t('enrollment.confirmation.message', { courseName: course.title })}
@@ -414,7 +414,7 @@ export function EnrollmentFlow({ course, onComplete }: EnrollmentFlowProps) {
   return (
     <div className="max-w-4xl mx-auto">
       {renderStepIndicator()}
-      
+
       <AnimatePresence mode="wait">
         <motion.div
           key={currentStep}

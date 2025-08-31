@@ -1,42 +1,42 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Play, Star, TrendingUp, Users, Award } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import * as React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Play, Star, TrendingUp, Users, Award } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export interface HeroProps {
   className?: string
   backgroundImage?: string
-  variant?: "default" | "video" | "minimal"
+  variant?: 'default' | 'video' | 'minimal'
 }
 
 const stats = [
-  { icon: Users, value: "5,000+", label: "Students Transformed" },
-  { icon: Award, value: "98%", label: "Job Placement Rate" },
-  { icon: TrendingUp, value: "$75K+", label: "Average Salary Increase" },
-  { icon: Star, value: "4.9/5", label: "Student Rating" },
-]
+  { icon: Users, value: '5,000+', label: 'Students Transformed' },
+  { icon: Award, value: '98%', label: 'Job Placement Rate' },
+  { icon: TrendingUp, value: '$75K+', label: 'Average Salary Increase' },
+  { icon: Star, value: '4.9/5', label: 'Student Rating' },
+];
 
 const trustedLogos = [
-  { name: "Microsoft", src: "/logos/microsoft.svg" },
-  { name: "Google", src: "/logos/google.svg" },
-  { name: "Amazon", src: "/logos/amazon.svg" },
-  { name: "Meta", src: "/logos/meta.svg" },
-  { name: "Apple", src: "/logos/apple.svg" },
-]
+  { name: 'Microsoft', src: '/logos/microsoft.svg' },
+  { name: 'Google', src: '/logos/google.svg' },
+  { name: 'Amazon', src: '/logos/amazon.svg' },
+  { name: 'Meta', src: '/logos/meta.svg' },
+  { name: 'Apple', src: '/logos/apple.svg' },
+];
 
 const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
-  ({ className, backgroundImage, variant = "default", ...props }, ref) => {
-    const [isVideoPlaying, setIsVideoPlaying] = React.useState(false)
+  ({ className, backgroundImage, variant = 'default', ...props }, ref) => {
+    const [isVideoPlaying, setIsVideoPlaying] = React.useState(false);
 
     const handleVideoPlay = () => {
-      setIsVideoPlaying(true)
+      setIsVideoPlaying(true);
       // Here you would typically open a video modal or navigate to a video page
-      console.log("Play introduction video")
-    }
+      console.log('Play introduction video');
+    };
 
     const heroContent = (
       <div className="relative z-10 container mx-auto px-4 py-20 lg:py-32">
@@ -51,7 +51,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-text-primary mb-6 leading-tight">
-              Transform Your Career with{" "}
+              Transform Your Career with{' '}
               <span className="text-primary-yellow relative">
                 Practical AI Skills
                 <svg
@@ -73,7 +73,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl lg:text-2xl text-text-gray mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Join 5,000+ professionals who've successfully transitioned into high-paying AI roles. 
+              Join 5,000+ professionals who've successfully transitioned into high-paying AI roles.
               Get hands-on experience with real projects and guaranteed job placement.
             </p>
 
@@ -89,7 +89,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
                   <TrendingUp className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </Link>
               </Button>
-              
+
               <Button
                 variant="outline"
                 size="xl"
@@ -145,7 +145,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
 
           {/* Visual Content */}
           <div className="relative">
-            {variant === "video" ? (
+            {variant === 'video' ? (
               // Video Preview
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-yellow/20 to-accent-blue/20 flex items-center justify-center">
@@ -192,7 +192,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
                     </div>
                   )}
                 </div>
-                
+
                 {/* Floating Elements */}
                 <div className="absolute -top-4 -right-4 bg-success text-white px-3 py-2 rounded-full text-sm font-medium shadow-lg">
                   98% Success Rate
@@ -218,27 +218,27 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
           </div>
         </div>
       </div>
-    )
+    );
 
-    if (variant === "minimal") {
+    if (variant === 'minimal') {
       return (
         <section
           ref={ref}
-          className={cn("py-20 bg-white", className)}
+          className={cn('py-20 bg-white', className)}
           {...props}
         >
           {heroContent}
         </section>
-      )
+      );
     }
 
     return (
       <section
         ref={ref}
         className={cn(
-          "relative min-h-screen flex items-center bg-gradient-to-br from-light-bg via-white to-primary-yellow/5",
-          "overflow-hidden font-rubik",
-          className
+          'relative min-h-screen flex items-center bg-gradient-to-br from-light-bg via-white to-primary-yellow/5',
+          'overflow-hidden font-rubik',
+          className,
         )}
         {...props}
       >
@@ -248,26 +248,26 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>(
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(94,160,255,0.1)_0%,_transparent_50%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,_rgba(255,218,23,0.05)_0%,_transparent_50%)]" />
         </div>
-        
+
         {/* Grid Pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `
               linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px'
+            backgroundSize: '50px 50px',
           }}
         />
 
         {heroContent}
       </section>
-    )
-  }
-)
+    );
+  },
+);
 
-HeroSection.displayName = "HeroSection"
+HeroSection.displayName = 'HeroSection';
 
-export { HeroSection }
-export { stats, trustedLogos }
+export { HeroSection };
+export { stats, trustedLogos };

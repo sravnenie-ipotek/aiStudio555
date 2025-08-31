@@ -165,10 +165,10 @@ ${languages
   .filter(l => l !== 'en')
   .map(
     lang =>
-      `    <xhtml:link rel="alternate" hreflang="${lang}" href="${entry.url.replace(siteUrl, `${siteUrl}/${lang}`)}" />`
+      `    <xhtml:link rel="alternate" hreflang="${lang}" href="${entry.url.replace(siteUrl, `${siteUrl}/${lang}`)}" />`,
   )
   .join('\n')}
-  </url>`
+  </url>`,
   )
   .join('\n')}
 </urlset>`;

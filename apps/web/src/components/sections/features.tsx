@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { 
-  Zap, 
-  Users, 
-  TrendingUp, 
-  Shield, 
-  Globe, 
+import {
+  Zap,
+  Users,
+  TrendingUp,
+  Shield,
+  Globe,
   Award,
   Briefcase,
   Clock,
@@ -86,14 +86,14 @@ export function Features({ variant = 'grid', className }: FeaturesProps) {
               Мы создали уникальную программу обучения, которая гарантирует результат
             </p>
           </div>
-          
+
           <div className="space-y-24">
             {features.slice(0, 3).map((feature, index) => (
               <div
                 key={index}
                 className={cn(
                   'flex flex-col lg:flex-row items-center gap-12',
-                  index % 2 === 1 && 'lg:flex-row-reverse'
+                  index % 2 === 1 && 'lg:flex-row-reverse',
                 )}
               >
                 <div className="flex-1 space-y-6">
@@ -144,7 +144,7 @@ export function Features({ variant = 'grid', className }: FeaturesProps) {
             Комплексная программа подготовки AI-специалистов с фокусом на практику и результат
           </p>
         </div>
-        
+
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
@@ -164,7 +164,7 @@ export function Features({ variant = 'grid', className }: FeaturesProps) {
             </div>
           ))}
         </div>
-        
+
         {/* Benefits List */}
         <div className="mt-16 bg-gradient-to-r from-primary-yellow to-yellow-dark rounded-3xl p-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

@@ -7,11 +7,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Checkbox } from '@/components/ui/checkbox';
-import { 
-  PlayCircle, 
-  CheckCircle, 
-  Lock, 
-  Clock, 
+import {
+  PlayCircle,
+  CheckCircle,
+  Lock,
+  Clock,
   ChevronRight,
   ChevronDown,
   BookOpen,
@@ -19,7 +19,7 @@ import {
   FileText,
   Target,
   Trophy,
-  Star
+  Star,
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 

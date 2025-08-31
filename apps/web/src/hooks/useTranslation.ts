@@ -476,7 +476,7 @@ export function useTranslation() {
     (key: string, params?: Record<string, any>): string => {
       return getNestedTranslation(translations[language], key, params);
     },
-    [language]
+    [language],
   );
 
   const changeLanguage = useCallback((newLanguage: Language) => {

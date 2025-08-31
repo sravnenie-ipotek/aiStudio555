@@ -9,8 +9,8 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Bell, 
+import {
+  Bell,
   BellOff,
   Check,
   X,
@@ -32,7 +32,7 @@ import {
   ChevronRight,
   Filter,
   Volume2,
-  VolumeX
+  VolumeX,
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -83,7 +83,7 @@ export function NotificationCenter({
   onArchive,
   onDelete,
   onUpdatePreferences,
-  onAction
+  onAction,
 }: NotificationCenterProps) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -249,36 +249,36 @@ export function NotificationCenter({
                   {showSettings ? (
                     <div className="p-4 space-y-4">
                       <h3 className="font-medium mb-4">{t('notifications.preferences')}</h3>
-                      
+
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <Label htmlFor="email-notif">{t('notifications.emailNotifications')}</Label>
                           <Switch
                             id="email-notif"
                             checked={preferences.email}
-                            onCheckedChange={(checked) => 
+                            onCheckedChange={(checked) =>
                               onUpdatePreferences({ ...preferences, email: checked })
                             }
                           />
                         </div>
-                        
+
                         <div className="flex items-center justify-between">
                           <Label htmlFor="push-notif">{t('notifications.pushNotifications')}</Label>
                           <Switch
                             id="push-notif"
                             checked={preferences.push}
-                            onCheckedChange={(checked) => 
+                            onCheckedChange={(checked) =>
                               onUpdatePreferences({ ...preferences, push: checked })
                             }
                           />
                         </div>
-                        
+
                         <div className="flex items-center justify-between">
                           <Label htmlFor="sound-notif">{t('notifications.soundNotifications')}</Label>
                           <Switch
                             id="sound-notif"
                             checked={preferences.sound}
-                            onCheckedChange={(checked) => 
+                            onCheckedChange={(checked) =>
                               onUpdatePreferences({ ...preferences, sound: checked })
                             }
                           />
@@ -293,40 +293,40 @@ export function NotificationCenter({
                             <Switch
                               id="course-updates"
                               checked={preferences.courseUpdates}
-                              onCheckedChange={(checked) => 
+                              onCheckedChange={(checked) =>
                                 onUpdatePreferences({ ...preferences, courseUpdates: checked })
                               }
                             />
                           </div>
-                          
+
                           <div className="flex items-center justify-between">
                             <Label htmlFor="messages">{t('notifications.messages')}</Label>
                             <Switch
                               id="messages"
                               checked={preferences.messages}
-                              onCheckedChange={(checked) => 
+                              onCheckedChange={(checked) =>
                                 onUpdatePreferences({ ...preferences, messages: checked })
                               }
                             />
                           </div>
-                          
+
                           <div className="flex items-center justify-between">
                             <Label htmlFor="payments">{t('notifications.payments')}</Label>
                             <Switch
                               id="payments"
                               checked={preferences.payments}
-                              onCheckedChange={(checked) => 
+                              onCheckedChange={(checked) =>
                                 onUpdatePreferences({ ...preferences, payments: checked })
                               }
                             />
                           </div>
-                          
+
                           <div className="flex items-center justify-between">
                             <Label htmlFor="achievements">{t('notifications.achievements')}</Label>
                             <Switch
                               id="achievements"
                               checked={preferences.achievements}
-                              onCheckedChange={(checked) => 
+                              onCheckedChange={(checked) =>
                                 onUpdatePreferences({ ...preferences, achievements: checked })
                               }
                             />
@@ -364,7 +364,7 @@ export function NotificationCenter({
                               <div className="text-center py-8">
                                 <Bell className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                                 <p className="text-muted-foreground">
-                                  {selectedTab === 'unread' 
+                                  {selectedTab === 'unread'
                                     ? t('notifications.noUnread')
                                     : selectedTab === 'archived'
                                     ? t('notifications.noArchived')
@@ -435,7 +435,7 @@ export function NotificationCenter({
                                               {formatTimestamp(notification.timestamp)}
                                             </span>
                                             {notification.priority && notification.priority !== 'medium' && (
-                                              <Badge 
+                                              <Badge
                                                 variant={notification.priority === 'high' ? 'destructive' : 'secondary'}
                                                 className="h-4 px-1 text-xs"
                                               >

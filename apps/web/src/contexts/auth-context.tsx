@@ -62,10 +62,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const response = await api.auth.login({ email, password });
       const { user, accessToken, refreshToken } = response.data.data;
-      
+
       tokenManager.setTokens(accessToken, refreshToken);
       setUser(user);
-      
+
       router.push('/dashboard');
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Ошибка входа');
@@ -76,10 +76,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const response = await api.auth.register(data);
       const { user, accessToken, refreshToken } = response.data.data;
-      
+
       tokenManager.setTokens(accessToken, refreshToken);
       setUser(user);
-      
+
       router.push('/auth/verify-email');
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Ошибка регистрации');

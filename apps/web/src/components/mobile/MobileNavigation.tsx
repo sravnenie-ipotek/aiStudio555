@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Home, 
-  BookOpen, 
-  Award, 
-  MessageSquare, 
+import {
+  Home,
+  BookOpen,
+  Award,
+  MessageSquare,
   Bell,
   Menu,
   X,
@@ -23,7 +23,7 @@ import {
   Users,
   FileText,
   ChevronRight,
-  Search
+  Search,
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useRouter, usePathname } from 'next/navigation';
@@ -53,14 +53,14 @@ export function MobileNavigation({ user, notificationCount = 0, messageCount = 0
   ];
 
   const menuItems = [
-    { 
+    {
       section: t('nav.learning'),
       items: [
         { id: 'my-courses', label: t('nav.myCourses'), icon: BookOpen, path: '/dashboard/courses' },
         { id: 'progress', label: t('nav.progress'), icon: BarChart3, path: '/dashboard/progress' },
         { id: 'schedule', label: t('nav.schedule'), icon: Calendar, path: '/dashboard/schedule' },
         { id: 'certificates', label: t('nav.certificates'), icon: Award, path: '/dashboard/certificates' },
-      ]
+      ],
     },
     {
       section: t('nav.community'),
@@ -68,7 +68,7 @@ export function MobileNavigation({ user, notificationCount = 0, messageCount = 0
         { id: 'messages', label: t('nav.messages'), icon: MessageSquare, path: '/messages', badge: messageCount },
         { id: 'groups', label: t('nav.groups'), icon: Users, path: '/groups' },
         { id: 'forums', label: t('nav.forums'), icon: FileText, path: '/forums' },
-      ]
+      ],
     },
     {
       section: t('nav.account'),
@@ -77,8 +77,8 @@ export function MobileNavigation({ user, notificationCount = 0, messageCount = 0
         { id: 'payments', label: t('nav.payments'), icon: CreditCard, path: '/payments' },
         { id: 'settings', label: t('nav.settings'), icon: Settings, path: '/settings' },
         { id: 'support', label: t('nav.support'), icon: HelpCircle, path: '/support' },
-      ]
-    }
+      ],
+    },
   ];
 
   const isActive = (path: string) => pathname === path;

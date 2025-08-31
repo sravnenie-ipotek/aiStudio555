@@ -1,7 +1,7 @@
 /**
  * SEO Configuration and Utilities for Projectdes AI Academy
  * ==========================================================
- * 
+ *
  * Comprehensive SEO management with multi-language support
  */
 
@@ -16,7 +16,7 @@ export const seoConfig = {
   defaultDescription: 'Transform your career with practical AI training. Learn AI Management, No-Code Development, and AI Video Creation with job placement guarantee.',
   defaultImage: 'https://projectdes.ai/og-image.jpg',
   twitterHandle: '@projectdes',
-  
+
   // Multi-language configurations
   locales: {
     ru: {
@@ -35,7 +35,7 @@ export const seoConfig = {
       keywords: 'AI training, artificial intelligence courses, no-code development, AI video, online education',
     },
   },
-  
+
   // Organization structured data
   organization: {
     '@context': 'https://schema.org',
@@ -96,7 +96,7 @@ export function generateMetadata({
     description: pageDescription,
     keywords: pageKeywords,
     authors: author ? [{ name: author }] : undefined,
-    
+
     // Open Graph
     openGraph: {
       title: pageTitle,
@@ -116,7 +116,7 @@ export function generateMetadata({
       publishedTime,
       modifiedTime,
     },
-    
+
     // Twitter Card
     twitter: {
       card: 'summary_large_image',
@@ -126,7 +126,7 @@ export function generateMetadata({
       creator: seoConfig.twitterHandle,
       site: seoConfig.twitterHandle,
     },
-    
+
     // Robots
     robots: {
       index: !noindex,
@@ -139,7 +139,7 @@ export function generateMetadata({
         'max-snippet': -1,
       },
     },
-    
+
     // Alternate languages
     alternates: {
       canonical: pageUrl,
@@ -149,7 +149,7 @@ export function generateMetadata({
         'en': `${seoConfig.siteUrl}/en`,
       },
     },
-    
+
     // Verification
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,

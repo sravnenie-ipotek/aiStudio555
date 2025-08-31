@@ -1,23 +1,23 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { 
-  Clock, 
-  Users, 
-  Star, 
-  TrendingUp, 
-  CheckCircle, 
+import * as React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  Clock,
+  Users,
+  Star,
+  TrendingUp,
+  CheckCircle,
   Award,
   Calendar,
   BookOpen,
   DollarSign,
   ArrowRight,
-  Zap
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn, formatCurrency } from "@/lib/utils"
+  Zap,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn, formatCurrency } from '@/lib/utils';
 
 export interface Course {
   id: string
@@ -32,7 +32,7 @@ export interface Course {
   studentsCount: number
   rating: number
   reviewsCount: number
-  level: "Beginner" | "Intermediate" | "Advanced"
+  level: 'Beginner' | 'Intermediate' | 'Advanced'
   category: string
   highlights: string[]
   outcomes: string[]
@@ -50,7 +50,7 @@ export interface Course {
 
 export interface CoursesProps {
   className?: string
-  variant?: "grid" | "carousel" | "featured"
+  variant?: 'grid' | 'carousel' | 'featured'
   showFilters?: boolean
   maxCourses?: number
   title?: string
@@ -60,134 +60,134 @@ export interface CoursesProps {
 
 const courses: Course[] = [
   {
-    id: "ai-transformation-manager",
-    title: "AI Transformation Manager",
-    subtitle: "Lead AI initiatives in any organization",
-    description: "Master the strategic implementation of AI solutions across organizations. Learn to identify opportunities, manage AI projects, and drive digital transformation initiatives.",
+    id: 'ai-transformation-manager',
+    title: 'AI Transformation Manager',
+    subtitle: 'Lead AI initiatives in any organization',
+    description: 'Master the strategic implementation of AI solutions across organizations. Learn to identify opportunities, manage AI projects, and drive digital transformation initiatives.',
     price: 1500,
     discountedPrice: 1200,
-    currency: "USD",
-    duration: "12 weeks",
+    currency: 'USD',
+    duration: '12 weeks',
     studentsCount: 2847,
     rating: 4.9,
     reviewsCount: 431,
-    level: "Intermediate",
-    category: "Strategy & Leadership",
+    level: 'Intermediate',
+    category: 'Strategy & Leadership',
     highlights: [
-      "AI Strategy Development",
-      "Project Management",
-      "ROI Analysis & Measurement",
-      "Change Management",
-      "Vendor Selection"
+      'AI Strategy Development',
+      'Project Management',
+      'ROI Analysis & Measurement',
+      'Change Management',
+      'Vendor Selection',
     ],
     outcomes: [
-      "Lead AI transformation projects",
-      "Develop comprehensive AI strategies",
-      "Manage cross-functional AI teams",
-      "Measure and optimize AI ROI"
+      'Lead AI transformation projects',
+      'Develop comprehensive AI strategies',
+      'Manage cross-functional AI teams',
+      'Measure and optimize AI ROI',
     ],
     instructor: {
-      name: "Dr. Sarah Chen",
-      title: "Former AI Director at Microsoft"
+      name: 'Dr. Sarah Chen',
+      title: 'Former AI Director at Microsoft',
     },
-    nextCohort: "March 15, 2024",
+    nextCohort: 'March 15, 2024',
     popular: true,
-    badge: "Most Popular"
+    badge: 'Most Popular',
   },
   {
-    id: "no-code-development",
-    title: "No-Code Website Development",
-    subtitle: "Build professional websites without coding",
-    description: "Create stunning, fully functional websites using the latest no-code platforms. Perfect for entrepreneurs, marketers, and anyone wanting to build web presence quickly.",
+    id: 'no-code-development',
+    title: 'No-Code Website Development',
+    subtitle: 'Build professional websites without coding',
+    description: 'Create stunning, fully functional websites using the latest no-code platforms. Perfect for entrepreneurs, marketers, and anyone wanting to build web presence quickly.',
     price: 1000,
     discountedPrice: 800,
-    currency: "USD",
-    duration: "8 weeks",
+    currency: 'USD',
+    duration: '8 weeks',
     studentsCount: 1923,
     rating: 4.8,
     reviewsCount: 287,
-    level: "Beginner",
-    category: "Development",
+    level: 'Beginner',
+    category: 'Development',
     highlights: [
-      "Webflow Mastery",
-      "Advanced Interactions",
-      "E-commerce Integration",
-      "SEO Optimization",
-      "Client Management"
+      'Webflow Mastery',
+      'Advanced Interactions',
+      'E-commerce Integration',
+      'SEO Optimization',
+      'Client Management',
     ],
     outcomes: [
-      "Build professional websites",
-      "Create e-commerce stores",
-      "Implement advanced animations",
-      "Start freelance business"
+      'Build professional websites',
+      'Create e-commerce stores',
+      'Implement advanced animations',
+      'Start freelance business',
     ],
     instructor: {
-      name: "Marcus Rodriguez",
-      title: "Lead Designer at Airbnb"
+      name: 'Marcus Rodriguez',
+      title: 'Lead Designer at Airbnb',
     },
-    nextCohort: "February 28, 2024"
+    nextCohort: 'February 28, 2024',
   },
   {
-    id: "ai-video-avatar",
-    title: "AI Video & Avatar Generation",
-    subtitle: "Create content with AI-powered video",
-    description: "Master cutting-edge AI video generation tools to create professional content at scale. Learn avatar creation, voice synthesis, and automated video production.",
+    id: 'ai-video-avatar',
+    title: 'AI Video & Avatar Generation',
+    subtitle: 'Create content with AI-powered video',
+    description: 'Master cutting-edge AI video generation tools to create professional content at scale. Learn avatar creation, voice synthesis, and automated video production.',
     price: 1300,
     discountedPrice: 1000,
-    currency: "USD",
-    duration: "10 weeks",
+    currency: 'USD',
+    duration: '10 weeks',
     studentsCount: 1456,
     rating: 4.9,
     reviewsCount: 203,
-    level: "Advanced",
-    category: "Content Creation",
+    level: 'Advanced',
+    category: 'Content Creation',
     highlights: [
-      "AI Avatar Creation",
-      "Voice Synthesis",
-      "Video Automation",
-      "Content Strategy",
-      "Brand Integration"
+      'AI Avatar Creation',
+      'Voice Synthesis',
+      'Video Automation',
+      'Content Strategy',
+      'Brand Integration',
     ],
     outcomes: [
-      "Generate AI-powered videos",
-      "Create realistic avatars",
-      "Automate content production",
-      "Scale video marketing"
+      'Generate AI-powered videos',
+      'Create realistic avatars',
+      'Automate content production',
+      'Scale video marketing',
     ],
     instructor: {
-      name: "Alex Thompson",
-      title: "Creative Director at Meta"
+      name: 'Alex Thompson',
+      title: 'Creative Director at Meta',
     },
-    nextCohort: "March 8, 2024",
-    badge: "New Course"
-  }
-]
+    nextCohort: 'March 8, 2024',
+    badge: 'New Course',
+  },
+];
 
-const CourseCard = React.forwardRef<HTMLDivElement, { course: Course; variant?: "default" | "compact" | "featured" }>(
-  ({ course, variant = "default" }, ref) => {
-    const discountPercentage = course.discountedPrice 
+const CourseCard = React.forwardRef<HTMLDivElement, { course: Course; variant?: 'default' | 'compact' | 'featured' }>(
+  ({ course, variant = 'default' }, ref) => {
+    const discountPercentage = course.discountedPrice
       ? Math.round(((course.price - course.discountedPrice) / course.price) * 100)
-      : 0
+      : 0;
 
     return (
       <div
         ref={ref}
         className={cn(
-          "group relative bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300",
-          "border border-border-light hover:border-primary-yellow/20 hover:-translate-y-1",
-          variant === "featured" && "ring-2 ring-primary-yellow"
+          'group relative bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300',
+          'border border-border-light hover:border-primary-yellow/20 hover:-translate-y-1',
+          variant === 'featured' && 'ring-2 ring-primary-yellow',
         )}
       >
         {/* Course Badge */}
         {(course.popular || course.badge) && (
           <div className="absolute top-4 left-4 z-10">
             <span className={cn(
-              "px-3 py-1 rounded-full text-xs font-bold",
-              course.popular 
-                ? "bg-primary-yellow text-dark-pure"
-                : "bg-success text-white"
+              'px-3 py-1 rounded-full text-xs font-bold',
+              course.popular
+                ? 'bg-primary-yellow text-dark-pure'
+                : 'bg-success text-white',
             )}>
-              {course.badge || "Most Popular"}
+              {course.badge || 'Most Popular'}
             </span>
           </div>
         )}
@@ -216,7 +216,7 @@ const CourseCard = React.forwardRef<HTMLDivElement, { course: Course; variant?: 
               <BookOpen className="h-16 w-16 text-primary-yellow" />
             </div>
           )}
-          
+
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-dark-pure/0 group-hover:bg-dark-pure/20 transition-colors duration-300 flex items-center justify-center">
             <Button
@@ -235,10 +235,10 @@ const CourseCard = React.forwardRef<HTMLDivElement, { course: Course; variant?: 
           <div className="mb-4">
             <div className="flex items-center justify-between mb-2">
               <span className={cn(
-                "text-xs font-medium px-2 py-1 rounded-full",
-                course.level === "Beginner" && "bg-success/10 text-success",
-                course.level === "Intermediate" && "bg-warning/10 text-warning",
-                course.level === "Advanced" && "bg-error/10 text-error"
+                'text-xs font-medium px-2 py-1 rounded-full',
+                course.level === 'Beginner' && 'bg-success/10 text-success',
+                course.level === 'Intermediate' && 'bg-warning/10 text-warning',
+                course.level === 'Advanced' && 'bg-error/10 text-error',
               )}>
                 {course.level}
               </span>
@@ -271,7 +271,7 @@ const CourseCard = React.forwardRef<HTMLDivElement, { course: Course; variant?: 
           </div>
 
           {/* Key Highlights */}
-          {variant !== "compact" && (
+          {variant !== 'compact' && (
             <div className="mb-6">
               <h4 className="text-sm font-semibold text-text-primary mb-3">
                 What you'll learn:
@@ -345,41 +345,41 @@ const CourseCard = React.forwardRef<HTMLDivElement, { course: Course; variant?: 
           </div>
         </div>
       </div>
-    )
-  }
-)
+    );
+  },
+);
 
-CourseCard.displayName = "CourseCard"
+CourseCard.displayName = 'CourseCard';
 
 const CoursesSection = React.forwardRef<HTMLElement, CoursesProps>(
-  ({ 
-    className, 
-    variant = "grid",
+  ({
+    className,
+    variant = 'grid',
     showFilters = false,
     maxCourses,
-    title = "Transform Your Career with Our AI Courses",
-    subtitle = "Choose from our comprehensive curriculum designed to take you from beginner to AI expert",
-    ctaText = "View All Courses",
-    ...props 
+    title = 'Transform Your Career with Our AI Courses',
+    subtitle = 'Choose from our comprehensive curriculum designed to take you from beginner to AI expert',
+    ctaText = 'View All Courses',
+    ...props
   }, ref) => {
-    const [selectedCategory, setSelectedCategory] = React.useState<string>("all")
-    
-    const displayedCourses = maxCourses 
+    const [selectedCategory, setSelectedCategory] = React.useState<string>('all');
+
+    const displayedCourses = maxCourses
       ? courses.slice(0, maxCourses)
-      : courses
+      : courses;
 
-    const categories = ["all", ...new Set(courses.map(course => course.category))]
+    const categories = ['all', ...new Set(courses.map(course => course.category))];
 
-    const filteredCourses = selectedCategory === "all" 
+    const filteredCourses = selectedCategory === 'all'
       ? displayedCourses
-      : displayedCourses.filter(course => course.category === selectedCategory)
+      : displayedCourses.filter(course => course.category === selectedCategory);
 
     return (
       <section
         ref={ref}
         className={cn(
-          "py-16 lg:py-24 bg-light-bg font-rubik",
-          className
+          'py-16 lg:py-24 bg-light-bg font-rubik',
+          className,
         )}
         {...props}
       >
@@ -399,12 +399,12 @@ const CoursesSection = React.forwardRef<HTMLElement, CoursesProps>(
                 {categories.map((category) => (
                   <Button
                     key={category}
-                    variant={selectedCategory === category ? "primary" : "outline"}
+                    variant={selectedCategory === category ? 'primary' : 'outline'}
                     size="sm"
                     onClick={() => setSelectedCategory(category)}
                     className="capitalize"
                   >
-                    {category === "all" ? "All Courses" : category}
+                    {category === 'all' ? 'All Courses' : category}
                   </Button>
                 ))}
               </div>
@@ -417,7 +417,7 @@ const CoursesSection = React.forwardRef<HTMLElement, CoursesProps>(
               <CourseCard
                 key={course.id}
                 course={course}
-                variant={variant === "featured" ? "featured" : "default"}
+                variant={variant === 'featured' ? 'featured' : 'default'}
               />
             ))}
           </div>
@@ -429,10 +429,10 @@ const CoursesSection = React.forwardRef<HTMLElement, CoursesProps>(
                 Not sure which course is right for you?
               </h3>
               <p className="text-lg text-text-gray mb-8 max-w-2xl mx-auto">
-                Book a free 30-minute consultation with our career advisors. We'll help you choose 
+                Book a free 30-minute consultation with our career advisors. We'll help you choose
                 the perfect course based on your background and career goals.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button size="xl" variant="primary" asChild>
                   <Link href="/consultation" className="inline-flex items-center">
@@ -440,7 +440,7 @@ const CoursesSection = React.forwardRef<HTMLElement, CoursesProps>(
                     Book Free Consultation
                   </Link>
                 </Button>
-                
+
                 <Button size="xl" variant="outline" asChild>
                   <Link href="/courses" className="inline-flex items-center">
                     {ctaText}
@@ -468,11 +468,11 @@ const CoursesSection = React.forwardRef<HTMLElement, CoursesProps>(
           </div>
         </div>
       </section>
-    )
-  }
-)
+    );
+  },
+);
 
-CoursesSection.displayName = "CoursesSection"
+CoursesSection.displayName = 'CoursesSection';
 
-export { CoursesSection, CourseCard, courses }
-export type { Course }
+export { CoursesSection, CourseCard, courses };
+export type { Course };

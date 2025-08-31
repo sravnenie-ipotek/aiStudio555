@@ -4,11 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { 
-  Clock, 
-  Users, 
-  Star, 
-  ArrowRight, 
+import {
+  Clock,
+  Users,
+  Star,
+  ArrowRight,
   Zap,
   Calendar,
   DollarSign,
@@ -141,7 +141,7 @@ export function Courses({ className }: CoursesProps) {
             Практические курсы с гарантией трудоустройства и зарплатой от $2000
           </p>
         </div>
-        
+
         {/* Courses Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course) => (
@@ -164,7 +164,7 @@ export function Courses({ className }: CoursesProps) {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              
+
               {/* Content */}
               <div className="p-6 space-y-4">
                 {/* Category & Level */}
@@ -174,7 +174,7 @@ export function Courses({ className }: CoursesProps) {
                     {course.level}
                   </span>
                 </div>
-                
+
                 {/* Title & Description */}
                 <div>
                   <h3 className="text-xl font-semibold text-text-primary mb-2">
@@ -184,7 +184,7 @@ export function Courses({ className }: CoursesProps) {
                     {course.description}
                   </p>
                 </div>
-                
+
                 {/* Instructor */}
                 <div className="flex items-center gap-3 pb-4 border-b border-border-light">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-yellow to-yellow-dark" />
@@ -195,7 +195,7 @@ export function Courses({ className }: CoursesProps) {
                     <p className="text-xs text-text-gray">Преподаватель</p>
                   </div>
                 </div>
-                
+
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4 py-4 border-b border-border-light">
                   <div className="text-center">
@@ -220,7 +220,7 @@ export function Courses({ className }: CoursesProps) {
                     <p className="text-xs text-text-gray">{course.reviews} отзывов</p>
                   </div>
                 </div>
-                
+
                 {/* Features */}
                 <ul className="space-y-2">
                   {course.features.slice(0, 3).map((feature, index) => (
@@ -230,7 +230,7 @@ export function Courses({ className }: CoursesProps) {
                     </li>
                   ))}
                 </ul>
-                
+
                 {/* Price & CTA */}
                 <div className="flex items-center justify-between pt-4">
                   <div>
@@ -264,7 +264,7 @@ export function Courses({ className }: CoursesProps) {
             </div>
           ))}
         </div>
-        
+
         {/* View All CTA */}
         <div className="text-center mt-12">
           <Button

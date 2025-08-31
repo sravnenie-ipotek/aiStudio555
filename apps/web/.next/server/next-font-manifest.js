@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/michaelmishayev/Desktop/Projects/schoolSite/projectdes-academy/apps/web/src/app/layout\":[\"static/media/0a86735c6520d94f-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

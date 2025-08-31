@@ -13,7 +13,7 @@ const navigation = [
     icon: '📊',
   },
   {
-    name: 'Мои курсы', 
+    name: 'Мои курсы',
     href: '/dashboard/courses',
     icon: '📚',
   },
@@ -21,7 +21,7 @@ const navigation = [
     name: 'Обучение',
     href: '/learn',
     icon: '🎓',
-    activePattern: '/learn'
+    activePattern: '/learn',
   },
   {
     name: 'Настройки',
@@ -43,7 +43,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     try {
       await logout();
     } catch (error) {
-      console.error('Logout error:', error);
+      // TODO: Implement proper error handling for logout
+      // Logout error handling
     }
   };
 
@@ -62,8 +63,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className="max-w-1160 mx-auto px-4">
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
-              <Link 
-                href="/dashboard" 
+              <Link
+                href="/dashboard"
                 className="text-24 font-bold text-text-primary no-underline"
               >
                 Projectdes AI
@@ -144,7 +145,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                     <span className="text-16">{item.name}</span>
                   </Link>
                 ))}
-                
+
                 <div className="pt-4 mt-4 border-t border-border-light">
                   <div className="flex items-center gap-3 px-3 py-2 mb-3">
                     <div className="w-10 h-10 rounded-full bg-primary-yellow flex items-center justify-center">

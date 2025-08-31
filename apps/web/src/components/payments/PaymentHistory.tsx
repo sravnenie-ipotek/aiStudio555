@@ -5,19 +5,19 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Download, 
-  Search, 
-  Filter, 
+import {
+  Download,
+  Search,
+  Filter,
   Calendar,
   CreditCard,
   DollarSign,
@@ -31,7 +31,7 @@ import {
   TrendingDown,
   Eye,
   Mail,
-  Printer
+  Printer,
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { motion } from 'framer-motion';
@@ -73,7 +73,7 @@ export function PaymentHistory({
   payments,
   summary,
   onDownloadInvoice,
-  onRequestRefund
+  onRequestRefund,
 }: PaymentHistoryProps) {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
@@ -120,19 +120,19 @@ export function PaymentHistory({
   };
 
   const filteredPayments = payments.filter(payment => {
-    const matchesSearch = 
+    const matchesSearch =
       searchQuery === '' ||
       payment.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       payment.courseName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       payment.invoiceNumber?.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesStatus = 
+
+    const matchesStatus =
       selectedStatus === 'all' || payment.status === selectedStatus;
-    
-    const matchesDateRange = 
+
+    const matchesDateRange =
       (!dateRange.start || new Date(payment.date) >= new Date(dateRange.start)) &&
       (!dateRange.end || new Date(payment.date) <= new Date(dateRange.end));
-    
+
     return matchesSearch && matchesStatus && matchesDateRange;
   });
 
@@ -145,8 +145,8 @@ export function PaymentHistory({
         `${p.currency}${p.amount}`,
         p.status,
         p.method,
-        p.invoiceNumber || ''
-      ])
+        p.invoiceNumber || '',
+      ]),
     ].map(row => row.join(',')).join('\n');
 
     const blob = new Blob([csv], { type: 'text/csv' });
@@ -316,7 +316,7 @@ export function PaymentHistory({
                             <p className="text-xs text-muted-foreground">
                               {t('payments.installment', {
                                 current: payment.installment.current,
-                                total: payment.installment.total
+                                total: payment.installment.total,
                               })}
                             </p>
                           )}
@@ -399,25 +399,25 @@ export function PaymentHistory({
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-lg font-semibold mb-4">{t('payments.details')}</h3>
-            
+
             <div className="space-y-4">
               <div>
                 <p className="text-sm text-muted-foreground">{t('payments.transactionId')}</p>
                 <p className="font-mono">{selectedPayment.transactionId || 'N/A'}</p>
               </div>
-              
+
               <div>
                 <p className="text-sm text-muted-foreground">{t('payments.date')}</p>
                 <p>{new Date(selectedPayment.date).toLocaleString()}</p>
               </div>
-              
+
               <div>
                 <p className="text-sm text-muted-foreground">{t('payments.amount')}</p>
                 <p className="text-2xl font-bold">
                   {selectedPayment.currency}{selectedPayment.amount.toFixed(2)}
                 </p>
               </div>
-              
+
               <div>
                 <p className="text-sm text-muted-foreground">{t('payments.status')}</p>
                 <div className="flex items-center gap-2 mt-1">
@@ -425,7 +425,7 @@ export function PaymentHistory({
                   {getStatusBadge(selectedPayment.status)}
                 </div>
               </div>
-              
+
               <div className="flex gap-2 pt-4">
                 <Button
                   onClick={() => {

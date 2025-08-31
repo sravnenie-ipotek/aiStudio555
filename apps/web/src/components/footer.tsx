@@ -2,13 +2,13 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Globe, 
-  Linkedin, 
-  Youtube, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Globe,
+  Linkedin,
+  Youtube,
   Instagram,
   Facebook,
   GraduationCap,
@@ -24,82 +24,82 @@ export interface FooterProps {
 
 const footerLinks = {
   courses: [
-    { label: "AI Transformation Manager", href: "/courses/ai-transformation" },
-    { label: "No-Code Website Development", href: "/courses/no-code-development" },
-    { label: "AI Video & Avatar Generation", href: "/courses/ai-video-avatar" },
+    { label: 'AI Transformation Manager', href: '/courses/ai-transformation' },
+    { label: 'No-Code Website Development', href: '/courses/no-code-development' },
+    { label: 'AI Video & Avatar Generation', href: '/courses/ai-video-avatar' },
   ],
   company: [
-    { label: "About Us", href: "/about" },
-    { label: "Success Stories", href: "/success-stories" },
-    { label: "Careers", href: "/careers" },
-    { label: "Press", href: "/press" },
+    { label: 'About Us', href: '/about' },
+    { label: 'Success Stories', href: '/success-stories' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Press', href: '/press' },
   ],
   support: [
-    { label: "Help Center", href: "/help" },
-    { label: "Contact Support", href: "/contact" },
-    { label: "Live Chat", href: "/chat" },
-    { label: "Community", href: "/community" },
+    { label: 'Help Center', href: '/help' },
+    { label: 'Contact Support', href: '/contact' },
+    { label: 'Live Chat', href: '/chat' },
+    { label: 'Community', href: '/community' },
   ],
   legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookies" },
-    { label: "Refund Policy", href: "/refund" },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Cookie Policy', href: '/cookies' },
+    { label: 'Refund Policy', href: '/refund' },
   ],
-}
+};
 
 const socialLinks = [
   {
-    name: "LinkedIn",
-    href: "https://linkedin.com/company/projectdes-academy",
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/company/projectdes-academy',
     icon: Linkedin,
-    ariaLabel: "Follow us on LinkedIn"
+    ariaLabel: 'Follow us on LinkedIn',
   },
   {
-    name: "YouTube",
-    href: "https://youtube.com/@projectdes-academy",
+    name: 'YouTube',
+    href: 'https://youtube.com/@projectdes-academy',
     icon: Youtube,
-    ariaLabel: "Subscribe to our YouTube channel"
+    ariaLabel: 'Subscribe to our YouTube channel',
   },
   {
-    name: "Instagram",
-    href: "https://instagram.com/projectdes.academy",
+    name: 'Instagram',
+    href: 'https://instagram.com/projectdes.academy',
     icon: Instagram,
-    ariaLabel: "Follow us on Instagram"
+    ariaLabel: 'Follow us on Instagram',
   },
-]
+];
 
 const contactInfo = [
   {
     icon: Mail,
-    label: "Email",
-    value: "info@projectdes.academy",
-    href: "mailto:info@projectdes.academy"
+    label: 'Email',
+    value: 'info@projectdes.academy',
+    href: 'mailto:info@projectdes.academy',
   },
   {
     icon: Phone,
-    label: "Phone",
-    value: "+972-50-123-4567",
-    href: "tel:+972501234567"
+    label: 'Phone',
+    value: '+972-50-123-4567',
+    href: 'tel:+972501234567',
   },
   {
     icon: MapPin,
-    label: "Address",
-    value: "Tel Aviv, Israel",
-    href: "https://maps.google.com/?q=Tel+Aviv+Israel"
+    label: 'Address',
+    value: 'Tel Aviv, Israel',
+    href: 'https://maps.google.com/?q=Tel+Aviv+Israel',
   },
-]
+];
 
 const Footer = React.forwardRef<HTMLElement, FooterProps>(
-  ({ className, logoSrc, logoAlt = "Projectdes Academy", ...props }, ref) => {
-    const currentYear = new Date().getFullYear()
+  ({ className, logoSrc, logoAlt = 'Projectdes Academy', ...props }, ref) => {
+    const currentYear = new Date().getFullYear();
 
     return (
       <footer
         ref={ref}
         className={cn(
-          "bg-dark-header text-white",
-          className
+          'bg-dark-header text-white',
+          className,
         )}
         role="contentinfo"
         {...props}
@@ -110,14 +110,14 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
             {/* Company Info */}
             <div className="lg:col-span-4">
               {/* Logo */}
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="inline-block mb-6 focus:outline-none focus:ring-2 focus:ring-primary-yellow rounded-md p-1"
                 aria-label={`${logoAlt} - Go to homepage`}
               >
                 {logoSrc ? (
-                  <img 
-                    src={logoSrc} 
+                  <img
+                    src={logoSrc}
                     alt={logoAlt}
                     className="h-10 w-auto"
                     loading="lazy"
@@ -150,8 +150,8 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     aria-label={`${item.label}: ${item.value}`}
                   >
-                    <item.icon 
-                      className="h-5 w-5 text-primary-yellow group-hover:scale-110 transition-transform duration-200" 
+                    <item.icon
+                      className="h-5 w-5 text-primary-yellow group-hover:scale-110 transition-transform duration-200"
                       aria-hidden="true"
                     />
                     <span>{item.value}</span>
@@ -314,11 +314,11 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
           </div>
         </div>
       </footer>
-    )
-  }
-)
+    );
+  },
+);
 
-Footer.displayName = "Footer"
+Footer.displayName = 'Footer';
 
-export { Footer }
-export { footerLinks, socialLinks, contactInfo }
+export { Footer };
+export { footerLinks, socialLinks, contactInfo };

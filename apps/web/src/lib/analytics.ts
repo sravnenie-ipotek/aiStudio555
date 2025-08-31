@@ -1,7 +1,7 @@
 /**
  * Analytics Implementation for Projectdes AI Academy
  * ===================================================
- * 
+ *
  * Comprehensive analytics tracking with GA4, GTM, and custom events
  */
 
@@ -129,7 +129,7 @@ export function trackPageView(url?: string) {
 // Track custom events
 export function trackEvent(
   eventName: string,
-  parameters?: Record<string, any>
+  parameters?: Record<string, any>,
 ) {
   if (!analyticsConfig.ga4.enabled) return;
 
@@ -440,7 +440,7 @@ export function trackPerformance() {
   if (typeof window === 'undefined' || !window.performance) return;
 
   const perfData = window.performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-  
+
   if (perfData) {
     trackEvent('performance_metrics', {
       dns_time: perfData.domainLookupEnd - perfData.domainLookupStart,
@@ -488,15 +488,15 @@ export function initializeAnalytics() {
   initializeGA();
   initializeGTM();
   initializeFacebookPixel();
-  
+
   // Track initial page view
   trackPageView();
-  
+
   // Track performance metrics after load
   window.addEventListener('load', () => {
     setTimeout(trackPerformance, 0);
   });
-  
+
   // Track errors
   window.addEventListener('error', (event) => {
     trackError(new Error(event.message), {
@@ -505,7 +505,7 @@ export function initializeAnalytics() {
       colno: event.colno,
     });
   });
-  
+
   // Track unhandled promise rejections
   window.addEventListener('unhandledrejection', (event) => {
     trackError(new Error(event.reason), {
