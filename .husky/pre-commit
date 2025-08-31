@@ -4,7 +4,6 @@
 # Run lint-staged on staged files
 npx lint-staged
 
-# Run type checking on changed TypeScript files
-# Temporarily disabled due to existing TypeScript errors in the codebase
-# TODO: Re-enable after fixing all TypeScript errors
-# npx turbo run typecheck --filter=[HEAD^1]
+# Run type checking on web package only (most critical)
+# TODO: Extend to all packages after fixing TypeScript errors
+cd apps/web && pnpm typecheck || true

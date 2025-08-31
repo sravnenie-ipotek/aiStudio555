@@ -1,7 +1,7 @@
 /**
  * Dynamic Sitemap Generator for Projectdes AI Academy
  * ====================================================
- * 
+ *
  * Generates XML sitemap with all pages and courses
  */
 
@@ -90,10 +90,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Add static pages for each language
   languages.forEach(lang => {
     staticPages.forEach(page => {
-      const url = lang === 'en' 
-        ? `${siteUrl}${page.url}`
-        : `${siteUrl}/${lang}${page.url}`;
-      
+      const url = lang === 'en' ? `${siteUrl}${page.url}` : `${siteUrl}/${lang}${page.url}`;
+
       sitemapEntries.push({
         url,
         lastModified: page.lastModified,
@@ -106,10 +104,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Add course pages for each language
   languages.forEach(lang => {
     coursePages.forEach(course => {
-      const url = lang === 'en'
-        ? `${siteUrl}/programs/${course.slug}`
-        : `${siteUrl}/${lang}/programs/${course.slug}`;
-      
+      const url =
+        lang === 'en'
+          ? `${siteUrl}/programs/${course.slug}`
+          : `${siteUrl}/${lang}/programs/${course.slug}`;
+
       sitemapEntries.push({
         url,
         lastModified: course.lastModified,
@@ -127,7 +126,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   //     const url = lang === 'en'
   //       ? `${siteUrl}/programs/${course.slug}`
   //       : `${siteUrl}/${lang}/programs/${course.slug}`;
-  //     
+  //
   //     sitemapEntries.push({
   //       url,
   //       lastModified: course.updatedAt,
@@ -145,8 +144,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 // Alternative: Generate sitemap.xml file directly
 export async function generateSitemapXML(): Promise<string> {
-  const sitemap = await sitemapFn();
-  
+  const sitemapData = await sitemap();
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -155,13 +154,23 @@ export async function generateSitemapXML(): Promise<string> {
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-${sitemap.map(entry => `  <url>
+${sitemapData
+  .map(
+    (entry: any) => `  <url>
     <loc>${entry.url}</loc>
     <lastmod>${entry.lastModified?.toISOString() || new Date().toISOString()}</lastmod>
     <changefreq>${entry.changeFrequency || 'weekly'}</changefreq>
     <priority>${entry.priority || 0.5}</priority>
-${languages.filter(l => l !== 'en').map(lang => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${entry.url.replace(siteUrl, `${siteUrl}/${lang}`)}" />`).join('\n')}
-  </url>`).join('\n')}
+${languages
+  .filter(l => l !== 'en')
+  .map(
+    lang =>
+      `    <xhtml:link rel="alternate" hreflang="${lang}" href="${entry.url.replace(siteUrl, `${siteUrl}/${lang}`)}" />`
+  )
+  .join('\n')}
+  </url>`
+  )
+  .join('\n')}
 </urlset>`;
 
   return xml;

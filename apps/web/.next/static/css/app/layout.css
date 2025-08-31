@@ -1,6 +1,6 @@
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/styles/globals.css ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/styles/globals.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
@@ -1086,10 +1086,6 @@ html {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-.mx-8{
-  margin-left: 64px;
-  margin-right: 64px;
-}
 .-ml-1{
   margin-left: -8px;
 }
@@ -1128,9 +1124,6 @@ html {
 }
 .ml-4{
   margin-left: 32px;
-}
-.ml-7{
-  margin-left: 56px;
 }
 .ml-auto{
   margin-left: auto;
@@ -1225,6 +1218,9 @@ html {
 .h-2{
   height: 16px;
 }
+.h-2\.5{
+  height: 20px;
+}
 .h-20{
   height: 160px;
 }
@@ -1267,6 +1263,9 @@ html {
 .h-\[600px\]{
   height: 600px;
 }
+.h-\[70px\]{
+  height: 70px;
+}
 .h-auto{
   height: auto;
 }
@@ -1275,9 +1274,6 @@ html {
 }
 .h-px{
   height: 1px;
-}
-.h-\[70px\]{
-  height: 70px;
 }
 .max-h-\[90vh\]{
   max-height: 90vh;
@@ -1320,6 +1316,9 @@ html {
 }
 .w-2{
   width: 16px;
+}
+.w-2\.5{
+  width: 20px;
 }
 .w-20{
   width: 160px;
@@ -1369,9 +1368,6 @@ html {
 .w-full{
   width: 100%;
 }
-.w-\[280px\]{
-  width: 280px;
-}
 .min-w-0{
   min-width: 0px;
 }
@@ -1381,14 +1377,14 @@ html {
 .min-w-\[200px\]{
   min-width: 200px;
 }
+.min-w-\[220px\]{
+  min-width: 220px;
+}
 .min-w-\[44px\]{
   min-width: 44px;
 }
 .min-w-\[8rem\]{
   min-width: 8rem;
-}
-.min-w-\[220px\]{
-  min-width: 220px;
 }
 .max-w-2xl{
   max-width: 42rem;
@@ -1418,6 +1414,9 @@ html {
   flex: 1 1 0%;
 }
 .flex-shrink-0{
+  flex-shrink: 0;
+}
+.shrink-0{
   flex-shrink: 0;
 }
 .flex-grow{
@@ -1456,6 +1455,9 @@ html {
 }
 .cursor-pointer{
   cursor: pointer;
+}
+.touch-none{
+  touch-action: none;
 }
 .select-none{
   -webkit-user-select: none;
@@ -1555,6 +1557,11 @@ html {
   margin-top: calc(8px * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(8px * var(--tw-space-y-reverse));
 }
+.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(12px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(12px * var(--tw-space-y-reverse));
+}
 .space-y-16 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(128px * calc(1 - var(--tw-space-y-reverse)));
@@ -1616,6 +1623,9 @@ html {
 .rounded-3xl{
   border-radius: 24px;
 }
+.rounded-\[inherit\]{
+  border-radius: inherit;
+}
 .rounded-full{
   border-radius: 9999px;
 }
@@ -1671,6 +1681,10 @@ html {
 .border-border{
   border-color: hsl(var(--border));
 }
+.border-border-gray{
+  --tw-border-opacity: 1;
+  border-color: rgb(191 194 197 / var(--tw-border-opacity, 1));
+}
 .border-border-light{
   --tw-border-opacity: 1;
   border-color: rgb(223 227 229 / var(--tw-border-opacity, 1));
@@ -1679,9 +1693,15 @@ html {
   --tw-border-opacity: 1;
   border-color: rgb(48 48 48 / var(--tw-border-opacity, 1));
 }
+.border-dark-gray\/30{
+  border-color: rgb(48 48 48 / 0.3);
+}
 .border-dark-pure{
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
+}
+.border-dark-secondary\/50{
+  border-color: rgb(25 25 25 / 0.5);
 }
 .border-input{
   border-color: hsl(var(--input));
@@ -1708,6 +1728,9 @@ html {
 .border-primary\/50{
   border-color: hsl(var(--primary) / 0.5);
 }
+.border-transparent{
+  border-color: transparent;
+}
 .border-white{
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
@@ -1718,11 +1741,11 @@ html {
 .border-white\/50{
   border-color: rgb(255 255 255 / 0.5);
 }
-.border-dark-gray\/30{
-  border-color: rgb(48 48 48 / 0.3);
+.border-l-transparent{
+  border-left-color: transparent;
 }
-.border-dark-secondary\/50{
-  border-color: rgb(25 25 25 / 0.5);
+.border-t-transparent{
+  border-top-color: transparent;
 }
 .bg-accent-blue\/10{
   background-color: rgb(94 160 255 / 0.1);
@@ -1743,9 +1766,16 @@ html {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
 }
+.bg-border-gray{
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 194 197 / var(--tw-bg-opacity, 1));
+}
 .bg-dark-gray{
   --tw-bg-opacity: 1;
   background-color: rgb(48 48 48 / var(--tw-bg-opacity, 1));
+}
+.bg-dark-gray\/30{
+  background-color: rgb(48 48 48 / 0.3);
 }
 .bg-dark-header{
   --tw-bg-opacity: 1;
@@ -1785,6 +1815,10 @@ html {
 .bg-green-100{
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity, 1));
+}
+.bg-info{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 184 212 / var(--tw-bg-opacity, 1));
 }
 .bg-light-bg{
   --tw-bg-opacity: 1;
@@ -1839,8 +1873,9 @@ html {
 .bg-text-gray\/20{
   background-color: rgb(122 122 122 / 0.2);
 }
-.bg-transparent{
-  background-color: transparent;
+.bg-warning{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 165 0 / var(--tw-bg-opacity, 1));
 }
 .bg-warning\/10{
   background-color: rgb(255 165 0 / 0.1);
@@ -1855,9 +1890,6 @@ html {
 .bg-yellow-100{
   --tw-bg-opacity: 1;
   background-color: rgb(254 249 195 / var(--tw-bg-opacity, 1));
-}
-.bg-dark-gray\/30{
-  background-color: rgb(48 48 48 / 0.3);
 }
 .bg-\[radial-gradient\(circle_at_20\%_80\%\2c _rgba\(255\2c 218\2c 23\2c 0\.1\)_0\%\2c _transparent_50\%\)\]{
   background-image: radial-gradient(circle at 20% 80%, rgba(255,218,23,0.1) 0%, transparent 50%);
@@ -2006,6 +2038,9 @@ html {
 .p-8{
   padding: 64px;
 }
+.p-\[1px\]{
+  padding: 1px;
+}
 .px-1{
   padding-left: 8px;
   padding-right: 8px;
@@ -2017,6 +2052,10 @@ html {
 .px-2{
   padding-left: 16px;
   padding-right: 16px;
+}
+.px-2\.5{
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .px-3{
   padding-left: 24px;
@@ -2038,6 +2077,10 @@ html {
   padding-left: 64px;
   padding-right: 64px;
 }
+.py-0\.5{
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 .py-1{
   padding-top: 8px;
   padding-bottom: 8px;
@@ -2057,6 +2100,10 @@ html {
 .py-2{
   padding-top: 16px;
   padding-bottom: 16px;
+}
+.py-2\.5{
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .py-20{
   padding-top: 160px;
@@ -2078,15 +2125,14 @@ html {
   padding-top: 64px;
   padding-bottom: 64px;
 }
-.py-2\.5{
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
 .pb-3{
   padding-bottom: 24px;
 }
 .pb-4{
   padding-bottom: 32px;
+}
+.pb-6{
+  padding-bottom: 48px;
 }
 .pl-8{
   padding-left: 64px;
@@ -2100,6 +2146,9 @@ html {
 .pr-4{
   padding-right: 32px;
 }
+.pt-0{
+  padding-top: 0px;
+}
 .pt-16{
   padding-top: 128px;
 }
@@ -2111,9 +2160,6 @@ html {
 }
 .pt-8{
   padding-top: 64px;
-}
-.pb-6{
-  padding-bottom: 48px;
 }
 .text-left{
   text-align: left;
@@ -2146,6 +2192,12 @@ html {
   font-size: 2rem;
   line-height: 2.375rem;
 }
+.text-\[14px\]{
+  font-size: 14px;
+}
+.text-\[15px\]{
+  font-size: 15px;
+}
 .text-base{
   font-size: 1rem;
   line-height: 1.45rem;
@@ -2166,12 +2218,6 @@ html {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.text-\[14px\]{
-  font-size: 14px;
-}
-.text-\[15px\]{
-  font-size: 15px;
-}
 .font-bold{
   font-weight: 700;
 }
@@ -2184,11 +2230,17 @@ html {
 .capitalize{
   text-transform: capitalize;
 }
+.leading-none{
+  line-height: 1;
+}
 .leading-relaxed{
   line-height: 1.625;
 }
 .leading-tight{
   line-height: 1.25;
+}
+.tracking-tight{
+  letter-spacing: -0.025em;
 }
 .tracking-widest{
   letter-spacing: 0.1em;
@@ -2204,6 +2256,9 @@ html {
 .text-blue-600{
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+}
+.text-current{
+  color: currentColor;
 }
 .text-dark-pure{
   --tw-text-opacity: 1;
@@ -2222,6 +2277,10 @@ html {
 }
 .text-foreground{
   color: hsl(var(--foreground));
+}
+.text-gray-300{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
 }
 .text-gray-500{
   --tw-text-opacity: 1;
@@ -2310,10 +2369,6 @@ html {
   --tw-text-opacity: 1;
   color: rgb(202 138 4 / var(--tw-text-opacity, 1));
 }
-.text-gray-300{
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
-}
 .line-through{
   text-decoration-line: line-through;
 }
@@ -2359,6 +2414,11 @@ html {
 .opacity-\[0\.02\]{
   opacity: 0.02;
 }
+.shadow{
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 .shadow-2xl{
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
@@ -2382,11 +2442,6 @@ html {
 .shadow-md{
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.shadow-sm{
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-xl{
@@ -2417,16 +2472,15 @@ html {
 .ring-primary-yellow\/20{
   --tw-ring-color: rgb(255 218 23 / 0.2);
 }
+.ring-offset-background{
+  --tw-ring-offset-color: hsl(var(--background));
+}
 .blur-3xl{
   --tw-blur: blur(64px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-.backdrop-blur-lg{
-  --tw-backdrop-blur: blur(16px);
-  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .backdrop-blur-sm{
   --tw-backdrop-blur: blur(4px);
@@ -2510,6 +2564,27 @@ html {
     scroll-behavior: auto !important;
   }
 }
+.file\:border-0::file-selector-button{
+  border-width: 0px;
+}
+.file\:bg-transparent::file-selector-button{
+  background-color: transparent;
+}
+.file\:text-sm::file-selector-button{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.file\:font-medium::file-selector-button{
+  font-weight: 500;
+}
+.placeholder\:text-text-light::-moz-placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(161 161 161 / var(--tw-text-opacity, 1));
+}
+.placeholder\:text-text-light::placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(161 161 161 / var(--tw-text-opacity, 1));
+}
 .hover\:-translate-y-1:hover{
   --tw-translate-y: -8px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2525,12 +2600,25 @@ html {
 .hover\:border-primary\/40:hover{
   border-color: hsl(var(--primary) / 0.4);
 }
+.hover\:bg-dark-gray:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 48 48 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-dark-gray\/50:hover{
+  background-color: rgb(48 48 48 / 0.5);
+}
 .hover\:bg-dark-secondary:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(25 25 25 / var(--tw-bg-opacity, 1));
 }
+.hover\:bg-error\/80:hover{
+  background-color: rgb(255 59 48 / 0.8);
+}
 .hover\:bg-error\/90:hover{
   background-color: rgb(255 59 48 / 0.9);
+}
+.hover\:bg-info\/80:hover{
+  background-color: rgb(0 184 212 / 0.8);
 }
 .hover\:bg-light-bg:hover{
   --tw-bg-opacity: 1;
@@ -2557,12 +2645,23 @@ html {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
 }
+.hover\:bg-success\/80:hover{
+  background-color: rgb(0 182 122 / 0.8);
+}
+.hover\:bg-surface-gray:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(223 227 229 / var(--tw-bg-opacity, 1));
+}
 .hover\:bg-surface-light:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(238 238 238 / var(--tw-bg-opacity, 1));
 }
-.hover\:bg-surface-light\/10:hover{
-  background-color: rgb(238 238 238 / 0.1);
+.hover\:bg-text-light:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(161 161 161 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-warning\/80:hover{
+  background-color: rgb(255 165 0 / 0.8);
 }
 .hover\:bg-white:hover{
   --tw-bg-opacity: 1;
@@ -2571,13 +2670,6 @@ html {
 .hover\:bg-yellow-hover:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(226 197 40 / var(--tw-bg-opacity, 1));
-}
-.hover\:bg-dark-gray:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(48 48 48 / var(--tw-bg-opacity, 1));
-}
-.hover\:bg-dark-gray\/50:hover{
-  background-color: rgb(48 48 48 / 0.5);
 }
 .hover\:text-dark-pure:hover{
   --tw-text-opacity: 1;
@@ -2661,6 +2753,9 @@ html {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 218 23 / var(--tw-ring-opacity, 1));
 }
+.focus\:ring-ring:focus{
+  --tw-ring-color: hsl(var(--ring));
+}
 .focus\:ring-text-secondary:focus{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(51 51 51 / var(--tw-ring-opacity, 1));
@@ -2676,6 +2771,10 @@ html {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.focus-visible\:ring-primary-yellow:focus-visible{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(255 218 23 / var(--tw-ring-opacity, 1));
 }
 .focus-visible\:ring-ring:focus-visible{
   --tw-ring-color: hsl(var(--ring));
@@ -2738,14 +2837,41 @@ html {
 .group:hover .group-hover\:opacity-100{
   opacity: 1;
 }
+.peer:disabled ~ .peer-disabled\:cursor-not-allowed{
+  cursor: not-allowed;
+}
+.peer:disabled ~ .peer-disabled\:opacity-70{
+  opacity: 0.7;
+}
 .data-\[disabled\]\:pointer-events-none[data-disabled]{
   pointer-events: none;
+}
+.data-\[state\=active\]\:bg-white[data-state="active"]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.data-\[state\=checked\]\:bg-primary-yellow[data-state="checked"]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 218 23 / var(--tw-bg-opacity, 1));
 }
 .data-\[state\=open\]\:bg-accent[data-state="open"]{
   background-color: hsl(var(--accent));
 }
+.data-\[state\=active\]\:text-text-primary[data-state="active"]{
+  --tw-text-opacity: 1;
+  color: rgb(7 7 7 / var(--tw-text-opacity, 1));
+}
+.data-\[state\=checked\]\:text-text-primary[data-state="checked"]{
+  --tw-text-opacity: 1;
+  color: rgb(7 7 7 / var(--tw-text-opacity, 1));
+}
 .data-\[disabled\]\:opacity-50[data-disabled]{
   opacity: 0.5;
+}
+.data-\[state\=active\]\:shadow-sm[data-state="active"]{
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .data-\[state\=closed\]\:duration-200[data-state="closed"]{
   transition-duration: 200ms;
@@ -2807,17 +2933,9 @@ html {
 .data-\[state\=open\]\:duration-300[data-state="open"]{
   animation-duration: 300ms;
 }
-.dark\:bg-dark-header:is(.dark *){
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 17 17 / var(--tw-bg-opacity, 1));
-}
 .dark\:bg-dark-secondary:is(.dark *){
   --tw-bg-opacity: 1;
   background-color: rgb(25 25 25 / var(--tw-bg-opacity, 1));
-}
-.dark\:text-white:is(.dark *){
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 @media (min-width: 640px){
   .sm\:inline{
@@ -2853,17 +2971,11 @@ html {
   }
 }
 @media (min-width: 768px){
-  .md\:top-20{
-    top: 160px;
-  }
   .md\:flex{
     display: flex;
   }
   .md\:hidden{
     display: none;
-  }
-  .md\:h-20{
-    height: 160px;
   }
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3023,6 +3135,10 @@ html {
   .lg\:p-8{
     padding: 64px;
   }
+  .lg\:px-12{
+    padding-left: 96px;
+    padding-right: 96px;
+  }
   .lg\:py-24{
     padding-top: 192px;
     padding-bottom: 192px;
@@ -3030,10 +3146,6 @@ html {
   .lg\:py-32{
     padding-top: 256px;
     padding-bottom: 256px;
-  }
-  .lg\:px-12{
-    padding-left: 96px;
-    padding-right: 96px;
   }
   .lg\:text-left{
     text-align: left;
@@ -3073,9 +3185,9 @@ html {
     line-height: 2.875rem;
   }
 }
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[2].use[1]!../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[11].oneOf[2].use[2]!../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/font/google/target.css?{"path":"src/app/layout.tsx","import":"Rubik","arguments":[{"subsets":["latin"],"weight":["400","600","700"],"display":"swap"}],"variableName":"rubik"} ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[2].use[1]!../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[11].oneOf[2].use[2]!../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/font/google/target.css?{"path":"src/app/layout.tsx","import":"Rubik","arguments":[{"subsets":["latin"],"weight":["400","600","700"],"display":"swap"}],"variableName":"rubik"} ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /* arabic */
 @font-face {
   font-family: '__Rubik_664a6f';

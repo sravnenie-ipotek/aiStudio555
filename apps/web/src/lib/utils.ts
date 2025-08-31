@@ -21,6 +21,13 @@ export function formatPrice(price: number, currency = 'USD') {
 }
 
 /**
+ * Format currency with symbol (alias for formatPrice)
+ */
+export function formatCurrency(amount: number, currency = 'USD') {
+  return formatPrice(amount, currency);
+}
+
+/**
  * Format date to localized string
  */
 export function formatDate(date: Date | string, locale = 'ru-RU') {
@@ -83,7 +90,7 @@ export function throttle<T extends (...args: any[]) => any>(
 export function getInitials(name: string) {
   return name
     .split(' ')
-    .map((word) => word[0])
+    .map(word => word[0])
     .join('')
     .toUpperCase()
     .slice(0, 2);
