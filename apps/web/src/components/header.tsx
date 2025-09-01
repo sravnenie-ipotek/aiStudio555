@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils';
 import { ChevronDown, Facebook, Instagram, Menu, Phone, X, Youtube } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -254,23 +255,31 @@ export function Header({ className }: HeaderProps) {
         )}
       >
         <div className="w-full">
-          <nav className="w-full flex items-center justify-between h-[70px] px-4 sm:px-6 lg:px-12 xl:px-20">
+          <nav className="w-full flex items-center justify-between h-[70px] pl-0 pr-4 sm:pr-6 lg:pr-12 xl:pr-20">
             {/* Mobile Logo - Visible on mobile only */}
             <Link href="/" className="flex-shrink-0 lg:hidden">
-              <span className="text-[19px] font-normal">
-                <span className="text-primary-yellow">AiStudio555</span>
-                <span className="text-white">Курсы</span>
-              </span>
+              <Image 
+                src="/images/logo.png" 
+                alt="AIStudio555" 
+                width={100}
+                height={27}
+                className="h-6 w-auto"
+                priority
+              />
             </Link>
 
             {/* Left Side - Logo and Navigation (Desktop) */}
             <div className="hidden lg:flex items-center gap-10">
               {/* Logo */}
               <Link href="/" className="flex-shrink-0">
-                <span className="text-[19px] font-normal">
-                  <span className="text-primary-yellow">AiStudio555</span>
-                  <span className="text-white">Курсы</span>
-                </span>
+                <Image 
+                  src="/images/logo.png" 
+                  alt="AIStudio555" 
+                  width={120}
+                  height={32}
+                  className="h-7 w-auto"
+                  priority
+                />
               </Link>
 
               {/* Desktop Navigation */}
@@ -290,7 +299,7 @@ export function Header({ className }: HeaderProps) {
                         <button
                           onClick={e => handleDropdownToggle(item.key || item.label, e)}
                           className={cn(
-                            'flex items-center gap-1 text-white text-[14px] font-normal transition-colors whitespace-nowrap',
+                            'flex items-center gap-1 text-white text-[14px] font-bold transition-colors whitespace-nowrap',
                             'hover:text-primary-yellow py-2',
                             openDropdown === (item.key || item.label) && 'text-primary-yellow',
                           )}
@@ -326,7 +335,7 @@ export function Header({ className }: HeaderProps) {
                       <Link
                         href={item.href!}
                         className={cn(
-                          'text-white text-[14px] font-normal transition-colors py-2 whitespace-nowrap',
+                          'text-white text-[14px] font-bold transition-colors py-2 whitespace-nowrap',
                           'hover:text-primary-yellow',
                           isActive(item.href!) && 'text-primary-yellow',
                         )}
@@ -344,7 +353,7 @@ export function Header({ className }: HeaderProps) {
             <div className="hidden lg:flex items-center gap-4 flex-shrink-0 ml-auto">
               {/* Language Selector */}
               {/* Language selector temporarily disabled for debugging */}
-              <div className="text-white text-[13px] font-normal">RU</div>
+              <div className="text-white text-[13px] font-bold">RU</div>
               
               {/* Phone */}
               <a
@@ -354,13 +363,6 @@ export function Header({ className }: HeaderProps) {
                 <Phone className="w-3.5 h-3.5" />
                 <span className="text-[14px] font-normal whitespace-nowrap">+375 29 169-59-59</span>
               </a>
-
-              {/* CTA Button */}
-              <Link href="/consultation" className="inline-block">
-                <button className="bg-primary-yellow hover:bg-yellow-hover text-dark-pure font-medium px-5 py-2 rounded-lg transition-all whitespace-nowrap text-[13px]">
-                  {tSync('nav.enrollNow')}
-                </button>
-              </Link>
 
               {/* Social Links */}
               <div className="flex items-center gap-1">

@@ -12,11 +12,11 @@ export default function AuthError({
 }) {
   useEffect(() => {
     // Log authentication-specific errors
-    console.error('Authentication error:', {
-      message: error.message,
-      digest: error.digest,
-      stack: error.stack,
-    })
+    // console.error('Authentication error:', {
+    //   message: error.message,
+    //   digest: error.digest,
+    //   stack: error.stack,
+    // })
   }, [error])
 
   return (

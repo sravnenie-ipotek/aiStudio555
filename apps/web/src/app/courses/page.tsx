@@ -24,7 +24,7 @@ import { CoursesHero } from '@/components/sections/CoursesHero';
 
 // Dynamic import for CoursesCatalog - it's heavy with filtering logic
 const CoursesCatalog = dynamic(
-  () => import('@/components/sections/CoursesCatalog').then(mod => ({ default: mod.CoursesCatalog })),
+  () => import('@/components/sections/CoursesCatalog').then(mod => mod.CoursesCatalog),
   {
     loading: () => (
       <div className="py-16 lg:py-24 bg-white">
@@ -40,8 +40,7 @@ const CoursesCatalog = dynamic(
           </div>
         </div>
       </div>
-    ),
-    ssr: false // Client-side only for better initial load performance
+    )
   }
 );
 // import { SocialProofSection } from '@/components/sections/SocialProofSection';
@@ -452,7 +451,7 @@ export default async function CoursesPage() {
 export const runtime = 'nodejs';
 export const preferredRegion = 'auto';
 // Performance: Optimize caching strategy
-export const dynamic = 'force-static'; // Static generation for performance
+// export const dynamic = 'force-static'; // Static generation for performance - Commented out due to conflict with dynamic import
 export const revalidate = 1800; // Revalidate every 30 minutes
 
 // Performance budget warnings

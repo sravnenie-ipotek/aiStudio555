@@ -20,10 +20,12 @@
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
+    "lint:fix": "eslint . --fix",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,json}\"",
+    "fix:all": "pnpm run lint:fix && pnpm run format",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "turbo run build --filter=@aistudio555/db",
@@ -71,11 +73,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md,yml,yaml}": [
-      "prettier --write"
+      "eslint"
     ]
   },
   "dependencies": {
