@@ -5,34 +5,51 @@ import { ChevronDown, Facebook, Instagram, Menu, Phone, X, Youtube } from 'lucid
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
+import { strapiClient } from '@/lib/strapi-client';
+import { languageManager, type SupportedLanguage } from '@/lib/language-manager';
+// import { LanguageSelector } from '@/components/ui/language-selector';
 
 interface NavItem {
-  label: string;
+  id: number;
+  key: string;
+  titleKey: string;
   href?: string;
+  order: number;
+  parentId?: number;
+  isActive: boolean;
   children?: NavItem[];
+  label: string; // Resolved translation
 }
 
-const navigation: NavItem[] = [
+// Fallback navigation structure with translation keys
+interface FallbackNavItem {
+  titleKey: string;
+  href?: string;
+  children?: FallbackNavItem[];
+}
+
+const fallbackNavigationStructure: FallbackNavItem[] = [
   {
-    label: 'Курсы',
+    titleKey: 'nav.courses',
     href: '/courses',
     children: [
-      { label: 'AI Transformation Manager', href: '/courses/ai-manager' },
-      { label: 'No-Code Development', href: '/courses/no-code' },
-      { label: 'AI Video Generation', href: '/courses/ai-video' },
-      { label: 'Все курсы', href: '/courses' },
+      { titleKey: 'nav.aiManager', href: '/courses/ai-manager' },
+      { titleKey: 'nav.noCode', href: '/courses/no-code' },
+      { titleKey: 'nav.aiVideo', href: '/courses/ai-video' },
+      { titleKey: 'nav.allCourses', href: '/courses' },
     ],
   },
-  { label: 'Старты месяца', href: '/monthly-starts' },
-  { label: 'Преподаватели', href: '/teachers' },
-  { label: 'Блог', href: '/blog' },
+  { titleKey: 'nav.monthlyStarts', href: '/monthly-starts' },
+  { titleKey: 'nav.instructors', href: '/teachers' },
+  { titleKey: 'nav.blog', href: '/blog' },
   {
-    label: 'О школе',
+    titleKey: 'nav.aboutSchool',
     children: [
-      { label: 'О нас', href: '/about' },
-      { label: 'Контакты', href: '/contacts' },
-      { label: 'Карьерный центр', href: '/career-center' },
-      { label: 'Профориентация', href: '/proforientation' },
+      { titleKey: 'nav.aboutUs', href: '/about' },
+      { titleKey: 'nav.contacts', href: '/contacts' },
+      { titleKey: 'nav.careerCenter', href: '/career-center' },
+      { titleKey: 'nav.profOrientation', href: '/proforientation' },
     ],
   },
 ];
@@ -46,6 +63,129 @@ export function Header({ className }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [navigation, setNavigation] = useState<NavItem[]>([]);
+  const [isNavigationLoading, setIsNavigationLoading] = useState(true);
+  
+  const { tSync, isUsingFallback, strapiConnected } = useTranslation();
+
+  // Helper function to convert fallback navigation structure to NavItems
+  const convertFallbackToNavItems = (items: FallbackNavItem[]): NavItem[] => {
+    return items.map((item, index) => ({
+      id: index,
+      key: item.titleKey,
+      titleKey: item.titleKey,
+      href: item.href,
+      order: index,
+      isActive: true,
+      label: tSync(item.titleKey) || item.titleKey,
+      children: item.children ? convertFallbackToNavItems(item.children) : undefined,
+    }));
+  };
+
+  // Load navigation data from Strapi with fallback
+  useEffect(() => {
+    console.log('🚀 Navigation useEffect triggered');
+    
+    const loadNavigation = async () => {
+      console.log('📝 Loading navigation from Strapi...');
+      setIsNavigationLoading(true);
+      
+      try {
+        // Try to fetch from Strapi first
+        const strapiNav = await strapiClient.getNavigation();
+        const currentLang = languageManager.getCurrentLanguage();
+        
+        if (strapiNav?.headerMenu && strapiNav.headerMenu.length > 0) {
+          console.log('✅ Loaded navigation from Strapi:', strapiNav.headerMenu.length, 'items');
+          
+          // Transform Strapi data to NavItem format
+          const transformedNav: NavItem[] = strapiNav.headerMenu.map((item: any) => {
+            // Get label based on current language
+            const labelField = `label${currentLang.charAt(0).toUpperCase() + currentLang.slice(1)}`;
+            const label = item[labelField] || item.labelRu || item.labelEn || tSync(item.titleKey);
+            
+            const navItem: NavItem = {
+              id: item.id,
+              key: item.titleKey || `nav-${item.id}`,
+              titleKey: item.titleKey,
+              href: item.url,
+              order: item.order || 0,
+              isActive: item.isActive !== false,
+              label: label,
+            };
+            
+            // Transform dropdown items if they exist
+            if (item.hasDropdown && item.dropdownItems?.length > 0) {
+              navItem.children = item.dropdownItems.map((dropItem: any) => {
+                const dropLabelField = `label${currentLang.charAt(0).toUpperCase() + currentLang.slice(1)}`;
+                const dropLabel = dropItem[dropLabelField] || dropItem.labelRu || dropItem.labelEn || tSync(dropItem.titleKey);
+                
+                return {
+                  id: dropItem.id,
+                  key: dropItem.titleKey || `dropdown-${dropItem.id}`,
+                  titleKey: dropItem.titleKey,
+                  href: dropItem.url,
+                  order: dropItem.order || 0,
+                  isActive: dropItem.isActive !== false,
+                  label: dropLabel,
+                };
+              });
+            }
+            
+            return navItem;
+          });
+          
+          // Sort by order
+          transformedNav.sort((a, b) => a.order - b.order);
+          setNavigation(transformedNav);
+        } else {
+          console.log('⚠️ No navigation data from Strapi, using fallback');
+          // Use fallback hardcoded navigation
+          const fallbackNav: NavItem[] = [
+            {
+              id: 1,
+              key: 'courses',
+              titleKey: 'nav.courses',
+              href: '/courses',
+              order: 1,
+              isActive: true,
+              label: tSync('nav.courses'),
+            },
+            { id: 2, key: 'monthly-starts', titleKey: 'nav.monthlyStarts', href: '/monthly-starts', order: 2, isActive: true, label: tSync('nav.monthlyStarts') },
+            { id: 3, key: 'instructors', titleKey: 'nav.instructors', href: '/teachers', order: 3, isActive: true, label: tSync('nav.instructors') },
+            { id: 4, key: 'blog', titleKey: 'nav.blog', href: '/blog', order: 4, isActive: true, label: tSync('nav.blog') },
+            {
+              id: 5,
+              key: 'about-school',
+              titleKey: 'nav.aboutSchool',
+              order: 5,
+              isActive: true,
+              label: tSync('nav.aboutSchool'),
+              children: [
+                { id: 51, key: 'prof-orientation', titleKey: 'nav.profOrientation', href: '/proforientation', order: 1, isActive: true, label: tSync('nav.profOrientation') },
+                { id: 52, key: 'career-center', titleKey: 'nav.careerCenter', href: '/career-center', order: 2, isActive: true, label: tSync('nav.careerCenter') },
+              ],
+            },
+          ];
+          setNavigation(fallbackNav);
+        }
+      } catch (error) {
+        console.error('❌ Failed to load navigation:', error);
+        // Use minimal fallback navigation
+        const minimalNav: NavItem[] = [
+          { id: 1, key: 'courses', titleKey: 'nav.courses', href: '/courses', order: 1, isActive: true, label: 'Курсы' },
+          { id: 2, key: 'about', titleKey: 'nav.aboutSchool', href: '/about', order: 2, isActive: true, label: 'О школе' },
+        ];
+        setNavigation(minimalNav);
+      } finally {
+        setIsNavigationLoading(false);
+        console.log('🏁 Navigation loading completed');
+      }
+    };
+    
+    // Use setTimeout to ensure component is mounted
+    setTimeout(loadNavigation, 100);
+  }, [tSync]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,6 +217,33 @@ export function Header({ className }: HeaderProps) {
 
   return (
     <>
+      {/* Development Mode Translation Source Indicator */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="fixed top-20 right-4 z-[100] flex flex-col gap-2">
+          {/* Fallback Indicator */}
+          {isUsingFallback && (
+            <div className="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold shadow-lg animate-pulse">
+              📝 FALLBACK MODE
+            </div>
+          )}
+          {/* Strapi Connection Status */}
+          <div className={cn(
+            "px-3 py-1 rounded-full text-xs font-semibold shadow-lg",
+            strapiConnected 
+              ? "bg-green-500 text-white" 
+              : strapiConnected === false 
+                ? "bg-red-500 text-white" 
+                : "bg-gray-500 text-white"
+          )}>
+            {strapiConnected 
+              ? "✅ Strapi Connected" 
+              : strapiConnected === false 
+                ? "❌ Strapi Offline" 
+                : "⏳ Checking Strapi..."}
+          </div>
+        </div>
+      )}
+      
       {/* Main Header */}
       <header
         className={cn(
@@ -90,37 +257,45 @@ export function Header({ className }: HeaderProps) {
           <nav className="w-full flex items-center justify-between h-[70px] px-4 sm:px-6 lg:px-12 xl:px-20">
             {/* Logo - Left aligned */}
             <Link href="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold text-primary-yellow">Projectdes</span>
+              <span className="text-2xl font-bold text-primary-yellow">AiStudio555</span>
             </Link>
 
             {/* Desktop Navigation - Center aligned with proper spacing */}
             <div className="hidden lg:flex flex-grow justify-center">
-              <ul className="flex items-center gap-8">
-                {navigation.map(item => (
-                  <li key={item.label} className="relative nav-dropdown">
+              {isNavigationLoading ? (
+                <div className="flex items-center gap-8">
+                  {/* Loading skeleton */}
+                  {[...Array(5)].map((_, index) => (
+                    <div key={index} className="h-6 w-20 bg-dark-secondary/50 rounded animate-pulse" />
+                  ))}
+                </div>
+              ) : (
+                <ul className="flex items-center gap-8">
+                  {navigation.map(item => (
+                    <li key={item.key || item.label} className="relative nav-dropdown">
                     {item.children ? (
                       <>
                         <button
-                          onClick={e => handleDropdownToggle(item.label, e)}
+                          onClick={e => handleDropdownToggle(item.key || item.label, e)}
                           className={cn(
                             'flex items-center gap-1 text-white text-[15px] font-medium transition-colors whitespace-nowrap',
                             'hover:text-primary-yellow py-2',
-                            openDropdown === item.label && 'text-primary-yellow',
+                            openDropdown === (item.key || item.label) && 'text-primary-yellow',
                           )}
                         >
-                          <span className="whitespace-nowrap">{item.label}</span>
+                          <span className="whitespace-nowrap">{tSync(item.titleKey || item.label)}</span>
                           <ChevronDown
                             className={cn(
                               'w-4 h-4 transition-transform',
-                              openDropdown === item.label && 'rotate-180',
+                              openDropdown === (item.key || item.label) && 'rotate-180',
                             )}
                           />
                         </button>
-                        {openDropdown === item.label && (
+                        {openDropdown === (item.key || item.label) && (
                           <div className="absolute top-full left-0 mt-2 bg-dark-secondary rounded-lg shadow-xl border border-dark-gray/30 py-2 min-w-[220px] z-dropdown">
-                            {item.children.map(child => (
+                            {item.children?.map(child => (
                               <Link
-                                key={child.label}
+                                key={child.key || child.label}
                                 href={child.href!}
                                 className={cn(
                                   'block px-4 py-2.5 text-sm text-white transition-colors',
@@ -129,9 +304,9 @@ export function Header({ className }: HeaderProps) {
                                 )}
                                 onClick={() => setOpenDropdown(null)}
                               >
-                                {child.label}
+                                {tSync(child.titleKey || child.label)}
                               </Link>
-                            ))}
+                            )) || []}
                           </div>
                         )}
                       </>
@@ -144,16 +319,21 @@ export function Header({ className }: HeaderProps) {
                           isActive(item.href!) && 'text-primary-yellow',
                         )}
                       >
-                        <span className="whitespace-nowrap">{item.label}</span>
+                        <span className="whitespace-nowrap">{tSync(item.titleKey || item.label)}</span>
                       </Link>
                     )}
                   </li>
-                ))}
-              </ul>
+                  ))}
+                </ul>
+              )}
             </div>
 
             {/* Right Side Actions */}
             <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+              {/* Language Selector */}
+              {/* Language selector temporarily disabled for debugging */}
+              <div className="text-white text-sm">RU</div>
+              
               {/* Phone */}
               <a
                 href="tel:+12345678901"
@@ -166,7 +346,7 @@ export function Header({ className }: HeaderProps) {
               {/* CTA Button */}
               <Link href="/consultation" className="inline-block">
                 <button className="bg-primary-yellow hover:bg-yellow-hover text-dark-pure font-semibold px-4 py-2 rounded-lg transition-all whitespace-nowrap text-[14px]">
-                  Бесплатная консультация
+                  {tSync('nav.enrollNow')}
                 </button>
               </Link>
 
@@ -279,41 +459,57 @@ export function Header({ className }: HeaderProps) {
             </div>
 
             <div className="px-4 pb-6">
-              {navigation.map(item => (
-                <div key={item.label} className="mb-4">
-                  {item.children ? (
-                    <details className="group">
-                      <summary className="flex items-center justify-between py-2 text-white hover:text-primary-yellow cursor-pointer transition-colors">
-                        <span className="font-medium">{item.label}</span>
-                        <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
-                      </summary>
-                      <div className="mt-2 ml-4 space-y-2">
-                        {item.children.map(child => (
-                          <Link
-                            key={child.label}
-                            href={child.href!}
-                            className="block py-1.5 text-sm text-gray-300 hover:text-primary-yellow transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </details>
-                  ) : (
-                    <Link
-                      href={item.href!}
-                      className="block py-2 text-white hover:text-primary-yellow font-medium transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
+              {isNavigationLoading ? (
+                <div className="space-y-4">
+                  {/* Loading skeleton for mobile menu */}
+                  {[...Array(5)].map((_, index) => (
+                    <div key={index} className="h-10 bg-dark-secondary/50 rounded animate-pulse" />
+                  ))}
                 </div>
-              ))}
+              ) : (
+                navigation.map(item => (
+                  <div key={item.key || item.label} className="mb-4">
+                    {item.children ? (
+                      <details className="group">
+                        <summary className="flex items-center justify-between py-2 text-white hover:text-primary-yellow cursor-pointer transition-colors">
+                          <span className="font-medium">{tSync(item.titleKey || item.label)}</span>
+                          <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                        </summary>
+                        <div className="mt-2 ml-4 space-y-2">
+                          {item.children.map(child => (
+                            <Link
+                              key={child.key || child.label}
+                              href={child.href!}
+                              className="block py-1.5 text-sm text-gray-300 hover:text-primary-yellow transition-colors"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {tSync(child.titleKey || child.label)}
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
+                    ) : (
+                      <Link
+                        href={item.href!}
+                        className="block py-2 text-white hover:text-primary-yellow font-medium transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {tSync(item.titleKey || item.label)}
+                      </Link>
+                    )}
+                  </div>
+                ))
+              )}
 
-              {/* Mobile Social Links */}
+              {/* Mobile Language Selector */}
               <div className="pt-4 border-t border-dark-gray/30 mt-4">
+                <div className="mb-4">
+                  <span className="text-sm text-gray-400 mb-2 block">{tSync('common.language') || 'Language'}</span>
+                  {/* Language selector temporarily disabled */}
+                  <div className="text-white text-sm">RU</div>
+                </div>
+                
+                {/* Mobile Social Links */}
                 <div className="flex items-center gap-2 mb-4">
                   <a
                     href="https://www.facebook.com/teachmeskills"

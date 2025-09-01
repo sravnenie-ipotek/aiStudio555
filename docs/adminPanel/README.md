@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Projectdes AI Academy uses **Strapi v4** as a headless CMS for managing
+The AiStudio555 AI Academy uses **Strapi v4** as a headless CMS for managing
 translations, media content, and other dynamic content through a separate admin
 panel project.
 
@@ -10,7 +10,7 @@ panel project.
 
 ```
 Desktop/Projects/schoolSite/
-├── projectdes-academy/          # Main Next.js application
+├── aistudio555-academy/          # Main Next.js application
 │   ├── apps/web/               # Frontend (port 3000)
 │   ├── apps/api/               # Backend API (port 4000)
 │   └── docs/                   # Documentation (this file)
@@ -47,7 +47,7 @@ The Strapi admin panel serves as the **Content Management System (CMS)** for:
 
 ## Why Menu Text is Currently Hardcoded
 
-**ROOT CAUSE:** The main app (`projectdes-academy`) is **not yet connected** to
+**ROOT CAUSE:** The main app (`aistudio555-academy`) is **not yet connected** to
 the Strapi admin panel.
 
 ### Current State:
@@ -209,7 +209,7 @@ The Strapi installation includes custom API endpoints:
     host: 'localhost',
     port: 5432,
     database: 'strapi_admin',
-    user: 'projectdes',
+    user: 'aistudio555',
     password: 'yourpassword'
   }
 }
@@ -242,7 +242,7 @@ npm run start
 
 ```bash
 # Navigate to main app
-cd /Users/michaelmishayev/Desktop/Projects/schoolSite/projectdes-academy
+cd /Users/michaelmishayev/Desktop/Projects/schoolSite/aistudio555-academy
 
 # Start development servers
 pnpm dev  # Starts both web (3000) and api (4000)
@@ -324,7 +324,7 @@ npm run develop
 brew services list | grep postgresql
 
 # Test database connection
-psql -h localhost -U projectdes -d strapi_admin
+psql -h localhost -U aistudio555 -d strapi_admin
 ```
 
 #### Translation Sync Issues
@@ -337,7 +337,7 @@ psql -h localhost -U projectdes -d strapi_admin
 ## Documentation Links
 
 - **Strapi Setup Guide:** `aiStudion555_adminPanel/docs/strapi-setup.md`
-- **Main App Documentation:** `projectdes-academy/CLAUDE.md`
+- **Main App Documentation:** `aistudio555-academy/CLAUDE.md`
 - **Database Schema:** `docs/architecture/db/`
 - **API Documentation:** `docs/API-ARCHITECTURE.md`
 

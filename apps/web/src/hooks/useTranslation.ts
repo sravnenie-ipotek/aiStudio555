@@ -1,493 +1,303 @@
 /**
- * Translation hook for internationalization
- * Supports Russian, Hebrew, and English
+ * Enhanced Translation Hook for AiStudio555 Academy
+ * =================================================
+ * 
+ * Integrates with Strapi CMS for dynamic translations
+ * Fallback support for hardcoded translations
+ * Session-based language management
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { strapiClient, type TranslationEntry } from '@/lib/strapi-client';
+import { languageManager, type SupportedLanguage } from '@/lib/language-manager';
 
-type Language = 'en' | 'he' | 'ru';
+type Language = SupportedLanguage;
 
-interface TranslationData {
-  [key: string]: string | TranslationData;
+interface TranslationCache {
+  [key: string]: {
+    [language in Language]?: string;
+  };
 }
 
-// Translation keys with nested structure
-const translations: Record<Language, TranslationData> = {
-  en: {
-    common: {
-      next: 'Next',
-      back: 'Back',
-      close: 'Close',
-      cancel: 'Cancel',
-      save: 'Save',
-      delete: 'Delete',
-      edit: 'Edit',
-      submit: 'Submit',
-      search: 'Search',
-      filter: 'Filter',
-      sort: 'Sort',
-      loading: 'Loading...',
-      processing: 'Processing...',
-      error: 'Error',
-      success: 'Success',
-      warning: 'Warning',
-      info: 'Information',
-      confirm: 'Confirm',
-      yes: 'Yes',
-      no: 'No',
-      done: 'Done',
-      month: 'month',
-    },
-    nav: {
-      // Header Navigation
-      courses: 'Courses',
-      monthlyStarts: 'Monthly Starts',
-      instructors: 'Teachers',
-      blog: 'Blog',
-      aboutSchool: 'About School',
-      // Course Submenu
-      aiManager: 'AI Transformation Manager',
-      noCode: 'No-Code Development',
-      aiVideo: 'AI Video Generation',
-      allCourses: 'All Courses',
-      // About Submenu
-      aboutUs: 'About Us',
-      contacts: 'Contacts',
-      careerCenter: 'Career Center',
-      profOrientation: 'Career Guidance',
-      // Call to Action
-      enrollNow: 'Enroll Now',
-      // User Dashboard Navigation
-      dashboard: 'Dashboard',
-      certificates: 'Certificates',
-      messages: 'Messages',
-      profile: 'Profile',
-      settings: 'Settings',
-      logout: 'Logout',
-      menu: 'Menu',
-      learning: 'Learning',
-      community: 'Community',
-      account: 'Account',
-      myCourses: 'My Courses',
-      progress: 'Progress',
-      schedule: 'Schedule',
-      groups: 'Groups',
-      forums: 'Forums',
-      payments: 'Payments',
-      support: 'Support',
-    },
-    enrollment: {
-      steps: {
-        details: 'Student Details',
-        payment: 'Payment',
-        confirmation: 'Confirmation',
-      },
-      studentDetails: {
-        title: 'Student Information',
-        description: 'Please provide your information to enroll in this course',
-      },
-      fields: {
-        firstName: 'First Name',
-        lastName: 'Last Name',
-        email: 'Email Address',
-        phone: 'Phone Number',
-        country: 'Country',
-        timezone: 'Timezone',
-        studyGoals: 'Study Goals',
-        studyGoalsPlaceholder: 'What do you hope to achieve from this course?',
-        preferredLanguage: 'Preferred Language',
-        subscribeNewsletter: 'Subscribe to newsletter for course updates',
-      },
-      payment: {
-        title: 'Payment Information',
-        description: 'Choose your payment method and plan',
-        selectMethod: 'Select Payment Method',
-        selectPlan: 'Select Payment Plan',
-        methods: {
-          creditCard: 'Credit/Debit Card',
-          creditCardDescription: 'Pay securely with your credit or debit card',
-          paypal: 'PayPal',
-          paypalDescription: 'Fast and secure payment with PayPal',
-          bankTransfer: 'Bank Transfer',
-          bankTransferDescription: 'Direct bank transfer (3-5 business days)',
-        },
-        plans: {
-          full: 'Full Payment',
-          fullDescription: 'Pay in full and save',
-          threeMonths: '3 Monthly Installments',
-          threeMonthsDescription: '3 easy monthly payments',
-          sixMonths: '6 Monthly Installments',
-          sixMonthsDescription: '6 easy monthly payments',
-          twelveMonths: '12 Monthly Installments',
-          twelveMonthsDescription: '12 easy monthly payments',
-        },
-        subtotal: 'Subtotal',
-        installmentFee: 'Installment Fee',
-        total: 'Total',
-        recommended: 'Recommended',
-        securePayment: 'Secure Payment',
-        securePaymentDescription: 'Your payment information is encrypted and secure',
-        moneyBackGuarantee: '30-Day Money Back Guarantee',
-        moneyBackDescription: "Full refund if you're not satisfied within 30 days",
-        agreeToTerms: 'I agree to the Terms of Service and Privacy Policy',
-        completePurchase: 'Complete Purchase',
-      },
-      confirmation: {
-        title: 'Enrollment Successful!',
-        message: 'Congratulations! You have successfully enrolled in {courseName}',
-        nextSteps: 'Next Steps',
-        step1: 'Check your email for login credentials',
-        step2: 'Access course materials in your dashboard',
-        step3: 'Join the student community forum',
-        goToDashboard: 'Go to Dashboard',
-        browseMoreCourses: 'Browse More Courses',
-      },
-      summary: {
-        title: 'Order Summary',
-        whatYouGet: "What You'll Get",
-        lifetimeAccess: 'Lifetime access to course materials',
-        expertSupport: 'Direct support from expert instructors',
-        jobPlacement: 'Job placement assistance',
-        totalPrice: 'Total Price',
-        perMonth: '${amount}/month',
-      },
-    },
-    progress: {
-      completed: 'Completed',
-      inProgress: 'In Progress',
-      lessonsCompleted: '{completed} of {total} lessons',
-      currentLesson: 'Current Lesson',
-      timeSpent: 'Time Spent',
-      lastAccessed: 'Last Accessed',
-      estimatedCompletion: 'Est. Completion',
-      learningStreak: 'Learning Streak',
-      days: 'days',
-      achievements: 'Achievements',
-      current: 'Current',
-      review: 'Review',
-      continue: 'Continue',
-      start: 'Start',
-      resources: 'Resources',
-    },
-    certificates: {
-      yourCertificate: 'Your Certificate',
-      verified: 'Verified',
-      title: 'Certificate of Completion',
-      subtitle: 'This is to certify that',
-      presentedTo: 'Presented to',
-      forCompleting: 'For successfully completing',
-      withGrade: 'With grade',
-      skillsAcquired: 'Skills Acquired',
-      completionDate: 'Completion Date',
-      instructor: 'Instructor',
-      certificateNumber: 'Certificate Number',
-      verifyAt: 'Verify at',
-      downloadPDF: 'Download PDF',
-      downloadPNG: 'Download PNG',
-      print: 'Print',
-      share: 'Share',
-      copyLink: 'Copy Link',
-      shareText: 'I just earned my certificate in {courseName}!',
-      info: {
-        title: 'Certificate Information',
-        blockchainVerified: 'Blockchain Verified',
-        blockchainDescription: 'Permanently recorded on blockchain',
-        industryRecognized: 'Industry Recognized',
-        industryDescription: 'Accepted by leading companies',
-        lifetimeValid: 'Lifetime Validity',
-        lifetimeDescription: 'Your certificate never expires',
-        dateIssued: 'Date Issued',
-      },
-    },
-    messaging: {
-      conversations: 'Conversations',
-      searchConversations: 'Search conversations...',
-      all: 'All',
-      unread: 'Unread',
-      archived: 'Archived',
-      support: 'Support',
-      unknown: 'Unknown',
-      online: 'Online',
-      offline: 'Offline',
-      members: 'members',
-      typeMessage: 'Type a message...',
-      selectConversation: 'Select a conversation to start messaging',
-      edited: 'edited',
-    },
-    payments: {
-      totalSpent: 'Total Spent',
-      completed: 'Completed',
-      pending: 'Pending',
-      upcoming: 'Upcoming',
-      history: 'Payment History',
-      export: 'Export',
-      searchPlaceholder: 'Search payments...',
-      startDate: 'Start Date',
-      endDate: 'End Date',
-      all: 'All',
-      status: {
-        completed: 'Completed',
-        pending: 'Pending',
-        failed: 'Failed',
-        refunded: 'Refunded',
-      },
-      date: 'Date',
-      description: 'Description',
-      amount: 'Amount',
-      method: 'Method',
-      invoice: 'Invoice',
-      actions: 'Actions',
-      noPayments: 'No payments found',
-      installment: 'Installment {current} of {total}',
-      methods: {
-        credit_card: 'Credit Card',
-        paypal: 'PayPal',
-        bank_transfer: 'Bank Transfer',
-      },
-      details: 'Payment Details',
-      transactionId: 'Transaction ID',
-      downloadInvoice: 'Download Invoice',
-    },
-    support: {
-      title: 'Support Center',
-      description: 'How can we help you today?',
-      email: 'Email Support',
-      phone: 'Phone Support',
-      liveChat: 'Live Chat',
-      available247: '24/7 Available',
-      searchPlaceholder: 'Search for help...',
-      categories: {
-        all: 'All',
-        general: 'General',
-        technical: 'Technical',
-        billing: 'Billing',
-        courses: 'Courses',
-        certificates: 'Certificates',
-      },
-      faq: 'FAQ',
-      tickets: 'Tickets',
-      resources: 'Resources',
-      contact: 'Contact',
-      frequentlyAsked: 'Frequently Asked Questions',
-      wasHelpful: 'Was this helpful?',
-      myTickets: 'My Tickets',
-      newTicket: 'New Ticket',
-      noTickets: 'No support tickets yet',
-      createFirstTicket: 'Create Your First Ticket',
-      ticket: 'Ticket',
-      responses: 'responses',
-      helpfulResources: 'Helpful Resources',
-      viewResource: 'View Resource',
-      getInTouch: 'Get In Touch',
-      contactDescription: "Send us a message and we'll respond within 24 hours",
-      yourName: 'Your Name',
-      yourEmail: 'Your Email',
-      subject: 'Subject',
-      message: 'Message',
-      messagePlaceholder: 'Describe your issue or question...',
-      sendMessage: 'Send Message',
-      createNewTicket: 'Create New Ticket',
-      subjectPlaceholder: 'Brief description of your issue',
-      category: 'Category',
-      priority: {
-        low: 'Low',
-        medium: 'Medium',
-        high: 'High',
-        urgent: 'Urgent',
-      },
-      description: 'Description',
-      descriptionPlaceholder: 'Provide detailed information about your issue...',
-      createTicket: 'Create Ticket',
-      you: 'You',
-      typeReply: 'Type your reply...',
-      sendReply: 'Send Reply',
-    },
-    notifications: {
-      title: 'Notifications',
-      markAllRead: 'Mark all read',
-      preferences: 'Preferences',
-      emailNotifications: 'Email Notifications',
-      pushNotifications: 'Push Notifications',
-      soundNotifications: 'Sound Notifications',
-      notificationTypes: 'Notification Types',
-      courseUpdates: 'Course Updates',
-      messages: 'Messages',
-      payments: 'Payments',
-      achievements: 'Achievements',
-      all: 'All',
-      unread: 'Unread',
-      archived: 'Archived',
-      noUnread: 'No unread notifications',
-      noArchived: 'No archived notifications',
-      noNotifications: 'No notifications yet',
-      viewDetails: 'View Details',
-      priority: {
-        low: 'Low',
-        medium: 'Medium',
-        high: 'High',
-      },
-      justNow: 'Just now',
-      minutesAgo: '{count} minutes ago',
-      hoursAgo: '{count} hours ago',
-      daysAgo: '{count} days ago',
-    },
-    search: {
-      placeholder: 'Search courses, lessons, or topics...',
-      recentSearches: 'Recent Searches',
-    },
-    course: {
-      duration: 'Duration',
-      startDate: 'Start Date',
-      flexibleStart: 'Flexible Start',
-      format: 'Format',
-      online: 'Online',
-      certificate: 'Certificate',
-      included: 'Included',
-    },
-  },
+// Fallback translations for critical UI elements when Strapi is unavailable
+const fallbackTranslations: Record<Language, Record<string, string>> = {
   ru: {
-    common: {
-      next: 'Далее',
-      back: 'Назад',
-      close: 'Закрыть',
-      cancel: 'Отмена',
-      save: 'Сохранить',
-      delete: 'Удалить',
-      edit: 'Редактировать',
-      submit: 'Отправить',
-      search: 'Поиск',
-      filter: 'Фильтр',
-      sort: 'Сортировка',
-      loading: 'Загрузка...',
-      processing: 'Обработка...',
-      error: 'Ошибка',
-      success: 'Успешно',
-      warning: 'Предупреждение',
-      info: 'Информация',
-      confirm: 'Подтвердить',
-      yes: 'Да',
-      no: 'Нет',
-      done: 'Готово',
-      month: 'месяц',
-    },
-    nav: {
-      // Header Navigation
-      courses: 'Курсы',
-      monthlyStarts: 'Старты месяца',
-      instructors: 'Преподаватели',
-      blog: 'Блог',
-      aboutSchool: 'О школе',
-      // Course Submenu
-      aiManager: 'AI Transformation Manager',
-      noCode: 'No-Code разработка',
-      aiVideo: 'AI видео генерация',
-      allCourses: 'Все курсы',
-      // About Submenu
-      aboutUs: 'О нас',
-      contacts: 'Контакты',
-      careerCenter: 'Карьерный центр',
-      profOrientation: 'Профориентация',
-      // Call to Action
-      enrollNow: 'Записаться сейчас',
-      // User Dashboard Navigation
-      dashboard: 'Панель управления',
-      certificates: 'Сертификаты',
-      messages: 'Сообщения',
-      profile: 'Профиль',
-      settings: 'Настройки',
-      logout: 'Выйти',
-      menu: 'Меню',
-      learning: 'Обучение',
-      community: 'Сообщество',
-      account: 'Аккаунт',
-      myCourses: 'Мои курсы',
-      progress: 'Прогресс',
-      schedule: 'Расписание',
-      groups: 'Группы',
-      forums: 'Форумы',
-      payments: 'Платежи',
-      support: 'Поддержка',
-    },
+    'common.loading': 'Загрузка...',
+    'common.error': 'Ошибка',
+    'common.close': 'Закрыть',
+    'common.cancel': 'Отмена',
+    'common.language': 'Язык',
+    'nav.courses': 'Курсы',
+    'nav.monthlyStarts': 'Старты месяца',
+    'nav.instructors': 'Преподаватели',
+    'nav.blog': 'Блог',
+    'nav.aboutSchool': 'О школе',
+    'nav.enrollNow': 'Записаться сейчас',
+    'nav.aiManager': 'AI Transformation Manager',
+    'nav.noCode': 'No-Code разработка',
+    'nav.aiVideo': 'AI видео генерация',
+    'nav.allCourses': 'Все курсы',
+    'nav.aboutUs': 'О нас',
+    'nav.contacts': 'Контакты',
+    'nav.careerCenter': 'Карьерный центр',
+    'nav.profOrientation': 'Профориентация',
+  },
+  en: {
+    'common.loading': 'Loading...',
+    'common.error': 'Error',
+    'common.close': 'Close',
+    'common.cancel': 'Cancel',
+    'common.language': 'Language',
+    'nav.courses': 'Courses',
+    'nav.monthlyStarts': 'Monthly Starts',
+    'nav.instructors': 'Teachers',
+    'nav.blog': 'Blog',
+    'nav.aboutSchool': 'About School',
+    'nav.enrollNow': 'Enroll Now',
+    'nav.aiManager': 'AI Transformation Manager',
+    'nav.noCode': 'No-Code Development',
+    'nav.aiVideo': 'AI Video Generation',
+    'nav.allCourses': 'All Courses',
+    'nav.aboutUs': 'About Us',
+    'nav.contacts': 'Contacts',
+    'nav.careerCenter': 'Career Center',
+    'nav.profOrientation': 'Career Guidance',
   },
   he: {
-    // Hebrew translations (simplified for brevity)
-    common: {
-      next: 'הבא',
-      back: 'חזור',
-      close: 'סגור',
-      cancel: 'ביטול',
-      save: 'שמור',
-      // ... add all Hebrew translations
-    },
-    // ... add all sections in Hebrew
+    'common.loading': 'טוען...',
+    'common.error': 'שגיאה',
+    'common.close': 'סגור',
+    'common.cancel': 'ביטול',
+    'common.language': 'שפה',
+    'nav.courses': 'קורסים',
+    'nav.monthlyStarts': 'התחלות חודשיות',
+    'nav.instructors': 'מורים',
+    'nav.blog': 'בלוג',
+    'nav.aboutSchool': 'אודות הבית ספר',
+    'nav.enrollNow': 'הרשם עכשיו',
+    'nav.aiManager': 'AI Transformation Manager',
+    'nav.noCode': 'פיתוח ללא קוד',
+    'nav.aiVideo': 'יצירת וידאו AI',
+    'nav.allCourses': 'כל הקורסים',
+    'nav.aboutUs': 'עלינו',
+    'nav.contacts': 'צור קשר',
+    'nav.careerCenter': 'מרכז קריירה',
+    'nav.profOrientation': 'הכוונה מקצועית',
   },
 };
 
-// Get nested translation value
-function getNestedTranslation(obj: any, path: string, params?: Record<string, any>): string {
-  const keys = path.split('.');
-  let result = obj;
-
-  for (const key of keys) {
-    if (result && typeof result === 'object' && key in result) {
-      result = result[key];
-    } else {
-      return path; // Return the key if translation not found
-    }
+// Enhanced translation function with parameter replacement
+function formatTranslation(text: string, params?: Record<string, any>): string {
+  if (!params || typeof text !== 'string') {
+    return text;
   }
 
-  if (typeof result !== 'string') {
-    return path;
-  }
-
-  // Replace parameters in the translation
-  if (params) {
-    Object.entries(params).forEach(([key, value]) => {
-      result = result.replace(`{${key}}`, String(value));
-    });
-  }
-
-  return result;
+  return Object.entries(params).reduce((result, [key, value]) => {
+    return result.replace(new RegExp(`\\{${key}\\}`, 'g'), String(value));
+  }, text);
 }
 
 export function useTranslation() {
-  const [language, setLanguage] = useState<Language>(() => {
-    // Get language from localStorage or default to 'en'
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('language');
-      if (saved && ['en', 'ru', 'he'].includes(saved)) {
-        return saved as Language;
-      }
-    }
-    return 'en';
-  });
+  const [translationCache, setTranslationCache] = useState<TranslationCache>({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [strapiConnected, setStrapiConnected] = useState<boolean | null>(null);
+  const [isUsingFallback, setIsUsingFallback] = useState(true); // Track if using fallback translations
+  
+  // Get current language from language manager
+  const currentLanguage = languageManager.getCurrentLanguage();
 
+  // Initialize language manager on mount
   useEffect(() => {
-    // Save language preference to localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('language', language);
-      // Set document direction for RTL languages
-      document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
-      document.documentElement.lang = language;
-    }
-  }, [language]);
+    languageManager.initialize();
+    
+    // Check Strapi connection status
+    const checkStrapiHealth = async () => {
+      try {
+        const health = await strapiClient.healthCheck();
+        setStrapiConnected(health.status === 'ok');
+        
+        setIsUsingFallback(health.status !== 'ok');
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`🌐 Strapi connection: ${health.status}`, health.message);
+        }
+      } catch (error) {
+        setStrapiConnected(false);
+        setIsUsingFallback(true);
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('⚠️ Strapi health check failed:', error);
+        }
+      }
+    };
+    
+    checkStrapiHealth();
+  }, []);
 
+  // Subscribe to language changes
+  useEffect(() => {
+    const unsubscribe = languageManager.subscribe((newLanguage) => {
+      // Clear cache when language changes to force reload
+      setTranslationCache({});
+      
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`🔄 Language changed to: ${newLanguage}`);
+      }
+    });
+    
+    return unsubscribe;
+  }, []);
+
+  // Main translation function
   const t = useCallback(
-    (key: string, params?: Record<string, any>): string => {
-      return getNestedTranslation(translations[language], key, params);
+    async (key: string, params?: Record<string, any>): Promise<string> => {
+      // Check cache first
+      if (translationCache[key]?.[currentLanguage]) {
+        return formatTranslation(translationCache[key][currentLanguage]!, params);
+      }
+
+      // Try to get from Strapi if connected
+      if (strapiConnected) {
+        try {
+          setIsLoading(true);
+          const translation = await strapiClient.getTranslation(key, currentLanguage);
+          
+          // Update cache
+          setTranslationCache(prev => ({
+            ...prev,
+            [key]: {
+              ...prev[key],
+              [currentLanguage]: translation,
+            },
+          }));
+          
+          return formatTranslation(translation, params);
+        } catch (error) {
+          if (process.env.NODE_ENV === 'development') {
+            console.warn(`⚠️ Failed to get translation for key: ${key}`, error);
+          }
+          // Fall through to fallback logic
+        } finally {
+          setIsLoading(false);
+        }
+      }
+
+      // Use fallback translations with hierarchy: current → ru → en → key
+      const fallbackHierarchy = languageManager.getFallbackHierarchy(currentLanguage);
+      
+      for (const lang of fallbackHierarchy) {
+        const fallbackText = fallbackTranslations[lang]?.[key];
+        if (fallbackText) {
+          // Cache the fallback
+          setTranslationCache(prev => ({
+            ...prev,
+            [key]: {
+              ...prev[key],
+              [currentLanguage]: fallbackText,
+            },
+          }));
+          
+          return formatTranslation(fallbackText, params);
+        }
+      }
+
+      // Return key as final fallback
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`🚨 No translation found for key: ${key}`);
+      }
+      
+      return formatTranslation(key, params);
     },
-    [language],
+    [currentLanguage, translationCache, strapiConnected],
   );
 
+  // Synchronous translation function for immediate use
+  const tSync = useCallback(
+    (key: string, params?: Record<string, any>): string => {
+      // Check cache first
+      if (translationCache[key]?.[currentLanguage]) {
+        return formatTranslation(translationCache[key][currentLanguage]!, params);
+      }
+
+      // Use fallback translations with hierarchy
+      const fallbackHierarchy = languageManager.getFallbackHierarchy(currentLanguage);
+      
+      for (const lang of fallbackHierarchy) {
+        const fallbackText = fallbackTranslations[lang]?.[key];
+        if (fallbackText) {
+          return formatTranslation(fallbackText, params);
+        }
+      }
+
+      // Return key as final fallback
+      return formatTranslation(key, params);
+    },
+    [currentLanguage, translationCache],
+  );
+
+  // Preload translations for better performance
+  const preloadTranslations = useCallback(
+    async (keys: string[]) => {
+      if (!strapiConnected || keys.length === 0) return;
+      
+      try {
+        setIsLoading(true);
+        const translationMap = await strapiClient.getTranslationsMap(keys, currentLanguage);
+        
+        // Update cache with all translations
+        setTranslationCache(prev => {
+          const updated = { ...prev };
+          Object.entries(translationMap).forEach(([key, value]) => {
+            updated[key] = {
+              ...updated[key],
+              [currentLanguage]: value,
+            };
+          });
+          return updated;
+        });
+        
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`📦 Preloaded ${Object.keys(translationMap).length} translations`);
+        }
+      } catch (error) {
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('⚠️ Failed to preload translations:', error);
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [currentLanguage, strapiConnected],
+  );
+
+  // Change language with immediate UI update
   const changeLanguage = useCallback((newLanguage: Language) => {
-    setLanguage(newLanguage);
+    languageManager.setLanguage(newLanguage);
+  }, []);
+
+  // Clear translation cache (useful for development/admin)
+  const clearCache = useCallback(() => {
+    setTranslationCache({});
+    strapiClient.clearCache();
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🧹 Translation cache cleared');
+    }
   }, []);
 
   return {
     t,
-    language,
+    tSync, // Synchronous version for immediate use
+    language: currentLanguage,
     changeLanguage,
-    languages: ['en', 'ru', 'he'] as Language[],
+    languages: languageManager.getAvailableLanguages(),
+    isLoading,
+    strapiConnected,
+    isUsingFallback, // Expose fallback status
+    preloadTranslations,
+    clearCache,
+    // Language utility functions
+    isRTL: languageManager.isRTL(currentLanguage),
+    getLanguageConfig: () => languageManager.getLanguageConfig(currentLanguage),
+    getDirectionClass: () => languageManager.getDirectionClass(currentLanguage),
+    getLanguageClass: () => languageManager.getLanguageClass(currentLanguage),
   };
 }
 
