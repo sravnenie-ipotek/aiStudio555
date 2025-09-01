@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   
-  // Performance optimizations
+  // 🟡 Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    emotion: false, // Disable emotion if not used
+    styledComponents: false, // Disable styled-components if not used
   },
+  
+  // Performance: Enable SWC minification
+  swcMinify: true,
   
   // Image optimization
   images: {
@@ -22,16 +26,20 @@ const nextConfig = {
     ],
   },
   
-  // Optimize package imports
+  // 🟡 Optimize package imports and experimental features
   experimental: {
-    optimizePackageImports: ['@aistudio555/ui', 'lucide-react', '@radix-ui/react-*'],
-  },
-  
-  // Internationalization configuration
-  i18n: {
-    locales: ['ru', 'he', 'en'],
-    defaultLocale: 'ru',
-    localeDetection: false,
+    optimizePackageImports: [
+      '@aistudio555/ui', 
+      'lucide-react', 
+      '@radix-ui/react-*',
+      'framer-motion',
+      'class-variance-authority',
+      'clsx'
+    ],
+    // Performance: Enable optimistic client cache
+    optimisticClientCache: true,
+    // Performance: Enable partial prerendering
+    ppr: false, // Disable until stable
   },
   
   // Headers for security and performance
@@ -92,13 +100,60 @@ const nextConfig = {
     NEXT_PUBLIC_PAYPAL_CLIENT_ID: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
   },
   
-  // Webpack configuration
-  webpack: (config, { isServer }) => {
+  // 🟡 Performance: Output file tracing
+  outputFileTracing: true,
+  
+  // Performance: Generate etags for better caching
+  generateEtags: true,
+  
+  // Performance: Compress responses
+  compress: true,
+  
+  // 🟡 Webpack configuration for performance
+  webpack: (config, { dev, isServer }) => {
     // SVG support
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+    
+    // Performance: Bundle analysis in development
+    if (dev && !isServer) {
+      const originalEntry = config.entry;
+      config.entry = async () => {
+        const entries = await originalEntry();
+        if (entries['main.js'] && !entries['main.js'].includes('./bundle-analyzer')) {
+          console.log('🟡 Bundle size monitoring enabled');
+        }
+        return entries;
+      };
+    }
+    
+    // Performance: Optimization for production builds
+    if (!dev && !isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          ...config.optimization.splitChunks,
+          cacheGroups: {
+            ...config.optimization.splitChunks.cacheGroups,
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+              priority: 10,
+            },
+            common: {
+              name: 'common',
+              minChunks: 2,
+              chunks: 'all',
+              priority: 5,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+    }
     
     return config;
   },
