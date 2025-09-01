@@ -1,360 +1,464 @@
+/**
+ * Courses Catalog Page - ProjectDes AI Academy
+ * ==========================================
+ * 
+ * High-conversion course catalog page based on TeachMeSkills architecture analysis
+ * Features: Authority-first hero, advanced filtering, conversion optimization
+ * 
+ * Performance Targets:
+ * - LCP < 2.5s, FID < 100ms, CLS < 0.1
+ * - Mobile score >90, Desktop >95
+ * 
+ * Conversion Targets:
+ * - Course enrollment rate: 5-8%
+ * - Consultation request rate: 12-15%
+ * - Catalog engagement: 60%+
+ */
+
 import { Metadata } from 'next';
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+
+// Components - Performance: Use dynamic imports for heavy components
 import { CoursesHero } from '@/components/sections/CoursesHero';
-import { CoursesCatalog } from '@/components/sections/CoursesCatalog';
-import { ConsultationForm } from '@/components/forms/ConsultationForm';
-import { CourseData, CategoryData } from '@/types/course';
 
-// Mock data for demonstration (in production, this would come from an API)
-const mockCourses: CourseData[] = [
+// Dynamic import for CoursesCatalog - it's heavy with filtering logic
+const CoursesCatalog = dynamic(
+  () => import('@/components/sections/CoursesCatalog').then(mod => ({ default: mod.CoursesCatalog })),
   {
-    id: '1',
-    slug: 'ai-transformation-manager',
-    title: {
-      ru: 'AI Transformation Manager',
-      en: 'AI Transformation Manager'
-    },
-    description: {
-      ru: 'Станьте экспертом по внедрению AI в бизнес-процессы. Изучите стратегии цифровой трансформации, управление AI-проектами и методы оценки эффективности искусственного интеллекта в корпоративной среде.',
-      en: 'Become an expert in implementing AI in business processes. Learn digital transformation strategies, AI project management and methods for evaluating AI effectiveness in corporate environments.'
-    },
-    shortDescription: {
-      ru: 'Изучите стратегии внедрения AI в бизнес и станьте востребованным специалистом по цифровой трансформации',
-      en: 'Learn AI implementation strategies for business and become a sought-after digital transformation specialist'
-    },
-    thumbnail: '/images/courses/ai-manager.jpg',
-    thumbnailImage: '/images/courses/ai-manager.jpg',
-    keyBenefits: ['AI Strategy', 'Project Management', 'ROI Analysis'],
-    targetAudience: ['Business Analysts', 'Project Managers', 'Executives'],
-    careerOutcomes: ['AI Strategy Consultant', 'Digital Transformation Manager', 'AI Project Lead'],
-    skillsLearned: ['AI Strategy Development', 'Change Management', 'Data Analytics', 'Project Management'],
-    features: [],
-    format: 'ONLINE' as const,
-    price: 1500,
-    currency: 'USD',
-    discountPrice: 1200,
-    paymentPlans: [{
-      id: 'plan-1',
-      name: 'Monthly',
-      installments: 6,
-      price: 200,
-      interval: 'month'
-    }],
-    duration: 240,
-    durationWeeks: 12,
-    hoursPerWeek: 10,
-    totalHours: 120,
-    studentCount: 2847,
-    averageRating: 4.9,
-    level: 'INTERMEDIATE' as const,
-    language: 'EN' as const,
-    categoryId: 'ai-business',
-    category: {
-      id: 'ai-business',
-      slug: 'ai-business',
-      name: { ru: 'AI в бизнесе', en: 'AI in Business' },
-      children: [],
-      order: 1,
-      isActive: true,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    instructorId: '1',
-    instructor: {
-      id: '1',
-      locale: 'EN',
-      name: 'Sarah Johnson',
-      company: 'AI Strategy Institute',
-      bio: 'Expert in AI transformation',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    modules: [],
-    enrollments: [],
-    reviews: [],
-    testimonials: [],
-    status: 'PUBLISHED' as const,
-    isActive: true,
-    isFeatured: true,
-    keywords: ['AI', 'transformation', 'management', 'strategy'],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    id: '2',
-    slug: 'no-code-development',
-    title: {
-      ru: 'No-Code разработка сайтов',
-      en: 'No-Code Website Development'
-    },
-    description: {
-      ru: 'Создавайте профессиональные веб-сайты и приложения без программирования. Изучите современные No-Code платформы, дизайн-системы и методы быстрого прототипирования.',
-      en: 'Create professional websites and applications without programming. Learn modern No-Code platforms, design systems and rapid prototyping methods.'
-    },
-    shortDescription: {
-      ru: 'Создавайте сайты и приложения без кода, используя современные No-Code платформы',
-      en: 'Build websites and apps without code using modern No-Code platforms'
-    },
-    thumbnail: '/images/courses/no-code.jpg',
-    thumbnailImage: '/images/courses/no-code.jpg',
-    keyBenefits: ['Rapid Development', 'No Programming', 'Modern Design'],
-    targetAudience: ['Entrepreneurs', 'Designers', 'Non-technical Users'],
-    careerOutcomes: ['No-Code Developer', 'Web Designer', 'Product Manager'],
-    skillsLearned: ['Webflow', 'Bubble', 'Zapier', 'Design Systems'],
-    features: [],
-    format: 'ONLINE' as const,
-    price: 1200,
-    currency: 'USD',
-    discountPrice: 899,
-    paymentPlans: [{
-      id: 'plan-2',
-      name: 'Monthly',
-      installments: 5,
-      price: 180,
-      interval: 'month'
-    }],
-    duration: 200,
-    durationWeeks: 10,
-    hoursPerWeek: 8,
-    totalHours: 80,
-    studentCount: 1923,
-    averageRating: 4.7,
-    level: 'BEGINNER' as const,
-    language: 'EN' as const,
-    categoryId: 'web-development',
-    category: {
-      id: 'web-development',
-      slug: 'web-development',
-      name: { ru: 'Веб-разработка', en: 'Web Development' },
-      children: [],
-      order: 2,
-      isActive: true,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    instructorId: '2',
-    instructor: {
-      id: '2',
-      locale: 'EN',
-      name: 'Mike Chen',
-      company: 'No-Code Academy',
-      bio: 'No-Code expert and educator',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    modules: [],
-    enrollments: [],
-    reviews: [],
-    testimonials: [],
-    status: 'PUBLISHED' as const,
-    isActive: true,
-    isFeatured: true,
-    keywords: ['no-code', 'web development', 'design'],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    id: '3',
-    slug: 'ai-video-generation',
-    title: {
-      ru: 'AI видео и аватар генерация',
-      en: 'AI Video & Avatar Generation'
-    },
-    description: {
-      ru: 'Освойте создание AI-контента для видео и виртуальных аватаров. Изучите современные инструменты генерации видео, технологии deepfake и создание интерактивных цифровых персонажей.',
-      en: 'Master creating AI content for video and virtual avatars. Learn modern video generation tools, deepfake technologies and creating interactive digital characters.'
-    },
-    shortDescription: {
-      ru: 'Создавайте AI-видео и виртуальных аватаров с помощью современных технологий',
-      en: 'Create AI videos and virtual avatars using cutting-edge technologies'
-    },
-    thumbnail: '/images/courses/ai-video.jpg',
-    thumbnailImage: '/images/courses/ai-video.jpg',
-    keyBenefits: ['AI Video Creation', 'Avatar Development', 'Content Generation'],
-    targetAudience: ['Content Creators', 'Marketers', 'Video Producers'],
-    careerOutcomes: ['AI Video Specialist', 'Avatar Designer', 'Content Producer'],
-    skillsLearned: ['AI Video Tools', 'Avatar Creation', 'DeepFake Technology', 'Content Strategy'],
-    features: [],
-    format: 'ONLINE' as const,
-    price: 1800,
-    currency: 'USD',
-    discountPrice: 1299,
-    paymentPlans: [{
-      id: 'plan-3',
-      name: 'Monthly',
-      installments: 7,
-      price: 186,
-      interval: 'month'
-    }],
-    duration: 280,
-    durationWeeks: 14,
-    hoursPerWeek: 12,
-    totalHours: 168,
-    studentCount: 1456,
-    averageRating: 4.8,
-    level: 'ADVANCED' as const,
-    language: 'EN' as const,
-    categoryId: 'ai-creative',
-    category: {
-      id: 'ai-creative',
-      slug: 'ai-creative',
-      name: { ru: 'AI и креатив', en: 'AI & Creative' },
-      children: [],
-      order: 3,
-      isActive: true,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    instructorId: '3',
-    instructor: {
-      id: '3',
-      locale: 'EN',
-      name: 'Alex Rivera',
-      company: 'Creative AI Labs',
-      bio: 'AI creative technologies expert',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    modules: [],
-    enrollments: [],
-    reviews: [],
-    testimonials: [],
-    status: 'PUBLISHED' as const,
-    isActive: true,
-    isFeatured: false,
-    keywords: ['AI', 'video', 'avatar', 'generation'],
-    createdAt: new Date(),
-    updatedAt: new Date()
+    loading: () => (
+      <div className="py-16 lg:py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="h-12 bg-gray-200 rounded animate-pulse mb-6 max-w-2xl mx-auto" />
+            <div className="h-6 bg-gray-100 rounded animate-pulse max-w-3xl mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="bg-gray-100 h-96 rounded-2xl animate-pulse" />
+            ))}
+          </div>
+        </div>
+      </div>
+    ),
+    ssr: false // Client-side only for better initial load performance
   }
-];
+);
+// import { SocialProofSection } from '@/components/sections/SocialProofSection';
+// import { FAQSection } from '@/components/sections/FAQSection';
+// import { ConsultationForm } from '@/components/forms/ConsultationForm';
 
-const mockCategories: CategoryData[] = [
-  {
-    id: 'ai-business',
-    slug: 'ai-business',
-    name: { ru: 'AI в бизнесе', en: 'AI in Business' },
-    description: { ru: 'Курсы по внедрению AI в бизнес-процессы', en: 'Courses on implementing AI in business processes' },
-    children: [],
-    order: 1,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    id: 'web-development',
-    slug: 'web-development', 
-    name: { ru: 'Веб-разработка', en: 'Web Development' },
-    description: { ru: 'Курсы по созданию веб-сайтов и приложений', en: 'Courses on creating websites and applications' },
-    children: [],
-    order: 2,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    id: 'ai-creative',
-    slug: 'ai-creative',
-    name: { ru: 'AI и креатив', en: 'AI & Creative' },
-    description: { ru: 'Курсы по творческому применению AI', en: 'Courses on creative AI applications' },
-    children: [],
-    order: 3,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  }
-];
+// Types and API
+import type { Course } from '@/types/course';
+import type { CourseData, CategoryData } from '@aistudio555/types';
 
-export const metadata: Metadata = {
-  title: 'AI Курсы Online - Каталог курсов | ProjectDes Academy',
-  description: 'Изучайте искусственный интеллект с нуля до профи. Практические курсы от экспертов индустрии с гарантированным трудоустройством. 87% выпускников находят работу.',
-  keywords: [
-    'AI курсы',
-    'курсы искусственного интеллекта',
-    'обучение machine learning',
-    'Data Science курсы',
-    'онлайн образование AI',
-    'курсы программирования AI'
-  ],
-  openGraph: {
-    title: 'AI Курсы для карьерного роста - ProjectDes Academy',
-    description: 'Практические курсы AI с гарантированным трудоустройством. 12K+ выпускников, 87% трудоустройство.',
-    images: ['/images/courses-og-image.jpg'],
-    type: 'website'
-  },
-  alternates: {
-    canonical: '/courses'
-  }
+// Local type definitions  
+interface HeroMetrics {
+  graduateCount: number;
+  yearsInOperation: number;
+  successRate: number;
+  averageSalaryIncrease: number;
+  coursesAvailable: number;
+  partnersCount: number;
+}
+
+// Use CourseData for multi-language content
+type ExtendedCourse = Course & {
+  title: { ru?: string; en?: string; he?: string } | string;
+  shortDescription?: { ru?: string; en?: string; he?: string } | string;
+  slug?: string;
+  pricing?: {
+    fullPrice: number;
+    discountedPrice?: number;
+  };
 };
 
-export default function CoursesPage() {
-  const heroMetrics = {
-    graduateCount: 12000,
-    yearsInOperation: 8,
-    successRate: 87,
-    averageSalaryIncrease: 150
+// Loading components
+// import { CoursesHeroSkeleton } from '@/components/skeletons/CoursesHeroSkeleton';
+// import { CoursesCatalogSkeleton } from '@/components/skeletons/CoursesCatalogSkeleton';
+
+/**
+ * SEO Metadata Generation
+ * Optimized for Russian, English, and Hebrew markets
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const coursesCount = await getCourseCount();
+  
+  return {
+    title: `AI Курсы Online - ${coursesCount} программ обучения | ProjectDes Academy`,
+    description: 'Изучайте искусственный интеллект с нуля до профи. Практические курсы от экспертов индустрии с гарантированным трудоустройством. 12,000+ выпускников, 87% трудоустройство.',
+    
+    keywords: [
+      'AI курсы',
+      'курсы искусственного интеллекта',
+      'обучение machine learning',
+      'Data Science курсы',
+      'онлайн образование AI',
+      'курсы программирования AI',
+      'AI Transformation Manager',
+      'No-Code разработка',
+      'AI видео генерация',
+      'ProjectDes Academy',
+      'трудоустройство IT',
+      'персональное менторство'
+    ],
+    
+    openGraph: {
+      title: 'AI Курсы для карьерного роста - ProjectDes Academy',
+      description: `Практические курсы AI с гарантированным трудоустройством. 12,000+ выпускников, 87% трудоустройство в 5+ странах мира.`,
+      images: [
+        {
+          url: '/images/courses/courses-og-image-1200x630.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'AI Курсы ProjectDes Academy - Практическое обучение с трудоустройством'
+        }
+      ],
+      type: 'website',
+      locale: 'ru_RU',
+      siteName: 'ProjectDes Academy'
+    },
+    
+    twitter: {
+      card: 'summary_large_image',
+      title: 'AI Курсы Online - ProjectDes Academy',
+      description: 'Изучайте AI с нуля. Гарантированное трудоустройство в 5+ странах. 12K+ выпускников.',
+      images: ['/images/courses/courses-twitter-1200x600.jpg']
+    },
+    
+    alternates: {
+      canonical: '/courses',
+      languages: {
+        'ru': '/courses',
+        'en': '/en/courses',
+        'he': '/he/courses'
+      }
+    },
+    
+    other: {
+      'apple-mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-status-bar-style': 'default'
+    }
   };
+}
+
+/**
+ * Structured Data for SEO
+ * Implements ItemList and Course schema markup for rich results
+ * TODO: Fix type mismatches with ExtendedCourse structure
+ */
+function generateJsonLd(courses: any[], heroMetrics: HeroMetrics) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://projectdes.academy';
+  
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'AI Курсы - ProjectDes Academy',
+    description: 'Каталог курсов по искусственному интеллекту с практическими проектами и гарантированным трудоустройством',
+    url: `${baseUrl}/courses`,
+    numberOfItems: courses.length,
+    
+    // Organization context
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'ProjectDes Academy',
+      description: 'Ведущая академия AI образования с практическими курсами и гарантией трудоустройства',
+      url: baseUrl,
+      logo: `${baseUrl}/images/logo/projectdes-logo-512x512.png`,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: 4.8,
+        reviewCount: heroMetrics.graduateCount,
+        bestRating: 5
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+7-495-123-45-67',
+        contactType: 'customer support',
+        availableLanguage: ['Russian', 'English', 'Hebrew']
+      }
+    },
+    
+    // Course list items
+    itemListElement: courses.map((course, index) => ({
+      '@type': 'Course',
+      position: index + 1,
+      name: typeof course.title === 'string' 
+        ? course.title 
+        : (course.title.ru || course.title.en || course.slug || ''),
+      description: typeof course.shortDescription === 'string'
+        ? course.shortDescription
+        : (course.shortDescription?.ru || course.shortDescription?.en || ''),
+      url: `${baseUrl}/courses/${course.slug}`,
+      
+      provider: {
+        '@type': 'Organization',
+        name: 'ProjectDes Academy',
+        sameAs: baseUrl
+      },
+      
+      offers: {
+        '@type': 'Offer',
+        price: course.pricing?.discountedPrice || course.pricing?.fullPrice || 0,
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        validFrom: new Date().toISOString(),
+        validThrough: course.enrollmentDeadline ? new Date(course.enrollmentDeadline).toISOString() : undefined,
+        category: course.category.name.ru || course.category.name.en
+      },
+      
+      courseMode: course.format === 'ONLINE' ? 'online' : 'blended',
+      educationalLevel: course.level.toLowerCase(),
+      teaches: course.skillsLearned || [],
+      timeRequired: `P${course.duration.weeks}W`,
+      
+      // Additional schema properties
+      aggregateRating: course.averageRating ? {
+        '@type': 'AggregateRating',
+        ratingValue: course.averageRating,
+        reviewCount: course.totalStudents,
+        bestRating: 5
+      } : undefined,
+      
+      instructor: course.instructor ? {
+        '@type': 'Person',
+        name: course.instructor.name,
+        description: course.instructor.bio || '',
+        image: course.instructor.avatar || undefined
+      } : undefined
+    }))
+  };
+}
+
+/**
+ * Data Fetching Functions
+ * Optimized for performance with proper error handling
+ */
+async function getCourses(): Promise<Course[]> {
+  try {
+    // Performance: Use proper API endpoint
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/courses?limit=50&featured=true`, {
+      next: { revalidate: 1800 }, // 30 minutes
+      headers: {
+        'Accept': 'application/json',
+        'Cache-Control': 'public, max-age=1800'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return data.courses || [];
+  } catch (error) {
+    console.error('Error fetching courses:', error);
+    // Performance: Return fallback data to prevent empty page
+    return [
+      {
+        id: '1',
+        title: { ru: 'AI Transformation Manager', en: 'AI Transformation Manager' },
+        shortDescription: { ru: 'Станьте экспертом по внедрению ИИ в бизнес-процессы', en: 'Become an expert in implementing AI in business processes' },
+        price: 1000,
+        discountedPrice: 800,
+        level: 'Beginner',
+        duration: { weeks: 12 },
+        category: { id: '1', name: { ru: 'AI и Машинное обучение', en: 'AI & Machine Learning' } },
+        isActive: true,
+        averageRating: 4.8,
+        studentCount: 1200,
+        createdAt: new Date().toISOString(),
+        slug: 'ai-transformation-manager'
+      },
+      {
+        id: '2',
+        title: { ru: 'No-Code Website Development', en: 'No-Code Website Development' },
+        shortDescription: { ru: 'Создавайте сайты без кода с помощью современных инструментов', en: 'Create websites without code using modern tools' },
+        price: 1200,
+        level: 'Beginner',
+        duration: { weeks: 8 },
+        category: { id: '2', name: { ru: 'Веб-разработка', en: 'Web Development' } },
+        isActive: true,
+        averageRating: 4.7,
+        studentCount: 800,
+        createdAt: new Date().toISOString(),
+        slug: 'no-code-development'
+      }
+    ];
+  }
+}
+
+async function getCategories(): Promise<any[]> {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/courses/categories`, {
+      next: { revalidate: 3600 }, // 1 hour
+      headers: {
+        'Accept': 'application/json',
+        'Cache-Control': 'public, max-age=3600'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return data.categories || [];
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    // Performance: Return fallback categories
+    return [
+      { id: '1', name: { ru: 'AI и Машинное обучение', en: 'AI & Machine Learning' } },
+      { id: '2', name: { ru: 'Веб-разработка', en: 'Web Development' } },
+      { id: '3', name: { ru: 'Дизайн', en: 'Design' } }
+    ];
+  }
+}
+
+async function getCourseCount(): Promise<number> {
+  try {
+    const courses = await getCourses();
+    return courses.length;
+  } catch (error) {
+    return 25; // Fallback count for SEO
+  }
+}
+
+/**
+ * Hero Metrics Configuration
+ * Based on business requirements and analytics data
+ */
+const heroMetrics: HeroMetrics = {
+  graduateCount: 12000,
+  yearsInOperation: 8,
+  successRate: 87,
+  averageSalaryIncrease: 150,
+  coursesAvailable: 25,
+  partnersCount: 50
+};
+
+/**
+ * Main Courses Page Component
+ * Server-side rendered with performance optimizations
+ */
+export default async function CoursesPage() {
+  // Parallel data fetching for optimal performance
+  const [courses, categories] = await Promise.all([
+    getCourses(),
+    getCategories()
+  ]);
+
+  // Generate structured data
+  const structuredData = generateJsonLd(courses, heroMetrics);
 
   return (
-    <main className="min-h-screen">
-      {/* Courses Hero Section */}
-      <CoursesHero 
-        metrics={heroMetrics}
-        className="mb-0"
-      />
-
-      {/* Courses Catalog */}
-      <CoursesCatalog 
-        courses={mockCourses}
-        categories={mockCategories}
-        className="mb-16"
-      />
-
-      {/* Consultation Form Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Не знаете, какой курс выбрать?
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Получите персональную консультацию и узнайте, какой путь в AI подходит именно вам
-            </p>
-          </div>
-          <ConsultationForm />
-        </div>
-      </section>
-
-      {/* JSON-LD Structured Data */}
+    <main className="min-h-screen bg-white">
+      {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ItemList',
-            name: 'AI Курсы - ProjectDes Academy',
-            description: 'Каталог курсов по искусственному интеллекту',
-            numberOfItems: mockCourses.length,
-            itemListElement: mockCourses.map((course, index) => ({
-              '@type': 'Course',
-              position: index + 1,
-              name: course.title.ru,
-              description: course.description.ru,
-              provider: {
-                '@type': 'Organization',
-                name: 'ProjectDes Academy'
-              },
-              offers: {
-                '@type': 'Offer',
-                price: course.discountPrice || course.price,
-                priceCurrency: course.currency,
-                availability: 'https://schema.org/InStock'
-              },
-              courseMode: course.format === 'ONLINE' ? 'online' : 'blended',
-              educationalLevel: course.level.toLowerCase(),
-              teaches: course.skillsLearned
-            }))
-          })
+          __html: JSON.stringify(structuredData)
         }}
+      />
+
+      {/* Hero Section - Above the fold priority */}
+      <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse" />}>
+        <CoursesHero 
+          metrics={heroMetrics}
+          className="animate-fade-in-up"
+        />
+      </Suspense>
+
+      {/* Course Catalog - Main content area - Performance: Dynamic loading */}
+      <Suspense fallback={
+        <div className="py-16 lg:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="h-12 bg-gray-200 rounded animate-pulse mb-6 max-w-2xl mx-auto" />
+              <div className="h-6 bg-gray-100 rounded animate-pulse max-w-3xl mx-auto" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="bg-gray-100 h-96 rounded-2xl animate-pulse" />
+              ))}
+            </div>
+          </div>
+        </div>
+      }>
+        <CoursesCatalog 
+          courses={courses}
+          categories={categories}
+          className="animate-fade-in-up animation-delay-200"
+        />
+      </Suspense>
+
+      {/* Social Proof Section - Builds trust and credibility */}
+      {/* <Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse" />}>
+        <SocialProofSection 
+          metrics={heroMetrics}
+          className="animate-fade-in-up animation-delay-400"
+        />
+      </Suspense> */}
+
+      {/* FAQ Section - Handles objections and builds trust */}
+      {/* <Suspense fallback={<div className="h-96 bg-white animate-pulse" />}>
+        <FAQSection className="animate-fade-in-up animation-delay-600" />
+      </Suspense> */}
+
+      {/* Consultation Form - Conversion-optimized lead capture */}
+      <section 
+        id="consultation-form" 
+        className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50 animate-fade-in-up animation-delay-800"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                Не нашли подходящий курс?
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Получите персональную консультацию и подберем программу обучения под ваши цели и опыт
+              </p>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12">
+              {/* <ConsultationForm 
+                source="courses_page"
+                variant="detailed"
+                className="max-w-2xl mx-auto"
+              /> */}
+              <p className="text-center text-gray-500">Consultation form will be added soon</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Prefetch critical resources for performance */}
+      <link
+        rel="preload"
+        href="/fonts/rubik-variable.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
       />
     </main>
   );
+}
+
+/**
+ * Page Configuration for Next.js
+ * Optimizes runtime behavior and caching
+ */
+export const runtime = 'nodejs';
+export const preferredRegion = 'auto';
+// Performance: Optimize caching strategy
+export const dynamic = 'force-static'; // Static generation for performance
+export const revalidate = 1800; // Revalidate every 30 minutes
+
+// Performance budget warnings
+if (process.env.NODE_ENV === 'development') {
+  console.log('🟡 Performance targets for courses page:');
+  console.log('   LCP < 2.5s, FID < 100ms, CLS < 0.1');
+  console.log('   Bundle size budget: <170KB JS (gzipped)');
+  console.log('   API response time: <200ms p95');
 }
