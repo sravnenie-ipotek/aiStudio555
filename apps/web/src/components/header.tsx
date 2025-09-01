@@ -255,22 +255,34 @@ export function Header({ className }: HeaderProps) {
       >
         <div className="w-full">
           <nav className="w-full flex items-center justify-between h-[70px] px-4 sm:px-6 lg:px-12 xl:px-20">
-            {/* Logo - Left aligned */}
-            <Link href="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold text-primary-yellow">AiStudio555</span>
+            {/* Mobile Logo - Visible on mobile only */}
+            <Link href="/" className="flex-shrink-0 lg:hidden">
+              <span className="text-[19px] font-normal">
+                <span className="text-primary-yellow">AiStudio555</span>
+                <span className="text-white">Курсы</span>
+              </span>
             </Link>
 
-            {/* Desktop Navigation - Center aligned with proper spacing */}
-            <div className="hidden lg:flex flex-grow justify-center">
+            {/* Left Side - Logo and Navigation (Desktop) */}
+            <div className="hidden lg:flex items-center gap-10">
+              {/* Logo */}
+              <Link href="/" className="flex-shrink-0">
+                <span className="text-[19px] font-normal">
+                  <span className="text-primary-yellow">AiStudio555</span>
+                  <span className="text-white">Курсы</span>
+                </span>
+              </Link>
+
+              {/* Desktop Navigation */}
               {isNavigationLoading ? (
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-6">
                   {/* Loading skeleton */}
                   {[...Array(5)].map((_, index) => (
                     <div key={index} className="h-6 w-20 bg-dark-secondary/50 rounded animate-pulse" />
                   ))}
                 </div>
               ) : (
-                <ul className="flex items-center gap-8">
+                <ul className="flex items-center gap-6">
                   {navigation.map(item => (
                     <li key={item.key || item.label} className="relative nav-dropdown">
                     {item.children ? (
@@ -278,7 +290,7 @@ export function Header({ className }: HeaderProps) {
                         <button
                           onClick={e => handleDropdownToggle(item.key || item.label, e)}
                           className={cn(
-                            'flex items-center gap-1 text-white text-[15px] font-medium transition-colors whitespace-nowrap',
+                            'flex items-center gap-1 text-white text-[14px] font-normal transition-colors whitespace-nowrap',
                             'hover:text-primary-yellow py-2',
                             openDropdown === (item.key || item.label) && 'text-primary-yellow',
                           )}
@@ -286,7 +298,7 @@ export function Header({ className }: HeaderProps) {
                           <span className="whitespace-nowrap">{tSync(item.titleKey || item.label)}</span>
                           <ChevronDown
                             className={cn(
-                              'w-4 h-4 transition-transform',
+                              'w-3.5 h-3.5 transition-transform',
                               openDropdown === (item.key || item.label) && 'rotate-180',
                             )}
                           />
@@ -314,7 +326,7 @@ export function Header({ className }: HeaderProps) {
                       <Link
                         href={item.href!}
                         className={cn(
-                          'text-white text-[15px] font-medium transition-colors py-2 whitespace-nowrap',
+                          'text-white text-[14px] font-normal transition-colors py-2 whitespace-nowrap',
                           'hover:text-primary-yellow',
                           isActive(item.href!) && 'text-primary-yellow',
                         )}
@@ -329,23 +341,23 @@ export function Header({ className }: HeaderProps) {
             </div>
 
             {/* Right Side Actions */}
-            <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+            <div className="hidden lg:flex items-center gap-4 flex-shrink-0 ml-auto">
               {/* Language Selector */}
               {/* Language selector temporarily disabled for debugging */}
-              <div className="text-white text-sm">RU</div>
+              <div className="text-white text-[13px] font-normal">RU</div>
               
               {/* Phone */}
               <a
-                href="tel:+12345678901"
-                className="flex items-center gap-2 text-white hover:text-primary-yellow transition-colors"
+                href="tel:+73752916959"
+                className="flex items-center gap-1.5 text-white hover:text-primary-yellow transition-colors"
               >
-                <Phone className="w-4 h-4" />
-                <span className="text-[15px] font-medium whitespace-nowrap">+1 234 567 890</span>
+                <Phone className="w-3.5 h-3.5" />
+                <span className="text-[14px] font-normal whitespace-nowrap">+375 29 169-59-59</span>
               </a>
 
               {/* CTA Button */}
               <Link href="/consultation" className="inline-block">
-                <button className="bg-primary-yellow hover:bg-yellow-hover text-dark-pure font-semibold px-4 py-2 rounded-lg transition-all whitespace-nowrap text-[14px]">
+                <button className="bg-primary-yellow hover:bg-yellow-hover text-dark-pure font-medium px-5 py-2 rounded-lg transition-all whitespace-nowrap text-[13px]">
                   {tSync('nav.enrollNow')}
                 </button>
               </Link>

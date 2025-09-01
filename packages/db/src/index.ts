@@ -12,5 +12,5 @@ export * from './utils';
 // Export service functions
 export * from './services';
 
-// Re-export Prisma types (will be available after prisma generate)
-export * from '@prisma/client';
+// Re-export Prisma types from the generated client
+export * from '../node_modules/.prisma/client';

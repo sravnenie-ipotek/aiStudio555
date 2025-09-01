@@ -13,8 +13,7 @@
     "metadata": {
       "project": "Projectdes AI Academy",
       "version": "1.0.0",
-      "description": "E2E tests for online education platform",
-      "actualWorkers": 7
+      "description": "E2E tests for online education platform"
     },
     "preserveOutput": "always",
     "reporter": [
@@ -54,8 +53,7 @@
         "metadata": {
           "project": "Projectdes AI Academy",
           "version": "1.0.0",
-          "description": "E2E tests for online education platform",
-          "actualWorkers": 7
+          "description": "E2E tests for online education platform"
         },
         "id": "chromium",
         "name": "chromium",
@@ -73,8 +71,7 @@
         "metadata": {
           "project": "Projectdes AI Academy",
           "version": "1.0.0",
-          "description": "E2E tests for online education platform",
-          "actualWorkers": 7
+          "description": "E2E tests for online education platform"
         },
         "id": "firefox",
         "name": "firefox",
@@ -92,8 +89,7 @@
         "metadata": {
           "project": "Projectdes AI Academy",
           "version": "1.0.0",
-          "description": "E2E tests for online education platform",
-          "actualWorkers": 7
+          "description": "E2E tests for online education platform"
         },
         "id": "webkit",
         "name": "webkit",
@@ -111,8 +107,7 @@
         "metadata": {
           "project": "Projectdes AI Academy",
           "version": "1.0.0",
-          "description": "E2E tests for online education platform",
-          "actualWorkers": 7
+          "description": "E2E tests for online education platform"
         },
         "id": "Mobile Chrome",
         "name": "Mobile Chrome",
@@ -130,8 +125,7 @@
         "metadata": {
           "project": "Projectdes AI Academy",
           "version": "1.0.0",
-          "description": "E2E tests for online education platform",
-          "actualWorkers": 7
+          "description": "E2E tests for online education platform"
         },
         "id": "Mobile Safari",
         "name": "Mobile Safari",
@@ -149,8 +143,7 @@
         "metadata": {
           "project": "Projectdes AI Academy",
           "version": "1.0.0",
-          "description": "E2E tests for online education platform",
-          "actualWorkers": 7
+          "description": "E2E tests for online education platform"
         },
         "id": "Microsoft Edge",
         "name": "Microsoft Edge",
@@ -168,8 +161,7 @@
         "metadata": {
           "project": "Projectdes AI Academy",
           "version": "1.0.0",
-          "description": "E2E tests for online education platform",
-          "actualWorkers": 7
+          "description": "E2E tests for online education platform"
         },
         "id": "Google Chrome",
         "name": "Google Chrome",
@@ -195,578 +187,19 @@
       "stderr": "pipe"
     }
   },
-  "suites": [
+  "suites": [],
+  "errors": [
     {
-      "title": "simple-hero-check.spec.ts",
-      "file": "simple-hero-check.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Simple Hero Section Check",
-          "file": "simple-hero-check.spec.ts",
-          "line": 3,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Navigate and inspect hero section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 7190,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "✅ Found hero section with selector: main section:first-child\n"
-                        },
-                        {
-                          "text": "🔍 Checking for statistics in hero section:\n"
-                        },
-                        {
-                          "text": "   12K+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Выпускников: ✅ visible\n"
-                        },
-                        {
-                          "text": "   12K+ position: x=304, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   25+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Стран трудоустройства: ❌ visible\n"
-                        },
-                        {
-                          "text": "   25+ position: x=474.6640625, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   87%: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Успешное трудоустройство: ❌ visible\n"
-                        },
-                        {
-                          "text": "   87% position: x=645.328125, y=821, h=30\n"
-                        },
-                        {
-                          "text": "📏 Hero section dimensions:\n"
-                        },
-                        {
-                          "text": "   Width: 1920px\n"
-                        },
-                        {
-                          "text": "   Height: 1059px\n"
-                        },
-                        {
-                          "text": "   Top: 0px\n"
-                        },
-                        {
-                          "text": "   Bottom: 1059px\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-01T10:56:48.422Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "1efbaecf7360dc6d60f9-32d57f8e3225c6350fbc",
-              "file": "simple-hero-check.spec.ts",
-              "line": 4,
-              "column": 7
-            },
-            {
-              "title": "Navigate and inspect hero section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
-                      "status": "passed",
-                      "duration": 6828,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "✅ Found hero section with selector: main section:first-child\n"
-                        },
-                        {
-                          "text": "🔍 Checking for statistics in hero section:\n"
-                        },
-                        {
-                          "text": "   12K+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Выпускников: ✅ visible\n"
-                        },
-                        {
-                          "text": "   12K+ position: x=304, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   25+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Стран трудоустройства: ❌ visible\n"
-                        },
-                        {
-                          "text": "   25+ position: x=474.6666564941406, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   87%: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Успешное трудоустройство: ❌ visible\n"
-                        },
-                        {
-                          "text": "   87% position: x=645.3333129882812, y=821, h=30\n"
-                        },
-                        {
-                          "text": "📏 Hero section dimensions:\n"
-                        },
-                        {
-                          "text": "   Width: 1920px\n"
-                        },
-                        {
-                          "text": "   Height: 1059px\n"
-                        },
-                        {
-                          "text": "   Top: 0px\n"
-                        },
-                        {
-                          "text": "   Bottom: 1059px\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-01T10:56:48.425Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "1efbaecf7360dc6d60f9-53e37f58a05ebf44cdf2",
-              "file": "simple-hero-check.spec.ts",
-              "line": 4,
-              "column": 7
-            },
-            {
-              "title": "Navigate and inspect hero section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": 2,
-                      "parallelIndex": 2,
-                      "status": "passed",
-                      "duration": 6451,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "✅ Found hero section with selector: main section:first-child\n"
-                        },
-                        {
-                          "text": "🔍 Checking for statistics in hero section:\n"
-                        },
-                        {
-                          "text": "   12K+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Выпускников: ✅ visible\n"
-                        },
-                        {
-                          "text": "   12K+ position: x=304, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   25+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Стран трудоустройства: ❌ visible\n"
-                        },
-                        {
-                          "text": "   25+ position: x=474.65625, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   87%: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Успешное трудоустройство: ❌ visible\n"
-                        },
-                        {
-                          "text": "   87% position: x=645.328125, y=821, h=30\n"
-                        },
-                        {
-                          "text": "📏 Hero section dimensions:\n"
-                        },
-                        {
-                          "text": "   Width: 1920px\n"
-                        },
-                        {
-                          "text": "   Height: 1059px\n"
-                        },
-                        {
-                          "text": "   Top: 0px\n"
-                        },
-                        {
-                          "text": "   Bottom: 1059px\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-01T10:56:48.424Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "1efbaecf7360dc6d60f9-49020f4fc682ae9f4fbb",
-              "file": "simple-hero-check.spec.ts",
-              "line": 4,
-              "column": 7
-            },
-            {
-              "title": "Navigate and inspect hero section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 3,
-                      "parallelIndex": 3,
-                      "status": "passed",
-                      "duration": 7101,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "✅ Found hero section with selector: main section:first-child\n"
-                        },
-                        {
-                          "text": "🔍 Checking for statistics in hero section:\n"
-                        },
-                        {
-                          "text": "   12K+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Выпускников: ✅ visible\n"
-                        },
-                        {
-                          "text": "   12K+ position: x=32, y=627.390625, h=20\n"
-                        },
-                        {
-                          "text": "   25+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Стран трудоустройства: ❌ visible\n"
-                        },
-                        {
-                          "text": "   25+ position: x=152.328125, y=627.390625, h=20\n"
-                        },
-                        {
-                          "text": "   87%: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Успешное трудоустройство: ❌ visible\n"
-                        },
-                        {
-                          "text": "   87% position: x=272.6640625, y=627.390625, h=20\n"
-                        },
-                        {
-                          "text": "📏 Hero section dimensions:\n"
-                        },
-                        {
-                          "text": "   Width: 393px\n"
-                        },
-                        {
-                          "text": "   Height: 781.390625px\n"
-                        },
-                        {
-                          "text": "   Top: 0px\n"
-                        },
-                        {
-                          "text": "   Bottom: 781.390625px\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-01T10:56:48.426Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "1efbaecf7360dc6d60f9-d5c7805851c897289d5e",
-              "file": "simple-hero-check.spec.ts",
-              "line": 4,
-              "column": 7
-            },
-            {
-              "title": "Navigate and inspect hero section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": 4,
-                      "parallelIndex": 4,
-                      "status": "passed",
-                      "duration": 7644,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "✅ Found hero section with selector: main section:first-child\n"
-                        },
-                        {
-                          "text": "🔍 Checking for statistics in hero section:\n"
-                        },
-                        {
-                          "text": "   12K+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Выпускников: ✅ visible\n"
-                        },
-                        {
-                          "text": "   12K+ position: x=32, y=627, h=20\n"
-                        },
-                        {
-                          "text": "   25+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Стран трудоустройства: ❌ visible\n"
-                        },
-                        {
-                          "text": "   25+ position: x=151.328125, y=627, h=20\n"
-                        },
-                        {
-                          "text": "   87%: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Успешное трудоустройство: ❌ visible\n"
-                        },
-                        {
-                          "text": "   87% position: x=270.65625, y=627, h=20\n"
-                        },
-                        {
-                          "text": "📏 Hero section dimensions:\n"
-                        },
-                        {
-                          "text": "   Width: 390px\n"
-                        },
-                        {
-                          "text": "   Height: 781px\n"
-                        },
-                        {
-                          "text": "   Top: 0px\n"
-                        },
-                        {
-                          "text": "   Bottom: 781px\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-01T10:56:48.429Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "1efbaecf7360dc6d60f9-c181cb2bf9a2c5f25317",
-              "file": "simple-hero-check.spec.ts",
-              "line": 4,
-              "column": 7
-            },
-            {
-              "title": "Navigate and inspect hero section",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Microsoft Edge",
-                  "projectName": "Microsoft Edge",
-                  "results": [
-                    {
-                      "workerIndex": 5,
-                      "parallelIndex": 5,
-                      "status": "failed",
-                      "duration": 1,
-                      "error": {
-                        "message": "Error: browserType.launch: Chromium distribution 'msedge' is not found at /Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\nRun \"npx playwright install msedge\"",
-                        "stack": "Error: browserType.launch: Chromium distribution 'msedge' is not found at /Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\nRun \"npx playwright install msedge\""
-                      },
-                      "errors": [
-                        {
-                          "message": "Error: browserType.launch: Chromium distribution 'msedge' is not found at /Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\nRun \"npx playwright install msedge\""
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-01T10:56:48.426Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "trace",
-                          "contentType": "application/zip",
-                          "path": "/Users/michaelmishayev/Desktop/Projects/schoolSite/projectdes-academy/qa/e2e/test-results/simple-hero-check-Simple-H-e176b-te-and-inspect-hero-section-Microsoft-Edge/trace.zip"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "1efbaecf7360dc6d60f9-604d474a4906851452b0",
-              "file": "simple-hero-check.spec.ts",
-              "line": 4,
-              "column": 7
-            },
-            {
-              "title": "Navigate and inspect hero section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 60000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Google Chrome",
-                  "projectName": "Google Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 6,
-                      "parallelIndex": 6,
-                      "status": "passed",
-                      "duration": 7426,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "✅ Found hero section with selector: main section:first-child\n"
-                        },
-                        {
-                          "text": "🔍 Checking for statistics in hero section:\n"
-                        },
-                        {
-                          "text": "   12K+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Выпускников: ✅ visible\n"
-                        },
-                        {
-                          "text": "   12K+ position: x=304, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   25+: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Стран трудоустройства: ❌ visible\n"
-                        },
-                        {
-                          "text": "   25+ position: x=474.6640625, y=821, h=30\n"
-                        },
-                        {
-                          "text": "   87%: ✅ visible\n"
-                        },
-                        {
-                          "text": "   Успешное трудоустройство: ❌ visible\n"
-                        },
-                        {
-                          "text": "   87% position: x=645.328125, y=821, h=30\n"
-                        },
-                        {
-                          "text": "📏 Hero section dimensions:\n"
-                        },
-                        {
-                          "text": "   Width: 1920px\n"
-                        },
-                        {
-                          "text": "   Height: 1059px\n"
-                        },
-                        {
-                          "text": "   Top: 0px\n"
-                        },
-                        {
-                          "text": "   Bottom: 1059px\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-01T10:56:48.428Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "1efbaecf7360dc6d60f9-99242e64ed3fbbe0061b",
-              "file": "simple-hero-check.spec.ts",
-              "line": 4,
-              "column": 7
-            }
-          ]
-        }
-      ]
+      "message": "Error: Process from config.webServer exited early.",
+      "stack": "Error: Process from config.webServer exited early."
     }
   ],
-  "errors": [],
   "stats": {
-    "startTime": "2025-09-01T10:56:46.280Z",
-    "duration": 10102.186,
-    "expected": 6,
+    "startTime": "2025-09-01T15:02:40.257Z",
+    "duration": 1155.722,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }

@@ -2,6 +2,7 @@
  * Course-related type definitions
  * Updated to match Prisma schema v2.0 - Extended course catalog system
  */
+import { z } from 'zod';
 export interface CourseData {
     id: string;
     slug: string;
@@ -154,13 +155,6 @@ export declare enum Locale {
     EN = "EN",
     RU = "RU",
     HE = "HE"
-}
-export declare enum EnrollmentStatus {
-    ACTIVE = "ACTIVE",
-    PAUSED = "PAUSED",
-    COMPLETED = "COMPLETED",
-    EXPIRED = "EXPIRED",
-    CANCELLED = "CANCELLED"
 }
 export interface CoursesListResponse {
     success: true;
@@ -319,21 +313,9 @@ export interface CourseEnrollment {
     lastAccessedAt: Date;
     certificateId?: string;
     grade?: number;
-    status: EnrollmentStatus;
+    status: EnrollmentStatusType;
 }
 export type EnrollmentStatusType = 'active' | 'completed' | 'paused' | 'dropped' | 'expired';
-export interface CourseProgress {
-    courseId: string;
-    userId: string;
-    completedLessons: string[];
-    completedModules: string[];
-    quizScores: Record<string, number>;
-    assignmentSubmissions: AssignmentSubmission[];
-    totalTimeSpent: number;
-    lastLesson?: string;
-    streak: number;
-    achievements: Achievement[];
-}
 export interface AssignmentSubmission {
     id: string;
     assignmentId: string;
@@ -356,18 +338,205 @@ export interface AchievementCriteria {
     type: 'lessons_completed' | 'streak' | 'quiz_score' | 'course_completed' | 'perfect_score';
     value: number;
 }
-export interface Certificate {
-    id: string;
-    courseId: string;
-    userId: string;
-    courseName: string;
-    studentName: string;
-    instructorName: string;
-    completionDate: Date;
-    grade?: string;
-    certificateNumber: string;
-    validationUrl: string;
-    skills: string[];
-    createdAt: Date;
-}
+export declare const CourseCreateSchema: z.ZodObject<{
+    title: z.ZodRecord<z.ZodString, z.ZodString>;
+    description: z.ZodRecord<z.ZodString, z.ZodString>;
+    shortDescription: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+    slug: z.ZodString;
+    categoryId: z.ZodString;
+    instructorId: z.ZodString;
+    price: z.ZodNumber;
+    currency: z.ZodDefault<z.ZodString>;
+    discountPrice: z.ZodOptional<z.ZodNumber>;
+    level: z.ZodEnum<["BEGINNER", "INTERMEDIATE", "ADVANCED", "EXPERT"]>;
+    language: z.ZodEnum<["EN", "RU", "HE"]>;
+    duration: z.ZodNumber;
+    durationWeeks: z.ZodOptional<z.ZodNumber>;
+    hoursPerWeek: z.ZodOptional<z.ZodNumber>;
+    maxStudents: z.ZodOptional<z.ZodNumber>;
+    minStudents: z.ZodOptional<z.ZodNumber>;
+    nextStartDate: z.ZodOptional<z.ZodString>;
+    enrollmentDeadline: z.ZodOptional<z.ZodString>;
+    keyBenefits: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+    targetAudience: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+    careerOutcomes: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+    skillsLearned: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+    format: z.ZodDefault<z.ZodEnum<["ONLINE", "HYBRID", "IN_PERSON"]>>;
+    platform: z.ZodOptional<z.ZodString>;
+    thumbnail: z.ZodOptional<z.ZodString>;
+    heroImage: z.ZodOptional<z.ZodString>;
+    metaTitle: z.ZodOptional<z.ZodString>;
+    metaDescription: z.ZodOptional<z.ZodString>;
+    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+}, "strip", z.ZodTypeAny, {
+    language: "EN" | "RU" | "HE";
+    title: Record<string, string>;
+    price: number;
+    duration: number;
+    description: Record<string, string>;
+    slug: string;
+    categoryId: string;
+    instructorId: string;
+    currency: string;
+    level: "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT";
+    keyBenefits: string[];
+    targetAudience: string[];
+    careerOutcomes: string[];
+    skillsLearned: string[];
+    format: "ONLINE" | "HYBRID" | "IN_PERSON";
+    keywords: string[];
+    shortDescription?: Record<string, string> | undefined;
+    discountPrice?: number | undefined;
+    durationWeeks?: number | undefined;
+    hoursPerWeek?: number | undefined;
+    maxStudents?: number | undefined;
+    minStudents?: number | undefined;
+    nextStartDate?: string | undefined;
+    enrollmentDeadline?: string | undefined;
+    platform?: string | undefined;
+    thumbnail?: string | undefined;
+    heroImage?: string | undefined;
+    metaTitle?: string | undefined;
+    metaDescription?: string | undefined;
+}, {
+    language: "EN" | "RU" | "HE";
+    title: Record<string, string>;
+    price: number;
+    duration: number;
+    description: Record<string, string>;
+    slug: string;
+    categoryId: string;
+    instructorId: string;
+    level: "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT";
+    shortDescription?: Record<string, string> | undefined;
+    currency?: string | undefined;
+    discountPrice?: number | undefined;
+    durationWeeks?: number | undefined;
+    hoursPerWeek?: number | undefined;
+    maxStudents?: number | undefined;
+    minStudents?: number | undefined;
+    nextStartDate?: string | undefined;
+    enrollmentDeadline?: string | undefined;
+    keyBenefits?: string[] | undefined;
+    targetAudience?: string[] | undefined;
+    careerOutcomes?: string[] | undefined;
+    skillsLearned?: string[] | undefined;
+    format?: "ONLINE" | "HYBRID" | "IN_PERSON" | undefined;
+    platform?: string | undefined;
+    thumbnail?: string | undefined;
+    heroImage?: string | undefined;
+    metaTitle?: string | undefined;
+    metaDescription?: string | undefined;
+    keywords?: string[] | undefined;
+}>;
+export declare const CourseUpdateSchema: z.ZodObject<{
+    title: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+    description: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+    shortDescription: z.ZodOptional<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>>;
+    slug: z.ZodOptional<z.ZodString>;
+    categoryId: z.ZodOptional<z.ZodString>;
+    instructorId: z.ZodOptional<z.ZodString>;
+    price: z.ZodOptional<z.ZodNumber>;
+    currency: z.ZodOptional<z.ZodDefault<z.ZodString>>;
+    discountPrice: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+    level: z.ZodOptional<z.ZodEnum<["BEGINNER", "INTERMEDIATE", "ADVANCED", "EXPERT"]>>;
+    language: z.ZodOptional<z.ZodEnum<["EN", "RU", "HE"]>>;
+    duration: z.ZodOptional<z.ZodNumber>;
+    durationWeeks: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+    hoursPerWeek: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+    maxStudents: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+    minStudents: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+    nextStartDate: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    enrollmentDeadline: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    keyBenefits: z.ZodOptional<z.ZodDefault<z.ZodArray<z.ZodString, "many">>>;
+    targetAudience: z.ZodOptional<z.ZodDefault<z.ZodArray<z.ZodString, "many">>>;
+    careerOutcomes: z.ZodOptional<z.ZodDefault<z.ZodArray<z.ZodString, "many">>>;
+    skillsLearned: z.ZodOptional<z.ZodDefault<z.ZodArray<z.ZodString, "many">>>;
+    format: z.ZodOptional<z.ZodDefault<z.ZodEnum<["ONLINE", "HYBRID", "IN_PERSON"]>>>;
+    platform: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    thumbnail: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    heroImage: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    metaTitle: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    metaDescription: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    keywords: z.ZodOptional<z.ZodDefault<z.ZodArray<z.ZodString, "many">>>;
+}, "strip", z.ZodTypeAny, {
+    language?: "EN" | "RU" | "HE" | undefined;
+    title?: Record<string, string> | undefined;
+    price?: number | undefined;
+    duration?: number | undefined;
+    description?: Record<string, string> | undefined;
+    shortDescription?: Record<string, string> | undefined;
+    slug?: string | undefined;
+    categoryId?: string | undefined;
+    instructorId?: string | undefined;
+    currency?: string | undefined;
+    discountPrice?: number | undefined;
+    level?: "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT" | undefined;
+    durationWeeks?: number | undefined;
+    hoursPerWeek?: number | undefined;
+    maxStudents?: number | undefined;
+    minStudents?: number | undefined;
+    nextStartDate?: string | undefined;
+    enrollmentDeadline?: string | undefined;
+    keyBenefits?: string[] | undefined;
+    targetAudience?: string[] | undefined;
+    careerOutcomes?: string[] | undefined;
+    skillsLearned?: string[] | undefined;
+    format?: "ONLINE" | "HYBRID" | "IN_PERSON" | undefined;
+    platform?: string | undefined;
+    thumbnail?: string | undefined;
+    heroImage?: string | undefined;
+    metaTitle?: string | undefined;
+    metaDescription?: string | undefined;
+    keywords?: string[] | undefined;
+}, {
+    language?: "EN" | "RU" | "HE" | undefined;
+    title?: Record<string, string> | undefined;
+    price?: number | undefined;
+    duration?: number | undefined;
+    description?: Record<string, string> | undefined;
+    shortDescription?: Record<string, string> | undefined;
+    slug?: string | undefined;
+    categoryId?: string | undefined;
+    instructorId?: string | undefined;
+    currency?: string | undefined;
+    discountPrice?: number | undefined;
+    level?: "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT" | undefined;
+    durationWeeks?: number | undefined;
+    hoursPerWeek?: number | undefined;
+    maxStudents?: number | undefined;
+    minStudents?: number | undefined;
+    nextStartDate?: string | undefined;
+    enrollmentDeadline?: string | undefined;
+    keyBenefits?: string[] | undefined;
+    targetAudience?: string[] | undefined;
+    careerOutcomes?: string[] | undefined;
+    skillsLearned?: string[] | undefined;
+    format?: "ONLINE" | "HYBRID" | "IN_PERSON" | undefined;
+    platform?: string | undefined;
+    thumbnail?: string | undefined;
+    heroImage?: string | undefined;
+    metaTitle?: string | undefined;
+    metaDescription?: string | undefined;
+    keywords?: string[] | undefined;
+}>;
+export declare const CourseLessonProgressSchema: z.ZodObject<{
+    lessonId: z.ZodString;
+    status: z.ZodEnum<["NOT_STARTED", "IN_PROGRESS", "COMPLETED"]>;
+    videoProgress: z.ZodOptional<z.ZodNumber>;
+    score: z.ZodOptional<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
+    lessonId: string;
+    videoProgress?: number | undefined;
+    score?: number | undefined;
+}, {
+    status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
+    lessonId: string;
+    videoProgress?: number | undefined;
+    score?: number | undefined;
+}>;
+export type CourseCreateInput = z.infer<typeof CourseCreateSchema>;
+export type CourseUpdateInput = z.infer<typeof CourseUpdateSchema>;
+export type CourseLessonProgressInput = z.infer<typeof CourseLessonProgressSchema>;
 //# sourceMappingURL=course.d.ts.map

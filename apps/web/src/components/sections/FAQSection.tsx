@@ -66,15 +66,6 @@ export function FAQSection({ className }: FAQSectionProps) {
     threshold: 0.1,
   });
 
-  // Initialize Preline components after mount
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      import('preline/preline').then(() => {
-        // Preline auto-init handled by plugin
-      });
-    }
-  }, [filteredFaqs]);
-
   // Enhanced FAQ data with categories and metadata
   const allFaqs: FAQItem[] = Array.from({ length: 8 }, (_, i) => ({
     id: `faq-${i + 1}`,
@@ -92,6 +83,15 @@ export function FAQSection({ className }: FAQSectionProps) {
     const matchesCategory = selectedCategory === 'all' || faq.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  // Initialize Preline components after mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      import('preline/preline').then(() => {
+        // Preline auto-init handled by plugin
+      });
+    }
+  }, [filteredFaqs]);
 
   const categories = [
     { key: 'all', label: tSync('faq.categories.all') || 'Все', count: allFaqs.length },

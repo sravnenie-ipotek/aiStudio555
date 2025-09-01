@@ -26,7 +26,7 @@ export const ProgressStatusEnum = z.enum([
   'SKIPPED'
 ]);
 
-export const PaymentStatusEnum = z.enum([
+export const EnrollmentPaymentStatusEnum = z.enum([
   'PENDING',
   'PAID',
   'FAILED',
@@ -63,7 +63,7 @@ export const EnrollmentSchema = z.object({
   expiresAt: z.date().nullable(),
   progress: z.number().min(0).max(100).default(0),
   lastAccessedAt: z.date().nullable(),
-  paymentStatus: PaymentStatusEnum,
+  paymentStatus: EnrollmentPaymentStatusEnum,
   paymentId: z.string().uuid().nullable(),
   certificateId: z.string().uuid().nullable(),
   totalTimeSpent: z.number().default(0), // in minutes
@@ -207,7 +207,7 @@ export const LearningAnalyticsSchema = z.object({
 
 export type EnrollmentStatus = z.infer<typeof EnrollmentStatusEnum>;
 export type ProgressStatus = z.infer<typeof ProgressStatusEnum>;
-export type PaymentStatus = z.infer<typeof PaymentStatusEnum>;
+export type EnrollmentPaymentStatus = z.infer<typeof EnrollmentPaymentStatusEnum>;
 export type CreateEnrollment = z.infer<typeof CreateEnrollmentSchema>;
 export type Enrollment = z.infer<typeof EnrollmentSchema>;
 export type UpdateEnrollmentProgress = z.infer<typeof UpdateEnrollmentProgressSchema>;
@@ -217,3 +217,9 @@ export type CourseProgress = z.infer<typeof CourseProgressSchema>;
 export type GenerateCertificate = z.infer<typeof GenerateCertificateSchema>;
 export type Certificate = z.infer<typeof CertificateSchema>;
 export type LearningAnalytics = z.infer<typeof LearningAnalyticsSchema>;
+
+// ============================================
+// COMPATIBILITY ALIASES
+// ============================================
+
+export const EnrollmentCreateSchema = CreateEnrollmentSchema;

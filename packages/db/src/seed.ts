@@ -4,7 +4,7 @@
  * Generated: 2025-08-29
  */
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../node_modules/.prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -196,7 +196,7 @@ async function main() {
         data: {
           userId: users[0].id,
           token: 'admin_session_token_12345',
-          expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
+          expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
           ipAddress: '192.168.1.100',
           userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         },
@@ -205,7 +205,7 @@ async function main() {
         data: {
           userId: users[2].id,
           token: 'student_session_token_67890',
-          expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
+          expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
           ipAddress: '192.168.1.101',
           userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
         },
@@ -587,7 +587,7 @@ async function main() {
           enrollmentId: enrollments[1].id, // Completed no-code course
           certificateUrl: 'https://certificates.aistudio555.ai/nocode-12345.pdf',
           issuedAt: new Date('2024-07-15T18:00:00Z'),
-          expiresAt: new Date('2026-07-15T18:00:00Z'),
+          expires: new Date('2026-07-15T18:00:00Z'),
         },
       }),
     ]);

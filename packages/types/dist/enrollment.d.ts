@@ -6,7 +6,7 @@
 import { z } from 'zod';
 export declare const EnrollmentStatusEnum: z.ZodEnum<["PENDING", "ACTIVE", "COMPLETED", "EXPIRED", "CANCELLED", "SUSPENDED"]>;
 export declare const ProgressStatusEnum: z.ZodEnum<["NOT_STARTED", "IN_PROGRESS", "COMPLETED", "SKIPPED"]>;
-export declare const PaymentStatusEnum: z.ZodEnum<["PENDING", "PAID", "FAILED", "REFUNDED", "PARTIAL"]>;
+export declare const EnrollmentPaymentStatusEnum: z.ZodEnum<["PENDING", "PAID", "FAILED", "REFUNDED", "PARTIAL"]>;
 /**
  * Course enrollment creation schema
  */
@@ -49,9 +49,9 @@ export declare const EnrollmentSchema: z.ZodObject<{
     totalTimeSpent: z.ZodDefault<z.ZodNumber>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
 }, "strip", z.ZodTypeAny, {
+    status: "COMPLETED" | "PENDING" | "ACTIVE" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     courseId: string;
     userId: string;
-    status: "PENDING" | "ACTIVE" | "COMPLETED" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     id: string;
     enrolledAt: Date;
     startedAt: Date | null;
@@ -65,9 +65,9 @@ export declare const EnrollmentSchema: z.ZodObject<{
     totalTimeSpent: number;
     metadata?: Record<string, any> | undefined;
 }, {
+    status: "COMPLETED" | "PENDING" | "ACTIVE" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     courseId: string;
     userId: string;
-    status: "PENDING" | "ACTIVE" | "COMPLETED" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     id: string;
     enrolledAt: Date;
     startedAt: Date | null;
@@ -92,16 +92,16 @@ export declare const UpdateEnrollmentProgressSchema: z.ZodObject<{
     score: z.ZodOptional<z.ZodNumber>;
     notes: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
-    enrollmentId: string;
+    status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "SKIPPED";
     lessonId: string;
+    enrollmentId: string;
     timeSpent: number;
     score?: number | undefined;
     notes?: string | undefined;
 }, {
-    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
-    enrollmentId: string;
+    status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "SKIPPED";
     lessonId: string;
+    enrollmentId: string;
     timeSpent: number;
     score?: number | undefined;
     notes?: string | undefined;
@@ -133,16 +133,16 @@ export declare const LessonProgressSchema: z.ZodObject<{
         note?: string | undefined;
     }>, "many">>;
 }, "strip", z.ZodTypeAny, {
+    status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "SKIPPED";
+    lessonId: string;
+    score: number | null;
     userId: string;
-    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
     id: string;
     startedAt: Date | null;
     completedAt: Date | null;
     lastAccessedAt: Date;
     enrollmentId: string;
-    lessonId: string;
     timeSpent: number;
-    score: number | null;
     notes: string | null;
     attempts: number;
     bookmarks?: {
@@ -150,15 +150,15 @@ export declare const LessonProgressSchema: z.ZodObject<{
         note?: string | undefined;
     }[] | undefined;
 }, {
+    status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "SKIPPED";
+    lessonId: string;
+    score: number | null;
     userId: string;
-    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
     id: string;
     startedAt: Date | null;
     completedAt: Date | null;
     lastAccessedAt: Date;
     enrollmentId: string;
-    lessonId: string;
-    score: number | null;
     notes: string | null;
     timeSpent?: number | undefined;
     attempts?: number | undefined;
@@ -235,26 +235,26 @@ export declare const CourseProgressSchema: z.ZodObject<{
         moduleId: z.ZodString;
         title: z.ZodString;
     }, "strip", z.ZodTypeAny, {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     }, {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     }>>;
     nextLesson: z.ZodNullable<z.ZodObject<{
         lessonId: z.ZodString;
         moduleId: z.ZodString;
         title: z.ZodString;
     }, "strip", z.ZodTypeAny, {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     }, {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     }>>;
     completionDate: z.ZodNullable<z.ZodDate>;
     certificateEligible: z.ZodBoolean;
@@ -275,14 +275,14 @@ export declare const CourseProgressSchema: z.ZodObject<{
     }[];
     estimatedTimeRemaining: number;
     currentLesson: {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     } | null;
     nextLesson: {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     } | null;
     completionDate: Date | null;
     certificateEligible: boolean;
@@ -303,14 +303,14 @@ export declare const CourseProgressSchema: z.ZodObject<{
     }[];
     estimatedTimeRemaining: number;
     currentLesson: {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     } | null;
     nextLesson: {
+        title: string;
         lessonId: string;
         moduleId: string;
-        title: string;
     } | null;
     completionDate: Date | null;
     certificateEligible: boolean;
@@ -357,12 +357,12 @@ export declare const CertificateSchema: z.ZodObject<{
     verificationUrl: z.ZodString;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
 }, "strip", z.ZodTypeAny, {
+    score: number | null;
     courseId: string;
     userId: string;
     id: string;
     expiresAt: Date | null;
     enrollmentId: string;
-    score: number | null;
     grade: string | null;
     certificateNumber: string;
     issuedAt: Date;
@@ -370,12 +370,12 @@ export declare const CertificateSchema: z.ZodObject<{
     metadata?: Record<string, any> | undefined;
     templateId?: string | undefined;
 }, {
+    score: number | null;
     courseId: string;
     userId: string;
     id: string;
     expiresAt: Date | null;
     enrollmentId: string;
-    score: number | null;
     grade: string | null;
     certificateNumber: string;
     issuedAt: Date;
@@ -425,7 +425,7 @@ export declare const LearningAnalyticsSchema: z.ZodObject<{
 }>;
 export type EnrollmentStatus = z.infer<typeof EnrollmentStatusEnum>;
 export type ProgressStatus = z.infer<typeof ProgressStatusEnum>;
-export type PaymentStatus = z.infer<typeof PaymentStatusEnum>;
+export type EnrollmentPaymentStatus = z.infer<typeof EnrollmentPaymentStatusEnum>;
 export type CreateEnrollment = z.infer<typeof CreateEnrollmentSchema>;
 export type Enrollment = z.infer<typeof EnrollmentSchema>;
 export type UpdateEnrollmentProgress = z.infer<typeof UpdateEnrollmentProgressSchema>;
@@ -435,4 +435,23 @@ export type CourseProgress = z.infer<typeof CourseProgressSchema>;
 export type GenerateCertificate = z.infer<typeof GenerateCertificateSchema>;
 export type Certificate = z.infer<typeof CertificateSchema>;
 export type LearningAnalytics = z.infer<typeof LearningAnalyticsSchema>;
+export declare const EnrollmentCreateSchema: z.ZodObject<{
+    courseId: z.ZodString;
+    userId: z.ZodString;
+    paymentMethodId: z.ZodOptional<z.ZodString>;
+    couponCode: z.ZodOptional<z.ZodString>;
+    installmentPlan: z.ZodDefault<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny, {
+    courseId: string;
+    userId: string;
+    installmentPlan: boolean;
+    paymentMethodId?: string | undefined;
+    couponCode?: string | undefined;
+}, {
+    courseId: string;
+    userId: string;
+    paymentMethodId?: string | undefined;
+    couponCode?: string | undefined;
+    installmentPlan?: boolean | undefined;
+}>;
 //# sourceMappingURL=enrollment.d.ts.map

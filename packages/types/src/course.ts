@@ -3,6 +3,8 @@
  * Updated to match Prisma schema v2.0 - Extended course catalog system
  */
 
+import { z } from 'zod';
+
 // Core course interface matching Prisma schema
 export interface CourseData {
   id: string;
@@ -205,13 +207,7 @@ export enum Locale {
   HE = 'HE'
 }
 
-export enum EnrollmentStatus {
-  ACTIVE = 'ACTIVE',
-  PAUSED = 'PAUSED',
-  COMPLETED = 'COMPLETED',
-  EXPIRED = 'EXPIRED',
-  CANCELLED = 'CANCELLED'
-}
+// EnrollmentStatus enum moved to enrollment.ts to avoid duplicates
 
 // API Response types
 export interface CoursesListResponse {
@@ -403,7 +399,7 @@ export interface CourseEnrollment {
   lastAccessedAt: Date;
   certificateId?: string;
   grade?: number;
-  status: EnrollmentStatus;
+  status: EnrollmentStatusType;
 }
 
 export type EnrollmentStatusType = 
@@ -413,18 +409,7 @@ export type EnrollmentStatusType =
   | 'dropped'
   | 'expired';
 
-export interface CourseProgress {
-  courseId: string;
-  userId: string;
-  completedLessons: string[];
-  completedModules: string[];
-  quizScores: Record<string, number>;
-  assignmentSubmissions: AssignmentSubmission[];
-  totalTimeSpent: number; // in minutes
-  lastLesson?: string;
-  streak: number;
-  achievements: Achievement[];
-}
+// CourseProgress interface moved to enrollment.ts to avoid duplicates
 
 export interface AssignmentSubmission {
   id: string;
@@ -451,17 +436,53 @@ export interface AchievementCriteria {
   value: number;
 }
 
-export interface Certificate {
-  id: string;
-  courseId: string;
-  userId: string;
-  courseName: string;
-  studentName: string;
-  instructorName: string;
-  completionDate: Date;
-  grade?: string;
-  certificateNumber: string;
-  validationUrl: string;
-  skills: string[];
-  createdAt: Date;
-}
+// Certificate interface moved to enrollment.ts to avoid duplicates
+
+// ============================================
+// ZOD SCHEMAS FOR VALIDATION
+// ============================================
+
+export const CourseCreateSchema = z.object({
+  title: z.record(z.string(), z.string()),
+  description: z.record(z.string(), z.string()),
+  shortDescription: z.record(z.string(), z.string()).optional(),
+  slug: z.string().min(1, 'Slug is required'),
+  categoryId: z.string().min(1, 'Category is required'),
+  instructorId: z.string().min(1, 'Instructor is required'),
+  price: z.number().min(0, 'Price must be positive'),
+  currency: z.string().default('USD'),
+  discountPrice: z.number().min(0).optional(),
+  level: z.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'EXPERT']),
+  language: z.enum(['EN', 'RU', 'HE']),
+  duration: z.number().min(1, 'Duration is required'),
+  durationWeeks: z.number().optional(),
+  hoursPerWeek: z.number().optional(),
+  maxStudents: z.number().optional(),
+  minStudents: z.number().optional(),
+  nextStartDate: z.string().datetime().optional(),
+  enrollmentDeadline: z.string().datetime().optional(),
+  keyBenefits: z.array(z.string()).default([]),
+  targetAudience: z.array(z.string()).default([]),
+  careerOutcomes: z.array(z.string()).default([]),
+  skillsLearned: z.array(z.string()).default([]),
+  format: z.enum(['ONLINE', 'HYBRID', 'IN_PERSON']).default('ONLINE'),
+  platform: z.string().optional(),
+  thumbnail: z.string().optional(),
+  heroImage: z.string().optional(),
+  metaTitle: z.string().optional(),
+  metaDescription: z.string().optional(),
+  keywords: z.array(z.string()).default([]),
+});
+
+export const CourseUpdateSchema = CourseCreateSchema.partial();
+
+export const CourseLessonProgressSchema = z.object({
+  lessonId: z.string().min(1, 'Lesson ID is required'),
+  status: z.enum(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETED']),
+  videoProgress: z.number().min(0).max(100).optional(),
+  score: z.number().min(0).max(100).optional(),
+});
+
+export type CourseCreateInput = z.infer<typeof CourseCreateSchema>;
+export type CourseUpdateInput = z.infer<typeof CourseUpdateSchema>;
+export type CourseLessonProgressInput = z.infer<typeof CourseLessonProgressSchema>;

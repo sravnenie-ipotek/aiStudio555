@@ -7,7 +7,6 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     '../../packages/ui/src/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/preline/preline.js',
   ],
   theme: {
     container: {
@@ -271,6 +270,5 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/container-queries'),
-    require('preline/plugin'),
   ],
 };

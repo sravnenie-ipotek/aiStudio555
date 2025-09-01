@@ -31,6 +31,19 @@ export const UpdatePasswordSchema = z
     path: ['confirmPassword'],
   });
 
+// Aliases for controller compatibility
+export const UserRegisterSchema = SignUpSchema;
+export const UserLoginSchema = SignInSchema;
+export const PasswordResetRequestSchema = ResetPasswordSchema;
+export const PasswordResetSchema = z.object({
+  token: z.string().min(1, 'Token is required'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+});
+
+export const RefreshTokenSchema = z.object({
+  refreshToken: z.string().min(1, 'Refresh token is required'),
+});
+
 // TypeScript Types
 export type SignUpInput = z.infer<typeof SignUpSchema>;
 export type SignInInput = z.infer<typeof SignInSchema>;

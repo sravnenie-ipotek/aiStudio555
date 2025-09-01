@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 interface Step2PaymentPageProps {
-  params: {
+  params: Promise<{
     courseSlug: string
-  }
+  }>
 }
 
 export const metadata: Metadata = {
@@ -12,8 +12,9 @@ export const metadata: Metadata = {
   description: 'Select your payment method and complete enrollment',
 }
 
-export default function Step2PaymentPage({ params }: Step2PaymentPageProps) {
-  const courseName = params.courseSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+export default async function Step2PaymentPage({ params }: Step2PaymentPageProps) {
+  const { courseSlug } = await params;
+  const courseName = courseSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
   
   return (
     <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -188,13 +189,13 @@ export default function Step2PaymentPage({ params }: Step2PaymentPageProps) {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-gray-200 mt-8">
                 <Link
-                  href={`/enroll/${params.courseSlug}/step-1-info`}
+                  href={`/enroll/${courseSlug}/step-1-info`}
                   className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 text-center rounded-xl font-semibold hover:bg-gray-50 transition-colors"
                 >
                   Back
                 </Link>
                 <Link
-                  href={`/enroll/${params.courseSlug}/step-3-confirmation`}
+                  href={`/enroll/${courseSlug}/step-3-confirmation`}
                   className="flex-1 bg-primary-yellow hover:bg-yellow-400 text-black px-6 py-3 rounded-xl font-bold text-center transition-all hover:-translate-y-1"
                 >
                   Complete Payment

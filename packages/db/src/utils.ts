@@ -3,7 +3,7 @@
  * Helper functions for database operations
  */
 
-import { Prisma } from '@prisma/client';
+import { Prisma } from '../node_modules/.prisma/client';
 
 /**
  * Handle Prisma errors and return user-friendly messages

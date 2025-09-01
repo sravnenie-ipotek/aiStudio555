@@ -21,7 +21,7 @@ export const ProgressStatusEnum = z.enum([
     'COMPLETED',
     'SKIPPED'
 ]);
-export const PaymentStatusEnum = z.enum([
+export const EnrollmentPaymentStatusEnum = z.enum([
     'PENDING',
     'PAID',
     'FAILED',
@@ -55,7 +55,7 @@ export const EnrollmentSchema = z.object({
     expiresAt: z.date().nullable(),
     progress: z.number().min(0).max(100).default(0),
     lastAccessedAt: z.date().nullable(),
-    paymentStatus: PaymentStatusEnum,
+    paymentStatus: EnrollmentPaymentStatusEnum,
     paymentId: z.string().uuid().nullable(),
     certificateId: z.string().uuid().nullable(),
     totalTimeSpent: z.number().default(0), // in minutes
@@ -182,4 +182,8 @@ export const LearningAnalyticsSchema = z.object({
     strongestSubjects: z.array(z.string()),
     improvementAreas: z.array(z.string()),
 });
+// ============================================
+// COMPATIBILITY ALIASES
+// ============================================
+export const EnrollmentCreateSchema = CreateEnrollmentSchema;
 //# sourceMappingURL=enrollment.js.map

@@ -2,6 +2,8 @@
  * User-related type definitions
  */
 
+import { UserRole } from './auth';
+
 export interface User {
   id: string;
   email: string;
@@ -17,7 +19,6 @@ export interface User {
   isActive: boolean;
 }
 
-export type UserRole = 'student' | 'instructor' | 'admin' | 'support';
 
 export interface UserProfile {
   firstName: string;

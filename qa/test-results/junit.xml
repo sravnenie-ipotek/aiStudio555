@@ -1,0 +1,19 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="6.071013">
+<testsuite name="navigation-verification.spec.ts" timestamp="2025-09-01T14:54:30.203Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.354" errors="0">
+<testcase name="Screenshot navigation bar for verification" classname="navigation-verification.spec.ts" time="3.354">
+<system-out>
+<![CDATA[Found navigation using selector: nav
+Navigation text content: AiStudio555КурсыAiStudio555КурсыКурсыСтарты месяцаПреподавателиБлогО школеRU+375 29 169-59-59Записаться сейчас
+Element visibility check: {
+  logo: [33mfalse[39m,
+  courses: [33mfalse[39m,
+  phone: [33mtrue[39m,
+  languageSelector: [33mfalse[39m,
+  ctaButton: [33mtrue[39m,
+  socialIcons: [33mtrue[39m
+}
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -10,7 +10,7 @@ import {
   CourseLevel, 
   CourseFormat, 
   Locale 
-} from '@prisma/client';
+} from '../node_modules/.prisma/client';
 
 // ============================================
 // COURSE SERVICES
@@ -166,7 +166,7 @@ export async function getCourses(filters: CourseFilters = {}): Promise<Paginated
       ...(instructor ? [{
         OR: [
           { instructorId: instructor },
-          { instructor: { name: { contains: instructor, mode: 'insensitive' } } }
+          { instructor: { name: { contains: instructor, mode: Prisma.QueryMode.insensitive } } }
         ]
       }] : []),
       
@@ -211,7 +211,7 @@ export async function getCourses(filters: CourseFilters = {}): Promise<Paginated
             instructor: {
               name: {
                 contains: search,
-                mode: 'insensitive'
+                mode: Prisma.QueryMode.insensitive
               }
             }
           },
@@ -310,7 +310,6 @@ export async function getCourseBySlug(slug: string) {
               select: {
                 id: true,
                 title: true,
-                description: true,
                 duration: true,
                 order: true,
                 videoUrl: true,
@@ -400,7 +399,10 @@ export async function getFeaturedCourses(limit: number = 6) {
 export async function getCategories() {
   try {
     const categories = await prisma.category.findMany({
-      where: { isActive: true },
+      where: { 
+        isActive: true,
+        parentId: null // Only root categories
+      },
       include: {
         children: {
           where: { isActive: true },
@@ -416,10 +418,6 @@ export async function getCategories() {
             }
           }
         }
-      },
-      where: { 
-        isActive: true,
-        parentId: null // Only root categories
       },
       orderBy: { order: 'asc' }
     });
@@ -649,17 +647,17 @@ export function validateCourseParams(params: Record<string, any>): CourseFilters
     format: Object.values(CourseFormat).includes(format) ? format : undefined,
     language: Object.values(Locale).includes(language) ? language : undefined,
     status: Object.values(CourseStatus).includes(status) ? status : CourseStatus.PUBLISHED,
-    featured: featured !== undefined ? featured === 'true' : undefined,
+    ...(featured !== undefined ? { featured: featured === 'true' } : {}),
     active: active !== undefined ? active === 'true' : true,
-    priceMin: priceMin ? parseFloat(priceMin) : undefined,
-    priceMax: priceMax ? parseFloat(priceMax) : undefined,
+    ...(priceMin ? { priceMin: parseFloat(priceMin) } : {}),
+    ...(priceMax ? { priceMax: parseFloat(priceMax) } : {}),
     search: search?.toString().trim().slice(0, 100), // Limit search length
     sort: ['title', 'price', 'rating', 'students', 'date', 'popularity'].includes(sort) 
       ? sort as any : 'date',
     order: ['asc', 'desc'].includes(order) ? order as any : 'desc',
-    instructor: instructor?.toString().trim(),
-    minRating: minRating ? Math.max(0, Math.min(5, parseFloat(minRating))) : undefined,
-    startDateFrom: startDateFrom ? new Date(startDateFrom) : undefined,
-    startDateTo: startDateTo ? new Date(startDateTo) : undefined,
+    ...(instructor ? { instructor: instructor.toString().trim() } : {}),
+    ...(minRating ? { minRating: Math.max(0, Math.min(5, parseFloat(minRating))) } : {}),
+    ...(startDateFrom ? { startDateFrom: new Date(startDateFrom) } : {}),
+    ...(startDateTo ? { startDateTo: new Date(startDateTo) } : {}),
   };
 }

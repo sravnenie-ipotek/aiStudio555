@@ -37,6 +37,8 @@ model User {
   sessions        Session[]
   submissions     Submission[]
   reviews         Review[]
+  verificationTokens VerificationToken[]
+  passwordResetTokens PasswordResetToken[]
 
   // Timestamps
   createdAt       DateTime  @default(now())
@@ -84,7 +86,7 @@ model Session {
   user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   token           String    @unique
-  expiresAt       DateTime
+  expires         DateTime
   ipAddress       String?
   userAgent       String?
 
@@ -92,7 +94,43 @@ model Session {
 
   @@index([token])
   @@index([userId])
-  @@index([expiresAt])
+  @@index([expires])
+}
+
+// Email verification tokens
+// Tokens for verifying user email addresses during registration
+model VerificationToken {
+  id              String    @id @default(uuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  token           String    @unique
+  expires         DateTime
+  verified        Boolean   @default(false)
+
+  createdAt       DateTime  @default(now())
+
+  @@index([token])
+  @@index([userId])
+  @@index([expires])
+}
+
+// Password reset tokens
+// Tokens for password reset functionality
+model PasswordResetToken {
+  id              String    @id @default(uuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  token           String    @unique
+  expires         DateTime
+  used            Boolean   @default(false)
+
+  createdAt       DateTime  @default(now())
+
+  @@index([token])
+  @@index([userId])
+  @@index([expires])
 }
 
 // ============================================

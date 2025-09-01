@@ -6,6 +6,9 @@
 // Form Components - Active
 export * from './Button'; 
 
+// FAQ Components - Active
+export * from './faq';
+
 // TODO: Uncomment as components are created
 
 // Layout Components

@@ -3,7 +3,7 @@
  * Ensures single database connection across the application
  */
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../node_modules/.prisma/client';
 
 declare global {
   // eslint-disable-next-line no-var
