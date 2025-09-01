@@ -5,15 +5,13 @@
  */
 
 import { Request, Response, NextFunction } from 'express';
-import { prisma } from '../server';
+import { prisma, UserRole, CourseStatus, EnrollmentStatus } from '@aistudio555/db';
 import {
   CourseCreateSchema,
   CourseUpdateSchema,
-  EnrollmentCreateSchema,
   LessonProgressSchema,
 } from '@aistudio555/types';
 import {
-  AppError,
   NotFoundError,
   AuthorizationError,
   ConflictError,
@@ -28,8 +26,7 @@ const logger = createLogger('course-controller');
 // ============================================
 export const getAllCourses = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   const {
     category,
@@ -44,7 +41,7 @@ export const getAllCourses = asyncHandler(async (
 
   // Build filter conditions
   const where: any = {
-    isPublished: true,
+    status: CourseStatus.PUBLISHED,
   };
 
   if (category) {
@@ -83,20 +80,15 @@ export const getAllCourses = asyncHandler(async (
         instructor: {
           select: {
             id: true,
-            email: true,
-            profile: {
-              select: {
-                firstName: true,
-                lastName: true,
-                avatar: true,
-              },
-            },
+            name: true,
+            bio: true,
+            avatarId: true,
           },
         },
         _count: {
           select: {
             enrollments: true,
-            lessons: true,
+            modules: true,
           },
         },
       },
@@ -124,39 +116,33 @@ export const getAllCourses = asyncHandler(async (
 // ============================================
 export const getCourseById = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   const { id } = req.params;
 
-  const course = await prisma.course.findUnique({
+  if (!id) {
+    throw new NotFoundError('Course ID is required');
+  }
+
+  const course = await prisma.course.findFirst({
     where: { id },
     include: {
       instructor: {
         select: {
           id: true,
-          email: true,
-          profile: {
-            select: {
-              firstName: true,
-              lastName: true,
-              avatar: true,
-              bio: true,
-            },
-          },
+          name: true,
+          bio: true,
+          avatarId: true,
         },
       },
       modules: {
-        where: { isPublished: true },
         orderBy: { order: 'asc' },
         include: {
           lessons: {
-            where: { isPublished: true },
             orderBy: { order: 'asc' },
             select: {
               id: true,
               title: true,
-              type: true,
               duration: true,
               order: true,
             },
@@ -203,25 +189,30 @@ export const getCourseById = asyncHandler(async (
 // ============================================
 export const createCourse = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   // Validate input
   const validatedData = CourseCreateSchema.parse(req.body);
+
+  // Generate slug from title
+  const titleText = typeof validatedData.title === 'string' 
+    ? validatedData.title 
+    : JSON.stringify(validatedData.title);
+  const slug = titleText.toLowerCase().replace(/\s+/g, '-');
 
   // Create course
   const course = await prisma.course.create({
     data: {
       ...validatedData,
       instructorId: req.user!.id,
-      slug: validatedData.title.toLowerCase().replace(/\s+/g, '-'),
+      slug,
     },
     include: {
       instructor: {
         select: {
           id: true,
-          email: true,
-          profile: true,
+          name: true,
+          bio: true,
         },
       },
     },
@@ -242,16 +233,19 @@ export const createCourse = asyncHandler(async (
 // ============================================
 export const updateCourse = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   const { id } = req.params;
+  
+  if (!id) {
+    throw new NotFoundError('Course ID is required');
+  }
   
   // Validate input
   const validatedData = CourseUpdateSchema.parse(req.body);
 
   // Check if course exists
-  const existingCourse = await prisma.course.findUnique({
+  const existingCourse = await prisma.course.findFirst({
     where: { id },
   });
 
@@ -261,10 +255,19 @@ export const updateCourse = asyncHandler(async (
 
   // Check authorization (only course owner or admin)
   if (
-    req.user!.role !== 'ADMIN' &&
+    req.user!.role !== UserRole.ADMIN &&
     existingCourse.instructorId !== req.user!.id
   ) {
     throw new AuthorizationError('You do not have permission to update this course');
+  }
+
+  // Generate new slug if title is updated
+  let slug;
+  if (validatedData.title) {
+    const titleText = typeof validatedData.title === 'string' 
+      ? validatedData.title 
+      : JSON.stringify(validatedData.title);
+    slug = titleText.toLowerCase().replace(/\s+/g, '-');
   }
 
   // Update course
@@ -272,16 +275,14 @@ export const updateCourse = asyncHandler(async (
     where: { id },
     data: {
       ...validatedData,
-      slug: validatedData.title
-        ? validatedData.title.toLowerCase().replace(/\s+/g, '-')
-        : undefined,
+      ...(slug && { slug }),
     },
     include: {
       instructor: {
         select: {
           id: true,
-          email: true,
-          profile: true,
+          name: true,
+          bio: true,
         },
       },
     },
@@ -302,13 +303,16 @@ export const updateCourse = asyncHandler(async (
 // ============================================
 export const deleteCourse = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   const { id } = req.params;
 
+  if (!id) {
+    throw new NotFoundError('Course ID is required');
+  }
+
   // Check if course exists
-  const course = await prisma.course.findUnique({
+  const course = await prisma.course.findFirst({
     where: { id },
     include: {
       _count: {
@@ -347,14 +351,17 @@ export const deleteCourse = asyncHandler(async (
 // ============================================
 export const enrollInCourse = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   const { id: courseId } = req.params;
   const userId = req.user!.id;
 
+  if (!courseId) {
+    throw new NotFoundError('Course ID is required');
+  }
+
   // Check if course exists
-  const course = await prisma.course.findUnique({
+  const course = await prisma.course.findFirst({
     where: { id: courseId },
   });
 
@@ -379,7 +386,7 @@ export const enrollInCourse = asyncHandler(async (
     data: {
       userId,
       courseId,
-      status: 'ACTIVE',
+      status: EnrollmentStatus.ACTIVE,
     },
     include: {
       course: {
@@ -407,8 +414,7 @@ export const enrollInCourse = asyncHandler(async (
 // ============================================
 export const getUserEnrollments = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   const userId = req.user!.id;
   const { status } = req.query;
@@ -427,27 +433,20 @@ export const getUserEnrollments = asyncHandler(async (
           instructor: {
             select: {
               id: true,
-              profile: {
-                select: {
-                  firstName: true,
-                  lastName: true,
-                  avatar: true,
-                },
-              },
+              name: true,
+              bio: true,
             },
           },
           _count: {
             select: {
-              lessons: true,
+              modules: true,
             },
           },
         },
       },
       progress: {
         select: {
-          completedLessons: true,
-          completionPercentage: true,
-          lastAccessedAt: true,
+          status: true,
         },
       },
     },
@@ -468,11 +467,14 @@ export const getUserEnrollments = asyncHandler(async (
 // ============================================
 export const updateLessonProgress = asyncHandler(async (
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   const { courseId, lessonId } = req.params;
   const userId = req.user!.id;
+  
+  if (!courseId || !lessonId) {
+    throw new NotFoundError('Course ID and Lesson ID are required');
+  }
   
   // Validate input
   const validatedData = LessonProgressSchema.parse(req.body);
@@ -482,7 +484,7 @@ export const updateLessonProgress = asyncHandler(async (
     where: {
       userId,
       courseId,
-      status: 'ACTIVE',
+      status: EnrollmentStatus.ACTIVE,
     },
   });
 
@@ -505,33 +507,27 @@ export const updateLessonProgress = asyncHandler(async (
   }
 
   // Update or create progress
-  let progress = await prisma.progress.findFirst({
+  const progress = await prisma.progress.upsert({
     where: {
+      enrollmentId_lessonId: {
+        enrollmentId: enrollment.id,
+        lessonId: lessonId,
+      },
+    },
+    create: {
       enrollmentId: enrollment.id,
+      lessonId: lessonId,
+      userId: userId,
+      status: validatedData.completed ? 'COMPLETED' : 'IN_PROGRESS',
+      completedAt: validatedData.completed ? new Date() : null,
+    },
+    update: {
+      status: validatedData.completed ? 'COMPLETED' : 'IN_PROGRESS',
+      completedAt: validatedData.completed ? new Date() : null,
     },
   });
 
-  if (!progress) {
-    progress = await prisma.progress.create({
-      data: {
-        enrollmentId: enrollment.id,
-        completedLessons: [],
-        completionPercentage: 0,
-      },
-    });
-  }
-
-  // Update completed lessons
-  const completedLessons = progress.completedLessons as string[];
-  
-  if (validatedData.completed && !completedLessons.includes(lessonId)) {
-    completedLessons.push(lessonId);
-  } else if (!validatedData.completed && completedLessons.includes(lessonId)) {
-    const index = completedLessons.indexOf(lessonId);
-    completedLessons.splice(index, 1);
-  }
-
-  // Calculate completion percentage
+  // Calculate overall course progress
   const totalLessons = await prisma.lesson.count({
     where: {
       module: {
@@ -540,30 +536,27 @@ export const updateLessonProgress = asyncHandler(async (
     },
   });
 
-  const completionPercentage = Math.round(
-    (completedLessons.length / totalLessons) * 100
-  );
-
-  // Update progress
-  progress = await prisma.progress.update({
-    where: { id: progress.id },
-    data: {
-      completedLessons,
-      completionPercentage,
-      lastAccessedAt: new Date(),
+  const completedLessons = await prisma.progress.count({
+    where: {
+      enrollmentId: enrollment.id,
+      status: 'COMPLETED',
     },
   });
 
-  // Update enrollment if course completed
-  if (completionPercentage === 100) {
-    await prisma.enrollment.update({
-      where: { id: enrollment.id },
-      data: {
-        status: 'COMPLETED',
+  const progressPercent = Math.round((completedLessons / totalLessons) * 100);
+
+  // Update enrollment progress
+  await prisma.enrollment.update({
+    where: { id: enrollment.id },
+    data: {
+      progressPercent,
+      lastAccessedAt: new Date(),
+      ...(progressPercent === 100 && {
+        status: EnrollmentStatus.COMPLETED,
         completedAt: new Date(),
-      },
-    });
-  }
+      }),
+    },
+  });
 
   // Send response
   res.status(200).json({
@@ -571,7 +564,7 @@ export const updateLessonProgress = asyncHandler(async (
     message: 'Progress updated successfully',
     data: {
       progress,
-      isCompleted: completionPercentage === 100,
+      isCompleted: progressPercent === 100,
     },
   });
 });

@@ -5,12 +5,11 @@
  */
 
 import { Request, Response, NextFunction } from 'express';
-import bcrypt from 'bcryptjs';
-import { prisma } from '../server';
+import * as bcrypt from 'bcryptjs';
+import { prisma, UserRole } from '@aistudio555/db';
 import {
   UserProfileUpdateSchema,
   PasswordChangeSchema,
-  UserRole,
 } from '@aistudio555/types';
 import {
   NotFoundError,

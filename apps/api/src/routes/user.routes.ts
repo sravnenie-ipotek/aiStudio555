@@ -5,6 +5,7 @@
  */
 
 import { Router } from 'express';
+import { UserRole } from '@aistudio555/db';
 import {
   getUserProfile,
   updateUserProfile,
@@ -76,24 +77,24 @@ router.post('/avatar', authenticate, uploadAvatar);
  * GET /api/users
  * Get all users (Admin only)
  */
-router.get('/', authenticate, authorize('ADMIN'), getAllUsers);
+router.get('/', authenticate, authorize(UserRole.ADMIN), getAllUsers);
 
 /**
  * GET /api/users/statistics
  * Get user statistics (Admin only)
  */
-router.get('/statistics', authenticate, authorize('ADMIN'), getUserStatistics);
+router.get('/statistics', authenticate, authorize(UserRole.ADMIN), getUserStatistics);
 
 /**
  * PUT /api/users/:id/role
  * Update user role (Admin only)
  */
-router.put('/:id/role', authenticate, authorize('ADMIN'), updateUserRole);
+router.put('/:id/role', authenticate, authorize(UserRole.ADMIN), updateUserRole);
 
 /**
  * DELETE /api/users/:id
  * Delete user (Admin only)
  */
-router.delete('/:id', authenticate, authorize('ADMIN'), deleteUser);
+router.delete('/:id', authenticate, authorize(UserRole.ADMIN), deleteUser);
 
 export default router;

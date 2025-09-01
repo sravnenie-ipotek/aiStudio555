@@ -5,6 +5,7 @@
  */
 
 import { Router } from 'express';
+import { UserRole } from '@aistudio555/db';
 import {
   getAllCourses,
   getCourseById,
@@ -78,7 +79,7 @@ router.post(
 router.post(
   '/',
   authenticate,
-  authorize('INSTRUCTOR', 'ADMIN'),
+  authorize(UserRole.INSTRUCTOR, UserRole.ADMIN),
   createCourse
 );
 
@@ -89,7 +90,7 @@ router.post(
 router.put(
   '/:id',
   authenticate,
-  authorize('INSTRUCTOR', 'ADMIN'),
+  authorize(UserRole.INSTRUCTOR, UserRole.ADMIN),
   updateCourse
 );
 
@@ -100,7 +101,7 @@ router.put(
 router.delete(
   '/:id',
   authenticate,
-  authorize('ADMIN'),
+  authorize(UserRole.ADMIN),
   deleteCourse
 );
 

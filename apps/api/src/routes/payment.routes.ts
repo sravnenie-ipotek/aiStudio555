@@ -5,6 +5,7 @@
  */
 
 import { Router } from 'express';
+import { UserRole } from '@aistudio555/db';
 import {
   createStripeCheckout,
   createPayPalOrder,
@@ -18,6 +19,7 @@ import {
   authenticate,
   authorize,
 } from '../middleware/auth.middleware';
+import { paymentRateLimit } from '../middleware/security.middleware';
 
 const router = Router();
 
@@ -28,20 +30,23 @@ const router = Router();
 /**
  * POST /api/payments/stripe/checkout
  * Create Stripe checkout session
+ * SECURITY: Rate limited to prevent payment abuse
  */
-router.post('/stripe/checkout', authenticate, createStripeCheckout);
+router.post('/stripe/checkout', authenticate, paymentRateLimit, createStripeCheckout);
 
 /**
  * POST /api/payments/paypal/create-order
  * Create PayPal order
+ * SECURITY: Rate limited to prevent payment abuse
  */
-router.post('/paypal/create-order', authenticate, createPayPalOrder);
+router.post('/paypal/create-order', authenticate, paymentRateLimit, createPayPalOrder);
 
 /**
  * POST /api/payments/paypal/capture-order
  * Capture PayPal order after approval
+ * SECURITY: Rate limited to prevent payment abuse
  */
-router.post('/paypal/capture-order', authenticate, capturePayPalOrder);
+router.post('/paypal/capture-order', authenticate, paymentRateLimit, capturePayPalOrder);
 
 /**
  * GET /api/payments/my
@@ -69,6 +74,6 @@ router.post('/apply-coupon', authenticate, applyCoupon);
  * GET /api/payments
  * Get all payments (Admin only)
  */
-router.get('/', authenticate, authorize('ADMIN'), getAllPayments);
+router.get('/', authenticate, authorize(UserRole.ADMIN), getAllPayments);
 
 export default router;

@@ -5,9 +5,9 @@
  */
 
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import { AuthenticationError, AuthorizationError, ValidationError } from './error.middleware';
-import { prisma } from '../server';
+import { prisma } from '@aistudio555/db';
 import { UserRole } from '@aistudio555/types';
 
 // Extend Express Request type
@@ -24,9 +24,36 @@ declare global {
   }
 }
 
-// JWT configuration
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'dev-refresh-secret';
+// JWT configuration - SECURE: No fallback secrets in production
+const JWT_SECRET = (() => {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('CRITICAL SECURITY ERROR: JWT_SECRET environment variable is required in production');
+    }
+    console.warn('⚠️  WARNING: Using development JWT secret. DO NOT use in production!');
+    return 'dev-secret-insecure-dev-only';
+  }
+  if (secret.length < 32) {
+    throw new Error('SECURITY ERROR: JWT_SECRET must be at least 32 characters long');
+  }
+  return secret;
+})();
+
+const JWT_REFRESH_SECRET = (() => {
+  const secret = process.env.JWT_REFRESH_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('CRITICAL SECURITY ERROR: JWT_REFRESH_SECRET environment variable is required in production');
+    }
+    console.warn('⚠️  WARNING: Using development JWT refresh secret. DO NOT use in production!');
+    return 'dev-refresh-secret-insecure-dev-only';
+  }
+  if (secret.length < 32) {
+    throw new Error('SECURITY ERROR: JWT_REFRESH_SECRET must be at least 32 characters long');
+  }
+  return secret;
+})();
 
 // Token payload interface
 interface TokenPayload {

@@ -7,14 +7,11 @@
 import { Request, Response, NextFunction } from 'express';
 import Stripe from 'stripe';
 import * as paypal from '@paypal/checkout-server-sdk';
-import { prisma } from '../server';
+import { prisma, PaymentStatus, PaymentProvider } from '@aistudio555/db';
 import {
   PaymentCreateSchema,
-  PaymentMethod,
-  PaymentStatus,
 } from '@aistudio555/types';
 import {
-  AppError,
   NotFoundError,
   ValidationError,
   ConflictError,
