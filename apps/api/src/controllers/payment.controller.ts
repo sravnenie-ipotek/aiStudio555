@@ -12,7 +12,7 @@ import {
   PaymentCreateSchema,
   PaymentMethod,
   PaymentStatus,
-} from '@projectdes/types';
+} from '@aistudio555/types';
 import {
   AppError,
   NotFoundError,
@@ -20,7 +20,7 @@ import {
   ConflictError,
 } from '../middleware/error.middleware';
 import { asyncHandler } from '../middleware/error.middleware';
-import { createLogger } from '@projectdes/utils';
+import { createLogger } from '@aistudio555/utils';
 
 const logger = createLogger('payment-controller');
 

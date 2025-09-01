@@ -1,7 +1,7 @@
 /**
  * Button Component
  * Primary button component with multiple variants
- * @module @projectdes/ui/Button
+ * @module @aistudio555/ui/Button
  */
 
 import React, { forwardRef } from 'react';

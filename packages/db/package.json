@@ -1,7 +1,7 @@
 {
-  "name": "@projectdes/db",
+  "name": "@aistudio555/db",
   "version": "0.0.0",
-  "description": "Projectdes Academy - Database Layer (Prisma)",
+  "description": "AiStudio555 Academy - Database Layer (Prisma)",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "exports": {

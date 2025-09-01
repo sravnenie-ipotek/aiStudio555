@@ -1,8 +1,8 @@
 {
-  "name": "@projectdes/e2e",
+  "name": "@aistudio555/e2e",
   "version": "1.0.0",
   "private": true,
-  "description": "Projectdes Academy - End-to-End Tests",
+  "description": "AiStudio555 Academy - End-to-End Tests",
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",

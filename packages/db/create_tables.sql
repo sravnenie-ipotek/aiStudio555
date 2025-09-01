@@ -1,5 +1,5 @@
 -- ============================================
--- Projectdes AI Academy - Complete Database Schema SQL
+-- AiStudio555 Academy - Complete Database Schema SQL
 -- ============================================
 -- Manual table creation for comprehensive schema
 -- Generated: 2025-08-29

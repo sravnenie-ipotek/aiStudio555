@@ -1,52 +1,297 @@
 /**
  * Course-related type definitions
- * Used across the application for type safety
+ * Updated to match Prisma schema v2.0 - Extended course catalog system
  */
 
+// Core course interface matching Prisma schema
 export interface CourseData {
   id: string;
-  title: string;
-  description: string;
-  price: number;
-  discountedPrice?: number;
-  duration: string;
-  stripePriceId?: string;
-  paypalItemId?: string;
+  slug: string;
+  
+  // Multi-language content (JSON fields)
+  title: MultiLanguageContent;
+  description: MultiLanguageContent;
+  shortDescription?: MultiLanguageContent;
+  
+  // Images and media
   thumbnail?: string;
-  category: CourseCategory;
+  heroImage?: string;
+  thumbnailImage?: string;
+  ogImage?: string;
+  
+  // Marketing content
+  keyBenefits: string[];
+  targetAudience: string[];
+  careerOutcomes: string[];
+  skillsLearned: string[];
+  features: CourseFeature[];
+  
+  // Course format and platform
+  format: CourseFormat;
+  platform?: string;
+  
+  // Pricing
+  price: number;
+  currency: string;
+  discountPrice?: number;
+  paymentPlans: PaymentPlan[];
+  
+  // Duration structure
+  duration: number; // hours (legacy)
+  durationWeeks?: number;
+  hoursPerWeek?: number;
+  totalHours?: number;
+  
+  // Computed metrics
+  studentCount: number;
+  averageRating?: number;
+  completionRate?: number;
+  
+  // Enrollment & scheduling
+  nextStartDate?: Date;
+  enrollmentDeadline?: Date;
+  maxStudents?: number;
+  minStudents?: number;
+  
+  // Metadata
   level: CourseLevel;
-  language: string[];
-  instructor: Instructor;
+  language: Locale;
+  difficulty?: number; // 1-5 scale
+  
+  // Relations
+  categoryId: string;
+  category: CategoryData;
+  instructorId: string;
+  instructor: InstructorData;
   modules: CourseModule[];
-  features: string[];
-  requirements: string[];
-  outcomes: string[];
-  enrollmentCount: number;
-  rating: number;
-  reviewCount: number;
+  enrollments: CourseEnrollment[];
+  reviews: CourseReview[];
+  testimonials: CourseTestimonial[];
+  
+  // Publishing
+  status: CourseStatus;
+  publishedAt?: Date;
+  isActive: boolean;
+  isFeatured: boolean;
+  
+  // SEO
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords: string[];
+  
+  // Timestamps
   createdAt: Date;
   updatedAt: Date;
-  status: CourseStatus;
 }
 
-export type CourseCategory = 
-  | 'ai-transformation'
-  | 'no-code'
-  | 'video-generation'
-  | 'web-development'
-  | 'data-science'
-  | 'business'
-  | 'marketing';
+// Multi-language content interface
+export interface MultiLanguageContent {
+  en?: string;
+  ru?: string;
+  he?: string;
+}
 
-export type CourseLevel = 'beginner' | 'intermediate' | 'advanced' | 'all-levels';
+// Course feature interface
+export interface CourseFeature {
+  name: string;
+  description: string;
+  icon?: string;
+}
 
-export type CourseStatus = 'draft' | 'published' | 'archived' | 'coming-soon';
-
-export interface Instructor {
+// Payment plan interface
+export interface PaymentPlan {
   id: string;
   name: string;
-  bio: string;
-  avatar?: string;
+  installments: number;
+  price: number;
+  interval: 'month' | 'week';
+  description?: string;
+}
+
+// Category interface
+export interface CategoryData {
+  id: string;
+  slug: string;
+  name: MultiLanguageContent;
+  description?: MultiLanguageContent;
+  icon?: string;
+  parentId?: string;
+  parent?: CategoryData;
+  children: CategoryData[];
+  order: number;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Updated instructor interface to match Prisma
+export interface InstructorData {
+  id: string;
+  locale: Locale;
+  name: string;
+  company?: string;
+  bio?: any; // JSON from TipTap
+  avatarId?: string;
+  avatar?: MediaAsset;
+  linkedin?: string;
+  website?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Media asset interface
+export interface MediaAsset {
+  id: string;
+  filename: string;
+  originalName: string;
+  mimeType: string;
+  size: number;
+  url: string;
+  createdAt: Date;
+}
+
+// Course review interface
+export interface CourseReview {
+  id: string;
+  courseId: string;
+  userId: string;
+  rating: number; // 1-5
+  title?: string;
+  content?: string;
+  isVerified: boolean;
+  isPublished: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Course testimonial interface
+export interface CourseTestimonial {
+  id: string;
+  locale: Locale;
+  studentName: string;
+  avatarId?: string;
+  avatar?: MediaAsset;
+  quote: string;
+  courseId?: string;
+  order: number;
+  isPublished: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Enums matching Prisma schema
+export enum CourseFormat {
+  ONLINE = 'ONLINE',
+  HYBRID = 'HYBRID',
+  IN_PERSON = 'IN_PERSON'
+}
+
+export enum CourseLevel {
+  BEGINNER = 'BEGINNER',
+  INTERMEDIATE = 'INTERMEDIATE', 
+  ADVANCED = 'ADVANCED',
+  EXPERT = 'EXPERT'
+}
+
+export enum CourseStatus {
+  DRAFT = 'DRAFT',
+  PUBLISHED = 'PUBLISHED',
+  ARCHIVED = 'ARCHIVED'
+}
+
+export enum Locale {
+  EN = 'EN',
+  RU = 'RU',
+  HE = 'HE'
+}
+
+export enum EnrollmentStatus {
+  ACTIVE = 'ACTIVE',
+  PAUSED = 'PAUSED',
+  COMPLETED = 'COMPLETED',
+  EXPIRED = 'EXPIRED',
+  CANCELLED = 'CANCELLED'
+}
+
+// API Response types
+export interface CoursesListResponse {
+  success: true;
+  data: CourseData[];
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+    pages: number;
+    hasNext: boolean;
+    hasPrev: boolean;
+  };
+  links: {
+    self: string;
+    first: string;
+    last: string;
+    next?: string;
+    prev?: string;
+  };
+}
+
+export interface CourseDetailResponse {
+  success: true;
+  data: CourseData;
+}
+
+export interface CategoriesListResponse {
+  success: true;
+  data: CategoryData[];
+}
+
+export interface FeaturedCoursesResponse {
+  success: true;
+  data: CourseData[];
+  meta: {
+    total: number;
+  };
+}
+
+// API Query parameters
+export interface CoursesQueryParams {
+  // Pagination
+  page?: number;
+  limit?: number;
+  
+  // Filtering
+  category?: string;
+  level?: CourseLevel;
+  format?: CourseFormat;
+  language?: Locale;
+  status?: CourseStatus;
+  featured?: boolean;
+  active?: boolean;
+  
+  // Price filtering
+  priceMin?: number;
+  priceMax?: number;
+  
+  // Search
+  search?: string;
+  
+  // Sorting
+  sort?: 'title' | 'price' | 'rating' | 'students' | 'date' | 'popularity';
+  order?: 'asc' | 'desc';
+  
+  // Advanced filters
+  instructor?: string;
+  tags?: string[];
+  minRating?: number;
+  
+  // Date filters
+  startDateFrom?: Date;
+  startDateTo?: Date;
+}
+
+// Legacy types for backwards compatibility
+export type CourseCategory = string;
+
+export interface Instructor extends InstructorData {
   title: string;
   rating: number;
   totalStudents: number;
@@ -161,7 +406,7 @@ export interface CourseEnrollment {
   status: EnrollmentStatus;
 }
 
-export type EnrollmentStatus = 
+export type EnrollmentStatusType = 
   | 'active'
   | 'completed'
   | 'paused'

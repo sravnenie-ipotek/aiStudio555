@@ -11,7 +11,7 @@ import {
   UserProfileUpdateSchema,
   PasswordChangeSchema,
   UserRole,
-} from '@projectdes/types';
+} from '@aistudio555/types';
 import {
   NotFoundError,
   AuthorizationError,
@@ -19,7 +19,7 @@ import {
   ConflictError,
 } from '../middleware/error.middleware';
 import { asyncHandler } from '../middleware/error.middleware';
-import { createLogger } from '@projectdes/utils';
+import { createLogger } from '@aistudio555/utils';
 
 const logger = createLogger('user-controller');
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the complete workflows, permissions, and capabilities for instructors and administrators on the ProjectDes AI Academy platform. It defines the user journeys, system interactions, and business processes for managing courses, students, and platform operations.
+This document outlines the complete workflows, permissions, and capabilities for instructors and administrators on the AiStudio555 AI Academy platform. It defines the user journeys, system interactions, and business processes for managing courses, students, and platform operations.
 
 ## User Roles & Permissions
 
@@ -699,13 +699,13 @@ enum AdminNotifications {
 ## Support Channels
 
 ### For Instructors
-- **Email**: instructors@projectdes.ai
+- **Email**: instructors@aistudio555.ai
 - **Slack**: #instructor-support
-- **Help Center**: help.projectdes.ai/instructors
+- **Help Center**: help.aistudio555.ai/instructors
 - **Office Hours**: Tuesday/Thursday 2-4 PM
 
 ### For Admins
-- **Email**: admin@projectdes.ai
+- **Email**: admin@aistudio555.ai
 - **Phone**: +1-XXX-XXX-XXXX (24/7)
 - **Slack**: #admin-channel
-- **Documentation**: docs.projectdes.ai/admin
+- **Documentation**: docs.aistudio555.ai/admin

@@ -1,8 +1,8 @@
 {
-  "name": "@projectdes/performance",
+  "name": "@aistudio555/performance",
   "version": "0.0.0",
   "private": true,
-  "description": "Projectdes Academy - Performance Testing",
+  "description": "AiStudio555 Academy - Performance Testing",
   "scripts": {
     "test": "k6 run src/load-test.js",
     "test:smoke": "k6 run --vus 1 --duration 30s src/smoke-test.js",

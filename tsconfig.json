@@ -44,16 +44,16 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
-      "@projectdes/ui": ["packages/ui/src/index"],
-      "@projectdes/ui/*": ["packages/ui/src/*"],
-      "@projectdes/types": ["packages/types/src/index"],
-      "@projectdes/types/*": ["packages/types/src/*"],
-      "@projectdes/db": ["packages/db/src/index"],
-      "@projectdes/db/*": ["packages/db/src/*"],
-      "@projectdes/utils": ["packages/utils/src/index"],
-      "@projectdes/utils/*": ["packages/utils/src/*"],
-      "@projectdes/ai": ["ai/index"],
-      "@projectdes/ai/*": ["ai/*"]
+      "@aistudio555/ui": ["packages/ui/src/index"],
+      "@aistudio555/ui/*": ["packages/ui/src/*"],
+      "@aistudio555/types": ["packages/types/src/index"],
+      "@aistudio555/types/*": ["packages/types/src/*"],
+      "@aistudio555/db": ["packages/db/src/index"],
+      "@aistudio555/db/*": ["packages/db/src/*"],
+      "@aistudio555/utils": ["packages/utils/src/index"],
+      "@aistudio555/utils/*": ["packages/utils/src/*"],
+      "@aistudio555/ai": ["ai/index"],
+      "@aistudio555/ai/*": ["ai/*"]
     }
   },
   "exclude": [

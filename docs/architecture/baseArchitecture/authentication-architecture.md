@@ -428,9 +428,9 @@ router.post(
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
-      'https://projectdes.ai',
-      'https://www.projectdes.ai',
-      'https://staging.projectdes.ai',
+      'https://aistudio555.ai',
+      'https://www.aistudio555.ai',
+      'https://staging.aistudio555.ai',
     ];
 
     if (!origin || allowedOrigins.includes(origin)) {

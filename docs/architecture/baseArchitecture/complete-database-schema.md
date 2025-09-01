@@ -1,4 +1,4 @@
-# Complete Database Schema - Projectdes AI Academy
+# Complete Database Schema - AiStudio555 AI Academy
 
 ## Core Business Entities
 

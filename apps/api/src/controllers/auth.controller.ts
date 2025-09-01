@@ -14,7 +14,7 @@ import {
   PasswordResetRequestSchema,
   PasswordResetSchema,
   RefreshTokenSchema
-} from '@projectdes/types';
+} from '@aistudio555/types';
 import { 
   generateTokenPair, 
   verifyRefreshToken,
@@ -28,7 +28,7 @@ import {
   NotFoundError 
 } from '../middleware/error.middleware';
 import { asyncHandler } from '../middleware/error.middleware';
-import { createLogger } from '@projectdes/utils';
+import { createLogger } from '@aistudio555/utils';
 
 const logger = createLogger('auth-controller');
 

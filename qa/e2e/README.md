@@ -25,7 +25,7 @@
 pnpm install
 
 # Install Playwright browsers
-pnpm --filter @projectdes/e2e install
+pnpm --filter @aistudio555/e2e install
 ```
 
 ### Running Tests
@@ -279,7 +279,7 @@ pnpm test:e2e --timeout 60000
 **Browser Launch Failures**
 ```bash
 # Reinstall browsers
-pnpm --filter @projectdes/e2e install-deps
+pnpm --filter @aistudio555/e2e install-deps
 ```
 
 **Flaky Tests**

@@ -1,6 +1,6 @@
-# Projectdes Academy API
+# AiStudio555 Academy API
 
-Express.js backend API for the Projectdes AI Academy platform.
+Express.js backend API for the AiStudio555 AI Academy platform.
 
 ## Features
 

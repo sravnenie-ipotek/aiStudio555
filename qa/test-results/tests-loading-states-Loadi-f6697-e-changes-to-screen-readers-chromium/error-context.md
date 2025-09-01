@@ -1,0 +1,202 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]: ✅ Strapi Connected
+  - banner [ref=e4]:
+    - navigation [ref=e6]:
+      - link "AiStudio555" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8] [cursor=pointer]: AiStudio555
+      - generic [ref=e16]:
+        - generic [ref=e17]: RU
+        - link "+1 234 567 890" [ref=e18] [cursor=pointer]:
+          - /url: tel:+12345678901
+          - img [ref=e19] [cursor=pointer]
+          - generic [ref=e21] [cursor=pointer]: +1 234 567 890
+        - link "Записаться сейчас" [ref=e22] [cursor=pointer]:
+          - /url: /consultation
+          - button "Записаться сейчас" [ref=e23] [cursor=pointer]
+        - generic [ref=e24]:
+          - link "Facebook" [ref=e25] [cursor=pointer]:
+            - /url: https://www.facebook.com/teachmeskills
+            - img [ref=e26] [cursor=pointer]
+          - link "VKontakte" [ref=e28] [cursor=pointer]:
+            - /url: https://vk.com/tms_education
+            - img [ref=e29] [cursor=pointer]
+          - link "Instagram" [ref=e31] [cursor=pointer]:
+            - /url: https://www.instagram.com/teachmeskills/
+            - img [ref=e32] [cursor=pointer]
+          - link "YouTube" [ref=e35] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCrpbZ8VZjn8FtMv0-I1VJ2A
+            - img [ref=e36] [cursor=pointer]
+          - link "Telegram" [ref=e39] [cursor=pointer]:
+            - /url: https://t.me/tms_client_bot?start=n_82778__c_4003
+            - img [ref=e40] [cursor=pointer]
+          - link "TikTok" [ref=e42] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@teachmeskills
+            - img [ref=e43] [cursor=pointer]
+  - main [ref=e45]:
+    - generic [ref=e46]:
+      - generic [ref=e48]: ✅ Strapi Connected
+      - navigation [ref=e51]:
+        - link "AiStudio555" [ref=e52] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e53] [cursor=pointer]: AiStudio555
+        - generic [ref=e61]:
+          - generic [ref=e62]: RU
+          - link "+1 234 567 890" [ref=e63] [cursor=pointer]:
+            - /url: tel:+12345678901
+            - img [ref=e64] [cursor=pointer]
+            - generic [ref=e66] [cursor=pointer]: +1 234 567 890
+          - link "Записаться сейчас" [ref=e67] [cursor=pointer]:
+            - /url: /consultation
+            - button "Записаться сейчас" [ref=e68] [cursor=pointer]
+          - generic [ref=e69]:
+            - link "Facebook" [ref=e70] [cursor=pointer]:
+              - /url: https://www.facebook.com/teachmeskills
+              - img [ref=e71] [cursor=pointer]
+            - link "VKontakte" [ref=e73] [cursor=pointer]:
+              - /url: https://vk.com/tms_education
+              - img [ref=e74] [cursor=pointer]
+            - link "Instagram" [ref=e76] [cursor=pointer]:
+              - /url: https://www.instagram.com/teachmeskills/
+              - img [ref=e77] [cursor=pointer]
+            - link "YouTube" [ref=e80] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCrpbZ8VZjn8FtMv0-I1VJ2A
+              - img [ref=e81] [cursor=pointer]
+            - link "Telegram" [ref=e84] [cursor=pointer]:
+              - /url: https://t.me/tms_client_bot?start=n_82778__c_4003
+              - img [ref=e85] [cursor=pointer]
+            - link "TikTok" [ref=e87] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@teachmeskills
+              - img [ref=e88] [cursor=pointer]
+      - main [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - heading "AI Transformation Courses" [level=1] [ref=e93]
+            - paragraph [ref=e94]: Choose from our flagship programs designed to transform working professionals into certified AI specialists through fast-track, project-based learning.
+          - generic [ref=e96]:
+            - heading "AI Transformation Manager" [level=3] [ref=e98]
+            - paragraph [ref=e99]: Master AI strategy and implementation
+            - generic [ref=e100]:
+              - generic [ref=e101]: $1,500
+              - button "Learn More" [ref=e102] [cursor=pointer]
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - heading "Project-Based Learning" [level=3] [ref=e107]
+              - paragraph [ref=e108]: Learn by building real-world projects
+            - generic [ref=e109]:
+              - heading "Job Placement Guarantee" [level=3] [ref=e111]
+              - paragraph [ref=e112]: International placement in 5+ countries
+            - generic [ref=e113]:
+              - heading "Expert Instructors" [level=3] [ref=e115]
+              - paragraph [ref=e116]: Learn from industry professionals
+      - contentinfo [ref=e117]:
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - generic [ref=e120]:
+              - link "AiStudio555 Academy - Go to homepage" [ref=e121] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e122] [cursor=pointer]:
+                  - generic [ref=e124] [cursor=pointer]: A
+                  - generic [ref=e125] [cursor=pointer]: AiStudio555 Academy
+              - paragraph [ref=e126]: Transform your career with practical AI skills. Join thousands of professionals who've successfully transitioned into high-paying AI roles with our intensive, project-based programs.
+              - generic [ref=e127]:
+                - 'link "Email: info@aistudio555.academy" [ref=e128] [cursor=pointer]':
+                  - /url: mailto:info@aistudio555.academy
+                  - img [ref=e129] [cursor=pointer]
+                  - generic [ref=e132] [cursor=pointer]: info@aistudio555.academy
+                - 'link "Phone: +972-50-123-4567" [ref=e133] [cursor=pointer]':
+                  - /url: tel:+972501234567
+                  - img [ref=e134] [cursor=pointer]
+                  - generic [ref=e136] [cursor=pointer]: +972-50-123-4567
+                - 'link "Address: Tel Aviv, Israel" [ref=e137] [cursor=pointer]':
+                  - /url: https://maps.google.com/?q=Tel+Aviv+Israel
+                  - img [ref=e138] [cursor=pointer]
+                  - generic [ref=e141] [cursor=pointer]: Tel Aviv, Israel
+            - generic [ref=e142]:
+              - heading "Our Courses" [level=3] [ref=e143]
+              - list [ref=e144]:
+                - listitem [ref=e145]:
+                  - link "AI Transformation Manager" [ref=e146] [cursor=pointer]:
+                    - /url: /courses/ai-transformation
+                - listitem [ref=e147]:
+                  - link "No-Code Website Development" [ref=e148] [cursor=pointer]:
+                    - /url: /courses/no-code-development
+                - listitem [ref=e149]:
+                  - link "AI Video & Avatar Generation" [ref=e150] [cursor=pointer]:
+                    - /url: /courses/ai-video-avatar
+            - generic [ref=e151]:
+              - heading "Company" [level=3] [ref=e152]
+              - list [ref=e153]:
+                - listitem [ref=e154]:
+                  - link "About Us" [ref=e155] [cursor=pointer]:
+                    - /url: /about
+                - listitem [ref=e156]:
+                  - link "Success Stories" [ref=e157] [cursor=pointer]:
+                    - /url: /success-stories
+                - listitem [ref=e158]:
+                  - link "Careers" [ref=e159] [cursor=pointer]:
+                    - /url: /careers
+                - listitem [ref=e160]:
+                  - link "Press" [ref=e161] [cursor=pointer]:
+                    - /url: /press
+            - generic [ref=e162]:
+              - heading "Support" [level=3] [ref=e163]
+              - list [ref=e164]:
+                - listitem [ref=e165]:
+                  - link "Help Center" [ref=e166] [cursor=pointer]:
+                    - /url: /help
+                - listitem [ref=e167]:
+                  - link "Contact Support" [ref=e168] [cursor=pointer]:
+                    - /url: /contact
+                - listitem [ref=e169]:
+                  - link "Live Chat" [ref=e170] [cursor=pointer]:
+                    - /url: /chat
+                - listitem [ref=e171]:
+                  - link "Community" [ref=e172] [cursor=pointer]:
+                    - /url: /community
+            - generic [ref=e173]:
+              - heading "Legal" [level=3] [ref=e174]
+              - list [ref=e175]:
+                - listitem [ref=e176]:
+                  - link "Privacy Policy" [ref=e177] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e178]:
+                  - link "Terms of Service" [ref=e179] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e180]:
+                  - link "Cookie Policy" [ref=e181] [cursor=pointer]:
+                    - /url: /cookies
+                - listitem [ref=e182]:
+                  - link "Refund Policy" [ref=e183] [cursor=pointer]:
+                    - /url: /refund
+          - generic [ref=e185]:
+            - generic [ref=e186]:
+              - heading "Stay Updated with AI Trends" [level=3] [ref=e187]
+              - paragraph [ref=e188]: Get weekly insights on AI transformation and exclusive course updates.
+            - generic [ref=e189]:
+              - generic [ref=e190]:
+                - generic [ref=e191]: Email address
+                - textbox "Email address" [ref=e192]
+                - button "Subscribe" [ref=e193] [cursor=pointer]
+              - paragraph [ref=e194]: No spam, unsubscribe anytime.
+        - generic [ref=e197]:
+          - generic [ref=e198]: © 2025 AiStudio555 Academy. All rights reserved.
+          - generic [ref=e199]:
+            - generic [ref=e200]: "Follow us:"
+            - link "Follow us on LinkedIn" [ref=e201] [cursor=pointer]:
+              - /url: https://linkedin.com/company/aistudio555-academy
+              - img [ref=e202] [cursor=pointer]
+            - link "Subscribe to our YouTube channel" [ref=e206] [cursor=pointer]:
+              - /url: https://youtube.com/@aistudio555-academy
+              - img [ref=e207] [cursor=pointer]
+            - link "Follow us on Instagram" [ref=e210] [cursor=pointer]:
+              - /url: https://instagram.com/aistudio555.academy
+              - img [ref=e211] [cursor=pointer]
+          - generic [ref=e214]:
+            - img [ref=e215]
+            - generic [ref=e218]: Global • English
+  - alert [ref=e219]
+```

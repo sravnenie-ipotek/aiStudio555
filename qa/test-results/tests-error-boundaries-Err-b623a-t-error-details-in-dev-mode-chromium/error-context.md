@@ -1,0 +1,294 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]: ✅ Strapi Connected
+  - banner [ref=e4]:
+    - navigation [ref=e6]:
+      - link "AiStudio555" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8] [cursor=pointer]: AiStudio555
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "Курсы" [ref=e12] [cursor=pointer]:
+            - /url: /courses
+            - generic [ref=e13] [cursor=pointer]: Курсы
+        - listitem [ref=e14]:
+          - link "Старты месяца" [ref=e15] [cursor=pointer]:
+            - /url: /monthly-starts
+            - generic [ref=e16] [cursor=pointer]: Старты месяца
+        - listitem [ref=e17]:
+          - link "Преподаватели" [ref=e18] [cursor=pointer]:
+            - /url: /instructors
+            - generic [ref=e19] [cursor=pointer]: Преподаватели
+        - listitem [ref=e20]:
+          - link "Блог" [ref=e21] [cursor=pointer]:
+            - /url: /blog
+            - generic [ref=e22] [cursor=pointer]: Блог
+        - listitem [ref=e23]:
+          - button "О школе" [ref=e24] [cursor=pointer]:
+            - generic [ref=e25] [cursor=pointer]: О школе
+            - img [ref=e26] [cursor=pointer]
+      - generic [ref=e28]:
+        - generic [ref=e29]: RU
+        - link "+1 234 567 890" [ref=e30] [cursor=pointer]:
+          - /url: tel:+12345678901
+          - img [ref=e31] [cursor=pointer]
+          - generic [ref=e33] [cursor=pointer]: +1 234 567 890
+        - link "Записаться сейчас" [ref=e34] [cursor=pointer]:
+          - /url: /consultation
+          - button "Записаться сейчас" [ref=e35] [cursor=pointer]
+        - generic [ref=e36]:
+          - link "Facebook" [ref=e37] [cursor=pointer]:
+            - /url: https://www.facebook.com/teachmeskills
+            - img [ref=e38] [cursor=pointer]
+          - link "VKontakte" [ref=e40] [cursor=pointer]:
+            - /url: https://vk.com/tms_education
+            - img [ref=e41] [cursor=pointer]
+          - link "Instagram" [ref=e43] [cursor=pointer]:
+            - /url: https://www.instagram.com/teachmeskills/
+            - img [ref=e44] [cursor=pointer]
+          - link "YouTube" [ref=e47] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCrpbZ8VZjn8FtMv0-I1VJ2A
+            - img [ref=e48] [cursor=pointer]
+          - link "Telegram" [ref=e51] [cursor=pointer]:
+            - /url: https://t.me/tms_client_bot?start=n_82778__c_4003
+            - img [ref=e52] [cursor=pointer]
+          - link "TikTok" [ref=e54] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@teachmeskills
+            - img [ref=e55] [cursor=pointer]
+  - main [ref=e57]:
+    - generic [ref=e58]:
+      - generic [ref=e60]: ✅ Strapi Connected
+      - navigation [ref=e63]:
+        - link "AiStudio555" [ref=e64] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e65] [cursor=pointer]: AiStudio555
+        - list [ref=e67]:
+          - listitem [ref=e68]:
+            - link "Курсы" [ref=e69] [cursor=pointer]:
+              - /url: /courses
+              - generic [ref=e70] [cursor=pointer]: Курсы
+          - listitem [ref=e71]:
+            - link "Старты месяца" [ref=e72] [cursor=pointer]:
+              - /url: /monthly-starts
+              - generic [ref=e73] [cursor=pointer]: Старты месяца
+          - listitem [ref=e74]:
+            - link "Преподаватели" [ref=e75] [cursor=pointer]:
+              - /url: /instructors
+              - generic [ref=e76] [cursor=pointer]: Преподаватели
+          - listitem [ref=e77]:
+            - link "Блог" [ref=e78] [cursor=pointer]:
+              - /url: /blog
+              - generic [ref=e79] [cursor=pointer]: Блог
+          - listitem [ref=e80]:
+            - button "О школе" [ref=e81] [cursor=pointer]:
+              - generic [ref=e82] [cursor=pointer]: О школе
+              - img [ref=e83] [cursor=pointer]
+        - generic [ref=e85]:
+          - generic [ref=e86]: RU
+          - link "+1 234 567 890" [ref=e87] [cursor=pointer]:
+            - /url: tel:+12345678901
+            - img [ref=e88] [cursor=pointer]
+            - generic [ref=e90] [cursor=pointer]: +1 234 567 890
+          - link "Записаться сейчас" [ref=e91] [cursor=pointer]:
+            - /url: /consultation
+            - button "Записаться сейчас" [ref=e92] [cursor=pointer]
+          - generic [ref=e93]:
+            - link "Facebook" [ref=e94] [cursor=pointer]:
+              - /url: https://www.facebook.com/teachmeskills
+              - img [ref=e95] [cursor=pointer]
+            - link "VKontakte" [ref=e97] [cursor=pointer]:
+              - /url: https://vk.com/tms_education
+              - img [ref=e98] [cursor=pointer]
+            - link "Instagram" [ref=e100] [cursor=pointer]:
+              - /url: https://www.instagram.com/teachmeskills/
+              - img [ref=e101] [cursor=pointer]
+            - link "YouTube" [ref=e104] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCrpbZ8VZjn8FtMv0-I1VJ2A
+              - img [ref=e105] [cursor=pointer]
+            - link "Telegram" [ref=e108] [cursor=pointer]:
+              - /url: https://t.me/tms_client_bot?start=n_82778__c_4003
+              - img [ref=e109] [cursor=pointer]
+            - link "TikTok" [ref=e111] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@teachmeskills
+              - img [ref=e112] [cursor=pointer]
+      - main [ref=e114]:
+        - generic [ref=e115]:
+          - generic [ref=e118]:
+            - heading "Transforming Careers with AI" [level=1] [ref=e119]
+            - paragraph [ref=e120]: At Projectdes AI Academy, we're dedicated to bridging the gap between traditional careers and the AI-powered future of work through hands-on, practical training programs.
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - heading "Our Mission" [level=2] [ref=e125]
+              - paragraph [ref=e126]: We believe that AI transformation shouldn't be exclusive to tech giants or computer science graduates. Every working professional deserves the opportunity to harness AI tools and methodologies to advance their career and create meaningful impact.
+              - paragraph [ref=e127]: Through our fast-track, project-based learning approach, we make AI education accessible, practical, and immediately applicable to real-world challenges across industries.
+              - generic [ref=e128]:
+                - generic [ref=e129]:
+                  - generic [ref=e130]: 500+
+                  - generic [ref=e131]: Professionals Trained
+                - generic [ref=e132]:
+                  - generic [ref=e133]: 95%
+                  - generic [ref=e134]: Job Placement Rate
+                - generic [ref=e135]:
+                  - generic [ref=e136]: 5+
+                  - generic [ref=e137]: Countries Served
+            - img [ref=e140]
+          - generic [ref=e143]:
+            - generic [ref=e144]:
+              - heading "Our Core Values" [level=2] [ref=e145]
+              - paragraph [ref=e146]: These principles guide everything we do, from course design to student support.
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - img [ref=e150]
+                - heading "Practical Learning" [level=3] [ref=e152]
+                - paragraph [ref=e153]: Every lesson is designed around real-world projects and challenges you'll face in your career. No theoretical fluff—just practical skills that work.
+              - generic [ref=e154]:
+                - img [ref=e156]
+                - heading "Personal Mentorship" [level=3] [ref=e158]
+                - paragraph [ref=e159]: You're not just a student number. Every learner gets personalized guidance from industry experts who understand your career goals and challenges.
+              - generic [ref=e160]:
+                - img [ref=e162]
+                - heading "Guaranteed Results" [level=3] [ref=e164]
+                - paragraph [ref=e165]: We stand behind our programs with international job placement guarantees. Your success is our success, and we're committed to your career transformation.
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - heading "Led by Industry Experts" [level=2] [ref=e169]
+              - paragraph [ref=e170]: Our instructors and mentors bring decades of experience from leading tech companies, startups, and AI research institutions.
+            - generic [ref=e171]:
+              - generic [ref=e172]:
+                - img [ref=e174]
+                - heading "Expert Instructor 1" [level=3] [ref=e176]
+                - paragraph [ref=e177]: AI Transformation Lead
+                - paragraph [ref=e178]: 15+ years experience in AI implementation, machine learning, and digital transformation across Fortune 500 companies.
+              - generic [ref=e179]:
+                - img [ref=e181]
+                - heading "Expert Instructor 2" [level=3] [ref=e183]
+                - paragraph [ref=e184]: AI Transformation Lead
+                - paragraph [ref=e185]: 15+ years experience in AI implementation, machine learning, and digital transformation across Fortune 500 companies.
+              - generic [ref=e186]:
+                - img [ref=e188]
+                - heading "Expert Instructor 3" [level=3] [ref=e190]
+                - paragraph [ref=e191]: AI Transformation Lead
+                - paragraph [ref=e192]: 15+ years experience in AI implementation, machine learning, and digital transformation across Fortune 500 companies.
+          - generic [ref=e194]:
+            - heading "Ready to Transform Your Career?" [level=2] [ref=e195]
+            - paragraph [ref=e196]: Join thousands of professionals who've already made the leap into AI-powered careers.
+            - generic [ref=e197]:
+              - link "Explore Courses" [ref=e198] [cursor=pointer]:
+                - /url: /courses
+              - link "Schedule Consultation" [ref=e199] [cursor=pointer]:
+                - /url: /contact
+      - contentinfo [ref=e200]:
+        - generic [ref=e201]:
+          - generic [ref=e202]:
+            - generic [ref=e203]:
+              - link "AiStudio555 Academy - Go to homepage" [ref=e204] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e205] [cursor=pointer]:
+                  - generic [ref=e207] [cursor=pointer]: A
+                  - generic [ref=e208] [cursor=pointer]: AiStudio555 Academy
+              - paragraph [ref=e209]: Transform your career with practical AI skills. Join thousands of professionals who've successfully transitioned into high-paying AI roles with our intensive, project-based programs.
+              - generic [ref=e210]:
+                - 'link "Email: info@aistudio555.academy" [ref=e211] [cursor=pointer]':
+                  - /url: mailto:info@aistudio555.academy
+                  - img [ref=e212] [cursor=pointer]
+                  - generic [ref=e215] [cursor=pointer]: info@aistudio555.academy
+                - 'link "Phone: +972-50-123-4567" [ref=e216] [cursor=pointer]':
+                  - /url: tel:+972501234567
+                  - img [ref=e217] [cursor=pointer]
+                  - generic [ref=e219] [cursor=pointer]: +972-50-123-4567
+                - 'link "Address: Tel Aviv, Israel" [ref=e220] [cursor=pointer]':
+                  - /url: https://maps.google.com/?q=Tel+Aviv+Israel
+                  - img [ref=e221] [cursor=pointer]
+                  - generic [ref=e224] [cursor=pointer]: Tel Aviv, Israel
+            - generic [ref=e225]:
+              - heading "Our Courses" [level=3] [ref=e226]
+              - list [ref=e227]:
+                - listitem [ref=e228]:
+                  - link "AI Transformation Manager" [ref=e229] [cursor=pointer]:
+                    - /url: /courses/ai-transformation
+                - listitem [ref=e230]:
+                  - link "No-Code Website Development" [ref=e231] [cursor=pointer]:
+                    - /url: /courses/no-code-development
+                - listitem [ref=e232]:
+                  - link "AI Video & Avatar Generation" [ref=e233] [cursor=pointer]:
+                    - /url: /courses/ai-video-avatar
+            - generic [ref=e234]:
+              - heading "Company" [level=3] [ref=e235]
+              - list [ref=e236]:
+                - listitem [ref=e237]:
+                  - link "About Us" [ref=e238] [cursor=pointer]:
+                    - /url: /about
+                - listitem [ref=e239]:
+                  - link "Success Stories" [ref=e240] [cursor=pointer]:
+                    - /url: /success-stories
+                - listitem [ref=e241]:
+                  - link "Careers" [ref=e242] [cursor=pointer]:
+                    - /url: /careers
+                - listitem [ref=e243]:
+                  - link "Press" [ref=e244] [cursor=pointer]:
+                    - /url: /press
+            - generic [ref=e245]:
+              - heading "Support" [level=3] [ref=e246]
+              - list [ref=e247]:
+                - listitem [ref=e248]:
+                  - link "Help Center" [ref=e249] [cursor=pointer]:
+                    - /url: /help
+                - listitem [ref=e250]:
+                  - link "Contact Support" [ref=e251] [cursor=pointer]:
+                    - /url: /contact
+                - listitem [ref=e252]:
+                  - link "Live Chat" [ref=e253] [cursor=pointer]:
+                    - /url: /chat
+                - listitem [ref=e254]:
+                  - link "Community" [ref=e255] [cursor=pointer]:
+                    - /url: /community
+            - generic [ref=e256]:
+              - heading "Legal" [level=3] [ref=e257]
+              - list [ref=e258]:
+                - listitem [ref=e259]:
+                  - link "Privacy Policy" [ref=e260] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e261]:
+                  - link "Terms of Service" [ref=e262] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e263]:
+                  - link "Cookie Policy" [ref=e264] [cursor=pointer]:
+                    - /url: /cookies
+                - listitem [ref=e265]:
+                  - link "Refund Policy" [ref=e266] [cursor=pointer]:
+                    - /url: /refund
+          - generic [ref=e268]:
+            - generic [ref=e269]:
+              - heading "Stay Updated with AI Trends" [level=3] [ref=e270]
+              - paragraph [ref=e271]: Get weekly insights on AI transformation and exclusive course updates.
+            - generic [ref=e272]:
+              - generic [ref=e273]:
+                - generic [ref=e274]: Email address
+                - textbox "Email address" [ref=e275]
+                - button "Subscribe" [ref=e276] [cursor=pointer]
+              - paragraph [ref=e277]: No spam, unsubscribe anytime.
+        - generic [ref=e280]:
+          - generic [ref=e281]: © 2025 AiStudio555 Academy. All rights reserved.
+          - generic [ref=e282]:
+            - generic [ref=e283]: "Follow us:"
+            - link "Follow us on LinkedIn" [ref=e284] [cursor=pointer]:
+              - /url: https://linkedin.com/company/aistudio555-academy
+              - img [ref=e285] [cursor=pointer]
+            - link "Subscribe to our YouTube channel" [ref=e289] [cursor=pointer]:
+              - /url: https://youtube.com/@aistudio555-academy
+              - img [ref=e290] [cursor=pointer]
+            - link "Follow us on Instagram" [ref=e293] [cursor=pointer]:
+              - /url: https://instagram.com/aistudio555.academy
+              - img [ref=e294] [cursor=pointer]
+          - generic [ref=e297]:
+            - img [ref=e298]
+            - generic [ref=e301]: Global • English
+  - alert [ref=e302]
+  - generic [ref=e305] [cursor=pointer]:
+    - img [ref=e306] [cursor=pointer]
+    - generic [ref=e308] [cursor=pointer]: 1 error
+    - button "Hide Errors" [ref=e309] [cursor=pointer]:
+      - img [ref=e310] [cursor=pointer]
+```

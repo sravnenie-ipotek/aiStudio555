@@ -80,7 +80,7 @@ async function main() {
     const users = await Promise.all([
       prisma.user.create({
         data: {
-          email: 'admin@projectdes.ai',
+          email: 'admin@aistudio555.ai',
           passwordHash: '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewrtwUGpQFCBl4v.', // password: admin123
           emailVerified: true,
           role: 'ADMIN',
@@ -88,7 +88,7 @@ async function main() {
       }),
       prisma.user.create({
         data: {
-          email: 'instructor@projectdes.ai',
+          email: 'instructor@aistudio555.ai',
           passwordHash: '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewrtwUGpQFCBl4v.', // password: admin123
           emailVerified: true,
           role: 'INSTRUCTOR',
@@ -112,7 +112,7 @@ async function main() {
       }),
       prisma.user.create({
         data: {
-          email: 'support@projectdes.ai',
+          email: 'support@aistudio555.ai',
           passwordHash: '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewrtwUGpQFCBl4v.', // password: admin123
           emailVerified: true,
           role: 'SUPPORT',
@@ -131,9 +131,9 @@ async function main() {
           firstName: 'Admin',
           lastName: 'User',
           phone: '+1-555-0100',
-          bio: { "type": "doc", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "System administrator for Projectdes Academy" }] }] },
+          bio: { "type": "doc", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "System administrator for AiStudio555 Academy" }] }] },
           locale: 'EN',
-          company: 'Projectdes Academy',
+          company: 'AiStudio555 Academy',
           position: 'System Administrator',
           linkedin: 'https://linkedin.com/in/admin-user',
         },
@@ -181,7 +181,7 @@ async function main() {
           phone: '+1-555-0500',
           bio: { "type": "doc", "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": "Customer support specialist" }] }] },
           locale: 'EN',
-          company: 'Projectdes Academy',
+          company: 'AiStudio555 Academy',
           position: 'Support Specialist',
         },
       }),
@@ -585,7 +585,7 @@ async function main() {
       prisma.certificate.create({
         data: {
           enrollmentId: enrollments[1].id, // Completed no-code course
-          certificateUrl: 'https://certificates.projectdes.ai/nocode-12345.pdf',
+          certificateUrl: 'https://certificates.aistudio555.ai/nocode-12345.pdf',
           issuedAt: new Date('2024-07-15T18:00:00Z'),
           expiresAt: new Date('2026-07-15T18:00:00Z'),
         },
@@ -678,7 +678,7 @@ async function main() {
           lessonId: lessons[0].id,
           title: 'AI Business Strategy Template',
           type: 'PDF',
-          url: 'https://resources.projectdes.ai/ai-strategy-template.pdf',
+          url: 'https://resources.aistudio555.ai/ai-strategy-template.pdf',
           size: 2048576, // 2MB
         },
       }),
@@ -695,7 +695,7 @@ async function main() {
           lessonId: lessons[1].id,
           title: 'AI Use Case Database',
           type: 'CODE',
-          url: 'https://github.com/projectdes/ai-use-cases',
+          url: 'https://github.com/aistudio555/ai-use-cases',
         },
       }),
       prisma.resource.create({
@@ -703,7 +703,7 @@ async function main() {
           lessonId: lessons[4].id,
           title: 'No-Code Platform Comparison Chart',
           type: 'PDF',
-          url: 'https://resources.projectdes.ai/nocode-comparison.pdf',
+          url: 'https://resources.aistudio555.ai/nocode-comparison.pdf',
           size: 1536000, // 1.5MB
         },
       }),
@@ -905,7 +905,7 @@ async function main() {
         data: {
           sessionId: 'anonymous_session_123',
           path: '/courses',
-          referrer: 'https://projectdes.ai',
+          referrer: 'https://aistudio555.ai',
           userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
           ipAddress: '192.168.1.102',
           country: 'Canada',
@@ -1051,7 +1051,7 @@ async function main() {
           endAt: new Date('2024-09-15T19:30:00Z'),
           location: 'Online',
           streamingUrl: 'https://zoom.us/webinar/12345',
-          registerUrl: 'https://projectdes.ai/events/register/ai-2025',
+          registerUrl: 'https://aistudio555.ai/events/register/ai-2025',
           coverId: mediaAssets[4].id,
           isPublished: true,
         },
@@ -1066,7 +1066,7 @@ async function main() {
           endAt: new Date('2024-10-02T18:00:00Z'),
           location: 'Online',
           streamingUrl: 'https://zoom.us/webinar/67890',
-          registerUrl: 'https://projectdes.ai/events/register/nocode-masterclass',
+          registerUrl: 'https://aistudio555.ai/events/register/nocode-masterclass',
           isPublished: true,
         },
       }),
@@ -1079,7 +1079,7 @@ async function main() {
           startAt: new Date('2024-11-10T09:00:00Z'),
           endAt: new Date('2024-11-10T18:00:00Z'),
           location: 'Moscow, Russia',
-          registerUrl: 'https://projectdes.ai/events/register/moscow-ai-2024',
+          registerUrl: 'https://aistudio555.ai/events/register/moscow-ai-2024',
           isPublished: false,
         },
       }),
@@ -1097,7 +1097,7 @@ async function main() {
           title: 'Terms of Service',
           body: { "type": "doc", "content": [
             { "type": "heading", "attrs": { "level": 1 }, "content": [{ "type": "text", "text": "Terms of Service" }] },
-            { "type": "paragraph", "content": [{ "type": "text", "text": "By accessing and using Projectdes Academy, you agree to comply with these terms and conditions." }] },
+            { "type": "paragraph", "content": [{ "type": "text", "text": "By accessing and using AiStudio555 Academy, you agree to comply with these terms and conditions." }] },
             { "type": "heading", "attrs": { "level": 2 }, "content": [{ "type": "text", "text": "Course Access and Usage" }] },
             { "type": "paragraph", "content": [{ "type": "text", "text": "Course content is provided for educational purposes only and is subject to intellectual property protections." }] }
           ] },
@@ -1125,7 +1125,7 @@ async function main() {
           title: 'Условия использования',
           body: { "type": "doc", "content": [
             { "type": "heading", "attrs": { "level": 1 }, "content": [{ "type": "text", "text": "Условия использования" }] },
-            { "type": "paragraph", "content": [{ "type": "text", "text": "Получая доступ к Projectdes Academy, вы соглашаетесь соблюдать эти условия." }] }
+            { "type": "paragraph", "content": [{ "type": "text", "text": "Получая доступ к AiStudio555 Academy, вы соглашаетесь соблюдать эти условия." }] }
           ] },
           isPublished: true,
         },
@@ -1184,7 +1184,7 @@ async function main() {
         data: {
           locale: 'EN',
           kind: 'GENERAL',
-          title: 'Welcome to Projectdes Academy!',
+          title: 'Welcome to AiStudio555 Academy!',
           message: 'We\'re excited to have you join our learning community. Start your AI transformation journey today!',
           startsAt: new Date('2024-08-01T00:00:00Z'),
           priority: 1,
@@ -1228,7 +1228,7 @@ async function main() {
           kind: 'article',
           title: 'How to Land Your First AI Job',
           description: 'Comprehensive guide covering resume tips, interview preparation, and skill development for AI careers.',
-          url: 'https://projectdes.ai/career/first-ai-job-guide',
+          url: 'https://aistudio555.ai/career/first-ai-job-guide',
           isPublished: true,
           order: 1,
         },
@@ -1239,7 +1239,7 @@ async function main() {
           kind: 'template',
           title: 'AI Engineer Resume Template',
           description: 'Professional resume template specifically designed for AI and machine learning positions.',
-          url: 'https://projectdes.ai/downloads/ai-engineer-resume-template.pdf',
+          url: 'https://aistudio555.ai/downloads/ai-engineer-resume-template.pdf',
           isPublished: true,
           order: 2,
         },
@@ -1250,7 +1250,7 @@ async function main() {
           kind: 'link',
           title: 'Top AI Job Boards',
           description: 'Curated list of the best job boards and platforms for finding AI and ML positions.',
-          url: 'https://projectdes.ai/career/ai-job-boards',
+          url: 'https://aistudio555.ai/career/ai-job-boards',
           isPublished: true,
           order: 3,
         },
@@ -1261,7 +1261,7 @@ async function main() {
           kind: 'article',
           title: 'Карьера в области ИИ в России',
           description: 'Руководство по построению карьеры в сфере искусственного интеллекта в России.',
-          url: 'https://projectdes.ai/career/ai-career-russia',
+          url: 'https://aistudio555.ai/career/ai-career-russia',
           isPublished: true,
           order: 1,
         },

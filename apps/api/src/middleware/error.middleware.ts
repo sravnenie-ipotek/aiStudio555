@@ -5,7 +5,7 @@
  */
 
 import { Request, Response, NextFunction } from 'express';
-import { createLogger } from '@projectdes/utils';
+import { createLogger } from '@aistudio555/utils';
 
 const logger = createLogger('error-handler');
 

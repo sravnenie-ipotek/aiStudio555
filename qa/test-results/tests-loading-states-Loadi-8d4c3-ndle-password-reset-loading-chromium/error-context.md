@@ -1,0 +1,117 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]: ✅ Strapi Connected
+  - banner [ref=e4]:
+    - navigation [ref=e6]:
+      - link "AiStudio555" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8] [cursor=pointer]: AiStudio555
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "Курсы" [ref=e12] [cursor=pointer]:
+            - /url: /courses
+            - generic [ref=e13] [cursor=pointer]: Курсы
+        - listitem [ref=e14]:
+          - link "Старты месяца" [ref=e15] [cursor=pointer]:
+            - /url: /monthly-starts
+            - generic [ref=e16] [cursor=pointer]: Старты месяца
+        - listitem [ref=e17]:
+          - link "Преподаватели" [ref=e18] [cursor=pointer]:
+            - /url: /instructors
+            - generic [ref=e19] [cursor=pointer]: Преподаватели
+        - listitem [ref=e20]:
+          - link "Блог" [ref=e21] [cursor=pointer]:
+            - /url: /blog
+            - generic [ref=e22] [cursor=pointer]: Блог
+        - listitem [ref=e23]:
+          - button "О школе" [ref=e24] [cursor=pointer]:
+            - generic [ref=e25] [cursor=pointer]: О школе
+            - img [ref=e26] [cursor=pointer]
+      - generic [ref=e28]:
+        - generic [ref=e29]: RU
+        - link "+1 234 567 890" [ref=e30] [cursor=pointer]:
+          - /url: tel:+12345678901
+          - img [ref=e31] [cursor=pointer]
+          - generic [ref=e33] [cursor=pointer]: +1 234 567 890
+        - link "Записаться сейчас" [ref=e34] [cursor=pointer]:
+          - /url: /consultation
+          - button "Записаться сейчас" [ref=e35] [cursor=pointer]
+        - generic [ref=e36]:
+          - link "Facebook" [ref=e37] [cursor=pointer]:
+            - /url: https://www.facebook.com/teachmeskills
+            - img [ref=e38] [cursor=pointer]
+          - link "VKontakte" [ref=e40] [cursor=pointer]:
+            - /url: https://vk.com/tms_education
+            - img [ref=e41] [cursor=pointer]
+          - link "Instagram" [ref=e43] [cursor=pointer]:
+            - /url: https://www.instagram.com/teachmeskills/
+            - img [ref=e44] [cursor=pointer]
+          - link "YouTube" [ref=e47] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCrpbZ8VZjn8FtMv0-I1VJ2A
+            - img [ref=e48] [cursor=pointer]
+          - link "Telegram" [ref=e51] [cursor=pointer]:
+            - /url: https://t.me/tms_client_bot?start=n_82778__c_4003
+            - img [ref=e52] [cursor=pointer]
+          - link "TikTok" [ref=e54] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@teachmeskills
+            - img [ref=e55] [cursor=pointer]
+  - main [ref=e57]:
+    - generic [ref=e58]:
+      - generic [ref=e61]:
+        - link "Projectdes AI Academy" [ref=e62] [cursor=pointer]:
+          - /url: /
+          - heading "Projectdes AI Academy" [level=1] [ref=e63] [cursor=pointer]
+        - generic [ref=e64]: Secure Authentication
+      - main [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - img [ref=e70]
+            - heading "Reset Your Password" [level=1] [ref=e72]
+            - paragraph [ref=e73]: Enter your email address and we'll send you a link to reset your password
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - generic [ref=e76]: Email Address *
+              - textbox "Email Address *" [ref=e77]
+              - paragraph [ref=e78]: This should be the email address you used to create your account
+            - button "Send Reset Link" [ref=e79] [cursor=pointer]
+          - generic [ref=e80]:
+            - heading "What happens next?" [level=3] [ref=e81]
+            - list [ref=e82]:
+              - listitem [ref=e83]: We'll send a secure reset link to your email
+              - listitem [ref=e84]: Click the link in your email (check spam if needed)
+              - listitem [ref=e85]: Create a new secure password
+              - listitem [ref=e86]: Sign in with your new password
+          - generic [ref=e88]:
+            - img [ref=e89]
+            - generic [ref=e91]:
+              - paragraph [ref=e92]: Security Protected
+              - paragraph [ref=e93]: Reset links expire in 1 hour for your security. Only the most recent link will work.
+          - paragraph [ref=e95]:
+            - text: Remember your password?
+            - link "Sign in here" [ref=e96] [cursor=pointer]:
+              - /url: /auth/login
+          - generic [ref=e97]:
+            - paragraph [ref=e98]: Still having trouble accessing your account?
+            - generic [ref=e99]:
+              - link "Contact Support Team" [ref=e100] [cursor=pointer]:
+                - /url: /contact
+              - link "Create New Account" [ref=e101] [cursor=pointer]:
+                - /url: /auth/register
+          - generic [ref=e102]:
+            - heading "Troubleshooting Tips" [level=4] [ref=e103]
+            - list [ref=e104]:
+              - listitem [ref=e105]: • Check your spam/junk folder for the reset email
+              - listitem [ref=e106]: • Make sure you're using the correct email address
+              - listitem [ref=e107]: • Try disabling ad blockers or browser extensions
+              - listitem [ref=e108]: • Clear your browser cache and cookies
+              - listitem [ref=e109]: • Contact support if you don't receive the email within 10 minutes
+      - generic [ref=e112]:
+        - paragraph [ref=e113]:
+          - text: Need help?
+          - link "Contact support" [ref=e114] [cursor=pointer]:
+            - /url: /contact
+        - paragraph [ref=e115]: © 2024 Projectdes AI Academy. All rights reserved.
+  - alert [ref=e116]
+```

@@ -3,9 +3,9 @@
 
 -- 1. Users (basic schema: id, email, passwordHash, emailVerified, role, createdAt, updatedAt, lastLoginAt)
 INSERT INTO "User" ("id", "email", "passwordHash", "emailVerified", "role", "lastLoginAt") VALUES
-('user-admin-001', 'admin@projectdes.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'ADMIN', NOW()),
-('user-instr-001', 'instructor@projectdes.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'INSTRUCTOR', NOW()),
-('user-stud-001', 'student@projectdes.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'STUDENT', NOW());
+('user-admin-001', 'admin@aistudio555.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'ADMIN', NOW()),
+('user-instr-001', 'instructor@aistudio555.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'INSTRUCTOR', NOW()),
+('user-stud-001', 'student@aistudio555.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'STUDENT', NOW());
 
 -- 2. UserProfiles (minimal data for existing schema)
 INSERT INTO "UserProfile" ("userId") VALUES
@@ -99,7 +99,7 @@ INSERT INTO "CourseAnalytics" ("id", "courseId", "date", "enrollments", "complet
 
 -- 21. MediaAssets
 INSERT INTO "MediaAsset" ("id", "filename", "originalName", "mimeType", "size", "url", "uploadedBy") VALUES
-('media-001', 'ai-thumbnail.jpg', 'AI Course Thumbnail.jpg', 'image/jpeg', 245760, 'https://cdn.projectdes.ai/ai-thumbnail.jpg', 'user-admin-001');
+('media-001', 'ai-thumbnail.jpg', 'AI Course Thumbnail.jpg', 'image/jpeg', 245760, 'https://cdn.aistudio555.ai/ai-thumbnail.jpg', 'user-admin-001');
 
 -- 22. Partners
 INSERT INTO "Partner" ("id", "name", "type", "logoUrl", "websiteUrl", "isActive") VALUES

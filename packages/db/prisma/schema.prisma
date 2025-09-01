@@ -1,5 +1,5 @@
 // ============================================
-// Projectdes AI Academy - Complete Database Schema
+// AiStudio555 Academy - Complete Database Schema
 // ============================================
 // Comprehensive schema combining main education platform + infrastructure
 // Generated: 2025-08-29
@@ -108,17 +108,53 @@ model Course {
   // Multi-language content
   title           Json      // {"en": "...", "ru": "...", "he": "..."}
   description     Json      // TipTap JSON with translations
+  shortDescription Json?     // Brief description for catalog cards
   thumbnail       String?
+
+  // Marketing Content (Course Catalog Requirements)
+  heroImage       String?   // Large hero image for course detail page
+  thumbnailImage  String?   // Catalog card thumbnail (different from thumbnail)
+  keyBenefits     String[]  // Array of key selling points
+  targetAudience  String[]  // Array of target audience segments
+  careerOutcomes  String[]  // Array of job titles/career paths
+  skillsLearned   String[]  // Array of skills students will learn
+
+  // Course Features
+  features        Json[]    // Array of feature objects with name, description, icon
+  format          CourseFormat @default(ONLINE) // online | hybrid | in-person
+  platform        String?   // "Zoom", "Custom LMS", etc.
 
   // Pricing
   price           Decimal   @db.Decimal(10, 2)
   currency        String    @default("USD")
   discountPrice   Decimal?  @db.Decimal(10, 2)
+  paymentPlans    Json[]    // Array of payment plan objects
 
+  // Duration Structure (Extended for Course Catalog)
+  duration        Int       // in hours (legacy field - keep for compatibility)
+  durationWeeks   Int?      // Duration in weeks
+  hoursPerWeek    Int?      // Hours per week commitment
+  totalHours      Int?      // Total course hours (computed field)
+
+  // Computed Metrics (Updated via triggers/jobs)
+  studentCount    Int       @default(0)  // Total enrolled students
+  averageRating   Float?    // Average rating from reviews
+  completionRate  Float?    // Percentage of students who complete
+
+  // Enrollment & Scheduling
+  nextStartDate       DateTime? // Next cohort start date
+  enrollmentDeadline  DateTime? // Last day to enroll
+  maxStudents         Int?      // Maximum students per cohort
+  minStudents         Int?      // Minimum students to run cohort
+
+  // Prerequisites & Requirements
+  prerequisites   Course[]  @relation("Prerequisites")
+  dependents      Course[]  @relation("Prerequisites")
+  
   // Metadata
   level           CourseLevel @default(BEGINNER)
-  duration        Int       // in hours
   language        Locale    @default(EN)
+  difficulty      Int?      @default(1) // 1-5 difficulty scale
 
   // Relations
   categoryId      String
@@ -130,17 +166,18 @@ model Course {
   enrollments     Enrollment[]
   reviews         Review[]
   testimonials    Testimonial[]
-  prerequisites   Course[]  @relation("Prerequisites")
-  dependents      Course[]  @relation("Prerequisites")
 
   // Publishing
   status          CourseStatus @default(DRAFT)
   publishedAt     DateTime?
+  isActive        Boolean   @default(true) // Course can be purchased/enrolled
+  isFeatured      Boolean   @default(false) // Featured in catalog
 
   // SEO
   metaTitle       String?
   metaDescription String?
   keywords        String[]
+  ogImage         String?   // Open Graph image
 
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
@@ -151,6 +188,12 @@ model Course {
   @@index([instructorId])
   @@index([publishedAt])
   @@index([level])
+  @@index([isActive])
+  @@index([isFeatured])
+  @@index([studentCount]) // For sorting by popularity
+  @@index([averageRating]) // For sorting by rating
+  @@index([nextStartDate]) // For upcoming courses
+  @@index([price]) // For price range filtering
 }
 
 // Course module organization structure
@@ -779,6 +822,12 @@ enum CourseLevel {
   INTERMEDIATE
   ADVANCED
   EXPERT
+}
+
+enum CourseFormat {
+  ONLINE
+  HYBRID
+  IN_PERSON
 }
 
 enum EnrollmentStatus {

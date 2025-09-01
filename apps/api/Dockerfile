@@ -34,7 +34,7 @@ COPY --from=deps /app/packages/*/node_modules ./packages/*/node_modules
 COPY . .
 
 # Generate Prisma client
-RUN pnpm --filter @projectdes/db prisma generate
+RUN pnpm --filter @aistudio555/db prisma generate
 
 # Build application
 RUN pnpm --filter api build

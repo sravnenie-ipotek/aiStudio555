@@ -1,5 +1,5 @@
 /**
- * @projectdes/utils - Shared Utilities & Helpers
+ * @aistudio555/utils - Shared Utilities & Helpers
  * Common utility functions for Projectdes Academy
  */
 // Export all utility modules

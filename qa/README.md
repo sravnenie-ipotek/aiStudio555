@@ -1,187 +1,211 @@
-# Projectdes AI Academy - E2E Testing Suite
+# 🟠 QA Testing Suite - Projectdes AI Academy
 
-Comprehensive End-to-End testing suite for the Projectdes AI Academy platform using Cypress and Playwright.
+**Comprehensive Testing Framework for Phase 1 Site Hierarchy Implementation**
 
-## 🧪 Test Structure
+This testing suite provides complete coverage for the Next.js App Router implementation with route groups, layouts, error boundaries, and loading states.
+
+## 📁 Directory Structure
 
 ```
-/qa
-├── cypress/
-│   ├── e2e/                    # E2E test specifications
-│   │   ├── auth.cy.ts         # Authentication flows
-│   │   ├── courses.cy.ts      # Course browsing & enrollment
-│   │   ├── payment.cy.ts      # Payment processing
-│   │   └── dashboard.cy.ts    # Dashboard functionality
-│   ├── support/               # Custom commands & utilities
-│   │   ├── e2e.ts            # Global configuration
-│   │   ├── commands.ts       # Custom Cypress commands
-│   │   └── types.ts          # TypeScript type definitions
-│   ├── fixtures/             # Test data
-│   │   ├── users.json        # User test data
-│   │   ├── courses.json      # Course test data
-│   │   ├── payments.json     # Payment test data
-│   │   └── dashboard.json    # Dashboard test data
-│   └── screenshots/          # Test failure screenshots
-└── cypress.config.ts         # Cypress configuration
+qa/
+├── playwright/                 # E2E Testing with Playwright
+│   ├── tests/                 # Test specifications
+│   │   ├── route-groups.spec.ts      # Route group navigation
+│   │   ├── error-boundaries.spec.ts  # Error handling
+│   │   ├── loading-states.spec.ts    # Loading state testing
+│   │   ├── performance.spec.ts       # Performance & Core Web Vitals
+│   │   ├── accessibility.spec.ts     # A11y compliance
+│   │   └── responsive-design.spec.ts # Responsive behavior
+│   ├── utils/                 # Test utilities
+│   │   └── test-utils.ts     # Helper classes and functions
+│   └── global-setup.ts       # Global test setup
+├── unit/                      # Unit Tests with Jest & RTL
+│   ├── layouts.test.tsx      # Layout component tests
+│   └── error-boundaries.test.tsx # Error boundary tests
+├── integration/               # Integration Tests
+│   └── route-navigation.test.tsx # Route navigation flow
+├── manual-testing/            # Manual Testing Resources
+│   └── COMPREHENSIVE_MANUAL_TESTING_CHECKLIST.md
+├── cypress/                   # Legacy Cypress Tests (Phase 2)
+│   ├── e2e/                  # E2E test specifications
+│   ├── support/              # Custom commands & utilities
+│   └── fixtures/             # Test data
+├── playwright.config.ts       # Playwright configuration
+├── jest.config.js            # Jest configuration
+├── jest.setup.js             # Jest test setup
+├── cypress.config.ts         # Cypress configuration
+└── README.md                 # This file
 ```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- pnpm package manager
-- Test environment running locally
-
-### Installation
-
 ```bash
-cd qa
+# Install dependencies
 pnpm install
+
+# Install Playwright browsers
+pnpm run playwright:install
 ```
 
 ### Running Tests
 
 ```bash
-# Interactive mode (development)
-pnpm cypress:open
+# Run all Playwright E2E tests
+pnpm run playwright:test
 
-# Headless mode (CI/CD)
-pnpm cypress:run
+# Run Playwright tests with UI
+pnpm run playwright:test --ui
 
-# Specific test file
-pnpm cypress:run --spec "cypress/e2e/auth.cy.ts"
+# Run specific test file
+pnpm run playwright:test tests/route-groups.spec.ts
 
-# Specific browser
-pnpm cypress:run --browser chrome
+# Run Jest unit tests
+pnpm run test:unit
+
+# Run Jest with coverage
+pnpm run test:unit --coverage
+
+# Run Jest in watch mode
+pnpm run test:unit --watch
+
+# Legacy Cypress tests (Phase 2 features)
+pnpm run cypress:open
+pnpm run cypress:run
 ```
 
-## 🧩 Test Categories
+## 🎯 Testing Coverage
 
-### Authentication Tests (`auth.cy.ts`)
+### 1. Route Groups Testing (`route-groups.spec.ts`)
+- **Marketing Route Group** (`(marketing)`)
+  - Homepage, courses, course details, about, contact, blog, teachers
+  - Dynamic routing with slugs
+  - Marketing layout consistency
+- **Enrollment Route Group** (`(enrollment)`)
+  - Multi-step enrollment flow
+  - Simplified layout with security indicators
+  - Payment integration readiness
+- **Dashboard Route Group** (`(dashboard)`)
+  - Authentication requirements
+  - Protected route access
+  - Dashboard layout and navigation
+- **Auth Route Group** (`(auth)`)
+  - Login, register, password reset flows
+  - Minimal auth-specific layout
 
-**Coverage:**
-- ✅ User registration (valid/invalid data, email verification)
-- ✅ User login (credentials, 2FA, OAuth, rate limiting)
-- ✅ Password reset flow (request, validation, confirmation)
-- ✅ Session management (timeout, refresh, concurrent sessions)
-- ✅ Logout functionality (single device, all devices)
-- ✅ Security features (suspicious activity, password complexity)
+### 2. Error Boundaries Testing (`error-boundaries.spec.ts`)
+- **Marketing Error Boundary**
+  - Custom error pages with marketing layout
+  - "Try Again" functionality
+  - Development vs production error details
+  - Popular pages quick links
+- **Enrollment Error Boundary**
+  - Payment error handling
+  - Session timeout management
+  - Security-focused error messages
+- **Global Error Handling**
+  - 404 error pages
+  - Network error resilience
+  - JavaScript-disabled fallbacks
 
-**Key Features:**
-- Comprehensive form validation testing
-- Multi-language support testing
-- Responsive design validation
-- Accessibility compliance checks
-- Rate limiting and security testing
+### 3. Loading States Testing (`loading-states.spec.ts`)
+- **Page Navigation Loading**
+  - Route transition loading states
+  - Network condition simulation
+  - Loading indicator accessibility
+- **Form Submission Loading**
+  - Multi-step form progress
+  - Payment processing states
+  - Error state transitions
+- **Dynamic Content Loading**
+  - Course search and filtering
+  - Dashboard data loading
+  - Progressive enhancement
 
-### Course Tests (`courses.cy.ts`)
+### 4. Performance Testing (`performance.spec.ts`)
+- **Core Web Vitals**
+  - LCP (Largest Contentful Paint) < 2.5s
+  - FID (First Input Delay) < 100ms
+  - CLS (Cumulative Layout Shift) < 0.1
+- **Page Load Performance**
+  - TTFB (Time to First Byte) < 1s
+  - DOM Content Loaded < 4s
+  - Total load time < 8s
+- **Resource Optimization**
+  - Bundle size analysis
+  - Image optimization verification
+  - Font loading performance
 
-**Coverage:**
-- ✅ Course catalog browsing and filtering
-- ✅ Course search functionality
-- ✅ Course detail pages and curriculum
-- ✅ Course enrollment flows
-- ✅ Prerequisites and capacity handling
-- ✅ Course comparison features
-- ✅ Categories and recommendations
+### 5. Accessibility Testing (`accessibility.spec.ts`)
+- **WCAG 2.1 AA Compliance**
+  - Color contrast ratios
+  - Keyboard navigation
+  - Screen reader compatibility
+- **Semantic HTML Structure**
+  - Proper heading hierarchy
+  - ARIA labels and descriptions
+  - Form accessibility
+- **Interactive Elements**
+  - Focus management
+  - Touch target sizing (44px+)
+  - Skip links functionality
 
-**Key Features:**
-- Advanced filtering and search testing
-- Enrollment prerequisite validation
-- Course capacity and waitlist management
-- Multi-language course support
-- Responsive course catalog testing
+### 6. Responsive Design Testing (`responsive-design.spec.ts`)
+- **Breakpoint Testing**
+  - Mobile (375px), Tablet (768px), Desktop (1024px+)
+  - No horizontal scroll at any breakpoint
+  - Touch-friendly interactions
+- **Layout Adaptation**
+  - Content reflow and stacking
+  - Navigation pattern changes
+  - Image scaling and optimization
+- **Cross-Device Compatibility**
+  - Portrait/landscape orientations
+  - High-DPI display support
+  - Touch vs mouse interactions
 
-### Payment Tests (`payment.cy.ts`)
+## 🧪 Test Utilities
 
-**Coverage:**
-- ✅ Stripe payment processing (success, failure, 3D Secure)
-- ✅ PayPal payment integration
-- ✅ Billing information validation
-- ✅ Promo codes and discounts
-- ✅ International payment support
-- ✅ Payment security and error handling
-
-**Key Features:**
-- Multiple payment method testing
-- Payment failure scenarios
-- Currency conversion testing
-- Security validation (HTTPS, CSRF tokens)
-- Analytics event tracking
-
-### Dashboard Tests (`dashboard.cy.ts`)
-
-**Coverage:**
-- ✅ Dashboard overview and statistics
-- ✅ Course progress tracking
-- ✅ Learning analytics and achievements
-- ✅ Notifications and activity feeds
-- ✅ Dashboard customization
-- ✅ Search and filtering capabilities
-
-**Key Features:**
-- Real-time progress tracking
-- Interactive analytics dashboards
-- Notification system testing
-- Performance and loading state testing
-- Mobile-responsive dashboard testing
-
-## 🛠 Custom Commands
-
-### Authentication Commands
-
+### Performance Utils
 ```typescript
-// Login with default or custom credentials
-cy.login(email?, password?)
-
-// Login as specific user type
-cy.loginAs('student' | 'instructor' | 'admin')
-
-// Register new user
-cy.register(userData)
-
-// Logout current user
-cy.logout()
+const performanceUtils = new PerformanceUtils(page);
+const vitals = await performanceUtils.assertCoreWebVitals();
+const metrics = await performanceUtils.measurePageLoad();
 ```
 
-### Course Commands
-
+### Accessibility Utils
 ```typescript
-// Enroll in a course
-cy.enrollInCourse(courseId)
-
-// Create test course
-cy.createTestCourse(courseData)
+const accessibilityUtils = new AccessibilityUtils(page);
+await accessibilityUtils.checkBasicA11y();
+await accessibilityUtils.checkKeyboardNavigation();
 ```
 
-### Payment Commands
-
+### Responsive Utils
 ```typescript
-// Mock Stripe payment
-cy.mockStripePayment()
-
-// Mock PayPal payment
-cy.mockPayPalPayment()
-
-// Complete payment flow
-cy.completePayment('stripe' | 'paypal')
+const responsiveUtils = new ResponsiveUtils(page);
+await responsiveUtils.assertNoHorizontalScroll();
+const results = await responsiveUtils.testBreakpoints();
 ```
 
-### Utility Commands
-
+### Route Utils
 ```typescript
-// Find elements by test ID
-cy.getByTestId(testId)
+const routeUtils = new RouteUtils(page);
+await routeUtils.navigateAndVerify('/courses', 'Courses Page');
+await routeUtils.checkRouteStatus('/api/health', 200);
+```
 
-// Check accessibility
-cy.checkAccessibility()
+### Error Utils
+```typescript
+const errorUtils = new ErrorUtils(page);
+await errorUtils.test404Handling('/invalid-route');
+await errorUtils.testNetworkError();
+```
 
-// Test responsive design
-cy.testResponsiveness()
-
-// Switch languages
-cy.switchLanguage('en' | 'ru' | 'he')
+### Loading Utils
+```typescript
+const loadingUtils = new LoadingUtils(page);
+await loadingUtils.verifyLoadingSequence(() => page.goto('/courses'));
 ```
 
 ## 📊 Test Data Management

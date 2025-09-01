@@ -53,11 +53,11 @@ JavaScript functionality patterns:
 
 ## Usage Notes
 
-These files are for **reference and learning purposes only**. When implementing ProjectDes Academy:
+These files are for **reference and learning purposes only**. When implementing AiStudio555 Academy:
 
-1. **Adapt the color scheme** to ProjectDes brand colors (#635bff primary)
+1. **Adapt the color scheme** to AiStudio555 brand colors (#635bff primary)
 2. **Modify content structure** for AI-focused courses
-3. **Update text** to reflect ProjectDes Academy offerings
+3. **Update text** to reflect AiStudio555 Academy offerings
 4. **Integrate** with Next.js/React components
 5. **Ensure** all assets are properly licensed or replaced
 
@@ -80,7 +80,7 @@ These files are for **reference and learning purposes only**. When implementing 
 
 ## Important
 
-This is reference material only. All implementation for ProjectDes Academy should:
+This is reference material only. All implementation for AiStudio555 Academy should:
 - Use original code
 - Follow the established architecture in `/docs/architecture`
 - Maintain brand consistency

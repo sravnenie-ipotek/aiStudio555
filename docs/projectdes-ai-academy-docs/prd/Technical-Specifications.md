@@ -1,4 +1,4 @@
-# Projectdes AI Academy - Technical Specifications
+# AiStudio555 AI Academy - Technical Specifications
 
 **Developer Implementation Guide**  
 **Version:** 2.0 | **Date:** December 2024
@@ -421,7 +421,7 @@ const translations = {
     'nav.programs': 'Программы',
     'nav.about': 'О нас',
     'nav.contacts': 'Контакты',
-    'homepage.title': 'Projectdes AI Academy – Практическая школа AI-обучения',
+    'homepage.title': 'AiStudio555 AI Academy – Практическая школа AI-обучения',
     'programs.header.title': 'Программы обучения',
     'courses.enroll_button': 'Записаться на курс',
   },
@@ -430,7 +430,7 @@ const translations = {
     'nav.programs': 'תוכניות',
     'nav.about': 'אודות',
     'nav.contacts': 'צור קשר',
-    'homepage.title': 'Projectdes AI Academy – בית ספר מעשי ללימודי AI',
+    'homepage.title': 'AiStudio555 AI Academy – בית ספר מעשי ללימודי AI',
     'programs.header.title': 'תוכניות לימוד',
     'courses.enroll_button': 'הירשם לקורס',
   },
@@ -661,5 +661,5 @@ function validateContactForm(formData) {
 
 ---
 
-**📁 Full PRD available at**: `/docs/prd/ProjectdesAI-Academy-PRD.md`  
+**📁 Full PRD available at**: `/docs/prd/AiStudio555AI-Academy-PRD.md`  
 **🔗 Executive Summary**: `/docs/prd/Executive-Summary.md`

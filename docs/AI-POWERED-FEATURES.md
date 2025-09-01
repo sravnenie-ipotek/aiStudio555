@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-ProjectDes AI Academy leverages cutting-edge artificial intelligence to enhance the learning experience, personalize education paths, and automate administrative tasks. This document details all AI-powered features, their implementation, and integration within the platform.
+AiStudio555 AI Academy leverages cutting-edge artificial intelligence to enhance the learning experience, personalize education paths, and automate administrative tasks. This document details all AI-powered features, their implementation, and integration within the platform.
 
 ## AI Architecture Overview
 

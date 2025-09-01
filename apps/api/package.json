@@ -1,8 +1,8 @@
 {
-  "name": "@projectdes/api",
+  "name": "@aistudio555/api",
   "version": "0.0.0",
   "private": true,
-  "description": "Projectdes Academy - Express API Server",
+  "description": "AiStudio555 Academy - Express API Server",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --exec tsx src/index.ts",
@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
-    "@projectdes/db": "workspace:*",
-    "@projectdes/types": "workspace:*",
-    "@projectdes/utils": "workspace:*",
+    "@aistudio555/db": "workspace:*",
+    "@aistudio555/types": "workspace:*",
+    "@aistudio555/utils": "workspace:*",
     "bcryptjs": "^2.4.3",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.6",

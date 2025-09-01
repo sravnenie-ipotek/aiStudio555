@@ -1,11 +1,11 @@
-# 🚀 Projectdes Academy - Development Setup Guide
+# 🚀 AiStudio555 Academy - Development Setup Guide
 
 ## Quick Start (One Command)
 
 ```bash
 # Clone the repository
-git clone <repository-url> projectdes-academy
-cd projectdes-academy
+git clone <repository-url> aistudio555-academy
+cd aistudio555-academy
 
 # Run the master setup script
 chmod +x setup.sh
@@ -118,7 +118,7 @@ This checks:
 ## 📁 Project Structure
 
 ```
-projectdes-academy/
+aistudio555-academy/
 ├── apps/
 │   ├── web/              # Next.js frontend
 │   └── api/              # Express backend
@@ -183,15 +183,15 @@ pnpm clean            # Clean build artifacts
 
 ### PostgreSQL Database
 
-- **Container**: projectdes-db
+- **Container**: aistudio555-db
 - **Port**: 5432
-- **User**: projectdes
+- **User**: aistudio555
 - **Password**: localpassword
-- **Database**: projectdes_dev
+- **Database**: aistudio555_dev
 
 ### Redis Cache
 
-- **Container**: projectdes-redis
+- **Container**: aistudio555-redis
 - **Port**: 6379
 - **Database**: 0 (main), 1 (sessions)
 
@@ -392,7 +392,7 @@ pnpm fresh
 4. **Contact support**:
 
 - GitHub Issues
-- Email: support@projectdes.ai
+- Email: support@aistudio555.ai
 
 ---
 

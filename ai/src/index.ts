@@ -1,5 +1,5 @@
 /**
- * @projectdes/ai - AI Services & Integrations
+ * @aistudio555/ai - AI Services & Integrations
  * LangChain-based AI services for Projectdes Academy
  */
 

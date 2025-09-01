@@ -1,5 +1,5 @@
 /**
- * @projectdes/ui - Shared UI Components Library
+ * @aistudio555/ui - Shared UI Components Library
  * Reusable React components for Projectdes Academy
  */
 

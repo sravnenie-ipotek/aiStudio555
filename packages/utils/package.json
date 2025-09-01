@@ -1,7 +1,7 @@
 {
-  "name": "@projectdes/utils",
+  "name": "@aistudio555/utils",
   "version": "0.0.0",
-  "description": "Projectdes Academy - Shared Utilities & Helpers",
+  "description": "AiStudio555 Academy - Shared Utilities & Helpers",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "exports": {

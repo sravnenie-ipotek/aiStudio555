@@ -142,10 +142,10 @@ run_migrations() {
     cd "$DEPLOY_PATH"
     
     # Generate Prisma client
-    pnpm --filter @projectdes/db prisma generate
+    pnpm --filter @aistudio555/db prisma generate
     
     # Run migrations
-    pnpm --filter @projectdes/db prisma migrate deploy
+    pnpm --filter @aistudio555/db prisma migrate deploy
     
     log "Database migrations completed"
 }

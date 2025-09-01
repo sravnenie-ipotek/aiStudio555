@@ -43,9 +43,9 @@ pnpm web:dev        # Start Next.js web app (port 3000)
 pnpm api:dev        # Start Express API server (port 4000)
 
 # Work with specific workspace
-pnpm --filter @projectdes/web dev
-pnpm --filter @projectdes/api build
-pnpm --filter @projectdes/ui test
+pnpm --filter @aistudio555/web dev
+pnpm --filter @aistudio555/api build
+pnpm --filter @aistudio555/ui test
 ```
 
 ---
@@ -64,8 +64,8 @@ pnpm lint
 pnpm lint --fix
 
 # Lint specific workspace
-pnpm --filter @projectdes/web lint
-pnpm --filter @projectdes/api lint
+pnpm --filter @aistudio555/web lint
+pnpm --filter @aistudio555/api lint
 
 # Run ESLint directly
 npx eslint . --ext .ts,.tsx,.js,.jsx
@@ -97,8 +97,8 @@ npx prettier --check packages/
 pnpm typecheck
 
 # Type check specific workspace
-pnpm --filter @projectdes/types typecheck
-pnpm --filter @projectdes/api typecheck
+pnpm --filter @aistudio555/types typecheck
+pnpm --filter @aistudio555/api typecheck
 
 # Compile TypeScript (build)
 pnpm build
@@ -135,8 +135,8 @@ pnpm db:reset
 pnpm db:studio
 
 # Direct Prisma commands
-pnpm --filter @projectdes/db generate
-pnpm --filter @projectdes/db studio
+pnpm --filter @aistudio555/db generate
+pnpm --filter @aistudio555/db studio
 ```
 
 ---
@@ -180,74 +180,74 @@ pnpm test
 
 # Run tests in watch mode
 pnpm test:watch
-pnpm --filter @projectdes/api test:watch
+pnpm --filter @aistudio555/api test:watch
 
 # Run tests with coverage
 pnpm test:coverage
-pnpm --filter @projectdes/utils test:coverage
+pnpm --filter @aistudio555/utils test:coverage
 
 # Test specific workspace
-pnpm --filter @projectdes/types test
-pnpm --filter @projectdes/ui test
+pnpm --filter @aistudio555/types test
+pnpm --filter @aistudio555/ui test
 ```
 
 ### End-to-End Testing (Cypress & Playwright)
 
 ```bash
 # Cypress E2E Tests
-pnpm --filter @projectdes/e2e cypress:open     # Open Cypress UI
-pnpm --filter @projectdes/e2e cypress:run      # Run headless
-pnpm --filter @projectdes/e2e cypress:smoke    # Run smoke tests
+pnpm --filter @aistudio555/e2e cypress:open     # Open Cypress UI
+pnpm --filter @aistudio555/e2e cypress:run      # Run headless
+pnpm --filter @aistudio555/e2e cypress:smoke    # Run smoke tests
 npx cypress run --spec "qa/e2e/smoke-tests.cy.ts"
 
 # Playwright E2E Tests
-pnpm --filter @projectdes/e2e test
+pnpm --filter @aistudio555/e2e test
 
 # Run E2E tests with UI
-pnpm --filter @projectdes/e2e test:ui
+pnpm --filter @aistudio555/e2e test:ui
 
 # Run E2E tests in headed mode
-pnpm --filter @projectdes/e2e test:headed
+pnpm --filter @aistudio555/e2e test:headed
 
 # Debug E2E tests
-pnpm --filter @projectdes/e2e test:debug
+pnpm --filter @aistudio555/e2e test:debug
 
 # Generate E2E test code
-pnpm --filter @projectdes/e2e test:codegen
+pnpm --filter @aistudio555/e2e test:codegen
 
 # View E2E test report
-pnpm --filter @projectdes/e2e report
+pnpm --filter @aistudio555/e2e report
 
 # Cross-browser testing
-pnpm --filter @projectdes/e2e test:chrome
-pnpm --filter @projectdes/e2e test:firefox
-pnpm --filter @projectdes/e2e test:safari
-pnpm --filter @projectdes/e2e test:mobile
+pnpm --filter @aistudio555/e2e test:chrome
+pnpm --filter @aistudio555/e2e test:firefox
+pnpm --filter @aistudio555/e2e test:safari
+pnpm --filter @aistudio555/e2e test:mobile
 ```
 
 ### Performance Testing
 
 ```bash
 # Run Lighthouse performance audit
-pnpm --filter @projectdes/performance lighthouse
+pnpm --filter @aistudio555/performance lighthouse
 npx lhci autorun --config=qa/performance/lighthouse.config.js
 
 # Run performance tests
-pnpm --filter @projectdes/performance test
+pnpm --filter @aistudio555/performance test
 
 # K6 Load Testing
 npx k6 run qa/performance/k6-load-test.js
 
 # Smoke test (minimal load)
-pnpm --filter @projectdes/performance test:smoke
+pnpm --filter @aistudio555/performance test:smoke
 npx k6 run qa/performance/k6-load-test.js --env SCENARIO=smoke
 
 # Load test (normal traffic)
-pnpm --filter @projectdes/performance test:load
+pnpm --filter @aistudio555/performance test:load
 npx k6 run qa/performance/k6-load-test.js --env SCENARIO=load
 
 # Stress test (peak traffic)
-pnpm --filter @projectdes/performance test:stress
+pnpm --filter @aistudio555/performance test:stress
 npx k6 run qa/performance/k6-load-test.js --env SCENARIO=stress
 
 # Spike test (sudden traffic surge)
@@ -261,26 +261,26 @@ node qa/performance/web-vitals-monitor.js
 
 ```bash
 # Security audit
-pnpm --filter @projectdes/security audit
+pnpm --filter @aistudio555/security audit
 bash scripts/security/security-audit.sh
 
 # System hardening
 sudo bash scripts/security/harden.sh
 
 # Fix security vulnerabilities
-pnpm --filter @projectdes/security audit:fix
+pnpm --filter @aistudio555/security audit:fix
 pnpm audit --fix
 
 # Scan dependencies for vulnerabilities
-pnpm --filter @projectdes/security scan:deps
+pnpm --filter @aistudio555/security scan:deps
 pnpm audit
 npm audit --workspaces
 
 # Scan code for security issues
-pnpm --filter @projectdes/security scan:code
+pnpm --filter @aistudio555/security scan:code
 
 # Check for secrets in code
-pnpm --filter @projectdes/security scan:secrets
+pnpm --filter @aistudio555/security scan:secrets
 grep -r "CHANGE_THIS" --include="*.env*" .
 
 # Check SSL certificates
@@ -298,20 +298,20 @@ curl -I https://projectdes.ai
 
 ```bash
 # Add dependency to specific workspace
-pnpm --filter @projectdes/web add react-query
-pnpm --filter @projectdes/api add express cors
+pnpm --filter @aistudio555/web add react-query
+pnpm --filter @aistudio555/api add express cors
 
 # Add dev dependency
-pnpm --filter @projectdes/ui add -D storybook
+pnpm --filter @aistudio555/ui add -D storybook
 pnpm add -D eslint prettier # Add to root
 
 # Remove dependency
-pnpm --filter @projectdes/web remove package-name
+pnpm --filter @aistudio555/web remove package-name
 pnpm remove package-name # Remove from root
 
 # Update dependencies
 pnpm update
-pnpm --filter @projectdes/types update
+pnpm --filter @aistudio555/types update
 
 # List outdated packages
 pnpm outdated
@@ -328,15 +328,15 @@ pnpm outdated
 pnpm build
 
 # Build specific workspace
-pnpm --filter @projectdes/ui build
-pnpm --filter @projectdes/web build
+pnpm --filter @aistudio555/ui build
+pnpm --filter @aistudio555/web build
 
 # Build with dependencies
-pnpm --filter @projectdes/web... build
+pnpm --filter @aistudio555/web... build
 
 # Clean build artifacts
 pnpm clean
-pnpm --filter @projectdes/api clean
+pnpm --filter @aistudio555/api clean
 ```
 
 ### CI/CD Commands
@@ -455,7 +455,7 @@ rm -rf .turbo
 npx turbo build --summarize
 
 # Run with specific scope
-npx turbo build --scope=@projectdes/web
+npx turbo build --scope=@aistudio555/web
 npx turbo test --scope=packages/*
 ```
 
@@ -484,7 +484,7 @@ pnpm clean
 pnpm install
 
 # TypeScript issues
-pnpm --filter @projectdes/types typecheck
+pnpm --filter @aistudio555/types typecheck
 npx tsc --noEmit
 
 # Database connection issues

@@ -3,9 +3,9 @@
 
 -- Users (3 different roles)
 INSERT INTO "User" ("id", "email", "passwordHash", "emailVerified", "role", "firstName", "lastName", "displayName", "phoneNumber", "language", "timezone", "lastActiveAt", "profileImageUrl", "bio", "socialLinks", "metadata", "createdAt", "updatedAt") VALUES
-('user-admin-001', 'admin@projectdes.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'ADMIN', 'John', 'Admin', 'Administrator', '+1-555-0100', 'en', 'America/New_York', NOW(), 'https://avatar.com/admin.jpg', 'Platform administrator', '{"linkedin": "linkedin.com/in/admin"}', '{"role": "super_admin"}', NOW(), NOW()),
-('user-instr-001', 'instructor@projectdes.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'INSTRUCTOR', 'Sarah', 'Teacher', 'AI Expert Sarah', '+1-555-0200', 'en', 'Europe/London', NOW(), 'https://avatar.com/instructor.jpg', 'Senior AI Instructor', '{"linkedin": "linkedin.com/in/sarah-teacher"}', '{"expertise": ["AI", "ML"]}', NOW(), NOW()),
-('user-stud-001', 'student@projectdes.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'STUDENT', 'Mike', 'Johnson', 'Mike J', '+1-555-0300', 'en', 'America/Los_Angeles', NOW(), 'https://avatar.com/student.jpg', 'Aspiring AI specialist', '{"github": "github.com/mike-j"}', '{"goals": ["AI certification"]}', NOW(), NOW());
+('user-admin-001', 'admin@aistudio555.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'ADMIN', 'John', 'Admin', 'Administrator', '+1-555-0100', 'en', 'America/New_York', NOW(), 'https://avatar.com/admin.jpg', 'Platform administrator', '{"linkedin": "linkedin.com/in/admin"}', '{"role": "super_admin"}', NOW(), NOW()),
+('user-instr-001', 'instructor@aistudio555.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'INSTRUCTOR', 'Sarah', 'Teacher', 'AI Expert Sarah', '+1-555-0200', 'en', 'Europe/London', NOW(), 'https://avatar.com/instructor.jpg', 'Senior AI Instructor', '{"linkedin": "linkedin.com/in/sarah-teacher"}', '{"expertise": ["AI", "ML"]}', NOW(), NOW()),
+('user-stud-001', 'student@aistudio555.ai', '$2b$12$LQv3c1yqBwlVHpPjrPrJX.VW9ScGV7Z0jW8qyJkV5pJ1mVGvM8J8S', true, 'STUDENT', 'Mike', 'Johnson', 'Mike J', '+1-555-0300', 'en', 'America/Los_Angeles', NOW(), 'https://avatar.com/student.jpg', 'Aspiring AI specialist', '{"github": "github.com/mike-j"}', '{"goals": ["AI certification"]}', NOW(), NOW());
 
 -- UserProfiles
 INSERT INTO "UserProfile" ("userId", "fullName", "birthDate", "gender", "address", "city", "country", "postalCode", "emergencyContact", "educationLevel", "workExperience", "skills", "interests", "goals", "preferences", "accessibility", "createdAt", "updatedAt") VALUES
@@ -85,7 +85,7 @@ INSERT INTO "Notification" ("id", "userId", "type", "title", "message", "actionU
 
 -- PageViews
 INSERT INTO "PageView" ("id", "userId", "page", "userAgent", "ipAddress", "referrer", "sessionDuration", "metadata", "createdAt") VALUES
-('pv-001', 'user-stud-001', '/courses/course-ai-001', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)', '192.168.1.100', 'https://projectdes.ai', 120, '{"device": "desktop"}', NOW() - INTERVAL '2 hours'),
+('pv-001', 'user-stud-001', '/courses/course-ai-001', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)', '192.168.1.100', 'https://aistudio555.ai', 120, '{"device": "desktop"}', NOW() - INTERVAL '2 hours'),
 ('pv-002', 'user-stud-001', '/courses/course-web-001', 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X)', '192.168.1.101', 'https://google.com', 300, '{"device": "mobile"}', NOW() - INTERVAL '3 hours');
 
 -- CourseAnalytics
@@ -95,7 +95,7 @@ INSERT INTO "CourseAnalytics" ("id", "courseId", "date", "enrollments", "complet
 
 -- MediaAssets
 INSERT INTO "MediaAsset" ("id", "filename", "originalName", "mimeType", "size", "url", "thumbnailUrl", "altText", "description", "uploadedBy", "tags", "isPublic", "metadata", "createdAt", "updatedAt") VALUES
-('media-001', 'ai-course-thumbnail.jpg', 'AI Course Thumbnail.jpg', 'image/jpeg', 245760, 'https://cdn.projectdes.ai/ai-course-thumbnail.jpg', 'https://cdn.projectdes.ai/ai-course-thumbnail-sm.jpg', '{"en": "AI Transformation Manager course thumbnail", "ru": "Миниатюра курса менеджера трансформации ИИ", "he": "תמונה ממוזערת של קורס מנהל טרנספורמציה דיגיטלית"}', '{"en": "Course thumbnail image", "ru": "Изображение миниатюры курса", "he": "תמונת ממוזער של הקורס"}', 'user-admin-001', '["course", "thumbnail", "ai"]', true, '{"course_id": "course-ai-001"}', NOW(), NOW());
+('media-001', 'ai-course-thumbnail.jpg', 'AI Course Thumbnail.jpg', 'image/jpeg', 245760, 'https://cdn.aistudio555.ai/ai-course-thumbnail.jpg', 'https://cdn.aistudio555.ai/ai-course-thumbnail-sm.jpg', '{"en": "AI Transformation Manager course thumbnail", "ru": "Миниатюра курса менеджера трансформации ИИ", "he": "תמונה ממוזערת של קורס מנהל טרנספורמציה דיגיטלית"}', '{"en": "Course thumbnail image", "ru": "Изображение миниатюры курса", "he": "תמונת ממוזער של הקורס"}', 'user-admin-001', '["course", "thumbnail", "ai"]', true, '{"course_id": "course-ai-001"}', NOW(), NOW());
 
 -- Infrastructure Tables
 

@@ -1,7 +1,7 @@
 /**
  * Enrollment & Learning Progress Schemas
  * Zod validation schemas for course enrollment and progress tracking
- * @module @projectdes/types/enrollment
+ * @module @aistudio555/types/enrollment
  */
 import { z } from 'zod';
 export declare const EnrollmentStatusEnum: z.ZodEnum<["PENDING", "ACTIVE", "COMPLETED", "EXPIRED", "CANCELLED", "SUSPENDED"]>;
@@ -49,9 +49,9 @@ export declare const EnrollmentSchema: z.ZodObject<{
     totalTimeSpent: z.ZodDefault<z.ZodNumber>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
 }, "strip", z.ZodTypeAny, {
-    status: "PENDING" | "ACTIVE" | "COMPLETED" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     courseId: string;
     userId: string;
+    status: "PENDING" | "ACTIVE" | "COMPLETED" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     id: string;
     enrolledAt: Date;
     startedAt: Date | null;
@@ -65,9 +65,9 @@ export declare const EnrollmentSchema: z.ZodObject<{
     totalTimeSpent: number;
     metadata?: Record<string, any> | undefined;
 }, {
-    status: "PENDING" | "ACTIVE" | "COMPLETED" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     courseId: string;
     userId: string;
+    status: "PENDING" | "ACTIVE" | "COMPLETED" | "EXPIRED" | "CANCELLED" | "SUSPENDED";
     id: string;
     enrolledAt: Date;
     startedAt: Date | null;
@@ -133,8 +133,8 @@ export declare const LessonProgressSchema: z.ZodObject<{
         note?: string | undefined;
     }>, "many">>;
 }, "strip", z.ZodTypeAny, {
-    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
     userId: string;
+    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
     id: string;
     startedAt: Date | null;
     completedAt: Date | null;
@@ -150,8 +150,8 @@ export declare const LessonProgressSchema: z.ZodObject<{
         note?: string | undefined;
     }[] | undefined;
 }, {
-    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
     userId: string;
+    status: "COMPLETED" | "NOT_STARTED" | "IN_PROGRESS" | "SKIPPED";
     id: string;
     startedAt: Date | null;
     completedAt: Date | null;

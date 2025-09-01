@@ -8,7 +8,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AuthenticationError, AuthorizationError, ValidationError } from './error.middleware';
 import { prisma } from '../server';
-import { UserRole } from '@projectdes/types';
+import { UserRole } from '@aistudio555/types';
 
 // Extend Express Request type
 declare global {

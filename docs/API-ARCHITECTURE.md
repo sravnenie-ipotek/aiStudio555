@@ -2,7 +2,7 @@
 
 ## Overview
 
-The ProjectDes AI Academy API serves as the backbone of the platform, providing RESTful endpoints for all client applications. Built with Express.js and TypeScript, it follows industry best practices for scalability, security, and maintainability.
+The AiStudio555 AI Academy API serves as the backbone of the platform, providing RESTful endpoints for all client applications. Built with Express.js and TypeScript, it follows industry best practices for scalability, security, and maintainability.
 
 ## Core Principles
 
@@ -51,8 +51,8 @@ The ProjectDes AI Academy API serves as the backbone of the platform, providing 
 
 ### Base URL Patterns
 ```
-Production: https://api.projectdes.ai
-Staging: https://staging-api.projectdes.ai
+Production: https://api.aistudio555.ai
+Staging: https://staging-api.aistudio555.ai
 Development: http://localhost:3001
 ```
 
@@ -293,8 +293,8 @@ const securityHeaders = {
 ```typescript
 const corsOptions = {
   origin: [
-    'https://projectdes.ai',
-    'https://www.projectdes.ai'
+    'https://aistudio555.ai',
+    'https://www.aistudio555.ai'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -327,7 +327,7 @@ Last-Modified: Wed, 21 Oct 2024 07:28:00 GMT
 ### Real-Time Events
 ```typescript
 // Connection
-ws://api.projectdes.ai/socket
+ws://api.aistudio555.ai/socket
 
 // Events
 socket.on('connect', () => {})

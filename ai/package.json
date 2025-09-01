@@ -1,8 +1,8 @@
 {
-  "name": "@projectdes/ai",
+  "name": "@aistudio555/ai",
   "version": "0.0.0",
   "private": true,
-  "description": "Projectdes Academy - AI Services & Integrations",
+  "description": "AiStudio555 Academy - AI Services & Integrations",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
@@ -15,9 +15,9 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@projectdes/db": "workspace:*",
-    "@projectdes/types": "workspace:*",
-    "@projectdes/utils": "workspace:*",
+    "@aistudio555/db": "workspace:*",
+    "@aistudio555/types": "workspace:*",
+    "@aistudio555/utils": "workspace:*",
     "@langchain/community": "^0.0.16",
     "@langchain/core": "^0.1.16",
     "@langchain/openai": "^0.0.12",

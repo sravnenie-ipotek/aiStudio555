@@ -1,0 +1,113 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]: ✅ Strapi Connected
+  - banner [ref=e4]:
+    - navigation [ref=e6]:
+      - link "AiStudio555" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8] [cursor=pointer]: AiStudio555
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "Курсы" [ref=e12] [cursor=pointer]:
+            - /url: /courses
+            - generic [ref=e13] [cursor=pointer]: Курсы
+        - listitem [ref=e14]:
+          - link "Старты месяца" [ref=e15] [cursor=pointer]:
+            - /url: /monthly-starts
+            - generic [ref=e16] [cursor=pointer]: Старты месяца
+        - listitem [ref=e17]:
+          - link "Преподаватели" [ref=e18] [cursor=pointer]:
+            - /url: /instructors
+            - generic [ref=e19] [cursor=pointer]: Преподаватели
+        - listitem [ref=e20]:
+          - link "Блог" [ref=e21] [cursor=pointer]:
+            - /url: /blog
+            - generic [ref=e22] [cursor=pointer]: Блог
+        - listitem [ref=e23]:
+          - button "О школе" [ref=e24] [cursor=pointer]:
+            - generic [ref=e25] [cursor=pointer]: О школе
+            - img [ref=e26] [cursor=pointer]
+      - generic [ref=e28]:
+        - generic [ref=e29]: RU
+        - link "+1 234 567 890" [ref=e30] [cursor=pointer]:
+          - /url: tel:+12345678901
+          - img [ref=e31] [cursor=pointer]
+          - generic [ref=e33] [cursor=pointer]: +1 234 567 890
+        - link "Записаться сейчас" [ref=e34] [cursor=pointer]:
+          - /url: /consultation
+          - button "Записаться сейчас" [ref=e35] [cursor=pointer]
+        - generic [ref=e36]:
+          - link "Facebook" [ref=e37] [cursor=pointer]:
+            - /url: https://www.facebook.com/teachmeskills
+            - img [ref=e38] [cursor=pointer]
+          - link "VKontakte" [ref=e40] [cursor=pointer]:
+            - /url: https://vk.com/tms_education
+            - img [ref=e41] [cursor=pointer]
+          - link "Instagram" [ref=e43] [cursor=pointer]:
+            - /url: https://www.instagram.com/teachmeskills/
+            - img [ref=e44] [cursor=pointer]
+          - link "YouTube" [ref=e47] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCrpbZ8VZjn8FtMv0-I1VJ2A
+            - img [ref=e48] [cursor=pointer]
+          - link "Telegram" [ref=e51] [cursor=pointer]:
+            - /url: https://t.me/tms_client_bot?start=n_82778__c_4003
+            - img [ref=e52] [cursor=pointer]
+          - link "TikTok" [ref=e54] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@teachmeskills
+            - img [ref=e55] [cursor=pointer]
+  - main [ref=e57]:
+    - generic [ref=e58]:
+      - generic [ref=e61]:
+        - link "Projectdes AI Academy" [ref=e62] [cursor=pointer]:
+          - /url: /
+          - heading "Projectdes AI Academy" [level=1] [ref=e63] [cursor=pointer]
+        - generic [ref=e64]: Secure Authentication
+      - main [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - heading "Sign In" [level=2] [ref=e69]
+            - paragraph [ref=e70]: Access your learning dashboard and continue your AI transformation journey
+          - generic [ref=e71]:
+            - generic [ref=e72]:
+              - generic [ref=e73]:
+                - generic [ref=e74]: Email Address
+                - textbox "Email Address" [ref=e75]
+              - generic [ref=e76]:
+                - generic [ref=e77]: Password
+                - textbox "Password" [ref=e78]
+              - generic [ref=e79]:
+                - generic [ref=e80]:
+                  - checkbox "Remember me" [ref=e81]
+                  - generic [ref=e82]: Remember me
+                - link "Forgot password?" [ref=e83] [cursor=pointer]:
+                  - /url: /auth/forgot-password
+              - button "Sign In" [ref=e84] [cursor=pointer]
+            - generic [ref=e85]:
+              - generic [ref=e90]: Or continue with
+              - generic [ref=e91]:
+                - button "Google" [ref=e92] [cursor=pointer]:
+                  - img [ref=e93] [cursor=pointer]
+                  - generic [ref=e98] [cursor=pointer]: Google
+                - button "Facebook" [ref=e99] [cursor=pointer]:
+                  - img [ref=e100] [cursor=pointer]
+                  - generic [ref=e102] [cursor=pointer]: Facebook
+            - paragraph [ref=e104]:
+              - text: Don't have an account?
+              - link "Sign up for free" [ref=e105] [cursor=pointer]:
+                - /url: /auth/register
+          - generic [ref=e106]:
+            - paragraph [ref=e107]: Join thousands of professionals transforming their careers
+            - generic [ref=e108]:
+              - generic [ref=e109]: Job Guarantee
+              - generic [ref=e111]: Expert Instructors
+              - generic [ref=e113]: Flexible Schedule
+      - generic [ref=e117]:
+        - paragraph [ref=e118]:
+          - text: Need help?
+          - link "Contact support" [ref=e119] [cursor=pointer]:
+            - /url: /contact
+        - paragraph [ref=e120]: © 2024 Projectdes AI Academy. All rights reserved.
+  - alert [ref=e121]
+```

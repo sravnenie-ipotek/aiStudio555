@@ -1,0 +1,49 @@
+{
+  "timestamp": "2025-08-31T23:00:18.947Z",
+  "url": "http://localhost:3000/",
+  "title": "AiStudio555 AI Academy",
+  "headerCount": 1,
+  "navCount": 1,
+  "consoleErrors": [
+    "[ERROR] Warning: Prop `lang` did not match. Server: \"ru\" Client: \"en\"\nhtml\nRedirectErrorBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9\nRedirectBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:24\nNotFoundErrorBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9\nNotFoundBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:62\nDevRootNotFoundBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:24\nReactDevOverlay@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/internal/ReactDevOverlay.js:84:9\nHotReload@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/hot-reloader-client.js:307:37\nRouter@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:181:114\nErrorBoundaryHandler@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:114:9\nErrorBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:161:67\nAppRouter@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:536:47\nServerRoot@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:129:24\nRSCComponent\nRoot@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:145:24",
+    "[NETWORK ERROR] 101 http://localhost:3000/_next/webpack-hmr"
+  ],
+  "consoleMessages": [
+    "[WARNING] Language initialization failed, using default: Error",
+    "[WARNING] Language initialization failed, using default: Error",
+    "[WARNING] Language initialization failed, using default: Error",
+    "[WARNING] Language initialization failed, using default: Error",
+    "[WARNING] Language initialization failed, using default: Error",
+    "[WARNING] Language initialization failed, using default: Error",
+    "[WARNING] Language initialization failed, using default: Error",
+    "[ERROR] Warning: Prop `lang` did not match. Server: \"ru\" Client: \"en\"\nhtml\nRedirectErrorBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:73:9\nRedirectBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/redirect-boundary.js:81:24\nNotFoundErrorBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:76:9\nNotFoundBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/not-found-boundary.js:84:62\nDevRootNotFoundBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:24\nReactDevOverlay@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/internal/ReactDevOverlay.js:84:9\nHotReload@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/react-dev-overlay/hot-reloader-client.js:307:37\nRouter@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:181:114\nErrorBoundaryHandler@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:114:9\nErrorBoundary@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/error-boundary.js:161:67\nAppRouter@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/components/app-router.js:536:47\nServerRoot@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:129:24\nRSCComponent\nRoot@webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@14.1.0_@babel+core@7.28.3_@opentelemetry+api@1.9.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/client/app-index.js:145:24",
+    "[LOG] 🚀 Navigation useEffect triggered",
+    "[LOG] 🚀 Navigation useEffect triggered",
+    "[LOG] 📝 Loading simple navigation...",
+    "[LOG] 🧭 Simple navigation created: Array",
+    "[LOG] ✅ Navigation loaded successfully: 3 items",
+    "[LOG] 🏁 Navigation loading completed",
+    "[LOG] 📝 Loading simple navigation...",
+    "[LOG] 🧭 Simple navigation created: Array",
+    "[LOG] ✅ Navigation loaded successfully: 3 items",
+    "[LOG] 🏁 Navigation loading completed",
+    "[LOG] 🌐 Strapi connection: ok Strapi connection successful",
+    "[LOG] 🌐 Strapi connection: ok Strapi connection successful"
+  ],
+  "reactInfo": {
+    "hasReact": false,
+    "reactRoot": null,
+    "hasReactDevTools": true,
+    "hasNextJs": false,
+    "nextData": null
+  },
+  "hiddenElements": [
+    {
+      "selector": "nav.w-full.flex.items-center.justify-between.h-[70px].px-4.sm:px-6.lg:px-12.xl:px-20[0]",
+      "visible": true,
+      "display": "flex",
+      "opacity": "1",
+      "visibility": "visible"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 /**
  * Enrollment & Learning Progress Schemas
  * Zod validation schemas for course enrollment and progress tracking
- * @module @projectdes/types/enrollment
+ * @module @aistudio555/types/enrollment
  */
 import { z } from 'zod';
 // ============================================

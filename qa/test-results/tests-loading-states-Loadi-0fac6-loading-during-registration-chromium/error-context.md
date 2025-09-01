@@ -1,0 +1,147 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]: ✅ Strapi Connected
+  - banner [ref=e4]:
+    - navigation [ref=e6]:
+      - link "AiStudio555" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8] [cursor=pointer]: AiStudio555
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "Курсы" [ref=e12] [cursor=pointer]:
+            - /url: /courses
+            - generic [ref=e13] [cursor=pointer]: Курсы
+        - listitem [ref=e14]:
+          - link "Старты месяца" [ref=e15] [cursor=pointer]:
+            - /url: /monthly-starts
+            - generic [ref=e16] [cursor=pointer]: Старты месяца
+        - listitem [ref=e17]:
+          - link "Преподаватели" [ref=e18] [cursor=pointer]:
+            - /url: /instructors
+            - generic [ref=e19] [cursor=pointer]: Преподаватели
+        - listitem [ref=e20]:
+          - link "Блог" [ref=e21] [cursor=pointer]:
+            - /url: /blog
+            - generic [ref=e22] [cursor=pointer]: Блог
+        - listitem [ref=e23]:
+          - button "О школе" [ref=e24] [cursor=pointer]:
+            - generic [ref=e25] [cursor=pointer]: О школе
+            - img [ref=e26] [cursor=pointer]
+      - generic [ref=e28]:
+        - generic [ref=e29]: RU
+        - link "+1 234 567 890" [ref=e30] [cursor=pointer]:
+          - /url: tel:+12345678901
+          - img [ref=e31] [cursor=pointer]
+          - generic [ref=e33] [cursor=pointer]: +1 234 567 890
+        - link "Записаться сейчас" [ref=e34] [cursor=pointer]:
+          - /url: /consultation
+          - button "Записаться сейчас" [ref=e35] [cursor=pointer]
+        - generic [ref=e36]:
+          - link "Facebook" [ref=e37] [cursor=pointer]:
+            - /url: https://www.facebook.com/teachmeskills
+            - img [ref=e38] [cursor=pointer]
+          - link "VKontakte" [ref=e40] [cursor=pointer]:
+            - /url: https://vk.com/tms_education
+            - img [ref=e41] [cursor=pointer]
+          - link "Instagram" [ref=e43] [cursor=pointer]:
+            - /url: https://www.instagram.com/teachmeskills/
+            - img [ref=e44] [cursor=pointer]
+          - link "YouTube" [ref=e47] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCrpbZ8VZjn8FtMv0-I1VJ2A
+            - img [ref=e48] [cursor=pointer]
+          - link "Telegram" [ref=e51] [cursor=pointer]:
+            - /url: https://t.me/tms_client_bot?start=n_82778__c_4003
+            - img [ref=e52] [cursor=pointer]
+          - link "TikTok" [ref=e54] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@teachmeskills
+            - img [ref=e55] [cursor=pointer]
+  - main [ref=e57]:
+    - generic [ref=e58]:
+      - generic [ref=e61]:
+        - link "Projectdes AI Academy" [ref=e62] [cursor=pointer]:
+          - /url: /
+          - heading "Projectdes AI Academy" [level=1] [ref=e63] [cursor=pointer]
+        - generic [ref=e64]: Secure Authentication
+      - main [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - heading "Create Your Account" [level=1] [ref=e69]
+            - paragraph [ref=e70]: Join thousands of professionals transforming their careers with AI
+          - generic [ref=e71]:
+            - generic [ref=e72]:
+              - generic [ref=e73]:
+                - generic [ref=e74]: First Name *
+                - textbox "First Name *" [ref=e75]
+              - generic [ref=e76]:
+                - generic [ref=e77]: Last Name *
+                - textbox "Last Name *" [ref=e78]
+            - generic [ref=e79]:
+              - generic [ref=e80]: Email Address *
+              - textbox "Email Address *" [ref=e81]
+            - generic [ref=e82]:
+              - generic [ref=e83]: Password *
+              - textbox "Password *" [ref=e84]
+              - paragraph [ref=e85]: Must be at least 8 characters with numbers and letters
+            - generic [ref=e86]:
+              - generic [ref=e87]: Confirm Password *
+              - textbox "Confirm Password *" [ref=e88]
+            - generic [ref=e89]:
+              - generic [ref=e90]: Current Role/Background
+              - combobox "Current Role/Background" [ref=e91]:
+                - option "Select your background" [selected]
+                - option "Software Developer"
+                - option "UI/UX Designer"
+                - option "Project/Product Manager"
+                - option "Marketing Professional"
+                - option "Business Analyst"
+                - option "Consultant"
+                - option "Entrepreneur"
+                - option "Student"
+                - option "Career Changer"
+                - option "Other"
+            - generic [ref=e92]:
+              - generic [ref=e93]: AI/Tech Experience Level
+              - combobox "AI/Tech Experience Level" [ref=e94]:
+                - option "Select your level" [selected]
+                - option "Beginner - New to AI"
+                - option "Some Experience - Used AI tools"
+                - option "Intermediate - Built AI projects"
+                - option "Advanced - AI professional"
+            - generic [ref=e95]:
+              - checkbox "I agree to the Terms of Service and Privacy Policy" [ref=e96]
+              - generic [ref=e97]:
+                - text: I agree to the
+                - link "Terms of Service" [ref=e98] [cursor=pointer]:
+                  - /url: /terms
+                - text: and
+                - link "Privacy Policy" [ref=e99] [cursor=pointer]:
+                  - /url: /privacy
+            - generic [ref=e100]:
+              - checkbox "Send me AI industry insights and course updates" [ref=e101]
+              - generic [ref=e102]: Send me AI industry insights and course updates
+            - button "Create Account" [ref=e103] [cursor=pointer]
+            - generic [ref=e108]: or
+            - generic [ref=e109]:
+              - button "Continue with Google" [ref=e110] [cursor=pointer]:
+                - img [ref=e111] [cursor=pointer]
+                - generic [ref=e116] [cursor=pointer]: Continue with Google
+              - button "Continue with Microsoft" [ref=e117] [cursor=pointer]:
+                - img [ref=e118] [cursor=pointer]
+                - generic [ref=e120] [cursor=pointer]: Continue with Microsoft
+          - paragraph [ref=e122]:
+            - text: Already have an account?
+            - link "Sign in here" [ref=e123] [cursor=pointer]:
+              - /url: /auth/login
+          - generic [ref=e125]:
+            - img [ref=e126]
+            - generic [ref=e128]: Your information is protected with enterprise-grade security
+      - generic [ref=e131]:
+        - paragraph [ref=e132]:
+          - text: Need help?
+          - link "Contact support" [ref=e133] [cursor=pointer]:
+            - /url: /contact
+        - paragraph [ref=e134]: © 2024 Projectdes AI Academy. All rights reserved.
+  - alert [ref=e135]
+```
