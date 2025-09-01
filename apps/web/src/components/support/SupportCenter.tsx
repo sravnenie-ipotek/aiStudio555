@@ -225,7 +225,7 @@ export function SupportCenter({
                   </div>
                   <div>
                     <p className="font-medium">{t('support.email')}</p>
-                    <p className="text-sm text-muted-foreground">support@projectdes.ai</p>
+                    <p className="text-sm text-muted-foreground">support@aistudio555.ai</p>
                   </div>
                 </div>
               </CardContent>

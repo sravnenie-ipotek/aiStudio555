@@ -133,7 +133,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesProps>(
     className,
     variant = 'default',
     showCTA = true,
-    title = 'Why Choose Projectdes Academy?',
+    title = 'Why Choose AiStudio555 Academy?',
     subtitle = 'Transform your career with the most comprehensive AI training program designed for working professionals',
     ...props
   }, ref) => {

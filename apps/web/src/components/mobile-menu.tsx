@@ -32,7 +32,7 @@ const MobileMenu = React.forwardRef<HTMLDivElement, MobileMenuProps>(
     onLanguageChange,
     className,
     logoSrc,
-    logoAlt = 'Projectdes Academy',
+    logoAlt = 'AiStudio555 Academy',
     ...props
   }, ref) => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -180,7 +180,7 @@ const MobileMenu = React.forwardRef<HTMLDivElement, MobileMenuProps>(
                   />
                 ) : (
                   <span className="text-lg font-bold text-primary-yellow">
-                    Projectdes Academy
+                    AiStudio555 Academy
                   </span>
                 )}
               </div>

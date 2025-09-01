@@ -1,5 +1,5 @@
 /**
- * Comprehensive Monitoring Setup for Projectdes AI Academy
+ * Comprehensive Monitoring Setup for AiStudio555 AI Academy
  * =========================================================
  *
  * Error tracking, performance monitoring, and health checks
@@ -21,8 +21,8 @@ export const monitoringConfig = {
     enabled: process.env.NODE_ENV === 'production',
     pingInterval: 60000, // 1 minute
     endpoints: [
-      'https://projectdes.ai',
-      'https://api.projectdes.ai',
+      'https://aistudio555.ai',
+      'https://api.aistudio555.ai',
     ],
   },
   healthCheck: {
@@ -51,7 +51,7 @@ export function initializeSentry() {
     integrations: [
       new Sentry.BrowserTracing({
         // Set sampling rate for performance monitoring
-        tracingOrigins: ['localhost', 'projectdes.ai', /^\//],
+        tracingOrigins: ['localhost', 'aistudio555.ai', /^\//],
         // Capture interactions
         routingInstrumentation: Sentry.nextRouterInstrumentation,
       }),

@@ -1,5 +1,5 @@
 /**
- * SEO Configuration and Utilities for Projectdes AI Academy
+ * SEO Configuration and Utilities for AiStudio555 AI Academy
  * ==========================================================
  *
  * Comprehensive SEO management with multi-language support
@@ -9,28 +9,28 @@ import { Metadata } from 'next';
 
 // SEO Configuration
 export const seoConfig = {
-  siteName: 'Projectdes AI Academy',
-  siteUrl: 'https://projectdes.ai',
-  defaultTitle: 'Projectdes AI Academy - Transform into an AI Specialist',
-  titleTemplate: '%s | Projectdes AI Academy',
+  siteName: 'AiStudio555 AI Academy',
+  siteUrl: 'https://aistudio555.ai',
+  defaultTitle: 'AiStudio555 AI Academy - Transform into an AI Specialist',
+  titleTemplate: '%s | AiStudio555 AI Academy',
   defaultDescription: 'Transform your career with practical AI training. Learn AI Management, No-Code Development, and AI Video Creation with job placement guarantee.',
-  defaultImage: 'https://projectdes.ai/og-image.jpg',
-  twitterHandle: '@projectdes',
+  defaultImage: 'https://aistudio555.ai/og-image.jpg',
+  twitterHandle: '@aistudio555',
 
   // Multi-language configurations
   locales: {
     ru: {
-      title: 'Projectdes AI Academy - Станьте специалистом по ИИ',
+      title: 'AiStudio555 AI Academy - Станьте специалистом по ИИ',
       description: 'Трансформируйте свою карьеру с практическим обучением ИИ. Изучайте управление ИИ, разработку без кода и создание ИИ-видео с гарантией трудоустройства.',
       keywords: 'ИИ обучение, искусственный интеллект курсы, no-code разработка, ИИ видео, онлайн образование',
     },
     he: {
-      title: 'Projectdes AI Academy - הפוך למומחה AI',
+      title: 'AiStudio555 AI Academy - הפוך למומחה AI',
       description: 'שנה את הקריירה שלך עם הכשרת AI מעשית. למד ניהול AI, פיתוח No-Code ויצירת וידאו AI עם הבטחת השמה.',
       keywords: 'הכשרת AI, קורסי בינה מלאכותית, פיתוח no-code, וידאו AI, חינוך מקוון',
     },
     en: {
-      title: 'Projectdes AI Academy - Transform into an AI Specialist',
+      title: 'AiStudio555 AI Academy - Transform into an AI Specialist',
       description: 'Transform your career with practical AI training. Learn AI Management, No-Code Development, and AI Video Creation with job placement guarantee.',
       keywords: 'AI training, artificial intelligence courses, no-code development, AI video, online education',
     },
@@ -40,14 +40,14 @@ export const seoConfig = {
   organization: {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
-    name: 'Projectdes AI Academy',
-    url: 'https://projectdes.ai',
-    logo: 'https://projectdes.ai/logo.png',
+    name: 'AiStudio555 AI Academy',
+    url: 'https://aistudio555.ai',
+    logo: 'https://aistudio555.ai/logo.png',
     sameAs: [
-      'https://www.facebook.com/projectdes',
-      'https://www.instagram.com/projectdes',
-      'https://www.linkedin.com/company/projectdes',
-      'https://www.youtube.com/@projectdes',
+      'https://www.facebook.com/aistudio555',
+      'https://www.instagram.com/aistudio555',
+      'https://www.linkedin.com/company/aistudio555',
+      'https://www.youtube.com/@aistudio555',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
@@ -206,7 +206,7 @@ export function generateCourseSchema({
     description,
     provider: {
       '@type': 'Organization',
-      name: provider || 'Projectdes AI Academy',
+      name: provider || 'AiStudio555 AI Academy',
       sameAs: seoConfig.siteUrl,
     },
     url,
@@ -308,7 +308,7 @@ export function generateLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Projectdes AI Academy',
+    name: 'AiStudio555 AI Academy',
     image: seoConfig.defaultImage,
     '@id': seoConfig.siteUrl,
     url: seoConfig.siteUrl,
@@ -366,7 +366,7 @@ export function generateVideoSchema({
     embedUrl,
     publisher: {
       '@type': 'Organization',
-      name: 'Projectdes AI Academy',
+      name: 'AiStudio555 AI Academy',
       logo: {
         '@type': 'ImageObject',
         url: `${seoConfig.siteUrl}/logo.png`,

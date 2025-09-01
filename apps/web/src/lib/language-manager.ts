@@ -66,13 +66,13 @@ class LanguageManager {
           console.log(`🌍 Language restored from session: ${storedLanguage}`);
         }
       } else {
-        // 2. Auto-detect from browser
-        const detectedLanguage = this.detectBrowserLanguage();
-        this.currentLanguage = detectedLanguage;
-        this.storeLanguage(detectedLanguage);
+        // 2. For Russian-focused site, default to Russian
+        // Don't auto-detect browser language as this is primarily a Russian education platform
+        this.currentLanguage = DEFAULT_LANGUAGE; // Russian
+        this.storeLanguage(DEFAULT_LANGUAGE);
         
         if (process.env.NODE_ENV === 'development') {
-          console.log(`🌍 Language auto-detected: ${detectedLanguage}`);
+          console.log(`🌍 Language set to default: ${DEFAULT_LANGUAGE}`);
         }
       }
 
@@ -275,7 +275,8 @@ class LanguageManager {
       return;
     }
 
-    const isRtl = this.isRTL();
+    // Use currentLanguage directly to avoid circular dependency
+    const isRtl = LANGUAGES[this.currentLanguage].rtl;
     document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
     document.documentElement.lang = this.currentLanguage;
   }

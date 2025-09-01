@@ -97,7 +97,7 @@ export function MobileNavigation({ user, notificationCount = 0, messageCount = 0
           </Button>
 
           <div className="flex-1 text-center">
-            <h1 className="font-semibold text-lg">Projectdes Academy</h1>
+            <h1 className="font-semibold text-lg">AiStudio555 Academy</h1>
           </div>
 
           <div className="flex items-center gap-2">

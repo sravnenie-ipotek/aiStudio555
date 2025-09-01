@@ -45,7 +45,7 @@ export function CertificateGenerator({
   onDownload,
   onShare,
 }: CertificateGeneratorProps) {
-  const { t } = useTranslation();
+  const { t, tSync } = useTranslation();
   const certificateRef = useRef<HTMLDivElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
@@ -90,7 +90,7 @@ export function CertificateGenerator({
   };
 
   const shareCertificate = (platform: 'linkedin' | 'twitter' | 'email' | 'copy') => {
-    const shareText = t('certificates.shareText', {
+    const shareText = tSync('certificates.shareText', {
       courseName: certificateData.courseName,
     });
     const shareUrl = certificateData.validationUrl;

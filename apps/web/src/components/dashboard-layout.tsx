@@ -67,7 +67,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 href="/dashboard"
                 className="text-24 font-bold text-text-primary no-underline"
               >
-                Projectdes AI
+                AiStudio555 AI
               </Link>
 
               {/* Desktop Navigation */}

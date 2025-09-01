@@ -1,6 +1,6 @@
-# Projectdes AI Academy - Frontend
+# AiStudio555 AI Academy - Frontend
 
-Next.js 14 frontend application for the Projectdes AI Academy platform.
+Next.js 14 frontend application for the AiStudio555 AI Academy platform.
 
 ## 🚀 Tech Stack
 

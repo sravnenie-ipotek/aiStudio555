@@ -24,7 +24,7 @@ const nextConfig = {
   
   // Optimize package imports
   experimental: {
-    optimizePackageImports: ['@projectdes/ui', 'lucide-react', '@radix-ui/react-*'],
+    optimizePackageImports: ['@aistudio555/ui', 'lucide-react', '@radix-ui/react-*'],
   },
   
   // Internationalization configuration

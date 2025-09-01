@@ -66,10 +66,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const Comp = asChild ? Slot : 'button';
+    if (asChild) {
+      // When using asChild, we pass props to the child element
+      // Icons and loading state are not supported with asChild
+      return (
+        <Slot
+          className={cn(buttonVariants({ variant, size, fullWidth, className }))}
+          {...props}
+        >
+          {children}
+        </Slot>
+      );
+    }
 
     return (
-      <Comp
+      <button
         className={cn(buttonVariants({ variant, size, fullWidth, className }))}
         ref={ref}
         disabled={disabled || loading}
@@ -86,7 +97,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {!loading && rightIcon && (
           <span className="ml-2 flex items-center">{rightIcon}</span>
         )}
-      </Comp>
+      </button>
     );
   },
 );

@@ -1,5 +1,5 @@
 /**
- * Analytics Implementation for Projectdes AI Academy
+ * Analytics Implementation for AiStudio555 AI Academy
  * ===================================================
  *
  * Comprehensive analytics tracking with GA4, GTM, and custom events

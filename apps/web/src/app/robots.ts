@@ -1,5 +1,5 @@
 /**
- * Robots.txt Configuration for Projectdes AI Academy
+ * Robots.txt Configuration for AiStudio555 AI Academy
  * ===================================================
  *
  * SEO crawler instructions and sitemap reference
@@ -8,7 +8,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://projectdes.ai';
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://aistudio555.ai';
 
   return {
     rules: [
@@ -89,9 +89,9 @@ export default function robots(): MetadataRoute.Robots {
 
 // Alternative: Generate robots.txt as string
 export function generateRobotsTxt(): string {
-  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://projectdes.ai';
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://aistudio555.ai';
 
-  return `# Robots.txt for Projectdes AI Academy
+  return `# Robots.txt for AiStudio555 AI Academy
 # Generated: ${new Date().toISOString()}
 
 # Default rules for all crawlers

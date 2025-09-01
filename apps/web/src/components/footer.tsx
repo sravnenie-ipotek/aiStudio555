@@ -51,19 +51,19 @@ const footerLinks = {
 const socialLinks = [
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/company/projectdes-academy',
+    href: 'https://linkedin.com/company/aistudio555-academy',
     icon: Linkedin,
     ariaLabel: 'Follow us on LinkedIn',
   },
   {
     name: 'YouTube',
-    href: 'https://youtube.com/@projectdes-academy',
+    href: 'https://youtube.com/@aistudio555-academy',
     icon: Youtube,
     ariaLabel: 'Subscribe to our YouTube channel',
   },
   {
     name: 'Instagram',
-    href: 'https://instagram.com/projectdes.academy',
+    href: 'https://instagram.com/aistudio555.academy',
     icon: Instagram,
     ariaLabel: 'Follow us on Instagram',
   },
@@ -73,8 +73,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'info@projectdes.academy',
-    href: 'mailto:info@projectdes.academy',
+    value: 'info@aistudio555.academy',
+    href: 'mailto:info@aistudio555.academy',
   },
   {
     icon: Phone,
@@ -91,7 +91,7 @@ const contactInfo = [
 ];
 
 const Footer = React.forwardRef<HTMLElement, FooterProps>(
-  ({ className, logoSrc, logoAlt = 'Projectdes Academy', ...props }, ref) => {
+  ({ className, logoSrc, logoAlt = 'AiStudio555 Academy', ...props }, ref) => {
     const currentYear = new Date().getFullYear();
 
     return (
@@ -125,10 +125,10 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                 ) : (
                   <div className="flex items-center space-x-3">
                     <div className="h-10 w-10 bg-primary-yellow rounded-lg flex items-center justify-center">
-                      <span className="text-dark-pure font-bold text-xl">P</span>
+                      <span className="text-dark-pure font-bold text-xl">A</span>
                     </div>
                     <span className="text-xl font-bold text-primary-yellow">
-                      Projectdes Academy
+                      AiStudio555 Academy
                     </span>
                   </div>
                 )}
@@ -285,7 +285,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
             <div className="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
               {/* Copyright */}
               <div className="text-text-light text-sm">
-                © {currentYear} Projectdes Academy. All rights reserved.
+                © {currentYear} AiStudio555 Academy. All rights reserved.
               </div>
 
               {/* Social Links */}

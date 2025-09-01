@@ -3,8 +3,8 @@ import { CoursesSection } from '@/components/sections/CoursesSection';
 import { DistanceLearning } from '@/components/sections/DistanceLearning';
 import { VideoSection } from '@/components/sections/VideoSection';
 import { BenefitsSection } from '@/components/sections/BenefitsSection';
-import { StatisticsSection } from '@/components/sections/StatisticsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { FAQSection } from '@/components/sections/FAQSection';
 import { CTASection } from '@/components/sections/CTASection';
 
 export default function HomePage() {
@@ -12,9 +12,6 @@ export default function HomePage() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <HeroSection />
-
-      {/* Statistics Section */}
-      <StatisticsSection />
 
       {/* Courses Section */}
       <CoursesSection />
@@ -30,6 +27,9 @@ export default function HomePage() {
 
       {/* Testimonials Section */}
       <TestimonialsSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* CTA Section */}
       <CTASection />

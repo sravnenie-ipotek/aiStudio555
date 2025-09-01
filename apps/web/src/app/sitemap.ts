@@ -1,5 +1,5 @@
 /**
- * Dynamic Sitemap Generator for Projectdes AI Academy
+ * Dynamic Sitemap Generator for AiStudio555 AI Academy
  * ====================================================
  *
  * Generates XML sitemap with all pages and courses
@@ -8,7 +8,7 @@
 import { MetadataRoute } from 'next';
 
 // Define site URL
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://projectdes.ai';
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://aistudio555.ai';
 
 // Static pages with their change frequency and priority
 const staticPages = [
